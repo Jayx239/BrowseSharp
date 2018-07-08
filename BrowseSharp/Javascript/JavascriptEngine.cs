@@ -130,7 +130,8 @@ namespace BrowseSharp.Javascript
         {
             var globals = new List<string>()
             {
-                "window = {};"
+                "window = {};",
+                "document = {}; "
             };
             
             return globals;

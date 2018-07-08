@@ -64,9 +64,13 @@ namespace BrowseSharp.Style
                 
                 var scriptString = styleMatch.ToString();
                 var styleUrl = scriptString;
-                if (styleUrl.StartsWith("/"))
+                if (!styleUrl.ToLower().StartsWith("http") && !styleUrl.ToLower().StartsWith("www."))
+                {
+                    if (!styleUrl.StartsWith("/"))
+                        styleUrl = "/" + styleUrl;
                     styleUrl = document.Response.ResponseUri.Scheme + "://" + document.Response.ResponseUri.Host + styleUrl;
-                
+                }
+
                 Uri styleUri = new Uri(styleUrl);
                 RestClient restClient = new RestClient(document.Response.ResponseUri.Scheme + "://" + styleUri.Host);
                 IRestRequest request = new RestRequest(styleUri.PathAndQuery, Method.GET);
