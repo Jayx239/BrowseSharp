@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Jason Gallagher</Authors>
@@ -16,5 +15,9 @@
     <PackageTags>Headless Browser Javascript HTML Parser Web</PackageTags>
     <Company>Jason Gallagher</Company>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Jint" Version="2.11.55" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+    <PackageReference Include="RestSharp" Version="106.3.1" />
+  </ItemGroup>
 </Project>
