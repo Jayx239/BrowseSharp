@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using BrowseSharp;
+using BrowseSharp.Toolbox;
 using RestSharp;
 
 namespace BrowseSharpTest
@@ -30,6 +31,31 @@ namespace BrowseSharpTest
             }
             
             Assert.True(true);
+        }
+        
+        [Test]
+        public void Test2()
+        {
+            Uri testUri = new Uri("https://google.com/something/else/");
+            Uri result1 = UriHelper.GetUri(testUri, "/js/sass/");
+            Assert.AreEqual(result1.AbsoluteUri, "https://google.com/js/sass/");
+            Uri result2 = UriHelper.GetUri(testUri, "something/different");
+            Assert.AreEqual(result2.AbsoluteUri, "https://google.com/something/else/something/different");
+            Uri result3 = UriHelper.GetUri(testUri, "https://amazon.com/something/different");
+            Assert.AreEqual(result3.AbsoluteUri, "https://amazon.com/something/different");
+            Uri result4 = UriHelper.GetUri(testUri, "www.amazon.com/something/different");
+            Assert.AreEqual(result4.AbsoluteUri, "http://www.amazon.com/something/different");
+            
+            Uri testuri2 = new Uri("https://google.com/something/else");
+            result1 = UriHelper.GetUri(testUri, "/js/sass/");
+            Assert.AreEqual(result1.AbsoluteUri, "https://google.com/js/sass/");
+            result2 = UriHelper.GetUri(testUri, "something/different");
+            Assert.AreEqual(result2.AbsoluteUri, "https://google.com/something/else/something/different");
+            result3 = UriHelper.GetUri(testUri, "https://amazon.com/something/different");
+            Assert.AreEqual(result3.AbsoluteUri, "https://amazon.com/something/different");
+            result4 = UriHelper.GetUri(testUri, "www.amazon.com/something/different");
+            Assert.AreEqual(result4.AbsoluteUri, "http://www.amazon.com/something/different");
+
         }
     }
 }
