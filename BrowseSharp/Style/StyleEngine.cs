@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using BrowseSharp.Toolbox;
 using Jint;
 using RestSharp;
 
 namespace BrowseSharp.Style
 {
-    public class StyleEngine
+    public class StyleEngine : IScraper
     {
 
         public StyleEngine()
@@ -18,9 +19,8 @@ namespace BrowseSharp.Style
         
         private Regex _scrapeStyleRegex;
         private Regex _scrapeStyleSrcRegex;
-        
-        /* Returns number of script script found added */
-        public int AddStyles(Document document)
+
+        public int Add(Document document)
         {
             string documentString = document.Response.Content;
             List<Style> styles = ScrapeStyles(documentString);
@@ -35,10 +35,19 @@ namespace BrowseSharp.Style
             document.Styles = styles;
             
             return styles.Count;
-
         }
 
-        public List<Style> ScrapeStyles(string documentString)
+        public Task<int> AddAsync(Document document)
+        {
+            throw new NotImplementedException();
+        }
+        /* Returns number of script script found added */
+        public int AddStyles(Document document)
+        {
+            return Add(document);
+        }
+
+        private List<Style> ScrapeStyles(string documentString)
         {
             MatchCollection styleMatches = _scrapeStyleRegex.Matches(documentString);
             List<Style> styles = new List<Style>();
@@ -53,7 +62,7 @@ namespace BrowseSharp.Style
             return styles;
         }
         
-        public List<Style> ScrapeStylesSrc(Document document)
+        private List<Style> ScrapeStylesSrc(Document document)
         {
             string documentString = document.Response.Content;
             MatchCollection styleMatches = _scrapeStyleSrcRegex.Matches(documentString);
@@ -64,14 +73,14 @@ namespace BrowseSharp.Style
                 
                 var scriptString = styleMatch.ToString();
                 var styleUrl = scriptString;
-                if (!styleUrl.ToLower().StartsWith("http") && !styleUrl.ToLower().StartsWith("www."))
+                /*if (!styleUrl.ToLower().StartsWith("http") && !styleUrl.ToLower().StartsWith("www."))
                 {
                     if (!styleUrl.StartsWith("/"))
                         styleUrl = "/" + styleUrl;
                     styleUrl = document.Response.ResponseUri.Scheme + "://" + document.Response.ResponseUri.Host + styleUrl;
                 }
-
-                Uri styleUri = new Uri(styleUrl);
+                */
+                Uri styleUri = UriHelper.GetUri(document.Response.ResponseUri,styleUrl);// = new Uri(styleUrl);
                 RestClient restClient = new RestClient(document.Response.ResponseUri.Scheme + "://" + styleUri.Host);
                 IRestRequest request = new RestRequest(styleUri.PathAndQuery, Method.GET);
                 IRestResponse response = restClient.Execute(request);
@@ -83,7 +92,7 @@ namespace BrowseSharp.Style
             return styles;
         }
         
-        public async Task<List<Style>> ScrapeStylesSrcAsync(string documentString)
+        private async Task<List<Style>> ScrapeStylesSrcAsync(string documentString)
         {
             MatchCollection styleMatches = _scrapeStyleSrcRegex.Matches(documentString);
             var requestAsyncHandles = new List<Task<IRestResponse>>();

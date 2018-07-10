@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using AngleSharp.Dom.Html;
+using AngleSharp.Parser.Html;
 using BrowseSharp.Javascript;
 using BrowseSharp.Style;
+using Jint.Parser;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
@@ -129,9 +132,25 @@ namespace BrowseSharp
         
         private Document PackageDocument(IRestRequest request, IRestResponse response)
         {
-            Document document = new Document(request,response);
+            HtmlParser parser = new HtmlParser();
+            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            Document document = new Document(request,response, htmlDocument);
+            //JavascriptEngine.UpdateExternalScripts(document);
             JavascriptEngine.AddScripts(document);
             StyleEngine.AddStyles(document);
+            //StyleEngine.AddStyles(document);
+            return document;
+        }
+        
+        private Document PackageDocumentAsync(IRestRequest request, IRestResponse response)
+        {
+            HtmlParser parser = new HtmlParser();
+            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            Document document = new Document(request,response, htmlDocument);
+            //JavascriptEngine.UpdateExternalScripts(document);
+            JavascriptEngine.AddScripts(document);
+            StyleEngine.AddStyles(document);
+            //StyleEngine.AddStyles(document);
             return document;
         }
     }

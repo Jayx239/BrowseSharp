@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharp", "BrowseSharp\BrowseSharp.csproj", "{5892995F-8CBC-439A-9802-464E4333734E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharpTest", "BrowseSharpTest\BrowseSharpTest.csproj", "{07B0ECC1-24C5-435D-9F0D-6860297A5772}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5892995F-8CBC-439A-9802-464E4333734E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5892995F-8CBC-439A-9802-464E4333734E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5892995F-8CBC-439A-9802-464E4333734E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B0ECC1-24C5-435D-9F0D-6860297A5772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B0ECC1-24C5-435D-9F0D-6860297A5772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B0ECC1-24C5-435D-9F0D-6860297A5772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B0ECC1-24C5-435D-9F0D-6860297A5772}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

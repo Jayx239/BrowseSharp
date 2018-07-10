@@ -31,6 +31,7 @@
 Currently Under Development, more to come...</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.9.9.2" />
     <PackageReference Include="Jint" Version="2.11.55" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="RestSharp" Version="106.3.1" />

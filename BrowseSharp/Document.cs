@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using AngleSharp.Dom;
+using AngleSharp.Dom.Html;
+using AngleSharp.Extensions;
 using RestSharp;
 
 namespace BrowseSharp
@@ -8,7 +11,6 @@ namespace BrowseSharp
     {
         public Document()
         {
-            Scripts = new List<Javascript.Javascript>();
             Styles = new List<Style.Style>();
         }
         
@@ -16,24 +18,29 @@ namespace BrowseSharp
         {
             Request = request;
             Response = response;
-            Scripts = new List<Javascript.Javascript>();
             Styles = new List<Style.Style>();
         }
         
-        public Document(IRestRequest request, IRestResponse response, List<Javascript.Javascript> scripts, List<Style.Style> styles)
+        public Document(IRestRequest request, IRestResponse response, IHtmlDocument htmlDocument)
         {
             Request = request;
             Response = response;
-            Scripts = scripts;
-            Styles = styles;
+            HtmlDocument = htmlDocument;
+            Styles = new List<Style.Style>();
         }
         
         public IRestResponse Response { get; set; }
         public IRestRequest Request { get; set; }
+
+        /*public IHtmlCollection<IHtmlScriptElement> Scripts
+        {
+            get { return HtmlDocument != null ? HtmlDocument.Scripts : Scripts; }
+        }*/
+
+        public IHtmlDocument HtmlDocument { get ; set; }
         public List<Javascript.Javascript> Scripts { get; set; }
         public List<Style.Style> Styles { get; set; }
-
-        public Javascript.Javascript GetUnifiedScript()
+        /*public Javascript.Javascript GetUnifiedScript()
         {
             StringBuilder stringBuilder = new StringBuilder();
             
@@ -44,7 +51,7 @@ namespace BrowseSharp
 
             Javascript.Javascript unifiedScript = new Javascript.Javascript(stringBuilder.ToString());
             return unifiedScript;
-        }
+        }*/
 
     }
 }
