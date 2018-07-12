@@ -7,18 +7,18 @@ using RestSharp;
 
 namespace BrowseSharp
 {
-    public class Document
+    public class Document : IDocument
     {
         public Document()
         {
-            Styles = new List<Style.Style>();
+            Styles = new List<Style.StyleSheet>();
         }
         
         public Document(IRestRequest request, IRestResponse response)
         {
             Request = request;
             Response = response;
-            Styles = new List<Style.Style>();
+            Styles = new List<Style.StyleSheet>();
         }
         
         public Document(IRestRequest request, IRestResponse response, IHtmlDocument htmlDocument)
@@ -26,7 +26,7 @@ namespace BrowseSharp
             Request = request;
             Response = response;
             HtmlDocument = htmlDocument;
-            Styles = new List<Style.Style>();
+            Styles = new List<Style.StyleSheet>();
         }
         
         public IRestResponse Response { get; set; }
@@ -39,7 +39,7 @@ namespace BrowseSharp
 
         public IHtmlDocument HtmlDocument { get ; set; }
         public List<Javascript.Javascript> Scripts { get; set; }
-        public List<Style.Style> Styles { get; set; }
+        public List<Style.StyleSheet> Styles { get; set; }
         /*public Javascript.Javascript GetUnifiedScript()
         {
             StringBuilder stringBuilder = new StringBuilder();

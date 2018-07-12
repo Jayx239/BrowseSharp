@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace BrowseSharp.Javascript
             return new Engine().Execute(stringBuilder.ToString()).GetCompletionValue().ToObject();
         }
 
-        public int Add(Document document)
+        public int Add(IDocument document)
         {
             IHtmlCollection<IHtmlScriptElement> scripts;
             if (document.HtmlDocument != null)
@@ -49,7 +50,7 @@ namespace BrowseSharp.Javascript
             return scripts.Length;
         }
         
-        public async Task<int> AddAsync(Document document)
+        public async Task<int> AddAsync(IDocument document)
         {
             IHtmlCollection<IHtmlScriptElement> scripts;
             if (document.HtmlDocument != null)
@@ -82,7 +83,7 @@ namespace BrowseSharp.Javascript
             return scripts;
         }
         
-        private int ScrapeScriptSrc(Document document)
+        private int ScrapeScriptSrc(IDocument document)
         {
             List<Javascript> scripts = document.Scripts;
             int numExternalScripts = 0;
@@ -105,55 +106,31 @@ namespace BrowseSharp.Javascript
 
             return numExternalScripts;
         }
-
-        public int UpdateExternalScripts(Document document)
-        {
-            int numExternalScripts = 0;
-            if (document != null && document.Scripts != null)
-            {
-                var scripts = document.Scripts;
-                if (scripts == null)
-                    return numExternalScripts; 
-                
-                Uri responseUri = document.Response.ResponseUri;
-                foreach (var script in scripts.Where(s => s.ScriptElement.Source != null && (s.JavascriptString == null || s.JavascriptString.Length == 0)))
-                {
-                    Uri scriptUri = UriHelper.GetUri(document.Response.ResponseUri, script.ScriptElement.Source);
-                    RestClient restClient = new RestClient(scriptUri.Scheme + "://" + scriptUri.Host);
-                    IRestRequest request = new RestRequest(scriptUri.PathAndQuery, Method.GET);
-                    IRestResponse response = restClient.Execute(request);
-                    script.JavascriptString = response.Content;
-                    numExternalScripts++;
-                }
-            }
-            
-            return numExternalScripts;
-        }
         
-        
-        
-        private async Task<int> ScrapeScriptSrcAsync(Document document)
+        private async Task<int> ScrapeScriptSrcAsync(IDocument document)
         {
             List<Javascript> scripts = document.Scripts;
             int numExternalScripts = 0;
             Uri responseUri = document.Response.ResponseUri;
-            var requestAsyncHandles = new List<JavascriptRequestAsyncHandle>();
+            var requestAsyncTasks = new List<JavascriptRequestAsyncHandle>();
             foreach (var script in scripts.Where(s => s.ScriptElement.Source != null && string.IsNullOrEmpty(s.ScriptElement.Text)))
             {
                 
                 Uri scriptUri = UriHelper.GetUri(document.Response.ResponseUri, script.ScriptElement.Source);
                 script.SourceUri = scriptUri;
-                RestClient restClient = new RestClient(scriptUri.Scheme + "://" + scriptUri.Host);
-                IRestRequest request = new RestRequest(scriptUri.PathAndQuery, Method.GET);
-                var requestAsyncHandle = restClient.ExecuteTaskAsync(request);
-                JavascriptRequestAsyncHandle requestAsynceHanle = new JavascriptRequestAsyncHandle(requestAsyncHandle,script);
-                requestAsyncHandles.Add(requestAsynceHanle);
+                HttpClient client = new HttpClient();
+                Task<HttpResponseMessage> responseMessage = client.GetAsync(scriptUri);
+                //RestClient restClient = new RestClient(scriptUri.Scheme + "://" + scriptUri.Host);
+                //IRestRequest request = new RestRequest(scriptUri.PathAndQuery, Method.GET);
+                //var requestAsyncHandle = restClient.ExecuteTaskAsync(request);
+                JavascriptRequestAsyncHandle requestAsynceHanle = new JavascriptRequestAsyncHandle(responseMessage,script);
+                requestAsyncTasks.Add(requestAsynceHanle);
             }
             
-            foreach (var requestAsyncHandle in requestAsyncHandles)
+            foreach (var requestAsyncTask in requestAsyncTasks)
             {
-                await requestAsyncHandle.RequestAsyncHandle;
-                requestAsyncHandle.Script.Content = requestAsyncHandle.RequestAsyncHandle.Result.Content;
+                await requestAsyncTask.ResponseAsyncTask;
+                requestAsyncTask.Script.Content = requestAsyncTask.ResponseAsyncTask.Result.Content.ToString();
             }
             
             foreach (var script in scripts.Where(s => s.SourceUri == null))

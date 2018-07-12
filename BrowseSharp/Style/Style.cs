@@ -24,7 +24,7 @@ namespace BrowseSharp.Style
         
         public string StyleString
         {
-            get { return Content;}
+            get { return Content; }
             set { Content = value; }
         }
     }

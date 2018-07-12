@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
 using RestSharp;
 
@@ -6,13 +7,13 @@ namespace BrowseSharp.Javascript
 {
     public class JavascriptRequestAsyncHandle
     {
-        public JavascriptRequestAsyncHandle(Task<IRestResponse> requestAsyncHandle, Javascript script)
+        public JavascriptRequestAsyncHandle(Task<HttpResponseMessage> responseAsyncTask, Javascript script)
         {
-            RequestAsyncHandle = requestAsyncHandle;
+            ResponseAsyncTask = responseAsyncTask;
             Script = script;
         }
 
-        public Task<IRestResponse> RequestAsyncHandle { get; set; }
+        public Task<HttpResponseMessage> ResponseAsyncTask { get; set; }
         public Javascript Script { get; set; }
     }
 }
