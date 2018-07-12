@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using BrowseSharp.Toolbox;
 using Jint;
 using RestSharp;
 
 namespace BrowseSharp.Style
 {
-    public class StyleEngine
+    public class StyleEngine : IScraper
     {
 
         public StyleEngine()
@@ -18,94 +20,87 @@ namespace BrowseSharp.Style
         
         private Regex _scrapeStyleRegex;
         private Regex _scrapeStyleSrcRegex;
-        
+
         /* Returns number of script script found added */
-        public int AddStyles(Document document)
+        public int Add(IDocument document)
         {
             string documentString = document.Response.Content;
-            List<Style> styles = ScrapeStyles(documentString);
-            
-            foreach (Style style in styles)
+            List<StyleSheet> styles = ScrapeStyles(documentString);
+            foreach (StyleSheet style in styles)
             {
                 style.SourceUri = document.Response.ResponseUri;
             }
-
-            List<Style> externalScripts = ScrapeStylesSrc(document);
-            styles.AddRange(externalScripts);
+            List<StyleSheet> externalStyles = ScrapeStylesSrc(document);
+            styles.AddRange(externalStyles);
             document.Styles = styles;
             
             return styles.Count;
-
         }
 
-        public List<Style> ScrapeStyles(string documentString)
+        public async Task<int> AddAsync(IDocument document)
+        {
+            var styles = await ScrapeStylesSrcAsync(document);
+            document.Styles.AddRange(styles);
+            return document.Styles.Count;
+        }
+        
+
+        private List<StyleSheet> ScrapeStyles(string documentString)
         {
             MatchCollection styleMatches = _scrapeStyleRegex.Matches(documentString);
-            List<Style> styles = new List<Style>();
+            List<StyleSheet> styles = new List<StyleSheet>();
             
             foreach (var styleMatch in styleMatches)
             {
                 var styleString = styleMatch.ToString();
-                Style style = new Style(styleString);
+                StyleSheet style = new StyleSheet(styleString);
                 styles.Add(style);
             }
 
             return styles;
         }
         
-        public List<Style> ScrapeStylesSrc(Document document)
+        private List<StyleSheet> ScrapeStylesSrc(IDocument document)
         {
             string documentString = document.Response.Content;
             MatchCollection styleMatches = _scrapeStyleSrcRegex.Matches(documentString);
-            List<Style> styles = new List<Style>();
+            List<StyleSheet> styles = new List<StyleSheet>();
             
             foreach (var styleMatch in styleMatches)
             {
-                
-                var scriptString = styleMatch.ToString();
-                var styleUrl = scriptString;
-                if (!styleUrl.ToLower().StartsWith("http") && !styleUrl.ToLower().StartsWith("www."))
-                {
-                    if (!styleUrl.StartsWith("/"))
-                        styleUrl = "/" + styleUrl;
-                    styleUrl = document.Response.ResponseUri.Scheme + "://" + document.Response.ResponseUri.Host + styleUrl;
-                }
-
-                Uri styleUri = new Uri(styleUrl);
+                string styleUrl = styleMatch.ToString();
+                Uri styleUri = UriHelper.GetUri(document.Response.ResponseUri,styleUrl);
                 RestClient restClient = new RestClient(document.Response.ResponseUri.Scheme + "://" + styleUri.Host);
                 IRestRequest request = new RestRequest(styleUri.PathAndQuery, Method.GET);
                 IRestResponse response = restClient.Execute(request);
-                
-                Style style = new Style(response.Content, styleUri);
+                StyleSheet style = new StyleSheet(response.Content, styleUri);
                 styles.Add(style);
             }
 
             return styles;
         }
         
-        public async Task<List<Style>> ScrapeStylesSrcAsync(string documentString)
+        private async Task<List<StyleSheet>> ScrapeStylesSrcAsync(IDocument document)
         {
+            string documentString = document.Response.Content;
             MatchCollection styleMatches = _scrapeStyleSrcRegex.Matches(documentString);
-            var requestAsyncHandles = new List<Task<IRestResponse>>();
-            List<Style> scripts = new List<Style>();
+            var requestAsyncHandles = new List<StyleSheetRequestAsyncHandle>();
+            List<StyleSheet> scripts = new List<StyleSheet>();
             
             foreach (var styleMatch in styleMatches)
             {
-                RestClient restClient = new RestClient(styleMatch.ToString());
-                var styleString = styleMatch.ToString();
-                Uri styleUri = new Uri(styleString); 
-                
-                IRestRequest request = new RestRequest(styleUri, Method.GET);
-                var requestAsyncHandle = restClient.ExecuteTaskAsync(request);
+                string styleUrl = styleMatch.ToString();
+                Uri styleUri = UriHelper.GetUri(document.Response.ResponseUri,styleUrl);
+                HttpClient client = new HttpClient();
+                StyleSheetRequestAsyncHandle requestAsyncHandle = new StyleSheetRequestAsyncHandle(client.GetAsync(styleUri),new StyleSheet(styleUri));
                 requestAsyncHandles.Add(requestAsyncHandle);
             }
 
-            foreach (var requestAsyncHandle in requestAsyncHandles)
+            foreach (var requestAsyncTask in requestAsyncHandles)
             {
-                await requestAsyncHandle;
-                string styleString = requestAsyncHandle.Result.Content;
-                Style style = new Style(styleString,requestAsyncHandle.Result.ResponseUri);
-                scripts.Add(style);
+                await requestAsyncTask.ResponseAsyncTask;
+                requestAsyncTask.StyleSheet.Content = requestAsyncTask.ResponseAsyncTask.Result.Content.ToString();
+                scripts.Add(requestAsyncTask.StyleSheet);
             }
 
             return scripts;

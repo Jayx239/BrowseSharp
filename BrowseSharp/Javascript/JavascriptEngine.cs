@@ -1,106 +1,147 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using AngleSharp.Dom;
+using AngleSharp.Dom.Html;
+using AngleSharp.Parser.Html;
+using BrowseSharp.Toolbox;
 using Jint;
 using Jint.Native;
 using RestSharp;
 
 namespace BrowseSharp.Javascript
 {
-    public class JavascriptEngine
+    public class JavascriptEngine : IScraper
     {
 
         public JavascriptEngine()
         {
             GlobalVariables = InitializeGlobals();
-            _scrapeScriptRegex = new Regex("(?<=<script.*[^/]>)([^<].*)(?=</script>)");
-            _scrapeScriptSrcRegex = new Regex("(?<=<script.*src=\")[^\"]*(?=\")");
-            
         }
            
         public string Document { get; set; }
         public List<string> GlobalVariables { get; set; }
-        private Regex _scrapeScriptRegex;
-        private Regex _scrapeScriptSrcRegex;
 
         public Object Execute(string command)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(getGlobalString());
+            stringBuilder.AppendLine(GetGlobalString());
             stringBuilder.AppendLine(Document);
             stringBuilder.AppendLine(command);
             
             return new Engine().Execute(stringBuilder.ToString()).GetCompletionValue().ToObject();
         }
+
+        public int Add(IDocument document)
+        {
+            IHtmlCollection<IHtmlScriptElement> scripts;
+            if (document.HtmlDocument != null)
+                scripts = ScrapeScripts(document.HtmlDocument);
+            else
+                scripts = ScrapeScripts(document.Response.Content);
+            //ScrapeScriptSrc(document,scripts);
+            document.Scripts = ConvertToJavascripts(scripts);
+            ScrapeScriptSrc(document);
+            
+            return scripts.Length;
+        }
         
-        /* Returns number of script script found added */
+        public async Task<int> AddAsync(IDocument document)
+        {
+            IHtmlCollection<IHtmlScriptElement> scripts;
+            if (document.HtmlDocument != null)
+                scripts = ScrapeScripts(document.HtmlDocument);
+            else
+                scripts = ScrapeScripts(document.Response.Content);
+            //ScrapeScriptSrc(document,scripts);
+            document.Scripts = ConvertToJavascripts(scripts);
+            await ScrapeScriptSrcAsync(document);
+            
+            return scripts.Length;
+        }
+        /* Returns number of script added */
         public int AddScripts(Document document)
         {
-            string documentString = document.Response.Content;
-            List<Javascript> scripts = ScrapeScripts(documentString);
-            
-            foreach (Javascript script in scripts)
-            {
-                script.SourceUri = document.Response.ResponseUri;
-            }
-
-            List<Javascript> externalScripts = ScrapeScriptSrc(document);
-            scripts.AddRange(externalScripts);
-            document.Scripts = scripts;
-            
-            return scripts.Count;
-
+            return Add(document);
         }
 
-        public List<Javascript> ScrapeScripts(string documentString)
+        private IHtmlCollection<IHtmlScriptElement> ScrapeScripts(string documentString)
         {
-            MatchCollection scriptMatches = _scrapeScriptRegex.Matches(documentString);
-            List<Javascript> scripts = new List<Javascript>();
-            
-            foreach (var scriptMatch in scriptMatches)
-            {
-                var scriptString = scriptMatch.ToString();
-                if(!scriptString.Contains("<script") && !scriptString.Contains("</script")) 
-                {
-                    Javascript script = new Javascript(scriptString);
-                    scripts.Add(script);
-                }
-            }
-
+            HtmlParser parser = new HtmlParser();
+            var document = parser.Parse(documentString);
+            IHtmlCollection<IHtmlScriptElement> scripts = document.Scripts;
             return scripts;
         }
         
-        public List<Javascript> ScrapeScriptSrc(Document document)
+        private IHtmlCollection<IHtmlScriptElement> ScrapeScripts(IHtmlDocument document)
         {
-            string documentString = document.Response.Content;
-            MatchCollection scriptMatches = _scrapeScriptSrcRegex.Matches(documentString);
-            List<Javascript> scripts = new List<Javascript>();
-            
-            foreach (var scriptMatch in scriptMatches)
+            IHtmlCollection<IHtmlScriptElement> scripts = document.Scripts;
+            return scripts;
+        }
+        
+        private int ScrapeScriptSrc(IDocument document)
+        {
+            List<Javascript> scripts = document.Scripts;
+            int numExternalScripts = 0;
+            Uri responseUri = document.Response.ResponseUri;
+            foreach (var script in scripts.Where(s => s.ScriptElement.Source != null && string.IsNullOrEmpty(s.ScriptElement.Text)))
             {
-                
-                var scriptString = scriptMatch.ToString();
-                var scriptUrl = scriptString;
-                if (scriptUrl.StartsWith("/"))
-                    scriptUrl = document.Response.ResponseUri.Scheme + "://" + document.Response.ResponseUri.Host + scriptUrl;
-                
-                Uri scriptUri = new Uri(scriptUrl);
-                RestClient restClient = new RestClient(document.Response.ResponseUri.Scheme + "://" + scriptUri.Host);
+                Uri scriptUri = UriHelper.GetUri(document.Response.ResponseUri, script.ScriptElement.Source);
+                script.SourceUri = scriptUri;
+                RestClient restClient = new RestClient(scriptUri.Scheme + "://" + scriptUri.Host);
                 IRestRequest request = new RestRequest(scriptUri.PathAndQuery, Method.GET);
                 IRestResponse response = restClient.Execute(request);
-                
-                Javascript script = new Javascript(response.Content, scriptUri);
-                scripts.Add(script);
+                script.Content = response.Content;
+                numExternalScripts++;
             }
 
-            return scripts;
+            foreach (var script in scripts.Where(s => s.SourceUri == null))
+            {
+                script.SourceUri = responseUri;
+            }
+
+            return numExternalScripts;
         }
         
-        public async Task<List<Javascript>> ScrapeScriptSrcAsync(string documentString)
+        private async Task<int> ScrapeScriptSrcAsync(IDocument document)
         {
-            MatchCollection scriptMatches = _scrapeScriptSrcRegex.Matches(documentString);
+            List<Javascript> scripts = document.Scripts;
+            int numExternalScripts = 0;
+            Uri responseUri = document.Response.ResponseUri;
+            var requestAsyncTasks = new List<JavascriptRequestAsyncHandle>();
+            foreach (var script in scripts.Where(s => s.ScriptElement.Source != null && string.IsNullOrEmpty(s.ScriptElement.Text)))
+            {
+                
+                Uri scriptUri = UriHelper.GetUri(document.Response.ResponseUri, script.ScriptElement.Source);
+                script.SourceUri = scriptUri;
+                HttpClient client = new HttpClient();
+                Task<HttpResponseMessage> responseMessage = client.GetAsync(scriptUri);
+                //RestClient restClient = new RestClient(scriptUri.Scheme + "://" + scriptUri.Host);
+                //IRestRequest request = new RestRequest(scriptUri.PathAndQuery, Method.GET);
+                //var requestAsyncHandle = restClient.ExecuteTaskAsync(request);
+                JavascriptRequestAsyncHandle requestAsynceHanle = new JavascriptRequestAsyncHandle(responseMessage,script);
+                requestAsyncTasks.Add(requestAsynceHanle);
+            }
+            
+            foreach (var requestAsyncTask in requestAsyncTasks)
+            {
+                await requestAsyncTask.ResponseAsyncTask;
+                requestAsyncTask.Script.Content = requestAsyncTask.ResponseAsyncTask.Result.Content.ToString();
+            }
+            
+            foreach (var script in scripts.Where(s => s.SourceUri == null))
+            {
+                script.SourceUri = responseUri;
+            }
+
+            return numExternalScripts;
+            // end
+
+            /*MatchCollection scriptMatches = _scrapeScriptSrcRegex.Matches(documentString);
             var requestAsyncHandles = new List<Task<IRestResponse>>();
             List<Javascript> scripts = new List<Javascript>();
             
@@ -123,7 +164,7 @@ namespace BrowseSharp.Javascript
                 scripts.Add(script);
             }
 
-            return scripts;
+            return scripts;*/
         }
 
         private List<string> InitializeGlobals()
@@ -137,7 +178,7 @@ namespace BrowseSharp.Javascript
             return globals;
         }
 
-        private string getGlobalString()
+        private string GetGlobalString()
         {
             StringBuilder stringBuilder = new StringBuilder();
             foreach (var globalVariable in GlobalVariables)
@@ -146,6 +187,25 @@ namespace BrowseSharp.Javascript
             }
 
             return stringBuilder.ToString();
+        }
+        
+        
+
+        private List<Javascript> ConvertToJavascripts(IHtmlCollection<IHtmlScriptElement> scriptElements)
+        {
+            List<Javascript> scripts = new List<Javascript>();
+            foreach (IHtmlScriptElement scriptElement in scriptElements)
+            {
+                scripts.Add(ConvertToJavascript(scriptElement));
+            }
+
+            return scripts;
+        }
+        
+        private Javascript ConvertToJavascript(IHtmlScriptElement scriptElement)
+        {
+            Javascript javascript = new Javascript(scriptElement);
+            return javascript;
         }
         
     }

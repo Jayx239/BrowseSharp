@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mime;
 
 namespace BrowseSharp.Style
 {
@@ -16,8 +17,15 @@ namespace BrowseSharp.Style
             StyleString = styleString;
             SourceUri = sourceUri;
         }
+
+        public string Content { get; set; }
         
-        public string StyleString { get; set; }
         public Uri SourceUri { get; set; }
+        
+        public string StyleString
+        {
+            get { return Content; }
+            set { Content = value; }
+        }
     }
 }
