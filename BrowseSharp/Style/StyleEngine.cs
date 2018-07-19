@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BrowseSharp.Toolbox;
-using Jint;
 using RestSharp;
 
 namespace BrowseSharp.Style

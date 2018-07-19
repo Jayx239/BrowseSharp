@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
 using BrowseSharp.Toolbox;
 using Jint;
-using Jint.Native;
 using RestSharp;
 
 namespace BrowseSharp.Javascript
@@ -43,7 +41,7 @@ namespace BrowseSharp.Javascript
                 scripts = ScrapeScripts(document.HtmlDocument);
             else
                 scripts = ScrapeScripts(document.Response.Content);
-            //ScrapeScriptSrc(document,scripts);
+            
             document.Scripts = ConvertToJavascripts(scripts);
             ScrapeScriptSrc(document);
             
@@ -57,14 +55,14 @@ namespace BrowseSharp.Javascript
                 scripts = ScrapeScripts(document.HtmlDocument);
             else
                 scripts = ScrapeScripts(document.Response.Content);
-            //ScrapeScriptSrc(document,scripts);
+            
             document.Scripts = ConvertToJavascripts(scripts);
             await ScrapeScriptSrcAsync(document);
             
             return scripts.Length;
         }
-        /* Returns number of script added */
-        public int AddScripts(Document document)
+        
+        public int AddScripts(IDocument document)
         {
             return Add(document);
         }
@@ -120,9 +118,6 @@ namespace BrowseSharp.Javascript
                 script.SourceUri = scriptUri;
                 HttpClient client = new HttpClient();
                 Task<HttpResponseMessage> responseMessage = client.GetAsync(scriptUri);
-                //RestClient restClient = new RestClient(scriptUri.Scheme + "://" + scriptUri.Host);
-                //IRestRequest request = new RestRequest(scriptUri.PathAndQuery, Method.GET);
-                //var requestAsyncHandle = restClient.ExecuteTaskAsync(request);
                 JavascriptRequestAsyncHandle requestAsynceHanle = new JavascriptRequestAsyncHandle(responseMessage,script);
                 requestAsyncTasks.Add(requestAsynceHanle);
             }
@@ -139,40 +134,14 @@ namespace BrowseSharp.Javascript
             }
 
             return numExternalScripts;
-            // end
-
-            /*MatchCollection scriptMatches = _scrapeScriptSrcRegex.Matches(documentString);
-            var requestAsyncHandles = new List<Task<IRestResponse>>();
-            List<Javascript> scripts = new List<Javascript>();
-            
-            foreach (var scriptMatch in scriptMatches)
-            {
-                RestClient restClient = new RestClient(scriptMatch.ToString());
-                var scriptString = scriptMatch.ToString();
-                Uri scriptUri = new Uri(scriptString); 
-                
-                IRestRequest request = new RestRequest(scriptUri, Method.GET);
-                var requestAsyncHandle = restClient.ExecuteTaskAsync(request);
-                requestAsyncHandles.Add(requestAsyncHandle);
-            }
-
-            foreach (var requestAsyncHandle in requestAsyncHandles)
-            {
-                await requestAsyncHandle;
-                string scriptString = requestAsyncHandle.Result.Content;
-                Javascript script = new Javascript(scriptString,requestAsyncHandle.Result.ResponseUri);
-                scripts.Add(script);
-            }
-
-            return scripts;*/
         }
 
         private List<string> InitializeGlobals()
         {
             var globals = new List<string>()
             {
-                "window = {};",
-                "document = {}; "
+                "var window = {};",
+                "var document = {}; "
             };
             
             return globals;
@@ -207,6 +176,5 @@ namespace BrowseSharp.Javascript
             Javascript javascript = new Javascript(scriptElement);
             return javascript;
         }
-        
     }
 }

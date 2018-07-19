@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace BrowseSharp.Style
 {
@@ -9,23 +8,17 @@ namespace BrowseSharp.Style
         {
             SourceUri = sourceUri;
         }
-        public StyleSheet(string StyleString)
+        public StyleSheet(string styleSheetString)
         {
-            Content = StyleString;
+            Content = styleSheetString;
         }
-        public StyleSheet(string StyleString, Uri sourceUri)
+        public StyleSheet(string styleSheetString, Uri sourceUri)
         {
             SourceUri = sourceUri;
-            Content = StyleString;
+            Content = styleSheetString;
         }
         
         public Uri SourceUri { get; set; }
         public string Content { get; set; }
-        private List<Style> Styles { get; set; }
-
-        private void ParseStyles(string styleString)
-        {
-            
-        }
     }
 }
