@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.0.0</AssemblyVersion>
-    <FileVersion>0.0.0.0</FileVersion>
-    <Version>0.0.1-alpha</Version>
+    <AssemblyVersion>0.0.2.0</AssemblyVersion>
+    <FileVersion>0.0.2.0</FileVersion>
+    <Version>0.0.2</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://github.com/Jayx239/BrowseSharp</PackageProjectUrl>
@@ -14,21 +14,18 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>- Added Features
-1. Documents 
+    <PackageReleaseNotes>1. Documents 
   * Store Request Data
   * Stores Response Data
   * Stores javascripts
   * Stores css styles
 2. Browser
-  * Extension of the RestSharp RestClient
-  * Generates Docuements for each web request.
+  * Supports asynchronous and synchronous web requests
+  * Generates Documents for each web request.
 3. Javascript Engine
-  * Used by the browser to scrape css styles from inline styles and linked styles.
+  * Used by browser to scrape JavaScript content from inline scripts and externally linked scripts.
 4. StyleEngine
-   * Used by browser to scrape JavaScript content from inline scripts and externally linked scripts.
-
-Currently Under Development, more to come...</PackageReleaseNotes>
+   * Used by the browser to scrape css styles from inline styles and linked styles.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.9.9.2" />
