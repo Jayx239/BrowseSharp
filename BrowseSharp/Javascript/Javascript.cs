@@ -5,24 +5,11 @@ namespace BrowseSharp.Javascript
 {
     public class Javascript : ISource
     {
-        /*public Javascript() { }
-
-        
-        public Javascript(string javascriptString)
-        {
-            JavascriptString = javascriptString;
-        }
-        
-        public Javascript(string javascriptString, Uri sourceUri)
-        {
-            JavascriptString = javascriptString;
-            SourceUri = sourceUri;
-        }
-        */
         public Javascript(IHtmlScriptElement scriptElement)
         {
             ScriptElement = scriptElement;
         }
+        
         public IHtmlScriptElement ScriptElement { get; set; }
         
         public Uri SourceUri

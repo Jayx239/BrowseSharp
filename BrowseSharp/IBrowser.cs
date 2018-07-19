@@ -15,82 +15,73 @@ namespace BrowseSharp
 {
     public interface IBrowser
     {
-        
         CookieContainer CookieContainer { get; set; }
 
-    bool AutomaticDecompression { get; set; }
+        bool AutomaticDecompression { get; set; }
 
-    int? MaxRedirects { get; set; }
+        int? MaxRedirects { get; set; }
 
-    string UserAgent { get; set; }
+        string UserAgent { get; set; }
 
-    int Timeout { get; set; }
+        int Timeout { get; set; }
 
-    int ReadWriteTimeout { get; set; }
+        int ReadWriteTimeout { get; set; }
 
-    bool UseSynchronizationContext { get; set; }
+        bool UseSynchronizationContext { get; set; }
 
-    IAuthenticator Authenticator { get; set; }
+        IAuthenticator Authenticator { get; set; }
 
-    Uri BaseUrl { get; set; }
+        Uri BaseUrl { get; set; }
 
-    Encoding Encoding { get; set; }
+        Encoding Encoding { get; set; }
 
-    bool PreAuthenticate { get; set; }
+        bool PreAuthenticate { get; set; }
 
-    IList<Parameter> DefaultParameters { get; }
+        IList<Parameter> DefaultParameters { get; }
 
-    string BaseHost { get; set; }
+        string BaseHost { get; set; }
 
-    
-    IRestResponse<T> Deserialize<T>(IRestResponse response);
 
-    byte[] DownloadData(IRestRequest request);
+        IRestResponse<T> Deserialize<T>(IRestResponse response);
 
-    X509CertificateCollection ClientCertificates { get; set; }
+        byte[] DownloadData(IRestRequest request);
 
-    IWebProxy Proxy { get; set; }
+        X509CertificateCollection ClientCertificates { get; set; }
 
-    RequestCachePolicy CachePolicy { get; set; }
+        IWebProxy Proxy { get; set; }
 
-    bool Pipelined { get; set; }
+        RequestCachePolicy CachePolicy { get; set; }
 
-    bool FollowRedirects { get; set; }
+        bool Pipelined { get; set; }
 
-    Uri BuildUri(IRestRequest request);
+        bool FollowRedirects { get; set; }
 
-    RemoteCertificateValidationCallback RemoteCertificateValidationCallback { get; set; }
+        Uri BuildUri(IRestRequest request);
 
-    void AddHandler(string contentType, IDeserializer deserializer);
+        RemoteCertificateValidationCallback RemoteCertificateValidationCallback { get; set; }
 
-    void RemoveHandler(string contentType);
+        void AddHandler(string contentType, IDeserializer deserializer);
 
-    void ClearHandlers();
+        void RemoveHandler(string contentType);
 
-    
-    
-        //
-        
+        void ClearHandlers();
+
         IDocument Execute(IRestRequest request);
-        
+
         IDocument ExecuteAsGet(IRestRequest request, string httpMethod);
 
         IDocument ExecuteAsPost(IRestRequest request, string httpMethod);
 
-        
         Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token);
 
         Task<IDocument> ExecuteTaskAsync(IRestRequest request);
-
 
         Task<IDocument> ExecuteGetTaskAsync(IRestRequest request);
 
         Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token);
 
-
         Task<IDocument> ExecutePostTaskAsync(IRestRequest request);
 
         Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token);
-
     }
 }

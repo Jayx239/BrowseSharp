@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using BrowseSharp;
@@ -15,7 +13,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestExecute()
         {
-            Browser browser = new BrowseSharp.Browser();
+            Browser browser = new Browser();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             browser.Execute(request);
@@ -37,7 +35,7 @@ namespace BrowseSharpTest
         }
 
         [Test]
-        public async Task TestExecuteAsGet()
+        public void TestExecuteAsGet()
         {
             Browser browser = new BrowseSharp.Browser();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
@@ -60,13 +58,32 @@ namespace BrowseSharpTest
         }
 
         [Test]
-        public async Task TestExecuteAsPost()
+        public void TestExecuteAsPost()
         {
-            Assert.True(false);
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
+            IRestRequest request = new RestRequest();
+            
+            request.AddParameter("Username","FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            var response = browser.ExecuteAsPost(request,"Post");
+            Assert.True(response.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+            
+            var response2 = browser.Documents[0];
+            Assert.True(response2.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response2.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response2.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+
         }
-        
+
         [Test]
-        public async Task TestExecuteTaskAsyncToken(){}
+        public async Task TestExecuteTaskAsyncToken()
+        {
+            throw new NotImplementedException();
+        }
         
         [Test]
         public async Task TestExecuteTaskAsync()
@@ -147,19 +164,39 @@ namespace BrowseSharpTest
             }
 
         }
+
         [Test]
-        public async Task TestExecuteGetTaskAsyncToken(){}
+        public async Task TestExecuteGetTaskAsyncToken()
+        {
+            throw new NotImplementedException();
+        }
 
         [Test]
         public async Task TestExecutePostTaskAsync()
         {
-            Assert.True(false);
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
+            IRestRequest request = new RestRequest();
+            
+            request.AddParameter("Username","FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            var response = await browser.ExecutePostTaskAsync(request);
+            Assert.True(response.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+            
+            var response2 = browser.Documents[0];
+            Assert.True(response2.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response2.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response2.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+
         }
 
         [Test]
         public async Task TestExecutePostTaskAsyncToken()
         {
-            Assert.True(false);
+            throw new NotImplementedException();
         }
         
         [Test]
@@ -175,14 +212,14 @@ namespace BrowseSharpTest
             Uri result4 = UriHelper.GetUri(testUri, "www.amazon.com/something/different");
             Assert.AreEqual(result4.AbsoluteUri, "http://www.amazon.com/something/different");
 
-            Uri testuri2 = new Uri("https://google.com/something/else");
-            result1 = UriHelper.GetUri(testUri, "/js/sass/");
+            Uri testUri2 = new Uri("https://google.com/something/else");
+            result1 = UriHelper.GetUri(testUri2, "/js/sass/");
             Assert.AreEqual(result1.AbsoluteUri, "https://google.com/js/sass/");
-            result2 = UriHelper.GetUri(testUri, "something/different");
+            result2 = UriHelper.GetUri(testUri2, "something/different");
             Assert.AreEqual(result2.AbsoluteUri, "https://google.com/something/else/something/different");
-            result3 = UriHelper.GetUri(testUri, "https://amazon.com/something/different");
+            result3 = UriHelper.GetUri(testUri2, "https://amazon.com/something/different");
             Assert.AreEqual(result3.AbsoluteUri, "https://amazon.com/something/different");
-            result4 = UriHelper.GetUri(testUri, "www.amazon.com/something/different");
+            result4 = UriHelper.GetUri(testUri2, "www.amazon.com/something/different");
             Assert.AreEqual(result4.AbsoluteUri, "http://www.amazon.com/something/different");
         }
     }

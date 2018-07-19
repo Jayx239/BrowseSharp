@@ -1,31 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Net.Security;
-using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
-using AngleSharp.Network.Default;
 using AngleSharp.Parser.Html;
 using BrowseSharp.Javascript;
 using BrowseSharp.Style;
-using Jint.Parser;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
-using RestSharp.Extensions;
 
 namespace BrowseSharp
 {
     public class Browser : IBrowser
     {
-        public Browser() : base()
+        public Browser()
         {
             Documents = new List<IDocument>();
             JavascriptEngine = new JavascriptEngine();

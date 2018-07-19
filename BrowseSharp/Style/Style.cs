@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Mime;
 
 namespace BrowseSharp.Style
 {
