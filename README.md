@@ -10,13 +10,12 @@ A headless browser supporting web navigation, html parsing, and javascript execu
 	* Stores javascripts
 	* Stores css styles
 2. Browser
-	* Extension of the RestSharp RestClient
+	* Supports asynchronous and synchronous web requests
 	* Generates Documents for each web request.
 3. Javascript Engine
-	* Used by the browser to scrape css styles from inline styles and linked styles.
+	* Used by browser to scrape JavaScript content from inline scripts and externally linked scripts.
 4. StyleEngine
- 	* Used by browser to scrape JavaScript content from inline scripts and externally linked scripts.
-
+ 	* Used by the browser to scrape css styles from inline styles and linked styles.
 ### Example Usage
 ```
 static void Main(string[] args)
