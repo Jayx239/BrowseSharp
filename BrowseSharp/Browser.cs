@@ -25,6 +25,7 @@ namespace BrowseSharp
             JavascriptEngine = new JavascriptEngine();
             StyleEngine = new StyleEngine();
             _restClient = new RestClient();
+            _restClient.CookieContainer = new CookieContainer();
         }
 
         public List<IDocument> Documents { get; }
@@ -238,6 +239,72 @@ namespace BrowseSharp
             return documentTask;
         }
 
+        public IDocument Navigate(string uri)
+        {
+            Uri requestUri = new Uri(uri);
+            return Navigate(requestUri);
+        }
+        
+        public IDocument Navigate(Uri uri)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            return Execute(request);
+        }
+
+        public async Task<IDocument> NavigateAsync(string uri)
+        {
+            Uri requestUri = new Uri(uri);
+            return await NavigateAsync(requestUri);
+        }
+        
+        public async Task<IDocument> NavigateAsync(Uri uri)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            return await ExecuteTaskAsync(request);
+        }
+
+        public IDocument Submit(string uri)
+        {
+            Uri requestUri = new Uri(uri);
+            return Submit(requestUri);
+        }
+
+
+        public IDocument Submit(Uri uri)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            return ExecuteAsPost(request,"POST"); /* TODO: Check this */
+        }
+
+        public async Task<IDocument> SubmitAsync(string uri)
+        {
+            Uri requestUri = new Uri(uri);
+            return await SubmitAsync(requestUri);
+        }
+
+        public async Task<IDocument> SubmitAsync(Uri uri)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            return await ExecutePostTaskAsync(request);
+        }
+
+        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
+        {
+            Uri requestUri = new Uri(uri);
+            return await SubmitAsync(uri, formData);
+        }
+
+        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddFormData(request, formData);
+            return await ExecutePostTaskAsync(request);
+        }
         
         private IDocument PackageAndAddDocument(IRestRequest request, IRestResponse response)
         {
@@ -262,6 +329,14 @@ namespace BrowseSharp
             await styleResult;
             Documents.Add(document);
             return document;
+        }
+
+        private void AddFormData(IRestRequest request, Dictionary<string,string> formData)
+        {
+            foreach (var formInput in formData)
+            {
+                request.AddParameter(formInput.Key, formInput.Value);
+            }
         }
     }
 }
