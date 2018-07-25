@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.2.0</AssemblyVersion>
-    <FileVersion>0.0.2.0</FileVersion>
-    <Version>0.0.2</Version>
+    <AssemblyVersion>0.0.3.0</AssemblyVersion>
+    <FileVersion>0.0.3.0</FileVersion>
+    <Version>0.0.3-alpha</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://github.com/Jayx239/BrowseSharp</PackageProjectUrl>
@@ -14,18 +14,13 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>1. Documents 
-  * Store Request Data
-  * Stores Response Data
-  * Stores javascripts
-  * Stores css styles
-2. Browser
-  * Supports asynchronous and synchronous web requests
-  * Generates Documents for each web request.
-3. Javascript Engine
-  * Used by browser to scrape JavaScript content from inline scripts and externally linked scripts.
-4. StyleEngine
-   * Used by the browser to scrape css styles from inline styles and linked styles.</PackageReleaseNotes>
+    <PackageReleaseNotes>* Added convenience methods
+ - Submit methods for post requests
+ - Navigate methods for get requests
+* Updated browser initialization
+ - Updated browser to initialize cookie container by default for automatic cookie managment.</PackageReleaseNotes>
+    <NeutralLanguage />
+    <PackageIconUrl>https://github.com/Jayx239/BrowseSharp/blob/master/B%23.png?raw=true</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.9.9.2" />
