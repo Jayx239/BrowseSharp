@@ -41,7 +41,6 @@ namespace BrowseSharp
 
         string BaseHost { get; set; }
 
-
         IRestResponse<T> Deserialize<T>(IRestResponse response);
 
         byte[] DownloadData(IRestRequest request);
@@ -83,5 +82,30 @@ namespace BrowseSharp
         Task<IDocument> ExecutePostTaskAsync(IRestRequest request);
 
         Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token);
+        
+        IDocument Navigate(string uri);
+
+        IDocument Navigate(Uri uri);
+
+        Task<IDocument> NavigateAsync(string uri);
+
+        Task<IDocument> NavigateAsync(Uri uri);
+        
+        IDocument Submit(string uri);
+
+        IDocument Submit(Uri uri);
+
+        IDocument Submit(string uri, Dictionary<string,string> formData);
+
+        IDocument Submit(Uri uri, Dictionary<string,string> formData);
+        
+        Task<IDocument> SubmitAsync(string uri);
+
+        Task<IDocument> SubmitAsync(Uri uri);
+        
+        Task<IDocument> SubmitAsync(string uri, Dictionary<string,string> formData);
+
+        Task<IDocument> SubmitAsync(Uri uri, Dictionary<string,string> formData);
+
     }
 }
