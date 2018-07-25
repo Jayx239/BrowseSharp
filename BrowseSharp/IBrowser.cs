@@ -95,6 +95,10 @@ namespace BrowseSharp
 
         IDocument Submit(Uri uri);
 
+        IDocument Submit(string uri, Dictionary<string,string> formData);
+
+        IDocument Submit(Uri uri, Dictionary<string,string> formData);
+        
         Task<IDocument> SubmitAsync(string uri);
 
         Task<IDocument> SubmitAsync(Uri uri);
