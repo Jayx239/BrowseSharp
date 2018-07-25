@@ -278,6 +278,20 @@ namespace BrowseSharp
             RestRequest request = new RestRequest();
             return ExecuteAsPost(request,"POST"); /* TODO: Check this */
         }
+        
+        public IDocument Submit(string uri, Dictionary<string, string> formData)
+        {
+            Uri requestUri = new Uri(uri);
+            return Submit(requestUri, formData);
+        }
+
+        public IDocument Submit(Uri uri, Dictionary<string, string> formData)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddFormData(request, formData);
+            return ExecuteAsPost(request,"POST");
+        }
 
         public async Task<IDocument> SubmitAsync(string uri)
         {
@@ -295,7 +309,7 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
         {
             Uri requestUri = new Uri(uri);
-            return await SubmitAsync(uri, formData);
+            return await SubmitAsync(requestUri, formData);
         }
 
         public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData)

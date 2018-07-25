@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using BrowseSharp;
@@ -197,6 +198,125 @@ namespace BrowseSharpTest
         public async Task TestExecutePostTaskAsyncToken()
         {
             throw new NotImplementedException();
+        }
+
+        [Test]
+        public void TestNavigate()
+        {
+            Browser browser = new BrowseSharp.Browser();
+            
+            var response = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
+            
+            Assert.True(browser.Documents.Count == 1);
+            Assert.True(browser.Documents[0].Scripts.Count == 7);
+            foreach (var script in browser.Documents[0].Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(browser.Documents[0].Styles.Count == 2);
+            foreach (var style in browser.Documents[0].Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+            
+            Assert.True(response.Scripts.Count == 7);
+            foreach (var script in response.Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(response.Styles.Count == 2);
+            foreach (var style in response.Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+
+        }
+        
+        [Test]
+        public async Task TestNavigateAsync()
+        {
+            Browser browser = new BrowseSharp.Browser();
+            
+            var response = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
+            
+            Assert.True(browser.Documents.Count == 1);
+            Assert.True(browser.Documents[0].Scripts.Count == 7);
+            foreach (var script in browser.Documents[0].Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(browser.Documents[0].Styles.Count == 2);
+            foreach (var style in browser.Documents[0].Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+            
+            Assert.True(response.Scripts.Count == 7);
+            foreach (var script in response.Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(response.Styles.Count == 2);
+            foreach (var style in response.Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+
+        }
+        
+        [Test]
+        public void TestSubmit()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+
+            var response = browser.Submit("https://www.hashemian.com/tools/form-post-tester.php", formData);
+            Assert.True(response.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+            
+            var response2 = browser.Documents[0];
+            Assert.True(response2.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response2.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response2.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+
+        }
+        [Test]
+        public async Task TestSubmitAsync()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+
+            var response = await browser.SubmitAsync("https://www.hashemian.com/tools/form-post-tester.php", formData);
+            Assert.True(response.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+            
+            var response2 = browser.Documents[0];
+            Assert.True(response2.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response2.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response2.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+
         }
         
         [Test]
