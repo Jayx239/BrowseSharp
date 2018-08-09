@@ -252,6 +252,35 @@ namespace BrowseSharp
             return Execute(request);
         }
 
+        public IDocument Navigate(string uri, Dictionary<string, string> headers)
+        {
+            Uri requestUri = new Uri(uri);
+            return Navigate(requestUri, headers);
+        }
+
+        public IDocument Navigate(Uri uri, Dictionary<string, string> headers)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddHeaders(request,headers);
+            return ExecuteAsGet(request,"GET");
+        }
+
+        public IDocument Navigate(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        {
+            Uri requestUri = new Uri(uri);
+            return Navigate(requestUri, headers, formData);
+        }
+
+        public IDocument Navigate(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddHeaders(request,headers);
+            AddFormData(request, formData);
+            return ExecuteAsGet(request,"GET");
+        }
+        
         public async Task<IDocument> NavigateAsync(string uri)
         {
             Uri requestUri = new Uri(uri);
@@ -265,12 +294,41 @@ namespace BrowseSharp
             return await ExecuteTaskAsync(request);
         }
 
+        public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers)
+        {
+            Uri requestUri = new Uri(uri);
+            return Navigate(requestUri, headers);
+        }
+
+        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddHeaders(request,headers);
+            return await ExecuteTaskAsync(request);
+        }
+
+        public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers,
+            Dictionary<string, string> formData)
+        {
+            Uri requestUri = new Uri(uri);
+            return Navigate(requestUri, headers, formData);
+        }
+
+        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddHeaders(request,headers);
+            AddFormData(request,formData);
+            return await ExecuteTaskAsync(request);
+        }
+        
         public IDocument Submit(string uri)
         {
             Uri requestUri = new Uri(uri);
             return Submit(requestUri);
         }
-
 
         public IDocument Submit(Uri uri)
         {
@@ -290,6 +348,21 @@ namespace BrowseSharp
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
             AddFormData(request, formData);
+            return ExecuteAsPost(request,"POST");
+        }
+        
+        public IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            Uri requestUri = new Uri(uri);
+            return Submit(requestUri, formData, headers);
+        }
+
+        public IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddFormData(request, formData);
+            AddHeaders(request,headers);
             return ExecuteAsPost(request,"POST");
         }
 
@@ -320,6 +393,21 @@ namespace BrowseSharp
             return await ExecutePostTaskAsync(request);
         }
         
+        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            Uri requestUri = new Uri(uri);
+            return await SubmitAsync(requestUri, formData, headers);
+        }
+
+        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddFormData(request, formData);
+            AddHeaders(request, headers);
+            return await ExecutePostTaskAsync(request);
+        }
+        
         private IDocument PackageAndAddDocument(IRestRequest request, IRestResponse response)
         {
             HtmlParser parser = new HtmlParser();
@@ -347,9 +435,23 @@ namespace BrowseSharp
 
         private void AddFormData(IRestRequest request, Dictionary<string,string> formData)
         {
+            if (formData == null)
+                return;
+            
             foreach (var formInput in formData)
             {
                 request.AddParameter(formInput.Key, formInput.Value);
+            }
+        }
+        
+        private void AddHeaders(IRestRequest request, Dictionary<string,string> headers)
+        {
+            if (headers == null)
+                return;
+            
+            foreach (var formInput in headers)
+            {
+                request.AddHeader(formInput.Key, formInput.Value);
             }
         }
     }

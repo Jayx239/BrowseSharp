@@ -86,10 +86,26 @@ namespace BrowseSharp
         IDocument Navigate(string uri);
 
         IDocument Navigate(Uri uri);
+        
+        IDocument Navigate(string uri, Dictionary<string,string> headers);
+        
+        IDocument Navigate(Uri uri, Dictionary<string,string> headers);
+
+        IDocument Navigate(string uri, Dictionary<string,string> headers, Dictionary<string,string> formData);
+        
+        IDocument Navigate(Uri uri, Dictionary<string,string> headers, Dictionary<string,string> formData);
 
         Task<IDocument> NavigateAsync(string uri);
 
         Task<IDocument> NavigateAsync(Uri uri);
+        
+        Task<IDocument> NavigateAsync(string uri, Dictionary<string,string> headers);
+        
+        Task<IDocument> NavigateAsync(Uri uri, Dictionary<string,string> headers);
+        
+        Task<IDocument> NavigateAsync(string uri, Dictionary<string,string> headers, Dictionary<string,string> formData);
+        
+        Task<IDocument> NavigateAsync(Uri uri, Dictionary<string,string> headers, Dictionary<string,string> formData);
         
         IDocument Submit(string uri);
 
@@ -98,6 +114,10 @@ namespace BrowseSharp
         IDocument Submit(string uri, Dictionary<string,string> formData);
 
         IDocument Submit(Uri uri, Dictionary<string,string> formData);
+
+        IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers);
+
+        IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers);
         
         Task<IDocument> SubmitAsync(string uri);
 
@@ -106,6 +126,11 @@ namespace BrowseSharp
         Task<IDocument> SubmitAsync(string uri, Dictionary<string,string> formData);
 
         Task<IDocument> SubmitAsync(Uri uri, Dictionary<string,string> formData);
+
+        Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData,
+            Dictionary<string, string> headers);
+
+        Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers);
 
     }
 }
