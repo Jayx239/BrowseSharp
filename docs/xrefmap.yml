@@ -1,0 +1,2065 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: BrowseSharp
+  name: BrowseSharp
+  href: api/BrowseSharp.html
+  commentId: N:BrowseSharp
+  fullName: BrowseSharp
+  nameWithType: BrowseSharp
+- uid: BrowseSharp.Browser
+  name: Browser
+  href: api/BrowseSharp.Browser.html
+  commentId: T:BrowseSharp.Browser
+  fullName: BrowseSharp.Browser
+  nameWithType: Browser
+- uid: BrowseSharp.Browser.#ctor
+  name: Browser()
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser__ctor
+  commentId: M:BrowseSharp.Browser.#ctor
+  fullName: BrowseSharp.Browser.Browser()
+  nameWithType: Browser.Browser()
+- uid: BrowseSharp.Browser.#ctor*
+  name: Browser
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser__ctor_
+  commentId: Overload:BrowseSharp.Browser.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Browser
+  nameWithType: Browser.Browser
+- uid: BrowseSharp.Browser.AddHandler(System.String,RestSharp.Deserializers.IDeserializer)
+  name: AddHandler(String, IDeserializer)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_AddHandler_System_String_RestSharp_Deserializers_IDeserializer_
+  commentId: M:BrowseSharp.Browser.AddHandler(System.String,RestSharp.Deserializers.IDeserializer)
+  fullName: BrowseSharp.Browser.AddHandler(System.String, RestSharp.Deserializers.IDeserializer)
+  nameWithType: Browser.AddHandler(String, IDeserializer)
+- uid: BrowseSharp.Browser.AddHandler*
+  name: AddHandler
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_AddHandler_
+  commentId: Overload:BrowseSharp.Browser.AddHandler
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.AddHandler
+  nameWithType: Browser.AddHandler
+- uid: BrowseSharp.Browser.Authenticator
+  name: Authenticator
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Authenticator
+  commentId: P:BrowseSharp.Browser.Authenticator
+  fullName: BrowseSharp.Browser.Authenticator
+  nameWithType: Browser.Authenticator
+- uid: BrowseSharp.Browser.Authenticator*
+  name: Authenticator
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Authenticator_
+  commentId: Overload:BrowseSharp.Browser.Authenticator
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Authenticator
+  nameWithType: Browser.Authenticator
+- uid: BrowseSharp.Browser.AutomaticDecompression
+  name: AutomaticDecompression
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_AutomaticDecompression
+  commentId: P:BrowseSharp.Browser.AutomaticDecompression
+  fullName: BrowseSharp.Browser.AutomaticDecompression
+  nameWithType: Browser.AutomaticDecompression
+- uid: BrowseSharp.Browser.AutomaticDecompression*
+  name: AutomaticDecompression
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_AutomaticDecompression_
+  commentId: Overload:BrowseSharp.Browser.AutomaticDecompression
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.AutomaticDecompression
+  nameWithType: Browser.AutomaticDecompression
+- uid: BrowseSharp.Browser.BaseHost
+  name: BaseHost
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_BaseHost
+  commentId: P:BrowseSharp.Browser.BaseHost
+  fullName: BrowseSharp.Browser.BaseHost
+  nameWithType: Browser.BaseHost
+- uid: BrowseSharp.Browser.BaseHost*
+  name: BaseHost
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_BaseHost_
+  commentId: Overload:BrowseSharp.Browser.BaseHost
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.BaseHost
+  nameWithType: Browser.BaseHost
+- uid: BrowseSharp.Browser.BaseUrl
+  name: BaseUrl
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_BaseUrl
+  commentId: P:BrowseSharp.Browser.BaseUrl
+  fullName: BrowseSharp.Browser.BaseUrl
+  nameWithType: Browser.BaseUrl
+- uid: BrowseSharp.Browser.BaseUrl*
+  name: BaseUrl
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_BaseUrl_
+  commentId: Overload:BrowseSharp.Browser.BaseUrl
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.BaseUrl
+  nameWithType: Browser.BaseUrl
+- uid: BrowseSharp.Browser.BuildUri(RestSharp.IRestRequest)
+  name: BuildUri(IRestRequest)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_BuildUri_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.Browser.BuildUri(RestSharp.IRestRequest)
+  fullName: BrowseSharp.Browser.BuildUri(RestSharp.IRestRequest)
+  nameWithType: Browser.BuildUri(IRestRequest)
+- uid: BrowseSharp.Browser.BuildUri*
+  name: BuildUri
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_BuildUri_
+  commentId: Overload:BrowseSharp.Browser.BuildUri
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.BuildUri
+  nameWithType: Browser.BuildUri
+- uid: BrowseSharp.Browser.CachePolicy
+  name: CachePolicy
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_CachePolicy
+  commentId: P:BrowseSharp.Browser.CachePolicy
+  fullName: BrowseSharp.Browser.CachePolicy
+  nameWithType: Browser.CachePolicy
+- uid: BrowseSharp.Browser.CachePolicy*
+  name: CachePolicy
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_CachePolicy_
+  commentId: Overload:BrowseSharp.Browser.CachePolicy
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.CachePolicy
+  nameWithType: Browser.CachePolicy
+- uid: BrowseSharp.Browser.ClearHandlers
+  name: ClearHandlers()
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ClearHandlers
+  commentId: M:BrowseSharp.Browser.ClearHandlers
+  fullName: BrowseSharp.Browser.ClearHandlers()
+  nameWithType: Browser.ClearHandlers()
+- uid: BrowseSharp.Browser.ClearHandlers*
+  name: ClearHandlers
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ClearHandlers_
+  commentId: Overload:BrowseSharp.Browser.ClearHandlers
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ClearHandlers
+  nameWithType: Browser.ClearHandlers
+- uid: BrowseSharp.Browser.ClientCertificates
+  name: ClientCertificates
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ClientCertificates
+  commentId: P:BrowseSharp.Browser.ClientCertificates
+  fullName: BrowseSharp.Browser.ClientCertificates
+  nameWithType: Browser.ClientCertificates
+- uid: BrowseSharp.Browser.ClientCertificates*
+  name: ClientCertificates
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ClientCertificates_
+  commentId: Overload:BrowseSharp.Browser.ClientCertificates
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ClientCertificates
+  nameWithType: Browser.ClientCertificates
+- uid: BrowseSharp.Browser.CookieContainer
+  name: CookieContainer
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_CookieContainer
+  commentId: P:BrowseSharp.Browser.CookieContainer
+  fullName: BrowseSharp.Browser.CookieContainer
+  nameWithType: Browser.CookieContainer
+- uid: BrowseSharp.Browser.CookieContainer*
+  name: CookieContainer
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_CookieContainer_
+  commentId: Overload:BrowseSharp.Browser.CookieContainer
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.CookieContainer
+  nameWithType: Browser.CookieContainer
+- uid: BrowseSharp.Browser.DefaultParameters
+  name: DefaultParameters
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_DefaultParameters
+  commentId: P:BrowseSharp.Browser.DefaultParameters
+  fullName: BrowseSharp.Browser.DefaultParameters
+  nameWithType: Browser.DefaultParameters
+- uid: BrowseSharp.Browser.DefaultParameters*
+  name: DefaultParameters
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_DefaultParameters_
+  commentId: Overload:BrowseSharp.Browser.DefaultParameters
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.DefaultParameters
+  nameWithType: Browser.DefaultParameters
+- uid: BrowseSharp.Browser.Deserialize*
+  name: Deserialize
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Deserialize_
+  commentId: Overload:BrowseSharp.Browser.Deserialize
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Deserialize
+  nameWithType: Browser.Deserialize
+- uid: BrowseSharp.Browser.Deserialize``1(RestSharp.IRestResponse)
+  name: Deserialize<T>(IRestResponse)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Deserialize__1_RestSharp_IRestResponse_
+  commentId: M:BrowseSharp.Browser.Deserialize``1(RestSharp.IRestResponse)
+  name.vb: Deserialize(Of T)(IRestResponse)
+  fullName: BrowseSharp.Browser.Deserialize<T>(RestSharp.IRestResponse)
+  fullName.vb: BrowseSharp.Browser.Deserialize(Of T)(RestSharp.IRestResponse)
+  nameWithType: Browser.Deserialize<T>(IRestResponse)
+  nameWithType.vb: Browser.Deserialize(Of T)(IRestResponse)
+- uid: BrowseSharp.Browser.Documents
+  name: Documents
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Documents
+  commentId: P:BrowseSharp.Browser.Documents
+  fullName: BrowseSharp.Browser.Documents
+  nameWithType: Browser.Documents
+- uid: BrowseSharp.Browser.Documents*
+  name: Documents
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Documents_
+  commentId: Overload:BrowseSharp.Browser.Documents
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Documents
+  nameWithType: Browser.Documents
+- uid: BrowseSharp.Browser.DownloadData(RestSharp.IRestRequest)
+  name: DownloadData(IRestRequest)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_DownloadData_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.Browser.DownloadData(RestSharp.IRestRequest)
+  fullName: BrowseSharp.Browser.DownloadData(RestSharp.IRestRequest)
+  nameWithType: Browser.DownloadData(IRestRequest)
+- uid: BrowseSharp.Browser.DownloadData*
+  name: DownloadData
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_DownloadData_
+  commentId: Overload:BrowseSharp.Browser.DownloadData
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.DownloadData
+  nameWithType: Browser.DownloadData
+- uid: BrowseSharp.Browser.Encoding
+  name: Encoding
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Encoding
+  commentId: P:BrowseSharp.Browser.Encoding
+  fullName: BrowseSharp.Browser.Encoding
+  nameWithType: Browser.Encoding
+- uid: BrowseSharp.Browser.Encoding*
+  name: Encoding
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Encoding_
+  commentId: Overload:BrowseSharp.Browser.Encoding
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Encoding
+  nameWithType: Browser.Encoding
+- uid: BrowseSharp.Browser.Execute(RestSharp.IRestRequest)
+  name: Execute(IRestRequest)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Execute_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.Browser.Execute(RestSharp.IRestRequest)
+  fullName: BrowseSharp.Browser.Execute(RestSharp.IRestRequest)
+  nameWithType: Browser.Execute(IRestRequest)
+- uid: BrowseSharp.Browser.Execute*
+  name: Execute
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Execute_
+  commentId: Overload:BrowseSharp.Browser.Execute
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Execute
+  nameWithType: Browser.Execute
+- uid: BrowseSharp.Browser.ExecuteAsGet(RestSharp.IRestRequest,System.String)
+  name: ExecuteAsGet(IRestRequest, String)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteAsGet_RestSharp_IRestRequest_System_String_
+  commentId: M:BrowseSharp.Browser.ExecuteAsGet(RestSharp.IRestRequest,System.String)
+  fullName: BrowseSharp.Browser.ExecuteAsGet(RestSharp.IRestRequest, System.String)
+  nameWithType: Browser.ExecuteAsGet(IRestRequest, String)
+- uid: BrowseSharp.Browser.ExecuteAsGet*
+  name: ExecuteAsGet
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteAsGet_
+  commentId: Overload:BrowseSharp.Browser.ExecuteAsGet
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ExecuteAsGet
+  nameWithType: Browser.ExecuteAsGet
+- uid: BrowseSharp.Browser.ExecuteAsPost(RestSharp.IRestRequest,System.String)
+  name: ExecuteAsPost(IRestRequest, String)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteAsPost_RestSharp_IRestRequest_System_String_
+  commentId: M:BrowseSharp.Browser.ExecuteAsPost(RestSharp.IRestRequest,System.String)
+  fullName: BrowseSharp.Browser.ExecuteAsPost(RestSharp.IRestRequest, System.String)
+  nameWithType: Browser.ExecuteAsPost(IRestRequest, String)
+- uid: BrowseSharp.Browser.ExecuteAsPost*
+  name: ExecuteAsPost
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteAsPost_
+  commentId: Overload:BrowseSharp.Browser.ExecuteAsPost
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ExecuteAsPost
+  nameWithType: Browser.ExecuteAsPost
+- uid: BrowseSharp.Browser.ExecuteGetTaskAsync(RestSharp.IRestRequest)
+  name: ExecuteGetTaskAsync(IRestRequest)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteGetTaskAsync_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.Browser.ExecuteGetTaskAsync(RestSharp.IRestRequest)
+  fullName: BrowseSharp.Browser.ExecuteGetTaskAsync(RestSharp.IRestRequest)
+  nameWithType: Browser.ExecuteGetTaskAsync(IRestRequest)
+- uid: BrowseSharp.Browser.ExecuteGetTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  name: ExecuteGetTaskAsync(IRestRequest, CancellationToken)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteGetTaskAsync_RestSharp_IRestRequest_System_Threading_CancellationToken_
+  commentId: M:BrowseSharp.Browser.ExecuteGetTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  fullName: BrowseSharp.Browser.ExecuteGetTaskAsync(RestSharp.IRestRequest, System.Threading.CancellationToken)
+  nameWithType: Browser.ExecuteGetTaskAsync(IRestRequest, CancellationToken)
+- uid: BrowseSharp.Browser.ExecuteGetTaskAsync*
+  name: ExecuteGetTaskAsync
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteGetTaskAsync_
+  commentId: Overload:BrowseSharp.Browser.ExecuteGetTaskAsync
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ExecuteGetTaskAsync
+  nameWithType: Browser.ExecuteGetTaskAsync
+- uid: BrowseSharp.Browser.ExecutePostTaskAsync(RestSharp.IRestRequest)
+  name: ExecutePostTaskAsync(IRestRequest)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecutePostTaskAsync_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.Browser.ExecutePostTaskAsync(RestSharp.IRestRequest)
+  fullName: BrowseSharp.Browser.ExecutePostTaskAsync(RestSharp.IRestRequest)
+  nameWithType: Browser.ExecutePostTaskAsync(IRestRequest)
+- uid: BrowseSharp.Browser.ExecutePostTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  name: ExecutePostTaskAsync(IRestRequest, CancellationToken)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecutePostTaskAsync_RestSharp_IRestRequest_System_Threading_CancellationToken_
+  commentId: M:BrowseSharp.Browser.ExecutePostTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  fullName: BrowseSharp.Browser.ExecutePostTaskAsync(RestSharp.IRestRequest, System.Threading.CancellationToken)
+  nameWithType: Browser.ExecutePostTaskAsync(IRestRequest, CancellationToken)
+- uid: BrowseSharp.Browser.ExecutePostTaskAsync*
+  name: ExecutePostTaskAsync
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecutePostTaskAsync_
+  commentId: Overload:BrowseSharp.Browser.ExecutePostTaskAsync
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ExecutePostTaskAsync
+  nameWithType: Browser.ExecutePostTaskAsync
+- uid: BrowseSharp.Browser.ExecuteTaskAsync(RestSharp.IRestRequest)
+  name: ExecuteTaskAsync(IRestRequest)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteTaskAsync_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.Browser.ExecuteTaskAsync(RestSharp.IRestRequest)
+  fullName: BrowseSharp.Browser.ExecuteTaskAsync(RestSharp.IRestRequest)
+  nameWithType: Browser.ExecuteTaskAsync(IRestRequest)
+- uid: BrowseSharp.Browser.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  name: ExecuteTaskAsync(IRestRequest, CancellationToken)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteTaskAsync_RestSharp_IRestRequest_System_Threading_CancellationToken_
+  commentId: M:BrowseSharp.Browser.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  fullName: BrowseSharp.Browser.ExecuteTaskAsync(RestSharp.IRestRequest, System.Threading.CancellationToken)
+  nameWithType: Browser.ExecuteTaskAsync(IRestRequest, CancellationToken)
+- uid: BrowseSharp.Browser.ExecuteTaskAsync*
+  name: ExecuteTaskAsync
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ExecuteTaskAsync_
+  commentId: Overload:BrowseSharp.Browser.ExecuteTaskAsync
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ExecuteTaskAsync
+  nameWithType: Browser.ExecuteTaskAsync
+- uid: BrowseSharp.Browser.FollowRedirects
+  name: FollowRedirects
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_FollowRedirects
+  commentId: P:BrowseSharp.Browser.FollowRedirects
+  fullName: BrowseSharp.Browser.FollowRedirects
+  nameWithType: Browser.FollowRedirects
+- uid: BrowseSharp.Browser.FollowRedirects*
+  name: FollowRedirects
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_FollowRedirects_
+  commentId: Overload:BrowseSharp.Browser.FollowRedirects
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.FollowRedirects
+  nameWithType: Browser.FollowRedirects
+- uid: BrowseSharp.Browser.JavascriptEngine
+  name: JavascriptEngine
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_JavascriptEngine
+  commentId: P:BrowseSharp.Browser.JavascriptEngine
+  fullName: BrowseSharp.Browser.JavascriptEngine
+  nameWithType: Browser.JavascriptEngine
+- uid: BrowseSharp.Browser.JavascriptEngine*
+  name: JavascriptEngine
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_JavascriptEngine_
+  commentId: Overload:BrowseSharp.Browser.JavascriptEngine
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.JavascriptEngine
+  nameWithType: Browser.JavascriptEngine
+- uid: BrowseSharp.Browser.MaxRedirects
+  name: MaxRedirects
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_MaxRedirects
+  commentId: P:BrowseSharp.Browser.MaxRedirects
+  fullName: BrowseSharp.Browser.MaxRedirects
+  nameWithType: Browser.MaxRedirects
+- uid: BrowseSharp.Browser.MaxRedirects*
+  name: MaxRedirects
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_MaxRedirects_
+  commentId: Overload:BrowseSharp.Browser.MaxRedirects
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.MaxRedirects
+  nameWithType: Browser.MaxRedirects
+- uid: BrowseSharp.Browser.Navigate(System.String)
+  name: Navigate(String)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Navigate_System_String_
+  commentId: M:BrowseSharp.Browser.Navigate(System.String)
+  fullName: BrowseSharp.Browser.Navigate(System.String)
+  nameWithType: Browser.Navigate(String)
+- uid: BrowseSharp.Browser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(String, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Navigate_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Navigate(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Navigate(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Navigate(String, Dictionary<String, String>)
+  nameWithType.vb: Browser.Navigate(String, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Navigate_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Navigate(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Navigate(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Navigate(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.Navigate(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Navigate(System.Uri)
+  name: Navigate(Uri)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Navigate_System_Uri_
+  commentId: M:BrowseSharp.Browser.Navigate(System.Uri)
+  fullName: BrowseSharp.Browser.Navigate(System.Uri)
+  nameWithType: Browser.Navigate(Uri)
+- uid: BrowseSharp.Browser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Navigate_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Navigate(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Navigate(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Navigate(Uri, Dictionary<String, String>)
+  nameWithType.vb: Browser.Navigate(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Navigate_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Navigate(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Navigate(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Navigate(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.Navigate(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Navigate*
+  name: Navigate
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Navigate_
+  commentId: Overload:BrowseSharp.Browser.Navigate
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Navigate
+  nameWithType: Browser.Navigate
+- uid: BrowseSharp.Browser.NavigateAsync(System.String)
+  name: NavigateAsync(String)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_NavigateAsync_System_String_
+  commentId: M:BrowseSharp.Browser.NavigateAsync(System.String)
+  fullName: BrowseSharp.Browser.NavigateAsync(System.String)
+  nameWithType: Browser.NavigateAsync(String)
+- uid: BrowseSharp.Browser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(String, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_NavigateAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.NavigateAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.NavigateAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.NavigateAsync(String, Dictionary<String, String>)
+  nameWithType.vb: Browser.NavigateAsync(String, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_NavigateAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.NavigateAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.NavigateAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.NavigateAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.NavigateAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.NavigateAsync(System.Uri)
+  name: NavigateAsync(Uri)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_NavigateAsync_System_Uri_
+  commentId: M:BrowseSharp.Browser.NavigateAsync(System.Uri)
+  fullName: BrowseSharp.Browser.NavigateAsync(System.Uri)
+  nameWithType: Browser.NavigateAsync(Uri)
+- uid: BrowseSharp.Browser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_NavigateAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.NavigateAsync(Uri, Dictionary<String, String>)
+  nameWithType.vb: Browser.NavigateAsync(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_NavigateAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.NavigateAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.NavigateAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.NavigateAsync*
+  name: NavigateAsync
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_NavigateAsync_
+  commentId: Overload:BrowseSharp.Browser.NavigateAsync
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.NavigateAsync
+  nameWithType: Browser.NavigateAsync
+- uid: BrowseSharp.Browser.Pipelined
+  name: Pipelined
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Pipelined
+  commentId: P:BrowseSharp.Browser.Pipelined
+  fullName: BrowseSharp.Browser.Pipelined
+  nameWithType: Browser.Pipelined
+- uid: BrowseSharp.Browser.Pipelined*
+  name: Pipelined
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Pipelined_
+  commentId: Overload:BrowseSharp.Browser.Pipelined
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Pipelined
+  nameWithType: Browser.Pipelined
+- uid: BrowseSharp.Browser.PreAuthenticate
+  name: PreAuthenticate
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_PreAuthenticate
+  commentId: P:BrowseSharp.Browser.PreAuthenticate
+  fullName: BrowseSharp.Browser.PreAuthenticate
+  nameWithType: Browser.PreAuthenticate
+- uid: BrowseSharp.Browser.PreAuthenticate*
+  name: PreAuthenticate
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_PreAuthenticate_
+  commentId: Overload:BrowseSharp.Browser.PreAuthenticate
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.PreAuthenticate
+  nameWithType: Browser.PreAuthenticate
+- uid: BrowseSharp.Browser.Proxy
+  name: Proxy
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Proxy
+  commentId: P:BrowseSharp.Browser.Proxy
+  fullName: BrowseSharp.Browser.Proxy
+  nameWithType: Browser.Proxy
+- uid: BrowseSharp.Browser.Proxy*
+  name: Proxy
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Proxy_
+  commentId: Overload:BrowseSharp.Browser.Proxy
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Proxy
+  nameWithType: Browser.Proxy
+- uid: BrowseSharp.Browser.ReadWriteTimeout
+  name: ReadWriteTimeout
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ReadWriteTimeout
+  commentId: P:BrowseSharp.Browser.ReadWriteTimeout
+  fullName: BrowseSharp.Browser.ReadWriteTimeout
+  nameWithType: Browser.ReadWriteTimeout
+- uid: BrowseSharp.Browser.ReadWriteTimeout*
+  name: ReadWriteTimeout
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_ReadWriteTimeout_
+  commentId: Overload:BrowseSharp.Browser.ReadWriteTimeout
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.ReadWriteTimeout
+  nameWithType: Browser.ReadWriteTimeout
+- uid: BrowseSharp.Browser.RemoteCertificateValidationCallback
+  name: RemoteCertificateValidationCallback
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_RemoteCertificateValidationCallback
+  commentId: P:BrowseSharp.Browser.RemoteCertificateValidationCallback
+  fullName: BrowseSharp.Browser.RemoteCertificateValidationCallback
+  nameWithType: Browser.RemoteCertificateValidationCallback
+- uid: BrowseSharp.Browser.RemoteCertificateValidationCallback*
+  name: RemoteCertificateValidationCallback
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_RemoteCertificateValidationCallback_
+  commentId: Overload:BrowseSharp.Browser.RemoteCertificateValidationCallback
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.RemoteCertificateValidationCallback
+  nameWithType: Browser.RemoteCertificateValidationCallback
+- uid: BrowseSharp.Browser.RemoveHandler(System.String)
+  name: RemoveHandler(String)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_RemoveHandler_System_String_
+  commentId: M:BrowseSharp.Browser.RemoveHandler(System.String)
+  fullName: BrowseSharp.Browser.RemoveHandler(System.String)
+  nameWithType: Browser.RemoveHandler(String)
+- uid: BrowseSharp.Browser.RemoveHandler*
+  name: RemoveHandler
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_RemoveHandler_
+  commentId: Overload:BrowseSharp.Browser.RemoveHandler
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.RemoveHandler
+  nameWithType: Browser.RemoveHandler
+- uid: BrowseSharp.Browser.StyleEngine
+  name: StyleEngine
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_StyleEngine
+  commentId: P:BrowseSharp.Browser.StyleEngine
+  fullName: BrowseSharp.Browser.StyleEngine
+  nameWithType: Browser.StyleEngine
+- uid: BrowseSharp.Browser.StyleEngine*
+  name: StyleEngine
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_StyleEngine_
+  commentId: Overload:BrowseSharp.Browser.StyleEngine
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.StyleEngine
+  nameWithType: Browser.StyleEngine
+- uid: BrowseSharp.Browser.Submit(System.String)
+  name: Submit(String)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Submit_System_String_
+  commentId: M:BrowseSharp.Browser.Submit(System.String)
+  fullName: BrowseSharp.Browser.Submit(System.String)
+  nameWithType: Browser.Submit(String)
+- uid: BrowseSharp.Browser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(String, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Submit_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Submit(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Submit(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Submit(String, Dictionary<String, String>)
+  nameWithType.vb: Browser.Submit(String, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Submit_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Submit(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Submit(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Submit(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.Submit(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Submit(System.Uri)
+  name: Submit(Uri)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Submit_System_Uri_
+  commentId: M:BrowseSharp.Browser.Submit(System.Uri)
+  fullName: BrowseSharp.Browser.Submit(System.Uri)
+  nameWithType: Browser.Submit(Uri)
+- uid: BrowseSharp.Browser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Submit_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Submit(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Submit(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Submit(Uri, Dictionary<String, String>)
+  nameWithType.vb: Browser.Submit(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Submit_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.Submit(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.Submit(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.Submit(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.Submit(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.Submit*
+  name: Submit
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Submit_
+  commentId: Overload:BrowseSharp.Browser.Submit
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Submit
+  nameWithType: Browser.Submit
+- uid: BrowseSharp.Browser.SubmitAsync(System.String)
+  name: SubmitAsync(String)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_SubmitAsync_System_String_
+  commentId: M:BrowseSharp.Browser.SubmitAsync(System.String)
+  fullName: BrowseSharp.Browser.SubmitAsync(System.String)
+  nameWithType: Browser.SubmitAsync(String)
+- uid: BrowseSharp.Browser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(String, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_SubmitAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.SubmitAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.SubmitAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.SubmitAsync(String, Dictionary<String, String>)
+  nameWithType.vb: Browser.SubmitAsync(String, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_SubmitAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.SubmitAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.SubmitAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.SubmitAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.SubmitAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.SubmitAsync(System.Uri)
+  name: SubmitAsync(Uri)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_SubmitAsync_System_Uri_
+  commentId: M:BrowseSharp.Browser.SubmitAsync(System.Uri)
+  fullName: BrowseSharp.Browser.SubmitAsync(System.Uri)
+  nameWithType: Browser.SubmitAsync(Uri)
+- uid: BrowseSharp.Browser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_SubmitAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.SubmitAsync(Uri, Dictionary<String, String>)
+  nameWithType.vb: Browser.SubmitAsync(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_SubmitAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.Browser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.Browser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.Browser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: Browser.SubmitAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: Browser.SubmitAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.Browser.SubmitAsync*
+  name: SubmitAsync
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_SubmitAsync_
+  commentId: Overload:BrowseSharp.Browser.SubmitAsync
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.SubmitAsync
+  nameWithType: Browser.SubmitAsync
+- uid: BrowseSharp.Browser.Timeout
+  name: Timeout
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Timeout
+  commentId: P:BrowseSharp.Browser.Timeout
+  fullName: BrowseSharp.Browser.Timeout
+  nameWithType: Browser.Timeout
+- uid: BrowseSharp.Browser.Timeout*
+  name: Timeout
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_Timeout_
+  commentId: Overload:BrowseSharp.Browser.Timeout
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.Timeout
+  nameWithType: Browser.Timeout
+- uid: BrowseSharp.Browser.UserAgent
+  name: UserAgent
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_UserAgent
+  commentId: P:BrowseSharp.Browser.UserAgent
+  fullName: BrowseSharp.Browser.UserAgent
+  nameWithType: Browser.UserAgent
+- uid: BrowseSharp.Browser.UserAgent*
+  name: UserAgent
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_UserAgent_
+  commentId: Overload:BrowseSharp.Browser.UserAgent
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.UserAgent
+  nameWithType: Browser.UserAgent
+- uid: BrowseSharp.Browser.UseSynchronizationContext
+  name: UseSynchronizationContext
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_UseSynchronizationContext
+  commentId: P:BrowseSharp.Browser.UseSynchronizationContext
+  fullName: BrowseSharp.Browser.UseSynchronizationContext
+  nameWithType: Browser.UseSynchronizationContext
+- uid: BrowseSharp.Browser.UseSynchronizationContext*
+  name: UseSynchronizationContext
+  href: api/BrowseSharp.Browser.html#BrowseSharp_Browser_UseSynchronizationContext_
+  commentId: Overload:BrowseSharp.Browser.UseSynchronizationContext
+  isSpec: "True"
+  fullName: BrowseSharp.Browser.UseSynchronizationContext
+  nameWithType: Browser.UseSynchronizationContext
+- uid: BrowseSharp.Document
+  name: Document
+  href: api/BrowseSharp.Document.html
+  commentId: T:BrowseSharp.Document
+  fullName: BrowseSharp.Document
+  nameWithType: Document
+- uid: BrowseSharp.Document.#ctor
+  name: Document()
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document__ctor
+  commentId: M:BrowseSharp.Document.#ctor
+  fullName: BrowseSharp.Document.Document()
+  nameWithType: Document.Document()
+- uid: BrowseSharp.Document.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse)
+  name: Document(IRestRequest, IRestResponse)
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document__ctor_RestSharp_IRestRequest_RestSharp_IRestResponse_
+  commentId: M:BrowseSharp.Document.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse)
+  fullName: BrowseSharp.Document.Document(RestSharp.IRestRequest, RestSharp.IRestResponse)
+  nameWithType: Document.Document(IRestRequest, IRestResponse)
+- uid: BrowseSharp.Document.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse,AngleSharp.Dom.Html.IHtmlDocument)
+  name: Document(IRestRequest, IRestResponse, IHtmlDocument)
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document__ctor_RestSharp_IRestRequest_RestSharp_IRestResponse_AngleSharp_Dom_Html_IHtmlDocument_
+  commentId: M:BrowseSharp.Document.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse,AngleSharp.Dom.Html.IHtmlDocument)
+  fullName: BrowseSharp.Document.Document(RestSharp.IRestRequest, RestSharp.IRestResponse, AngleSharp.Dom.Html.IHtmlDocument)
+  nameWithType: Document.Document(IRestRequest, IRestResponse, IHtmlDocument)
+- uid: BrowseSharp.Document.#ctor*
+  name: Document
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document__ctor_
+  commentId: Overload:BrowseSharp.Document.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Document.Document
+  nameWithType: Document.Document
+- uid: BrowseSharp.Document.HtmlDocument
+  name: HtmlDocument
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_HtmlDocument
+  commentId: P:BrowseSharp.Document.HtmlDocument
+  fullName: BrowseSharp.Document.HtmlDocument
+  nameWithType: Document.HtmlDocument
+- uid: BrowseSharp.Document.HtmlDocument*
+  name: HtmlDocument
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_HtmlDocument_
+  commentId: Overload:BrowseSharp.Document.HtmlDocument
+  isSpec: "True"
+  fullName: BrowseSharp.Document.HtmlDocument
+  nameWithType: Document.HtmlDocument
+- uid: BrowseSharp.Document.Request
+  name: Request
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Request
+  commentId: P:BrowseSharp.Document.Request
+  fullName: BrowseSharp.Document.Request
+  nameWithType: Document.Request
+- uid: BrowseSharp.Document.Request*
+  name: Request
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Request_
+  commentId: Overload:BrowseSharp.Document.Request
+  isSpec: "True"
+  fullName: BrowseSharp.Document.Request
+  nameWithType: Document.Request
+- uid: BrowseSharp.Document.Response
+  name: Response
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Response
+  commentId: P:BrowseSharp.Document.Response
+  fullName: BrowseSharp.Document.Response
+  nameWithType: Document.Response
+- uid: BrowseSharp.Document.Response*
+  name: Response
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Response_
+  commentId: Overload:BrowseSharp.Document.Response
+  isSpec: "True"
+  fullName: BrowseSharp.Document.Response
+  nameWithType: Document.Response
+- uid: BrowseSharp.Document.Scripts
+  name: Scripts
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Scripts
+  commentId: P:BrowseSharp.Document.Scripts
+  fullName: BrowseSharp.Document.Scripts
+  nameWithType: Document.Scripts
+- uid: BrowseSharp.Document.Scripts*
+  name: Scripts
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Scripts_
+  commentId: Overload:BrowseSharp.Document.Scripts
+  isSpec: "True"
+  fullName: BrowseSharp.Document.Scripts
+  nameWithType: Document.Scripts
+- uid: BrowseSharp.Document.Styles
+  name: Styles
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Styles
+  commentId: P:BrowseSharp.Document.Styles
+  fullName: BrowseSharp.Document.Styles
+  nameWithType: Document.Styles
+- uid: BrowseSharp.Document.Styles*
+  name: Styles
+  href: api/BrowseSharp.Document.html#BrowseSharp_Document_Styles_
+  commentId: Overload:BrowseSharp.Document.Styles
+  isSpec: "True"
+  fullName: BrowseSharp.Document.Styles
+  nameWithType: Document.Styles
+- uid: BrowseSharp.IBrowser
+  name: IBrowser
+  href: api/BrowseSharp.IBrowser.html
+  commentId: T:BrowseSharp.IBrowser
+  fullName: BrowseSharp.IBrowser
+  nameWithType: IBrowser
+- uid: BrowseSharp.IBrowser.AddHandler(System.String,RestSharp.Deserializers.IDeserializer)
+  name: AddHandler(String, IDeserializer)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_AddHandler_System_String_RestSharp_Deserializers_IDeserializer_
+  commentId: M:BrowseSharp.IBrowser.AddHandler(System.String,RestSharp.Deserializers.IDeserializer)
+  fullName: BrowseSharp.IBrowser.AddHandler(System.String, RestSharp.Deserializers.IDeserializer)
+  nameWithType: IBrowser.AddHandler(String, IDeserializer)
+- uid: BrowseSharp.IBrowser.AddHandler*
+  name: AddHandler
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_AddHandler_
+  commentId: Overload:BrowseSharp.IBrowser.AddHandler
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.AddHandler
+  nameWithType: IBrowser.AddHandler
+- uid: BrowseSharp.IBrowser.Authenticator
+  name: Authenticator
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Authenticator
+  commentId: P:BrowseSharp.IBrowser.Authenticator
+  fullName: BrowseSharp.IBrowser.Authenticator
+  nameWithType: IBrowser.Authenticator
+- uid: BrowseSharp.IBrowser.Authenticator*
+  name: Authenticator
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Authenticator_
+  commentId: Overload:BrowseSharp.IBrowser.Authenticator
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Authenticator
+  nameWithType: IBrowser.Authenticator
+- uid: BrowseSharp.IBrowser.AutomaticDecompression
+  name: AutomaticDecompression
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_AutomaticDecompression
+  commentId: P:BrowseSharp.IBrowser.AutomaticDecompression
+  fullName: BrowseSharp.IBrowser.AutomaticDecompression
+  nameWithType: IBrowser.AutomaticDecompression
+- uid: BrowseSharp.IBrowser.AutomaticDecompression*
+  name: AutomaticDecompression
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_AutomaticDecompression_
+  commentId: Overload:BrowseSharp.IBrowser.AutomaticDecompression
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.AutomaticDecompression
+  nameWithType: IBrowser.AutomaticDecompression
+- uid: BrowseSharp.IBrowser.BaseHost
+  name: BaseHost
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_BaseHost
+  commentId: P:BrowseSharp.IBrowser.BaseHost
+  fullName: BrowseSharp.IBrowser.BaseHost
+  nameWithType: IBrowser.BaseHost
+- uid: BrowseSharp.IBrowser.BaseHost*
+  name: BaseHost
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_BaseHost_
+  commentId: Overload:BrowseSharp.IBrowser.BaseHost
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.BaseHost
+  nameWithType: IBrowser.BaseHost
+- uid: BrowseSharp.IBrowser.BaseUrl
+  name: BaseUrl
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_BaseUrl
+  commentId: P:BrowseSharp.IBrowser.BaseUrl
+  fullName: BrowseSharp.IBrowser.BaseUrl
+  nameWithType: IBrowser.BaseUrl
+- uid: BrowseSharp.IBrowser.BaseUrl*
+  name: BaseUrl
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_BaseUrl_
+  commentId: Overload:BrowseSharp.IBrowser.BaseUrl
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.BaseUrl
+  nameWithType: IBrowser.BaseUrl
+- uid: BrowseSharp.IBrowser.BuildUri(RestSharp.IRestRequest)
+  name: BuildUri(IRestRequest)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_BuildUri_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.IBrowser.BuildUri(RestSharp.IRestRequest)
+  fullName: BrowseSharp.IBrowser.BuildUri(RestSharp.IRestRequest)
+  nameWithType: IBrowser.BuildUri(IRestRequest)
+- uid: BrowseSharp.IBrowser.BuildUri*
+  name: BuildUri
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_BuildUri_
+  commentId: Overload:BrowseSharp.IBrowser.BuildUri
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.BuildUri
+  nameWithType: IBrowser.BuildUri
+- uid: BrowseSharp.IBrowser.CachePolicy
+  name: CachePolicy
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_CachePolicy
+  commentId: P:BrowseSharp.IBrowser.CachePolicy
+  fullName: BrowseSharp.IBrowser.CachePolicy
+  nameWithType: IBrowser.CachePolicy
+- uid: BrowseSharp.IBrowser.CachePolicy*
+  name: CachePolicy
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_CachePolicy_
+  commentId: Overload:BrowseSharp.IBrowser.CachePolicy
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.CachePolicy
+  nameWithType: IBrowser.CachePolicy
+- uid: BrowseSharp.IBrowser.ClearHandlers
+  name: ClearHandlers()
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ClearHandlers
+  commentId: M:BrowseSharp.IBrowser.ClearHandlers
+  fullName: BrowseSharp.IBrowser.ClearHandlers()
+  nameWithType: IBrowser.ClearHandlers()
+- uid: BrowseSharp.IBrowser.ClearHandlers*
+  name: ClearHandlers
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ClearHandlers_
+  commentId: Overload:BrowseSharp.IBrowser.ClearHandlers
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ClearHandlers
+  nameWithType: IBrowser.ClearHandlers
+- uid: BrowseSharp.IBrowser.ClientCertificates
+  name: ClientCertificates
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ClientCertificates
+  commentId: P:BrowseSharp.IBrowser.ClientCertificates
+  fullName: BrowseSharp.IBrowser.ClientCertificates
+  nameWithType: IBrowser.ClientCertificates
+- uid: BrowseSharp.IBrowser.ClientCertificates*
+  name: ClientCertificates
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ClientCertificates_
+  commentId: Overload:BrowseSharp.IBrowser.ClientCertificates
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ClientCertificates
+  nameWithType: IBrowser.ClientCertificates
+- uid: BrowseSharp.IBrowser.CookieContainer
+  name: CookieContainer
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_CookieContainer
+  commentId: P:BrowseSharp.IBrowser.CookieContainer
+  fullName: BrowseSharp.IBrowser.CookieContainer
+  nameWithType: IBrowser.CookieContainer
+- uid: BrowseSharp.IBrowser.CookieContainer*
+  name: CookieContainer
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_CookieContainer_
+  commentId: Overload:BrowseSharp.IBrowser.CookieContainer
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.CookieContainer
+  nameWithType: IBrowser.CookieContainer
+- uid: BrowseSharp.IBrowser.DefaultParameters
+  name: DefaultParameters
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_DefaultParameters
+  commentId: P:BrowseSharp.IBrowser.DefaultParameters
+  fullName: BrowseSharp.IBrowser.DefaultParameters
+  nameWithType: IBrowser.DefaultParameters
+- uid: BrowseSharp.IBrowser.DefaultParameters*
+  name: DefaultParameters
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_DefaultParameters_
+  commentId: Overload:BrowseSharp.IBrowser.DefaultParameters
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.DefaultParameters
+  nameWithType: IBrowser.DefaultParameters
+- uid: BrowseSharp.IBrowser.Deserialize*
+  name: Deserialize
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Deserialize_
+  commentId: Overload:BrowseSharp.IBrowser.Deserialize
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Deserialize
+  nameWithType: IBrowser.Deserialize
+- uid: BrowseSharp.IBrowser.Deserialize``1(RestSharp.IRestResponse)
+  name: Deserialize<T>(IRestResponse)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Deserialize__1_RestSharp_IRestResponse_
+  commentId: M:BrowseSharp.IBrowser.Deserialize``1(RestSharp.IRestResponse)
+  name.vb: Deserialize(Of T)(IRestResponse)
+  fullName: BrowseSharp.IBrowser.Deserialize<T>(RestSharp.IRestResponse)
+  fullName.vb: BrowseSharp.IBrowser.Deserialize(Of T)(RestSharp.IRestResponse)
+  nameWithType: IBrowser.Deserialize<T>(IRestResponse)
+  nameWithType.vb: IBrowser.Deserialize(Of T)(IRestResponse)
+- uid: BrowseSharp.IBrowser.DownloadData(RestSharp.IRestRequest)
+  name: DownloadData(IRestRequest)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_DownloadData_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.IBrowser.DownloadData(RestSharp.IRestRequest)
+  fullName: BrowseSharp.IBrowser.DownloadData(RestSharp.IRestRequest)
+  nameWithType: IBrowser.DownloadData(IRestRequest)
+- uid: BrowseSharp.IBrowser.DownloadData*
+  name: DownloadData
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_DownloadData_
+  commentId: Overload:BrowseSharp.IBrowser.DownloadData
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.DownloadData
+  nameWithType: IBrowser.DownloadData
+- uid: BrowseSharp.IBrowser.Encoding
+  name: Encoding
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Encoding
+  commentId: P:BrowseSharp.IBrowser.Encoding
+  fullName: BrowseSharp.IBrowser.Encoding
+  nameWithType: IBrowser.Encoding
+- uid: BrowseSharp.IBrowser.Encoding*
+  name: Encoding
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Encoding_
+  commentId: Overload:BrowseSharp.IBrowser.Encoding
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Encoding
+  nameWithType: IBrowser.Encoding
+- uid: BrowseSharp.IBrowser.Execute(RestSharp.IRestRequest)
+  name: Execute(IRestRequest)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Execute_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.IBrowser.Execute(RestSharp.IRestRequest)
+  fullName: BrowseSharp.IBrowser.Execute(RestSharp.IRestRequest)
+  nameWithType: IBrowser.Execute(IRestRequest)
+- uid: BrowseSharp.IBrowser.Execute*
+  name: Execute
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Execute_
+  commentId: Overload:BrowseSharp.IBrowser.Execute
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Execute
+  nameWithType: IBrowser.Execute
+- uid: BrowseSharp.IBrowser.ExecuteAsGet(RestSharp.IRestRequest,System.String)
+  name: ExecuteAsGet(IRestRequest, String)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteAsGet_RestSharp_IRestRequest_System_String_
+  commentId: M:BrowseSharp.IBrowser.ExecuteAsGet(RestSharp.IRestRequest,System.String)
+  fullName: BrowseSharp.IBrowser.ExecuteAsGet(RestSharp.IRestRequest, System.String)
+  nameWithType: IBrowser.ExecuteAsGet(IRestRequest, String)
+- uid: BrowseSharp.IBrowser.ExecuteAsGet*
+  name: ExecuteAsGet
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteAsGet_
+  commentId: Overload:BrowseSharp.IBrowser.ExecuteAsGet
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ExecuteAsGet
+  nameWithType: IBrowser.ExecuteAsGet
+- uid: BrowseSharp.IBrowser.ExecuteAsPost(RestSharp.IRestRequest,System.String)
+  name: ExecuteAsPost(IRestRequest, String)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteAsPost_RestSharp_IRestRequest_System_String_
+  commentId: M:BrowseSharp.IBrowser.ExecuteAsPost(RestSharp.IRestRequest,System.String)
+  fullName: BrowseSharp.IBrowser.ExecuteAsPost(RestSharp.IRestRequest, System.String)
+  nameWithType: IBrowser.ExecuteAsPost(IRestRequest, String)
+- uid: BrowseSharp.IBrowser.ExecuteAsPost*
+  name: ExecuteAsPost
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteAsPost_
+  commentId: Overload:BrowseSharp.IBrowser.ExecuteAsPost
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ExecuteAsPost
+  nameWithType: IBrowser.ExecuteAsPost
+- uid: BrowseSharp.IBrowser.ExecuteGetTaskAsync(RestSharp.IRestRequest)
+  name: ExecuteGetTaskAsync(IRestRequest)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteGetTaskAsync_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.IBrowser.ExecuteGetTaskAsync(RestSharp.IRestRequest)
+  fullName: BrowseSharp.IBrowser.ExecuteGetTaskAsync(RestSharp.IRestRequest)
+  nameWithType: IBrowser.ExecuteGetTaskAsync(IRestRequest)
+- uid: BrowseSharp.IBrowser.ExecuteGetTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  name: ExecuteGetTaskAsync(IRestRequest, CancellationToken)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteGetTaskAsync_RestSharp_IRestRequest_System_Threading_CancellationToken_
+  commentId: M:BrowseSharp.IBrowser.ExecuteGetTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  fullName: BrowseSharp.IBrowser.ExecuteGetTaskAsync(RestSharp.IRestRequest, System.Threading.CancellationToken)
+  nameWithType: IBrowser.ExecuteGetTaskAsync(IRestRequest, CancellationToken)
+- uid: BrowseSharp.IBrowser.ExecuteGetTaskAsync*
+  name: ExecuteGetTaskAsync
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteGetTaskAsync_
+  commentId: Overload:BrowseSharp.IBrowser.ExecuteGetTaskAsync
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ExecuteGetTaskAsync
+  nameWithType: IBrowser.ExecuteGetTaskAsync
+- uid: BrowseSharp.IBrowser.ExecutePostTaskAsync(RestSharp.IRestRequest)
+  name: ExecutePostTaskAsync(IRestRequest)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecutePostTaskAsync_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.IBrowser.ExecutePostTaskAsync(RestSharp.IRestRequest)
+  fullName: BrowseSharp.IBrowser.ExecutePostTaskAsync(RestSharp.IRestRequest)
+  nameWithType: IBrowser.ExecutePostTaskAsync(IRestRequest)
+- uid: BrowseSharp.IBrowser.ExecutePostTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  name: ExecutePostTaskAsync(IRestRequest, CancellationToken)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecutePostTaskAsync_RestSharp_IRestRequest_System_Threading_CancellationToken_
+  commentId: M:BrowseSharp.IBrowser.ExecutePostTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  fullName: BrowseSharp.IBrowser.ExecutePostTaskAsync(RestSharp.IRestRequest, System.Threading.CancellationToken)
+  nameWithType: IBrowser.ExecutePostTaskAsync(IRestRequest, CancellationToken)
+- uid: BrowseSharp.IBrowser.ExecutePostTaskAsync*
+  name: ExecutePostTaskAsync
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecutePostTaskAsync_
+  commentId: Overload:BrowseSharp.IBrowser.ExecutePostTaskAsync
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ExecutePostTaskAsync
+  nameWithType: IBrowser.ExecutePostTaskAsync
+- uid: BrowseSharp.IBrowser.ExecuteTaskAsync(RestSharp.IRestRequest)
+  name: ExecuteTaskAsync(IRestRequest)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteTaskAsync_RestSharp_IRestRequest_
+  commentId: M:BrowseSharp.IBrowser.ExecuteTaskAsync(RestSharp.IRestRequest)
+  fullName: BrowseSharp.IBrowser.ExecuteTaskAsync(RestSharp.IRestRequest)
+  nameWithType: IBrowser.ExecuteTaskAsync(IRestRequest)
+- uid: BrowseSharp.IBrowser.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  name: ExecuteTaskAsync(IRestRequest, CancellationToken)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteTaskAsync_RestSharp_IRestRequest_System_Threading_CancellationToken_
+  commentId: M:BrowseSharp.IBrowser.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)
+  fullName: BrowseSharp.IBrowser.ExecuteTaskAsync(RestSharp.IRestRequest, System.Threading.CancellationToken)
+  nameWithType: IBrowser.ExecuteTaskAsync(IRestRequest, CancellationToken)
+- uid: BrowseSharp.IBrowser.ExecuteTaskAsync*
+  name: ExecuteTaskAsync
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ExecuteTaskAsync_
+  commentId: Overload:BrowseSharp.IBrowser.ExecuteTaskAsync
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ExecuteTaskAsync
+  nameWithType: IBrowser.ExecuteTaskAsync
+- uid: BrowseSharp.IBrowser.FollowRedirects
+  name: FollowRedirects
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_FollowRedirects
+  commentId: P:BrowseSharp.IBrowser.FollowRedirects
+  fullName: BrowseSharp.IBrowser.FollowRedirects
+  nameWithType: IBrowser.FollowRedirects
+- uid: BrowseSharp.IBrowser.FollowRedirects*
+  name: FollowRedirects
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_FollowRedirects_
+  commentId: Overload:BrowseSharp.IBrowser.FollowRedirects
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.FollowRedirects
+  nameWithType: IBrowser.FollowRedirects
+- uid: BrowseSharp.IBrowser.MaxRedirects
+  name: MaxRedirects
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_MaxRedirects
+  commentId: P:BrowseSharp.IBrowser.MaxRedirects
+  fullName: BrowseSharp.IBrowser.MaxRedirects
+  nameWithType: IBrowser.MaxRedirects
+- uid: BrowseSharp.IBrowser.MaxRedirects*
+  name: MaxRedirects
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_MaxRedirects_
+  commentId: Overload:BrowseSharp.IBrowser.MaxRedirects
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.MaxRedirects
+  nameWithType: IBrowser.MaxRedirects
+- uid: BrowseSharp.IBrowser.Navigate(System.String)
+  name: Navigate(String)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Navigate_System_String_
+  commentId: M:BrowseSharp.IBrowser.Navigate(System.String)
+  fullName: BrowseSharp.IBrowser.Navigate(System.String)
+  nameWithType: IBrowser.Navigate(String)
+- uid: BrowseSharp.IBrowser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(String, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Navigate_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Navigate(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Navigate(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Navigate(String, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Navigate(String, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Navigate_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Navigate(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Navigate(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Navigate(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Navigate(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Navigate(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Navigate(System.Uri)
+  name: Navigate(Uri)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Navigate_System_Uri_
+  commentId: M:BrowseSharp.IBrowser.Navigate(System.Uri)
+  fullName: BrowseSharp.IBrowser.Navigate(System.Uri)
+  nameWithType: IBrowser.Navigate(Uri)
+- uid: BrowseSharp.IBrowser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Navigate_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Navigate(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Navigate(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Navigate(Uri, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Navigate(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Navigate(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Navigate_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Navigate(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Navigate(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Navigate(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Navigate(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Navigate(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Navigate(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Navigate*
+  name: Navigate
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Navigate_
+  commentId: Overload:BrowseSharp.IBrowser.Navigate
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Navigate
+  nameWithType: IBrowser.Navigate
+- uid: BrowseSharp.IBrowser.NavigateAsync(System.String)
+  name: NavigateAsync(String)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_NavigateAsync_System_String_
+  commentId: M:BrowseSharp.IBrowser.NavigateAsync(System.String)
+  fullName: BrowseSharp.IBrowser.NavigateAsync(System.String)
+  nameWithType: IBrowser.NavigateAsync(String)
+- uid: BrowseSharp.IBrowser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(String, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_NavigateAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.NavigateAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.NavigateAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.NavigateAsync(String, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.NavigateAsync(String, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_NavigateAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.NavigateAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.NavigateAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.NavigateAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.NavigateAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.NavigateAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.NavigateAsync(System.Uri)
+  name: NavigateAsync(Uri)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_NavigateAsync_System_Uri_
+  commentId: M:BrowseSharp.IBrowser.NavigateAsync(System.Uri)
+  fullName: BrowseSharp.IBrowser.NavigateAsync(System.Uri)
+  nameWithType: IBrowser.NavigateAsync(Uri)
+- uid: BrowseSharp.IBrowser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_NavigateAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.NavigateAsync(Uri, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.NavigateAsync(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: NavigateAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_NavigateAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.NavigateAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: NavigateAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.NavigateAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.NavigateAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.NavigateAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.NavigateAsync*
+  name: NavigateAsync
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_NavigateAsync_
+  commentId: Overload:BrowseSharp.IBrowser.NavigateAsync
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.NavigateAsync
+  nameWithType: IBrowser.NavigateAsync
+- uid: BrowseSharp.IBrowser.Pipelined
+  name: Pipelined
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Pipelined
+  commentId: P:BrowseSharp.IBrowser.Pipelined
+  fullName: BrowseSharp.IBrowser.Pipelined
+  nameWithType: IBrowser.Pipelined
+- uid: BrowseSharp.IBrowser.Pipelined*
+  name: Pipelined
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Pipelined_
+  commentId: Overload:BrowseSharp.IBrowser.Pipelined
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Pipelined
+  nameWithType: IBrowser.Pipelined
+- uid: BrowseSharp.IBrowser.PreAuthenticate
+  name: PreAuthenticate
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_PreAuthenticate
+  commentId: P:BrowseSharp.IBrowser.PreAuthenticate
+  fullName: BrowseSharp.IBrowser.PreAuthenticate
+  nameWithType: IBrowser.PreAuthenticate
+- uid: BrowseSharp.IBrowser.PreAuthenticate*
+  name: PreAuthenticate
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_PreAuthenticate_
+  commentId: Overload:BrowseSharp.IBrowser.PreAuthenticate
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.PreAuthenticate
+  nameWithType: IBrowser.PreAuthenticate
+- uid: BrowseSharp.IBrowser.Proxy
+  name: Proxy
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Proxy
+  commentId: P:BrowseSharp.IBrowser.Proxy
+  fullName: BrowseSharp.IBrowser.Proxy
+  nameWithType: IBrowser.Proxy
+- uid: BrowseSharp.IBrowser.Proxy*
+  name: Proxy
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Proxy_
+  commentId: Overload:BrowseSharp.IBrowser.Proxy
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Proxy
+  nameWithType: IBrowser.Proxy
+- uid: BrowseSharp.IBrowser.ReadWriteTimeout
+  name: ReadWriteTimeout
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ReadWriteTimeout
+  commentId: P:BrowseSharp.IBrowser.ReadWriteTimeout
+  fullName: BrowseSharp.IBrowser.ReadWriteTimeout
+  nameWithType: IBrowser.ReadWriteTimeout
+- uid: BrowseSharp.IBrowser.ReadWriteTimeout*
+  name: ReadWriteTimeout
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_ReadWriteTimeout_
+  commentId: Overload:BrowseSharp.IBrowser.ReadWriteTimeout
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.ReadWriteTimeout
+  nameWithType: IBrowser.ReadWriteTimeout
+- uid: BrowseSharp.IBrowser.RemoteCertificateValidationCallback
+  name: RemoteCertificateValidationCallback
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_RemoteCertificateValidationCallback
+  commentId: P:BrowseSharp.IBrowser.RemoteCertificateValidationCallback
+  fullName: BrowseSharp.IBrowser.RemoteCertificateValidationCallback
+  nameWithType: IBrowser.RemoteCertificateValidationCallback
+- uid: BrowseSharp.IBrowser.RemoteCertificateValidationCallback*
+  name: RemoteCertificateValidationCallback
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_RemoteCertificateValidationCallback_
+  commentId: Overload:BrowseSharp.IBrowser.RemoteCertificateValidationCallback
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.RemoteCertificateValidationCallback
+  nameWithType: IBrowser.RemoteCertificateValidationCallback
+- uid: BrowseSharp.IBrowser.RemoveHandler(System.String)
+  name: RemoveHandler(String)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_RemoveHandler_System_String_
+  commentId: M:BrowseSharp.IBrowser.RemoveHandler(System.String)
+  fullName: BrowseSharp.IBrowser.RemoveHandler(System.String)
+  nameWithType: IBrowser.RemoveHandler(String)
+- uid: BrowseSharp.IBrowser.RemoveHandler*
+  name: RemoveHandler
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_RemoveHandler_
+  commentId: Overload:BrowseSharp.IBrowser.RemoveHandler
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.RemoveHandler
+  nameWithType: IBrowser.RemoveHandler
+- uid: BrowseSharp.IBrowser.Submit(System.String)
+  name: Submit(String)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Submit_System_String_
+  commentId: M:BrowseSharp.IBrowser.Submit(System.String)
+  fullName: BrowseSharp.IBrowser.Submit(System.String)
+  nameWithType: IBrowser.Submit(String)
+- uid: BrowseSharp.IBrowser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(String, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Submit_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Submit(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Submit(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Submit(String, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Submit(String, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Submit_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Submit(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Submit(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Submit(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Submit(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Submit(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Submit(System.Uri)
+  name: Submit(Uri)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Submit_System_Uri_
+  commentId: M:BrowseSharp.IBrowser.Submit(System.Uri)
+  fullName: BrowseSharp.IBrowser.Submit(System.Uri)
+  nameWithType: IBrowser.Submit(Uri)
+- uid: BrowseSharp.IBrowser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Submit_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Submit(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Submit(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Submit(Uri, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Submit(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Submit(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Submit_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.Submit(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Submit(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.Submit(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.Submit(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.Submit(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.Submit(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.Submit*
+  name: Submit
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Submit_
+  commentId: Overload:BrowseSharp.IBrowser.Submit
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Submit
+  nameWithType: IBrowser.Submit
+- uid: BrowseSharp.IBrowser.SubmitAsync(System.String)
+  name: SubmitAsync(String)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_SubmitAsync_System_String_
+  commentId: M:BrowseSharp.IBrowser.SubmitAsync(System.String)
+  fullName: BrowseSharp.IBrowser.SubmitAsync(System.String)
+  nameWithType: IBrowser.SubmitAsync(String)
+- uid: BrowseSharp.IBrowser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(String, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_SubmitAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(String, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.SubmitAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.SubmitAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.SubmitAsync(String, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.SubmitAsync(String, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_SubmitAsync_System_String_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.SubmitAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.SubmitAsync(System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.SubmitAsync(System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.SubmitAsync(String, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.SubmitAsync(String, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.SubmitAsync(System.Uri)
+  name: SubmitAsync(Uri)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_SubmitAsync_System_Uri_
+  commentId: M:BrowseSharp.IBrowser.SubmitAsync(System.Uri)
+  fullName: BrowseSharp.IBrowser.SubmitAsync(System.Uri)
+  nameWithType: IBrowser.SubmitAsync(Uri)
+- uid: BrowseSharp.IBrowser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(Uri, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_SubmitAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(Uri, Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.SubmitAsync(Uri, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.SubmitAsync(Uri, Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name: SubmitAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_SubmitAsync_System_Uri_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BrowseSharp.IBrowser.SubmitAsync(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: SubmitAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+  fullName: BrowseSharp.IBrowser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BrowseSharp.IBrowser.SubmitAsync(System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String))
+  nameWithType: IBrowser.SubmitAsync(Uri, Dictionary<String, String>, Dictionary<String, String>)
+  nameWithType.vb: IBrowser.SubmitAsync(Uri, Dictionary(Of String, String), Dictionary(Of String, String))
+- uid: BrowseSharp.IBrowser.SubmitAsync*
+  name: SubmitAsync
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_SubmitAsync_
+  commentId: Overload:BrowseSharp.IBrowser.SubmitAsync
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.SubmitAsync
+  nameWithType: IBrowser.SubmitAsync
+- uid: BrowseSharp.IBrowser.Timeout
+  name: Timeout
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Timeout
+  commentId: P:BrowseSharp.IBrowser.Timeout
+  fullName: BrowseSharp.IBrowser.Timeout
+  nameWithType: IBrowser.Timeout
+- uid: BrowseSharp.IBrowser.Timeout*
+  name: Timeout
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_Timeout_
+  commentId: Overload:BrowseSharp.IBrowser.Timeout
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.Timeout
+  nameWithType: IBrowser.Timeout
+- uid: BrowseSharp.IBrowser.UserAgent
+  name: UserAgent
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_UserAgent
+  commentId: P:BrowseSharp.IBrowser.UserAgent
+  fullName: BrowseSharp.IBrowser.UserAgent
+  nameWithType: IBrowser.UserAgent
+- uid: BrowseSharp.IBrowser.UserAgent*
+  name: UserAgent
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_UserAgent_
+  commentId: Overload:BrowseSharp.IBrowser.UserAgent
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.UserAgent
+  nameWithType: IBrowser.UserAgent
+- uid: BrowseSharp.IBrowser.UseSynchronizationContext
+  name: UseSynchronizationContext
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_UseSynchronizationContext
+  commentId: P:BrowseSharp.IBrowser.UseSynchronizationContext
+  fullName: BrowseSharp.IBrowser.UseSynchronizationContext
+  nameWithType: IBrowser.UseSynchronizationContext
+- uid: BrowseSharp.IBrowser.UseSynchronizationContext*
+  name: UseSynchronizationContext
+  href: api/BrowseSharp.IBrowser.html#BrowseSharp_IBrowser_UseSynchronizationContext_
+  commentId: Overload:BrowseSharp.IBrowser.UseSynchronizationContext
+  isSpec: "True"
+  fullName: BrowseSharp.IBrowser.UseSynchronizationContext
+  nameWithType: IBrowser.UseSynchronizationContext
+- uid: BrowseSharp.IDocument
+  name: IDocument
+  href: api/BrowseSharp.IDocument.html
+  commentId: T:BrowseSharp.IDocument
+  fullName: BrowseSharp.IDocument
+  nameWithType: IDocument
+- uid: BrowseSharp.IDocument.HtmlDocument
+  name: HtmlDocument
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_HtmlDocument
+  commentId: P:BrowseSharp.IDocument.HtmlDocument
+  fullName: BrowseSharp.IDocument.HtmlDocument
+  nameWithType: IDocument.HtmlDocument
+- uid: BrowseSharp.IDocument.HtmlDocument*
+  name: HtmlDocument
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_HtmlDocument_
+  commentId: Overload:BrowseSharp.IDocument.HtmlDocument
+  isSpec: "True"
+  fullName: BrowseSharp.IDocument.HtmlDocument
+  nameWithType: IDocument.HtmlDocument
+- uid: BrowseSharp.IDocument.Request
+  name: Request
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Request
+  commentId: P:BrowseSharp.IDocument.Request
+  fullName: BrowseSharp.IDocument.Request
+  nameWithType: IDocument.Request
+- uid: BrowseSharp.IDocument.Request*
+  name: Request
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Request_
+  commentId: Overload:BrowseSharp.IDocument.Request
+  isSpec: "True"
+  fullName: BrowseSharp.IDocument.Request
+  nameWithType: IDocument.Request
+- uid: BrowseSharp.IDocument.Response
+  name: Response
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Response
+  commentId: P:BrowseSharp.IDocument.Response
+  fullName: BrowseSharp.IDocument.Response
+  nameWithType: IDocument.Response
+- uid: BrowseSharp.IDocument.Response*
+  name: Response
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Response_
+  commentId: Overload:BrowseSharp.IDocument.Response
+  isSpec: "True"
+  fullName: BrowseSharp.IDocument.Response
+  nameWithType: IDocument.Response
+- uid: BrowseSharp.IDocument.Scripts
+  name: Scripts
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Scripts
+  commentId: P:BrowseSharp.IDocument.Scripts
+  fullName: BrowseSharp.IDocument.Scripts
+  nameWithType: IDocument.Scripts
+- uid: BrowseSharp.IDocument.Scripts*
+  name: Scripts
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Scripts_
+  commentId: Overload:BrowseSharp.IDocument.Scripts
+  isSpec: "True"
+  fullName: BrowseSharp.IDocument.Scripts
+  nameWithType: IDocument.Scripts
+- uid: BrowseSharp.IDocument.Styles
+  name: Styles
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Styles
+  commentId: P:BrowseSharp.IDocument.Styles
+  fullName: BrowseSharp.IDocument.Styles
+  nameWithType: IDocument.Styles
+- uid: BrowseSharp.IDocument.Styles*
+  name: Styles
+  href: api/BrowseSharp.IDocument.html#BrowseSharp_IDocument_Styles_
+  commentId: Overload:BrowseSharp.IDocument.Styles
+  isSpec: "True"
+  fullName: BrowseSharp.IDocument.Styles
+  nameWithType: IDocument.Styles
+- uid: BrowseSharp.IScraper
+  name: IScraper
+  href: api/BrowseSharp.IScraper.html
+  commentId: T:BrowseSharp.IScraper
+  fullName: BrowseSharp.IScraper
+  nameWithType: IScraper
+- uid: BrowseSharp.IScraper.Add(BrowseSharp.IDocument)
+  name: Add(IDocument)
+  href: api/BrowseSharp.IScraper.html#BrowseSharp_IScraper_Add_BrowseSharp_IDocument_
+  commentId: M:BrowseSharp.IScraper.Add(BrowseSharp.IDocument)
+  fullName: BrowseSharp.IScraper.Add(BrowseSharp.IDocument)
+  nameWithType: IScraper.Add(IDocument)
+- uid: BrowseSharp.IScraper.Add*
+  name: Add
+  href: api/BrowseSharp.IScraper.html#BrowseSharp_IScraper_Add_
+  commentId: Overload:BrowseSharp.IScraper.Add
+  isSpec: "True"
+  fullName: BrowseSharp.IScraper.Add
+  nameWithType: IScraper.Add
+- uid: BrowseSharp.IScraper.AddAsync(BrowseSharp.IDocument)
+  name: AddAsync(IDocument)
+  href: api/BrowseSharp.IScraper.html#BrowseSharp_IScraper_AddAsync_BrowseSharp_IDocument_
+  commentId: M:BrowseSharp.IScraper.AddAsync(BrowseSharp.IDocument)
+  fullName: BrowseSharp.IScraper.AddAsync(BrowseSharp.IDocument)
+  nameWithType: IScraper.AddAsync(IDocument)
+- uid: BrowseSharp.IScraper.AddAsync*
+  name: AddAsync
+  href: api/BrowseSharp.IScraper.html#BrowseSharp_IScraper_AddAsync_
+  commentId: Overload:BrowseSharp.IScraper.AddAsync
+  isSpec: "True"
+  fullName: BrowseSharp.IScraper.AddAsync
+  nameWithType: IScraper.AddAsync
+- uid: BrowseSharp.ISource
+  name: ISource
+  href: api/BrowseSharp.ISource.html
+  commentId: T:BrowseSharp.ISource
+  fullName: BrowseSharp.ISource
+  nameWithType: ISource
+- uid: BrowseSharp.ISource.Content
+  name: Content
+  href: api/BrowseSharp.ISource.html#BrowseSharp_ISource_Content
+  commentId: P:BrowseSharp.ISource.Content
+  fullName: BrowseSharp.ISource.Content
+  nameWithType: ISource.Content
+- uid: BrowseSharp.ISource.Content*
+  name: Content
+  href: api/BrowseSharp.ISource.html#BrowseSharp_ISource_Content_
+  commentId: Overload:BrowseSharp.ISource.Content
+  isSpec: "True"
+  fullName: BrowseSharp.ISource.Content
+  nameWithType: ISource.Content
+- uid: BrowseSharp.ISource.SourceUri
+  name: SourceUri
+  href: api/BrowseSharp.ISource.html#BrowseSharp_ISource_SourceUri
+  commentId: P:BrowseSharp.ISource.SourceUri
+  fullName: BrowseSharp.ISource.SourceUri
+  nameWithType: ISource.SourceUri
+- uid: BrowseSharp.ISource.SourceUri*
+  name: SourceUri
+  href: api/BrowseSharp.ISource.html#BrowseSharp_ISource_SourceUri_
+  commentId: Overload:BrowseSharp.ISource.SourceUri
+  isSpec: "True"
+  fullName: BrowseSharp.ISource.SourceUri
+  nameWithType: ISource.SourceUri
+- uid: BrowseSharp.Javascript
+  name: BrowseSharp.Javascript
+  href: api/BrowseSharp.Javascript.html
+  commentId: N:BrowseSharp.Javascript
+  fullName: BrowseSharp.Javascript
+  nameWithType: BrowseSharp.Javascript
+- uid: BrowseSharp.Javascript.Javascript
+  name: Javascript
+  href: api/BrowseSharp.Javascript.Javascript.html
+  commentId: T:BrowseSharp.Javascript.Javascript
+  fullName: BrowseSharp.Javascript.Javascript
+  nameWithType: Javascript
+- uid: BrowseSharp.Javascript.Javascript.#ctor(AngleSharp.Dom.Html.IHtmlScriptElement)
+  name: Javascript(IHtmlScriptElement)
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript__ctor_AngleSharp_Dom_Html_IHtmlScriptElement_
+  commentId: M:BrowseSharp.Javascript.Javascript.#ctor(AngleSharp.Dom.Html.IHtmlScriptElement)
+  fullName: BrowseSharp.Javascript.Javascript.Javascript(AngleSharp.Dom.Html.IHtmlScriptElement)
+  nameWithType: Javascript.Javascript(IHtmlScriptElement)
+- uid: BrowseSharp.Javascript.Javascript.#ctor*
+  name: Javascript
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript__ctor_
+  commentId: Overload:BrowseSharp.Javascript.Javascript.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.Javascript.Javascript
+  nameWithType: Javascript.Javascript
+- uid: BrowseSharp.Javascript.Javascript.Content
+  name: Content
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_Content
+  commentId: P:BrowseSharp.Javascript.Javascript.Content
+  fullName: BrowseSharp.Javascript.Javascript.Content
+  nameWithType: Javascript.Content
+- uid: BrowseSharp.Javascript.Javascript.Content*
+  name: Content
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_Content_
+  commentId: Overload:BrowseSharp.Javascript.Javascript.Content
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.Javascript.Content
+  nameWithType: Javascript.Content
+- uid: BrowseSharp.Javascript.Javascript.JavascriptString
+  name: JavascriptString
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_JavascriptString
+  commentId: P:BrowseSharp.Javascript.Javascript.JavascriptString
+  fullName: BrowseSharp.Javascript.Javascript.JavascriptString
+  nameWithType: Javascript.JavascriptString
+- uid: BrowseSharp.Javascript.Javascript.JavascriptString*
+  name: JavascriptString
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_JavascriptString_
+  commentId: Overload:BrowseSharp.Javascript.Javascript.JavascriptString
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.Javascript.JavascriptString
+  nameWithType: Javascript.JavascriptString
+- uid: BrowseSharp.Javascript.Javascript.ScriptElement
+  name: ScriptElement
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_ScriptElement
+  commentId: P:BrowseSharp.Javascript.Javascript.ScriptElement
+  fullName: BrowseSharp.Javascript.Javascript.ScriptElement
+  nameWithType: Javascript.ScriptElement
+- uid: BrowseSharp.Javascript.Javascript.ScriptElement*
+  name: ScriptElement
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_ScriptElement_
+  commentId: Overload:BrowseSharp.Javascript.Javascript.ScriptElement
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.Javascript.ScriptElement
+  nameWithType: Javascript.ScriptElement
+- uid: BrowseSharp.Javascript.Javascript.SourceUri
+  name: SourceUri
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_SourceUri
+  commentId: P:BrowseSharp.Javascript.Javascript.SourceUri
+  fullName: BrowseSharp.Javascript.Javascript.SourceUri
+  nameWithType: Javascript.SourceUri
+- uid: BrowseSharp.Javascript.Javascript.SourceUri*
+  name: SourceUri
+  href: api/BrowseSharp.Javascript.Javascript.html#BrowseSharp_Javascript_Javascript_SourceUri_
+  commentId: Overload:BrowseSharp.Javascript.Javascript.SourceUri
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.Javascript.SourceUri
+  nameWithType: Javascript.SourceUri
+- uid: BrowseSharp.Javascript.JavascriptEngine
+  name: JavascriptEngine
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html
+  commentId: T:BrowseSharp.Javascript.JavascriptEngine
+  fullName: BrowseSharp.Javascript.JavascriptEngine
+  nameWithType: JavascriptEngine
+- uid: BrowseSharp.Javascript.JavascriptEngine.#ctor
+  name: JavascriptEngine()
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine__ctor
+  commentId: M:BrowseSharp.Javascript.JavascriptEngine.#ctor
+  fullName: BrowseSharp.Javascript.JavascriptEngine.JavascriptEngine()
+  nameWithType: JavascriptEngine.JavascriptEngine()
+- uid: BrowseSharp.Javascript.JavascriptEngine.#ctor*
+  name: JavascriptEngine
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine__ctor_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptEngine.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptEngine.JavascriptEngine
+  nameWithType: JavascriptEngine.JavascriptEngine
+- uid: BrowseSharp.Javascript.JavascriptEngine.Add(BrowseSharp.IDocument)
+  name: Add(IDocument)
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_Add_BrowseSharp_IDocument_
+  commentId: M:BrowseSharp.Javascript.JavascriptEngine.Add(BrowseSharp.IDocument)
+  fullName: BrowseSharp.Javascript.JavascriptEngine.Add(BrowseSharp.IDocument)
+  nameWithType: JavascriptEngine.Add(IDocument)
+- uid: BrowseSharp.Javascript.JavascriptEngine.Add*
+  name: Add
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_Add_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptEngine.Add
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptEngine.Add
+  nameWithType: JavascriptEngine.Add
+- uid: BrowseSharp.Javascript.JavascriptEngine.AddAsync(BrowseSharp.IDocument)
+  name: AddAsync(IDocument)
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_AddAsync_BrowseSharp_IDocument_
+  commentId: M:BrowseSharp.Javascript.JavascriptEngine.AddAsync(BrowseSharp.IDocument)
+  fullName: BrowseSharp.Javascript.JavascriptEngine.AddAsync(BrowseSharp.IDocument)
+  nameWithType: JavascriptEngine.AddAsync(IDocument)
+- uid: BrowseSharp.Javascript.JavascriptEngine.AddAsync*
+  name: AddAsync
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_AddAsync_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptEngine.AddAsync
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptEngine.AddAsync
+  nameWithType: JavascriptEngine.AddAsync
+- uid: BrowseSharp.Javascript.JavascriptEngine.AddScripts(BrowseSharp.IDocument)
+  name: AddScripts(IDocument)
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_AddScripts_BrowseSharp_IDocument_
+  commentId: M:BrowseSharp.Javascript.JavascriptEngine.AddScripts(BrowseSharp.IDocument)
+  fullName: BrowseSharp.Javascript.JavascriptEngine.AddScripts(BrowseSharp.IDocument)
+  nameWithType: JavascriptEngine.AddScripts(IDocument)
+- uid: BrowseSharp.Javascript.JavascriptEngine.AddScripts*
+  name: AddScripts
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_AddScripts_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptEngine.AddScripts
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptEngine.AddScripts
+  nameWithType: JavascriptEngine.AddScripts
+- uid: BrowseSharp.Javascript.JavascriptEngine.Document
+  name: Document
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_Document
+  commentId: P:BrowseSharp.Javascript.JavascriptEngine.Document
+  fullName: BrowseSharp.Javascript.JavascriptEngine.Document
+  nameWithType: JavascriptEngine.Document
+- uid: BrowseSharp.Javascript.JavascriptEngine.Document*
+  name: Document
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_Document_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptEngine.Document
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptEngine.Document
+  nameWithType: JavascriptEngine.Document
+- uid: BrowseSharp.Javascript.JavascriptEngine.Execute(System.String)
+  name: Execute(String)
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_Execute_System_String_
+  commentId: M:BrowseSharp.Javascript.JavascriptEngine.Execute(System.String)
+  fullName: BrowseSharp.Javascript.JavascriptEngine.Execute(System.String)
+  nameWithType: JavascriptEngine.Execute(String)
+- uid: BrowseSharp.Javascript.JavascriptEngine.Execute*
+  name: Execute
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_Execute_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptEngine.Execute
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptEngine.Execute
+  nameWithType: JavascriptEngine.Execute
+- uid: BrowseSharp.Javascript.JavascriptEngine.GlobalVariables
+  name: GlobalVariables
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_GlobalVariables
+  commentId: P:BrowseSharp.Javascript.JavascriptEngine.GlobalVariables
+  fullName: BrowseSharp.Javascript.JavascriptEngine.GlobalVariables
+  nameWithType: JavascriptEngine.GlobalVariables
+- uid: BrowseSharp.Javascript.JavascriptEngine.GlobalVariables*
+  name: GlobalVariables
+  href: api/BrowseSharp.Javascript.JavascriptEngine.html#BrowseSharp_Javascript_JavascriptEngine_GlobalVariables_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptEngine.GlobalVariables
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptEngine.GlobalVariables
+  nameWithType: JavascriptEngine.GlobalVariables
+- uid: BrowseSharp.Javascript.JavascriptRequestAsyncHandle
+  name: JavascriptRequestAsyncHandle
+  href: api/BrowseSharp.Javascript.JavascriptRequestAsyncHandle.html
+  commentId: T:BrowseSharp.Javascript.JavascriptRequestAsyncHandle
+  fullName: BrowseSharp.Javascript.JavascriptRequestAsyncHandle
+  nameWithType: JavascriptRequestAsyncHandle
+- uid: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.#ctor(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},BrowseSharp.Javascript.Javascript)
+  name: JavascriptRequestAsyncHandle(Task<HttpResponseMessage>, Javascript)
+  href: api/BrowseSharp.Javascript.JavascriptRequestAsyncHandle.html#BrowseSharp_Javascript_JavascriptRequestAsyncHandle__ctor_System_Threading_Tasks_Task_System_Net_Http_HttpResponseMessage__BrowseSharp_Javascript_Javascript_
+  commentId: M:BrowseSharp.Javascript.JavascriptRequestAsyncHandle.#ctor(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},BrowseSharp.Javascript.Javascript)
+  name.vb: JavascriptRequestAsyncHandle(Task(Of HttpResponseMessage), Javascript)
+  fullName: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.JavascriptRequestAsyncHandle(System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage>, BrowseSharp.Javascript.Javascript)
+  fullName.vb: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.JavascriptRequestAsyncHandle(System.Threading.Tasks.Task(Of System.Net.Http.HttpResponseMessage), BrowseSharp.Javascript.Javascript)
+  nameWithType: JavascriptRequestAsyncHandle.JavascriptRequestAsyncHandle(Task<HttpResponseMessage>, Javascript)
+  nameWithType.vb: JavascriptRequestAsyncHandle.JavascriptRequestAsyncHandle(Task(Of HttpResponseMessage), Javascript)
+- uid: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.#ctor*
+  name: JavascriptRequestAsyncHandle
+  href: api/BrowseSharp.Javascript.JavascriptRequestAsyncHandle.html#BrowseSharp_Javascript_JavascriptRequestAsyncHandle__ctor_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptRequestAsyncHandle.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.JavascriptRequestAsyncHandle
+  nameWithType: JavascriptRequestAsyncHandle.JavascriptRequestAsyncHandle
+- uid: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.ResponseAsyncTask
+  name: ResponseAsyncTask
+  href: api/BrowseSharp.Javascript.JavascriptRequestAsyncHandle.html#BrowseSharp_Javascript_JavascriptRequestAsyncHandle_ResponseAsyncTask
+  commentId: P:BrowseSharp.Javascript.JavascriptRequestAsyncHandle.ResponseAsyncTask
+  fullName: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.ResponseAsyncTask
+  nameWithType: JavascriptRequestAsyncHandle.ResponseAsyncTask
+- uid: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.ResponseAsyncTask*
+  name: ResponseAsyncTask
+  href: api/BrowseSharp.Javascript.JavascriptRequestAsyncHandle.html#BrowseSharp_Javascript_JavascriptRequestAsyncHandle_ResponseAsyncTask_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptRequestAsyncHandle.ResponseAsyncTask
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.ResponseAsyncTask
+  nameWithType: JavascriptRequestAsyncHandle.ResponseAsyncTask
+- uid: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.Script
+  name: Script
+  href: api/BrowseSharp.Javascript.JavascriptRequestAsyncHandle.html#BrowseSharp_Javascript_JavascriptRequestAsyncHandle_Script
+  commentId: P:BrowseSharp.Javascript.JavascriptRequestAsyncHandle.Script
+  fullName: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.Script
+  nameWithType: JavascriptRequestAsyncHandle.Script
+- uid: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.Script*
+  name: Script
+  href: api/BrowseSharp.Javascript.JavascriptRequestAsyncHandle.html#BrowseSharp_Javascript_JavascriptRequestAsyncHandle_Script_
+  commentId: Overload:BrowseSharp.Javascript.JavascriptRequestAsyncHandle.Script
+  isSpec: "True"
+  fullName: BrowseSharp.Javascript.JavascriptRequestAsyncHandle.Script
+  nameWithType: JavascriptRequestAsyncHandle.Script
+- uid: BrowseSharp.Style
+  name: BrowseSharp.Style
+  href: api/BrowseSharp.Style.html
+  commentId: N:BrowseSharp.Style
+  fullName: BrowseSharp.Style
+  nameWithType: BrowseSharp.Style
+- uid: BrowseSharp.Style.Style
+  name: Style
+  href: api/BrowseSharp.Style.Style.html
+  commentId: T:BrowseSharp.Style.Style
+  fullName: BrowseSharp.Style.Style
+  nameWithType: Style
+- uid: BrowseSharp.Style.Style.#ctor
+  name: Style()
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style__ctor
+  commentId: M:BrowseSharp.Style.Style.#ctor
+  fullName: BrowseSharp.Style.Style.Style()
+  nameWithType: Style.Style()
+- uid: BrowseSharp.Style.Style.#ctor(System.String)
+  name: Style(String)
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style__ctor_System_String_
+  commentId: M:BrowseSharp.Style.Style.#ctor(System.String)
+  fullName: BrowseSharp.Style.Style.Style(System.String)
+  nameWithType: Style.Style(String)
+- uid: BrowseSharp.Style.Style.#ctor(System.String,System.Uri)
+  name: Style(String, Uri)
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style__ctor_System_String_System_Uri_
+  commentId: M:BrowseSharp.Style.Style.#ctor(System.String,System.Uri)
+  fullName: BrowseSharp.Style.Style.Style(System.String, System.Uri)
+  nameWithType: Style.Style(String, Uri)
+- uid: BrowseSharp.Style.Style.#ctor*
+  name: Style
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style__ctor_
+  commentId: Overload:BrowseSharp.Style.Style.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Style.Style.Style
+  nameWithType: Style.Style
+- uid: BrowseSharp.Style.Style.Content
+  name: Content
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style_Content
+  commentId: P:BrowseSharp.Style.Style.Content
+  fullName: BrowseSharp.Style.Style.Content
+  nameWithType: Style.Content
+- uid: BrowseSharp.Style.Style.Content*
+  name: Content
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style_Content_
+  commentId: Overload:BrowseSharp.Style.Style.Content
+  isSpec: "True"
+  fullName: BrowseSharp.Style.Style.Content
+  nameWithType: Style.Content
+- uid: BrowseSharp.Style.Style.SourceUri
+  name: SourceUri
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style_SourceUri
+  commentId: P:BrowseSharp.Style.Style.SourceUri
+  fullName: BrowseSharp.Style.Style.SourceUri
+  nameWithType: Style.SourceUri
+- uid: BrowseSharp.Style.Style.SourceUri*
+  name: SourceUri
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style_SourceUri_
+  commentId: Overload:BrowseSharp.Style.Style.SourceUri
+  isSpec: "True"
+  fullName: BrowseSharp.Style.Style.SourceUri
+  nameWithType: Style.SourceUri
+- uid: BrowseSharp.Style.Style.StyleString
+  name: StyleString
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style_StyleString
+  commentId: P:BrowseSharp.Style.Style.StyleString
+  fullName: BrowseSharp.Style.Style.StyleString
+  nameWithType: Style.StyleString
+- uid: BrowseSharp.Style.Style.StyleString*
+  name: StyleString
+  href: api/BrowseSharp.Style.Style.html#BrowseSharp_Style_Style_StyleString_
+  commentId: Overload:BrowseSharp.Style.Style.StyleString
+  isSpec: "True"
+  fullName: BrowseSharp.Style.Style.StyleString
+  nameWithType: Style.StyleString
+- uid: BrowseSharp.Style.StyleEngine
+  name: StyleEngine
+  href: api/BrowseSharp.Style.StyleEngine.html
+  commentId: T:BrowseSharp.Style.StyleEngine
+  fullName: BrowseSharp.Style.StyleEngine
+  nameWithType: StyleEngine
+- uid: BrowseSharp.Style.StyleEngine.#ctor
+  name: StyleEngine()
+  href: api/BrowseSharp.Style.StyleEngine.html#BrowseSharp_Style_StyleEngine__ctor
+  commentId: M:BrowseSharp.Style.StyleEngine.#ctor
+  fullName: BrowseSharp.Style.StyleEngine.StyleEngine()
+  nameWithType: StyleEngine.StyleEngine()
+- uid: BrowseSharp.Style.StyleEngine.#ctor*
+  name: StyleEngine
+  href: api/BrowseSharp.Style.StyleEngine.html#BrowseSharp_Style_StyleEngine__ctor_
+  commentId: Overload:BrowseSharp.Style.StyleEngine.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleEngine.StyleEngine
+  nameWithType: StyleEngine.StyleEngine
+- uid: BrowseSharp.Style.StyleEngine.Add(BrowseSharp.IDocument)
+  name: Add(IDocument)
+  href: api/BrowseSharp.Style.StyleEngine.html#BrowseSharp_Style_StyleEngine_Add_BrowseSharp_IDocument_
+  commentId: M:BrowseSharp.Style.StyleEngine.Add(BrowseSharp.IDocument)
+  fullName: BrowseSharp.Style.StyleEngine.Add(BrowseSharp.IDocument)
+  nameWithType: StyleEngine.Add(IDocument)
+- uid: BrowseSharp.Style.StyleEngine.Add*
+  name: Add
+  href: api/BrowseSharp.Style.StyleEngine.html#BrowseSharp_Style_StyleEngine_Add_
+  commentId: Overload:BrowseSharp.Style.StyleEngine.Add
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleEngine.Add
+  nameWithType: StyleEngine.Add
+- uid: BrowseSharp.Style.StyleEngine.AddAsync(BrowseSharp.IDocument)
+  name: AddAsync(IDocument)
+  href: api/BrowseSharp.Style.StyleEngine.html#BrowseSharp_Style_StyleEngine_AddAsync_BrowseSharp_IDocument_
+  commentId: M:BrowseSharp.Style.StyleEngine.AddAsync(BrowseSharp.IDocument)
+  fullName: BrowseSharp.Style.StyleEngine.AddAsync(BrowseSharp.IDocument)
+  nameWithType: StyleEngine.AddAsync(IDocument)
+- uid: BrowseSharp.Style.StyleEngine.AddAsync*
+  name: AddAsync
+  href: api/BrowseSharp.Style.StyleEngine.html#BrowseSharp_Style_StyleEngine_AddAsync_
+  commentId: Overload:BrowseSharp.Style.StyleEngine.AddAsync
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleEngine.AddAsync
+  nameWithType: StyleEngine.AddAsync
+- uid: BrowseSharp.Style.StyleSheet
+  name: StyleSheet
+  href: api/BrowseSharp.Style.StyleSheet.html
+  commentId: T:BrowseSharp.Style.StyleSheet
+  fullName: BrowseSharp.Style.StyleSheet
+  nameWithType: StyleSheet
+- uid: BrowseSharp.Style.StyleSheet.#ctor(System.String)
+  name: StyleSheet(String)
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet__ctor_System_String_
+  commentId: M:BrowseSharp.Style.StyleSheet.#ctor(System.String)
+  fullName: BrowseSharp.Style.StyleSheet.StyleSheet(System.String)
+  nameWithType: StyleSheet.StyleSheet(String)
+- uid: BrowseSharp.Style.StyleSheet.#ctor(System.String,System.Uri)
+  name: StyleSheet(String, Uri)
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet__ctor_System_String_System_Uri_
+  commentId: M:BrowseSharp.Style.StyleSheet.#ctor(System.String,System.Uri)
+  fullName: BrowseSharp.Style.StyleSheet.StyleSheet(System.String, System.Uri)
+  nameWithType: StyleSheet.StyleSheet(String, Uri)
+- uid: BrowseSharp.Style.StyleSheet.#ctor(System.Uri)
+  name: StyleSheet(Uri)
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet__ctor_System_Uri_
+  commentId: M:BrowseSharp.Style.StyleSheet.#ctor(System.Uri)
+  fullName: BrowseSharp.Style.StyleSheet.StyleSheet(System.Uri)
+  nameWithType: StyleSheet.StyleSheet(Uri)
+- uid: BrowseSharp.Style.StyleSheet.#ctor*
+  name: StyleSheet
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet__ctor_
+  commentId: Overload:BrowseSharp.Style.StyleSheet.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleSheet.StyleSheet
+  nameWithType: StyleSheet.StyleSheet
+- uid: BrowseSharp.Style.StyleSheet.Content
+  name: Content
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet_Content
+  commentId: P:BrowseSharp.Style.StyleSheet.Content
+  fullName: BrowseSharp.Style.StyleSheet.Content
+  nameWithType: StyleSheet.Content
+- uid: BrowseSharp.Style.StyleSheet.Content*
+  name: Content
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet_Content_
+  commentId: Overload:BrowseSharp.Style.StyleSheet.Content
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleSheet.Content
+  nameWithType: StyleSheet.Content
+- uid: BrowseSharp.Style.StyleSheet.SourceUri
+  name: SourceUri
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet_SourceUri
+  commentId: P:BrowseSharp.Style.StyleSheet.SourceUri
+  fullName: BrowseSharp.Style.StyleSheet.SourceUri
+  nameWithType: StyleSheet.SourceUri
+- uid: BrowseSharp.Style.StyleSheet.SourceUri*
+  name: SourceUri
+  href: api/BrowseSharp.Style.StyleSheet.html#BrowseSharp_Style_StyleSheet_SourceUri_
+  commentId: Overload:BrowseSharp.Style.StyleSheet.SourceUri
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleSheet.SourceUri
+  nameWithType: StyleSheet.SourceUri
+- uid: BrowseSharp.Style.StyleSheetRequestAsyncHandle
+  name: StyleSheetRequestAsyncHandle
+  href: api/BrowseSharp.Style.StyleSheetRequestAsyncHandle.html
+  commentId: T:BrowseSharp.Style.StyleSheetRequestAsyncHandle
+  fullName: BrowseSharp.Style.StyleSheetRequestAsyncHandle
+  nameWithType: StyleSheetRequestAsyncHandle
+- uid: BrowseSharp.Style.StyleSheetRequestAsyncHandle.#ctor(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},BrowseSharp.Style.StyleSheet)
+  name: StyleSheetRequestAsyncHandle(Task<HttpResponseMessage>, StyleSheet)
+  href: api/BrowseSharp.Style.StyleSheetRequestAsyncHandle.html#BrowseSharp_Style_StyleSheetRequestAsyncHandle__ctor_System_Threading_Tasks_Task_System_Net_Http_HttpResponseMessage__BrowseSharp_Style_StyleSheet_
+  commentId: M:BrowseSharp.Style.StyleSheetRequestAsyncHandle.#ctor(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},BrowseSharp.Style.StyleSheet)
+  name.vb: StyleSheetRequestAsyncHandle(Task(Of HttpResponseMessage), StyleSheet)
+  fullName: BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheetRequestAsyncHandle(System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage>, BrowseSharp.Style.StyleSheet)
+  fullName.vb: BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheetRequestAsyncHandle(System.Threading.Tasks.Task(Of System.Net.Http.HttpResponseMessage), BrowseSharp.Style.StyleSheet)
+  nameWithType: StyleSheetRequestAsyncHandle.StyleSheetRequestAsyncHandle(Task<HttpResponseMessage>, StyleSheet)
+  nameWithType.vb: StyleSheetRequestAsyncHandle.StyleSheetRequestAsyncHandle(Task(Of HttpResponseMessage), StyleSheet)
+- uid: BrowseSharp.Style.StyleSheetRequestAsyncHandle.#ctor*
+  name: StyleSheetRequestAsyncHandle
+  href: api/BrowseSharp.Style.StyleSheetRequestAsyncHandle.html#BrowseSharp_Style_StyleSheetRequestAsyncHandle__ctor_
+  commentId: Overload:BrowseSharp.Style.StyleSheetRequestAsyncHandle.#ctor
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheetRequestAsyncHandle
+  nameWithType: StyleSheetRequestAsyncHandle.StyleSheetRequestAsyncHandle
+- uid: BrowseSharp.Style.StyleSheetRequestAsyncHandle.ResponseAsyncTask
+  name: ResponseAsyncTask
+  href: api/BrowseSharp.Style.StyleSheetRequestAsyncHandle.html#BrowseSharp_Style_StyleSheetRequestAsyncHandle_ResponseAsyncTask
+  commentId: P:BrowseSharp.Style.StyleSheetRequestAsyncHandle.ResponseAsyncTask
+  fullName: BrowseSharp.Style.StyleSheetRequestAsyncHandle.ResponseAsyncTask
+  nameWithType: StyleSheetRequestAsyncHandle.ResponseAsyncTask
+- uid: BrowseSharp.Style.StyleSheetRequestAsyncHandle.ResponseAsyncTask*
+  name: ResponseAsyncTask
+  href: api/BrowseSharp.Style.StyleSheetRequestAsyncHandle.html#BrowseSharp_Style_StyleSheetRequestAsyncHandle_ResponseAsyncTask_
+  commentId: Overload:BrowseSharp.Style.StyleSheetRequestAsyncHandle.ResponseAsyncTask
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleSheetRequestAsyncHandle.ResponseAsyncTask
+  nameWithType: StyleSheetRequestAsyncHandle.ResponseAsyncTask
+- uid: BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheet
+  name: StyleSheet
+  href: api/BrowseSharp.Style.StyleSheetRequestAsyncHandle.html#BrowseSharp_Style_StyleSheetRequestAsyncHandle_StyleSheet
+  commentId: P:BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheet
+  fullName: BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheet
+  nameWithType: StyleSheetRequestAsyncHandle.StyleSheet
+- uid: BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheet*
+  name: StyleSheet
+  href: api/BrowseSharp.Style.StyleSheetRequestAsyncHandle.html#BrowseSharp_Style_StyleSheetRequestAsyncHandle_StyleSheet_
+  commentId: Overload:BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheet
+  isSpec: "True"
+  fullName: BrowseSharp.Style.StyleSheetRequestAsyncHandle.StyleSheet
+  nameWithType: StyleSheetRequestAsyncHandle.StyleSheet
+- uid: BrowseSharp.Toolbox
+  name: BrowseSharp.Toolbox
+  href: api/BrowseSharp.Toolbox.html
+  commentId: N:BrowseSharp.Toolbox
+  fullName: BrowseSharp.Toolbox
+  nameWithType: BrowseSharp.Toolbox
+- uid: BrowseSharp.Toolbox.UriHelper
+  name: UriHelper
+  href: api/BrowseSharp.Toolbox.UriHelper.html
+  commentId: T:BrowseSharp.Toolbox.UriHelper
+  fullName: BrowseSharp.Toolbox.UriHelper
+  nameWithType: UriHelper
+- uid: BrowseSharp.Toolbox.UriHelper.GetUri(System.Uri,System.String)
+  name: GetUri(Uri, String)
+  href: api/BrowseSharp.Toolbox.UriHelper.html#BrowseSharp_Toolbox_UriHelper_GetUri_System_Uri_System_String_
+  commentId: M:BrowseSharp.Toolbox.UriHelper.GetUri(System.Uri,System.String)
+  fullName: BrowseSharp.Toolbox.UriHelper.GetUri(System.Uri, System.String)
+  nameWithType: UriHelper.GetUri(Uri, String)
+- uid: BrowseSharp.Toolbox.UriHelper.GetUri*
+  name: GetUri
+  href: api/BrowseSharp.Toolbox.UriHelper.html#BrowseSharp_Toolbox_UriHelper_GetUri_
+  commentId: Overload:BrowseSharp.Toolbox.UriHelper.GetUri
+  isSpec: "True"
+  fullName: BrowseSharp.Toolbox.UriHelper.GetUri
+  nameWithType: UriHelper.GetUri
