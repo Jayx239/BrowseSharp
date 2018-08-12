@@ -4,24 +4,23 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.3.1</AssemblyVersion>
-    <FileVersion>0.0.3.1</FileVersion>
-    <Version>0.0.3-beta</Version>
+    <AssemblyVersion>0.0.3.2</AssemblyVersion>
+    <FileVersion>0.0.3.2</FileVersion>
+    <Version>0.0.3</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://github.com/Jayx239/BrowseSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jayx239/BrowseSharp</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageTags>Headless Browser Javascript HTML Parser Web</PackageTags>
+    <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>* Added additional convenience methods
+    <PackageReleaseNotes>* Added convenience methods
  - Submit methods for post requests
-  - Added ability to set request headers
-  - Added ability to add form data, sent as get request
  - Navigate methods for get requests
-  - Added ability to set request headers</PackageReleaseNotes>
+* Added inline XML documentation for all files
+API Documentation can now be found at https://jayx239.github.io/BrowseSharp/</PackageReleaseNotes>
     <NeutralLanguage />
-    <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/B%23.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\netstandard2.0\BrowseSharp.xml</DocumentationFile>
