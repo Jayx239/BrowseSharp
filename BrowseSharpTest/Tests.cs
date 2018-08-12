@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using BrowseSharp;
 using BrowseSharp.Toolbox;
 using RestSharp;
 
+/* Several tests depend on the RequestTester nodejs project
+ You can find this project at https://github.com/Jayx239/RequestTester
+ Be sure to set the proper port number that your RequestTester is listening on
+ */
+
 namespace BrowseSharpTest
 {
     [TestFixture]
     public class Tests
     {
+        /* RequestTester Configuration */
+        public static int RequestTesterPort = 3000; // This is the port your RequestTester application is listening to
+        public static string RequestTesterRouteUri = "http://localhost:" + RequestTesterPort + "/tester/view";
+        
         [Test]
         public void TestExecute()
         {
@@ -83,7 +93,42 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteTaskAsyncToken()
         {
-            throw new NotImplementedException();
+            Browser browser = new BrowseSharp.Browser();
+            browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
+            RestRequest request = new RestRequest();
+
+            CancellationToken cancellationToken = new CancellationToken();
+            var response = await browser.ExecuteTaskAsync(request, cancellationToken);
+            
+            Assert.True(browser.Documents.Count == 1);
+            Assert.True(browser.Documents[0].Scripts.Count == 7);
+            foreach (var script in browser.Documents[0].Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(browser.Documents[0].Styles.Count == 2);
+            foreach (var style in browser.Documents[0].Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+            
+            Assert.True(response.Scripts.Count == 7);
+            foreach (var script in response.Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(response.Styles.Count == 2);
+            foreach (var style in response.Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+
         }
         
         [Test]
@@ -169,7 +214,42 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteGetTaskAsyncToken()
         {
-            throw new NotImplementedException();
+            Browser browser = new BrowseSharp.Browser();
+            browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
+            RestRequest request = new RestRequest();
+            
+            CancellationToken cancellationToken = new CancellationToken();
+            var response = await browser.ExecuteGetTaskAsync(request, cancellationToken);
+            
+            Assert.True(browser.Documents.Count == 1);
+            Assert.True(browser.Documents[0].Scripts.Count == 7);
+            foreach (var script in browser.Documents[0].Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(browser.Documents[0].Styles.Count == 2);
+            foreach (var style in browser.Documents[0].Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+            
+            Assert.True(response.Scripts.Count == 7);
+            foreach (var script in response.Scripts)
+            {
+                Assert.NotNull(script.SourceUri);
+                Assert.NotNull(script.JavascriptString);
+            }
+            
+            Assert.True(response.Styles.Count == 2);
+            foreach (var style in response.Styles)
+            {
+                Assert.True(!string.IsNullOrEmpty(style.Content));
+                Assert.NotNull(style.SourceUri);
+            }
+
         }
 
         [Test]
@@ -197,7 +277,23 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecutePostTaskAsyncToken()
         {
-            throw new NotImplementedException();
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
+            IRestRequest request = new RestRequest();
+            
+            request.AddParameter("Username","FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            CancellationToken cancellationToken = new CancellationToken();
+            var response = await browser.ExecutePostTaskAsync(request,cancellationToken);
+            Assert.True(response.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
+            
+            var response2 = browser.Documents[0];
+            Assert.True(response2.Response.Content.Contains("Username=FakeUserName"));
+            Assert.True(response2.Response.Content.Contains("Password=FakePassword123"));
+            Assert.True(response2.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
         }
 
         [Test]
@@ -238,6 +334,49 @@ namespace BrowseSharpTest
 
         }
         
+        /* Uses RequestTester node.js project */
+        [Test]
+        public void TestNavigateHeaders()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            var response = browser.Navigate(RequestTesterRouteUri, headers);
+
+            foreach (var header in headers)
+            {
+                Assert.AreEqual(header.Value, response.HtmlDocument.QuerySelector("#" + header.Key).TextContent);
+            }
+        }
+        
+        /* Uses RequestTester node.js project */
+        [Test]
+        public void TestNavigateHeadersAndData()
+        {
+            Browser browser = new Browser();
+            
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            var response = browser.Navigate(RequestTesterRouteUri, headers, formData);
+            foreach (var data in formData)
+            {
+                Assert.AreEqual(data.Value,response.HtmlDocument.QuerySelector("#" + data.Key).TextContent);
+            }
+            
+            foreach (var header in headers)
+            {
+                Assert.AreEqual(header.Value, response.HtmlDocument.QuerySelector("#" + header.Key).TextContent);
+            }
+        }
+        
         [Test]
         public async Task TestNavigateAsync()
         {
@@ -275,6 +414,49 @@ namespace BrowseSharpTest
             }
 
         }
+
+        /* Uses RequestTester node.js project */
+        [Test]
+        public async Task TestNavigateAsyncHeaders()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            var response = await browser.NavigateAsync(RequestTesterRouteUri, headers);
+
+            foreach (var header in headers)
+            {
+                Assert.AreEqual(header.Value, response.HtmlDocument.QuerySelector("#" + header.Key).TextContent);
+            }
+        }
+
+        /* Uses RequestTester node.js project */
+        [Test]
+        public async Task TestNavigateAsyncHeadersAndData()
+        {
+            Browser browser = new Browser();
+            
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            var response = await browser.NavigateAsync(RequestTesterRouteUri, headers, formData);
+            foreach (var data in formData)
+            {
+                Assert.AreEqual(data.Value,response.HtmlDocument.QuerySelector("#" + data.Key).TextContent);
+            }
+            
+            foreach (var header in headers)
+            {
+                Assert.AreEqual(header.Value, response.HtmlDocument.QuerySelector("#" + header.Key).TextContent);
+            }
+        }
         
         [Test]
         public void TestSubmit()
@@ -297,6 +479,34 @@ namespace BrowseSharpTest
             Assert.True(response2.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
 
         }
+        
+        /* Uses RequestTester node.js project */
+        [Test]
+        public void TestSubmitHeaders()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            var response = browser.Submit(RequestTesterRouteUri, formData, headers);
+            foreach (var data in formData)
+            {
+                Assert.AreEqual(data.Value,response.HtmlDocument.QuerySelector("#" + data.Key).TextContent);
+            }
+
+            foreach (var header in headers)
+            {
+                Assert.AreEqual(header.Value, response.HtmlDocument.QuerySelector("#" + header.Key).TextContent);
+            }
+            
+        }
+        
         [Test]
         public async Task TestSubmitAsync()
         {
@@ -317,6 +527,33 @@ namespace BrowseSharpTest
             Assert.True(response2.Response.Content.Contains("Password=FakePassword123"));
             Assert.True(response2.Response.Content.Contains("SecretMessage=This%20is%20a%20secret%20message"));
 
+        }
+        
+        /* Uses RequestTester node.js project */
+        [Test]
+        public async Task TestSubmitAsyncHeaders()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            var response = await browser.SubmitAsync(RequestTesterRouteUri, formData, headers);
+            foreach (var data in formData)
+            {
+                Assert.AreEqual(data.Value,response.HtmlDocument.QuerySelector("#" + data.Key).TextContent);
+            }
+
+            foreach (var header in headers)
+            {
+                Assert.AreEqual(header.Value, response.HtmlDocument.QuerySelector("#" + header.Key).TextContent);
+            }
+            
         }
         
         [Test]

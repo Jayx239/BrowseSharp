@@ -13,17 +13,34 @@ using RestSharp;
 
 namespace BrowseSharp.Javascript
 {
+    /// <summary>
+    /// Javascript scraper and executor
+    /// </summary>
     public class JavascriptEngine : IScraper
     {
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public JavascriptEngine()
         {
             GlobalVariables = InitializeGlobals();
         }
-           
+        
+        /// <summary>
+        /// String containing scripts to be executed
+        /// </summary>
         public string Document { get; set; }
+        
+        /// <summary>
+        /// Global variables that may be used in script execution 
+        /// </summary>
         public List<string> GlobalVariables { get; set; }
 
+        /// <summary>
+        /// Method for executing javascript command, uses document
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         public Object Execute(string command)
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -34,6 +51,11 @@ namespace BrowseSharp.Javascript
             return new Engine().Execute(stringBuilder.ToString()).GetCompletionValue().ToObject();
         }
 
+        /// <summary>
+        /// Adds scripts to document
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         public int Add(IDocument document)
         {
             IHtmlCollection<IHtmlScriptElement> scripts;
@@ -48,6 +70,11 @@ namespace BrowseSharp.Javascript
             return scripts.Length;
         }
         
+        /// <summary>
+        /// Adds scripts to document asynchronously
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         public async Task<int> AddAsync(IDocument document)
         {
             IHtmlCollection<IHtmlScriptElement> scripts;
@@ -62,11 +89,21 @@ namespace BrowseSharp.Javascript
             return scripts.Length;
         }
         
+        /// <summary>
+        /// Same as Add method
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         public int AddScripts(IDocument document)
         {
             return Add(document);
         }
 
+        /// <summary>
+        /// Internal method for parsing scripts
+        /// </summary>
+        /// <param name="documentString"></param>
+        /// <returns></returns>
         private IHtmlCollection<IHtmlScriptElement> ScrapeScripts(string documentString)
         {
             HtmlParser parser = new HtmlParser();
@@ -75,12 +112,22 @@ namespace BrowseSharp.Javascript
             return scripts;
         }
         
+        /// <summary>
+        /// Internal method for parsing scripts
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         private IHtmlCollection<IHtmlScriptElement> ScrapeScripts(IHtmlDocument document)
         {
             IHtmlCollection<IHtmlScriptElement> scripts = document.Scripts;
             return scripts;
         }
         
+        /// <summary>
+        /// Internal method for scraping external scripts
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         private int ScrapeScriptSrc(IDocument document)
         {
             List<Javascript> scripts = document.Scripts;
@@ -105,6 +152,11 @@ namespace BrowseSharp.Javascript
             return numExternalScripts;
         }
         
+        /// <summary>
+        /// Internal method for scraping external scripts asynchronously
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         private async Task<int> ScrapeScriptSrcAsync(IDocument document)
         {
             List<Javascript> scripts = document.Scripts;
@@ -136,6 +188,10 @@ namespace BrowseSharp.Javascript
             return numExternalScripts;
         }
 
+        /// <summary>
+        /// Method for initializing globals with default js variables
+        /// </summary>
+        /// <returns></returns>
         private List<string> InitializeGlobals()
         {
             var globals = new List<string>()
@@ -147,6 +203,10 @@ namespace BrowseSharp.Javascript
             return globals;
         }
 
+        /// <summary>
+        /// Gets global variable collection as a string
+        /// </summary>
+        /// <returns></returns>
         private string GetGlobalString()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -157,9 +217,12 @@ namespace BrowseSharp.Javascript
 
             return stringBuilder.ToString();
         }
-        
-        
 
+        /// <summary>
+        /// Converts AngleSharp Scripts to BrowseSharp Javascripts
+        /// </summary>
+        /// <param name="scriptElements"></param>
+        /// <returns></returns>
         private List<Javascript> ConvertToJavascripts(IHtmlCollection<IHtmlScriptElement> scriptElements)
         {
             List<Javascript> scripts = new List<Javascript>();
@@ -171,6 +234,11 @@ namespace BrowseSharp.Javascript
             return scripts;
         }
         
+        /// <summary>
+        /// Converts AngleSharp Script to BrowseSharp Javascript
+        /// </summary>
+        /// <param name="scriptElement"></param>
+        /// <returns></returns>
         private Javascript ConvertToJavascript(IHtmlScriptElement scriptElement)
         {
             Javascript javascript = new Javascript(scriptElement);

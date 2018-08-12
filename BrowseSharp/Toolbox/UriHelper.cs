@@ -2,9 +2,17 @@
 
 namespace BrowseSharp.Toolbox
 {
+    /// <summary>
+    /// Helper class for Uri's
+    /// </summary>
     public class UriHelper
     {
-        
+        /// <summary>
+        /// Method for constructing uris when parsing document attributes
+        /// </summary>
+        /// <param name="responseUri"></param>
+        /// <param name="scriptSource"></param>
+        /// <returns></returns>
         public static Uri GetUri(Uri responseUri, string scriptSource) { 
             
             Uri scriptUri;
@@ -20,6 +28,12 @@ namespace BrowseSharp.Toolbox
             return scriptUri;
         }
         
+        /// <summary>
+        /// Method for concatinating url components
+        /// </summary>
+        /// <param name="baseString"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
         private static string ConcatPath(string baseString, string path)
         {
             string baseTrimmed = baseString;
