@@ -555,6 +555,236 @@ namespace BrowseSharpTest
             }
             
         }
+
+        [Test]
+        public void TestClearHistory()
+        {
+            Browser browser = new Browser();
+            browser.Navigate("http://google.com");
+            Assert.True(browser.History.Count == 1);
+            browser.ClearHistory();
+            Assert.True(browser.History.Count == 0);
+        }
+
+        [Test]
+        public void TestClearForwardHistory()
+        {
+            Browser browser = new Browser();
+            browser.Navigate("http://google.com");
+            Assert.True(browser.History.Count == 1);
+            browser.Navigate("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            browser.Back();
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            browser.ClearForwardHistory();
+            Assert.True(browser.ForwardHistory.Count == 0);
+        }
+
+        [Test]
+        public void TestBack()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = browser.Navigate("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            browser.Navigate("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            browser.Back();
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() != firstResponseDocument);
+
+        }
+        
+        [Test]
+        public void TestBackCache()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = browser.Navigate("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            browser.Navigate("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            browser.Back(true);
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() == firstResponseDocument);
+
+        }
+
+        [Test]
+        public async Task TestBackAsync()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = browser.Navigate("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            browser.Navigate("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            await browser.BackAsync();
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() != firstResponseDocument);
+
+        }
+        
+        [Test]
+        public async Task TestBackAsyncCache()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = browser.Navigate("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            browser.Navigate("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            await browser.BackAsync(true);
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() == firstResponseDocument);
+
+        }
+
+        [Test]
+        public void TestForward()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = browser.Navigate("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            IDocument secondDocument = browser.Navigate("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            browser.Back();
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() != firstResponseDocument);
+
+            browser.Forward();
+            Assert.True(browser.ForwardHistory.Count == 0);
+            Assert.True(browser.History.Count == 2);
+            Assert.True(secondDocument.Response.ResponseUri == browser.Document().Response.ResponseUri);
+        }
+        
+        [Test]
+        public void TestForwardCache()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = browser.Navigate("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            IDocument secondDocument = browser.Navigate("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            browser.Back();
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() != firstResponseDocument);
+
+            browser.Forward(true);
+            Assert.True(browser.ForwardHistory.Count == 0);
+            Assert.True(browser.History.Count == 2);
+            Assert.True(secondDocument == browser.Document());
+        }
+        
+        [Test]
+        public async Task TestForwardAsync()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = await browser.NavigateAsync("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            IDocument secondDocument = await browser.NavigateAsync("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            await browser.BackAsync();
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() != firstResponseDocument);
+
+            await browser.ForwardAsync(true);
+            Assert.True(browser.ForwardHistory.Count == 0);
+            Assert.True(browser.History.Count == 2);
+            Assert.True(secondDocument == browser.Document());
+        }
+
+        [Test]
+        public async Task TestForwardAsyncCache()
+        {
+            Browser browser = new Browser();
+            IDocument firstResponseDocument = await browser.NavigateAsync("http://google.com");
+            Assert.True(firstResponseDocument == browser.Document());
+            Assert.True(browser.History.Count == 1);
+            IDocument secondDocument = await browser.NavigateAsync("https://facebook.com");
+            Assert.True(browser.History.Count == 2);
+            await browser.BackAsync();
+            Assert.True(browser.History.Count == 1);
+            Assert.True(browser.ForwardHistory.Count == 1);
+            Assert.True(browser.Document() != firstResponseDocument);
+
+            await browser.ForwardAsync();
+            Assert.True(browser.ForwardHistory.Count == 0);
+            Assert.True(browser.History.Count == 2);
+            Assert.True(secondDocument.Response.ResponseUri == browser.Document().Response.ResponseUri);
+        }
+
+        [Test]
+        public async Task TestMaxHistorySize()
+        {
+            Browser browser = new Browser();
+            browser.MaxHistorySize = 2;
+            IDocument document1 = await browser.NavigateAsync("https://github.com");
+            Assert.True(document1 == browser.Document());
+            IDocument document2 = await browser.NavigateAsync(RequestTesterRouteUri);
+            Assert.True(document2 == browser.Document());
+            IDocument document3 = await browser.NavigateAsync("https://nuget.org");
+            Assert.True(document3 == browser.Document());
+            Assert.True(browser.History.Count == 2);
+            Assert.True(browser.Documents[0] == document2);
+        }
+        
+        [Test]
+        public async Task TestMaxHistorySizeUnlimited()
+        {
+            Browser browser = new Browser();
+        
+            IDocument document1 = await browser.NavigateAsync("https://github.com");
+            Assert.True(document1 == browser.Document());
+            IDocument document2 = await browser.NavigateAsync(RequestTesterRouteUri);
+            Assert.True(document2 == browser.Document());
+            IDocument document3 = await browser.NavigateAsync("https://nuget.org");
+            Assert.True(document3 == browser.Document());
+            await browser.NavigateAsync("https://github.com");
+            await browser.NavigateAsync(RequestTesterRouteUri);
+            await browser.NavigateAsync("https://nuget.org");
+            
+            await browser.NavigateAsync("https://github.com");
+            await browser.NavigateAsync(RequestTesterRouteUri);
+            await browser.NavigateAsync("https://nuget.org");
+            
+            await browser.NavigateAsync("https://github.com");
+            await browser.NavigateAsync(RequestTesterRouteUri);
+            await browser.NavigateAsync("https://nuget.org");
+            
+            Assert.True(browser.History.Count == 12);
+        }
+        
+        [Test]
+        public void TestRefresh()
+        {
+            Browser browser = new Browser();
+            IDocument document = browser.Navigate("https://github.com");
+            IDocument documentRefreshed = browser.Refresh();
+            Assert.True(documentRefreshed == browser.Document());
+            Assert.True(documentRefreshed != document);
+        }
+
+        [Test]
+        public async Task TestRefreshAsync()
+        {
+            Browser browser = new Browser();
+            IDocument document = await browser.NavigateAsync("https://github.com");
+            IDocument documentRefreshed = await browser.RefreshAsync();
+            Assert.True(documentRefreshed == browser.Document());
+            Assert.True(documentRefreshed != document);
+        }
         
         [Test]
         public void TestUriHelper()
