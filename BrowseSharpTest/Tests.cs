@@ -785,6 +785,78 @@ namespace BrowseSharpTest
             Assert.True(documentRefreshed == browser.Document());
             Assert.True(documentRefreshed != document);
         }
+
+        [Test]
+        public void TestJavascriptScrapingEnabled()
+        {
+            Browser browser = new Browser();
+            browser.JavascriptScrapingEnabled = true;
+            IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Scripts.Count > 0);
+        }
+        
+        [Test]
+        public void TestJavascriptScrapingDisabled()
+        {
+            Browser browser = new Browser();
+            browser.JavascriptScrapingEnabled = false;
+            IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Scripts.Count == 0);
+        }
+        
+        [Test]
+        public async Task TestJavascriptScrapingEnabledAsync()
+        {
+            Browser browser = new Browser();
+            browser.JavascriptScrapingEnabled = true;
+            IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Scripts.Count > 0);
+        }
+        
+        [Test]
+        public async Task TestJavascriptScrapingDisabledAsync()
+        {
+            Browser browser = new Browser();
+            browser.JavascriptScrapingEnabled = false;
+            IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Scripts.Count == 0);
+        }
+        
+        [Test]
+        public void TestStyleScrapingEnabled()
+        {
+            Browser browser = new Browser();
+            browser.StyleScrapingEnabled = true;
+            IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Styles.Count > 0);
+        }
+        
+        [Test]
+        public void TestStyleScrapingDisabled()
+        {
+            Browser browser = new Browser();
+            browser.StyleScrapingEnabled = false;
+            IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Styles.Count == 0);
+        }
+        
+        [Test]
+        public async Task TestStyleScrapingEnabledAsync()
+        {
+            Browser browser = new Browser();
+            browser.StyleScrapingEnabled = true;
+            IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Styles.Count > 0);
+        }
+        
+        [Test]
+        public async Task TestStyleScrapingDisabledAsync()
+        {
+            Browser browser = new Browser();
+            browser.StyleScrapingEnabled = false;
+            IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
+            Assert.True(document.Styles.Count == 0);
+        }
         
         [Test]
         public void TestUriHelper()

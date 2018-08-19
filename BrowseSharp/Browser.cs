@@ -36,6 +36,8 @@ namespace BrowseSharp
             _restClient.CookieContainer = new CookieContainer();
             _forwardHistory = new List<IDocument>();
             MaxHistorySize = -1;
+            StyleScrapingEnabled = true;
+            JavascriptScrapingEnabled = true;
         }
 
         /// <summary>
@@ -60,6 +62,16 @@ namespace BrowseSharp
         /// Rest sharp http client for making web requests
         /// </summary>
         private RestClient _restClient;
+
+        /// <summary>
+        /// Enables or disables javascript scraping on each request
+        /// </summary>
+        public bool JavascriptScrapingEnabled { get; set; }
+
+        /// <summary>
+        /// Enables or disables style scraping on each request
+        /// </summary>
+        public bool StyleScrapingEnabled { get; set; }
 
         /// <summary>
         /// Cookie container containing cookies
@@ -938,8 +950,10 @@ namespace BrowseSharp
             HtmlParser parser = new HtmlParser();
             IHtmlDocument htmlDocument = parser.Parse(response.Content);
             IDocument document = new Document(request, response, htmlDocument);
-            JavascriptEngine.Add(document);
-            StyleEngine.Add(document);
+            if(JavascriptScrapingEnabled)
+                JavascriptEngine.Add(document);
+            if(StyleScrapingEnabled)
+                StyleEngine.Add(document);
             Documents.Add(document);
             return document;
         }
@@ -956,10 +970,19 @@ namespace BrowseSharp
             HtmlParser parser = new HtmlParser();
             IHtmlDocument htmlDocument = parser.Parse(response.Content);
             IDocument document = new Document(request, response, htmlDocument);
-            Task<int> result = JavascriptEngine.AddAsync(document);
-            Task<int> styleResult = StyleEngine.AddAsync(document);
-            await result;
-            await styleResult;
+            
+            Task<int> result = null;
+            Task<int> styleResult = null;
+            if(JavascriptScrapingEnabled)
+                result = JavascriptEngine.AddAsync(document);
+            if(StyleScrapingEnabled)
+                styleResult = StyleEngine.AddAsync(document);
+            
+            if(JavascriptScrapingEnabled && result != null)
+                await result;
+            if(StyleScrapingEnabled && styleResult != null)
+                await styleResult;
+            
             Documents.Add(document);
             return document;
         }
