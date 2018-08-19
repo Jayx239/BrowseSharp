@@ -19,7 +19,7 @@ namespace BrowseSharp.Style
         /// </summary>
         public StyleEngine()
         {
-            _scrapeStyleRegex = new Regex("(?<=<style.*>).*(?=</style>)");
+            _scrapeStyleRegex = new Regex("(?<=<style[^>]*>)(.[^<]*)(?=</style>)");
             _scrapeStyleSrcRegex = new Regex("((?<=<link.*(rel=\"stylesheet\".*href=\")).*(?=\".*>)|(?<=<link.*href=\").*(?=\".*rel=\"stylesheet\".*>))");
         }
         
