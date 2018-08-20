@@ -505,7 +505,7 @@ namespace BrowseSharp
         /// Gets current document from the current request
         /// </summary>
         /// <returns>Current Document</returns>
-        IDocument Document();
+        IDocument Document { get; }
         
     }
 }

@@ -47,17 +47,17 @@ namespace BrowseSharp
         {
             get { return _documents; }
         }
-        
+
         /// <summary>
         /// Javascript engine used by browser
         /// </summary>
         public JavascriptEngine JavascriptEngine { get; }
-        
+
         /// <summary>
         /// Style engine for parsing css styles 
         /// </summary>
         public StyleEngine StyleEngine { get; }
-        
+
         /// <summary>
         /// Rest sharp http client for making web requests
         /// </summary>
@@ -424,7 +424,7 @@ namespace BrowseSharp
             Uri requestUri = new Uri(uri);
             return Navigate(requestUri);
         }
-        
+
         /// <summary>
         /// Performs get request
         /// </summary>
@@ -463,8 +463,8 @@ namespace BrowseSharp
             TrimHistory(true);
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
-            AddHeaders(request,headers);
-            return ExecuteAsGet(request,"GET");
+            AddHeaders(request, headers);
+            return ExecuteAsGet(request, "GET");
         }
 
         /// <summary>
@@ -493,11 +493,11 @@ namespace BrowseSharp
             TrimHistory(true);
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
-            AddHeaders(request,headers);
+            AddHeaders(request, headers);
             AddFormData(request, formData);
-            return ExecuteAsGet(request,"GET");
+            return ExecuteAsGet(request, "GET");
         }
-        
+
         /// <summary>
         /// Performs get request asynchronously
         /// </summary>
@@ -508,7 +508,7 @@ namespace BrowseSharp
             Uri requestUri = new Uri(uri);
             return await NavigateAsync(requestUri);
         }
-        
+
         /// <summary>
         /// Performs get request asynchronously
         /// </summary>
@@ -547,7 +547,7 @@ namespace BrowseSharp
             TrimHistory(true);
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
-            AddHeaders(request,headers);
+            AddHeaders(request, headers);
             return await ExecuteTaskAsync(request);
         }
 
@@ -572,17 +572,18 @@ namespace BrowseSharp
         /// <param name="headers"></param>
         /// <param name="formData"></param>
         /// <returns></returns>
-        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers,
+            Dictionary<string, string> formData)
         {
             ClearForwardHistory();
             TrimHistory(true);
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
-            AddHeaders(request,headers);
-            AddFormData(request,formData);
+            AddHeaders(request, headers);
+            AddFormData(request, formData);
             return await ExecuteTaskAsync(request);
         }
-        
+
         /// <summary>
         /// Performs a post request
         /// </summary>
@@ -605,9 +606,9 @@ namespace BrowseSharp
             TrimHistory(true);
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
-            return ExecuteAsPost(request,"POST"); /* TODO: Check this */
+            return ExecuteAsPost(request, "POST"); /* TODO: Check this */
         }
-        
+
         /// <summary>
         /// Performs a post request
         /// </summary>
@@ -633,9 +634,9 @@ namespace BrowseSharp
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
             AddFormData(request, formData);
-            return ExecuteAsPost(request,"POST");
+            return ExecuteAsPost(request, "POST");
         }
-        
+
         /// <summary>
         /// Performs a post request
         /// </summary>
@@ -663,8 +664,8 @@ namespace BrowseSharp
             _restClient.BaseUrl = uri;
             RestRequest request = new RestRequest();
             AddFormData(request, formData);
-            AddHeaders(request,headers);
-            return ExecuteAsPost(request,"POST");
+            AddHeaders(request, headers);
+            return ExecuteAsPost(request, "POST");
         }
 
         /// <summary>
@@ -719,7 +720,7 @@ namespace BrowseSharp
             AddFormData(request, formData);
             return await ExecutePostTaskAsync(request);
         }
-        
+
         /// <summary>
         /// Performs a post request asynchronously
         /// </summary>
@@ -727,7 +728,8 @@ namespace BrowseSharp
         /// <param name="formData"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData,
+            Dictionary<string, string> headers)
         {
             Uri requestUri = new Uri(uri);
             return await SubmitAsync(requestUri, formData, headers);
@@ -740,7 +742,8 @@ namespace BrowseSharp
         /// <param name="formData"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData,
+            Dictionary<string, string> headers)
         {
             ClearForwardHistory();
             TrimHistory(true);
@@ -755,7 +758,7 @@ namespace BrowseSharp
         /// Contains all previous documents stored for each previous request
         /// </summary>
         public List<IDocument> History => Documents;
-        
+
         /// <summary>
         /// Stores the forward history when the back method is called 
         /// </summary>
@@ -763,7 +766,7 @@ namespace BrowseSharp
         {
             get { return _forwardHistory; }
         }
-        
+
         /// <summary>
         /// Clears browse history by re-initializing Documents
         /// </summary>
@@ -789,7 +792,7 @@ namespace BrowseSharp
                 _forwardHistory.Clear();
             }
         }
-        
+
         /// <summary>
         /// Method for navigating to last browser state by re-issuing the previous request
         /// </summary>
@@ -807,12 +810,12 @@ namespace BrowseSharp
             ForwardHistory.Push(History.Pop());
             if (useCache)
                 return History.Last();
-            
+
             IDocument oldDocument = History.Pop();
             return Execute(oldDocument.Request);
         }
 
-        
+
         /// <summary>
         /// Method for navigating to last browser state by re-issuing the previous request asynchronously
         /// </summary>
@@ -830,7 +833,7 @@ namespace BrowseSharp
             ForwardHistory.Push(History.Pop());
             if (useCache)
                 return History.Last();
-            
+
             IDocument oldDocument = History.Pop();
             return await ExecuteTaskAsync(oldDocument.Request);
         }
@@ -857,9 +860,9 @@ namespace BrowseSharp
             if (useCache)
             {
                 History.Push(_forwardHistory.Pop());
-                return Document();
+                return Document;
             }
-                
+
             IDocument forwardDocument = _forwardHistory.Pop();
             return Execute(forwardDocument.Request);
 
@@ -887,9 +890,9 @@ namespace BrowseSharp
             if (useCache)
             {
                 History.Push(_forwardHistory.Pop());
-                return Document();
+                return Document;
             }
-                
+
             IDocument forwardDocument = _forwardHistory.Pop();
             return await ExecuteTaskAsync(forwardDocument.Request);
 
@@ -924,10 +927,7 @@ namespace BrowseSharp
         /// Gets current document from the current request
         /// </summary>
         /// <returns>Current Document</returns>
-        public IDocument Document()
-        {
-            return Documents.Last();
-        }
+        public IDocument Document => Documents.Last();
 
         /// <summary>
         /// Documents generated for each request
