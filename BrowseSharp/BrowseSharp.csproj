@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.3.2</AssemblyVersion>
-    <FileVersion>0.0.3.2</FileVersion>
-    <Version>0.0.3</Version>
+    <AssemblyVersion>0.0.4.0</AssemblyVersion>
+    <FileVersion>0.0.4.0</FileVersion>
+    <Version>0.0.4-alpha</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://github.com/Jayx239/BrowseSharp</PackageProjectUrl>
@@ -14,11 +14,14 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>* Added convenience methods
- - Submit methods for post requests
- - Navigate methods for get requests
-* Added inline XML documentation for all files
-API Documentation can now be found at https://jayx239.github.io/BrowseSharp/</PackageReleaseNotes>
+    <PackageReleaseNotes>* Added Browse History Management Methods
+ - Clear Histroy
+ - Back
+ - Forward
+ - Set max history size
+* Updated Navigate and Submit methods to manage history
+ - Note: Standard web request methods do not manage history currently, if you want history management to work properly stick to using the navigate and submit methods
+* Added the ability to disable javascript scraping and style scraping</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
   </PropertyGroup>
