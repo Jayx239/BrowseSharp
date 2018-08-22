@@ -594,7 +594,7 @@ namespace BrowseSharpTest
             Assert.True(browser.History.Count == 1);
             Assert.True(browser.ForwardHistory.Count == 1);
             Assert.True(browser.Document != firstResponseDocument);
-
+            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
         }
         
         [Test]
@@ -626,6 +626,7 @@ namespace BrowseSharpTest
             Assert.True(browser.History.Count == 1);
             Assert.True(browser.ForwardHistory.Count == 1);
             Assert.True(browser.Document != firstResponseDocument);
+            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
 
         }
         
@@ -658,7 +659,8 @@ namespace BrowseSharpTest
             Assert.True(browser.History.Count == 1);
             Assert.True(browser.ForwardHistory.Count == 1);
             Assert.True(browser.Document != firstResponseDocument);
-
+            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
+            
             browser.Forward();
             Assert.True(browser.ForwardHistory.Count == 0);
             Assert.True(browser.History.Count == 2);
@@ -678,7 +680,8 @@ namespace BrowseSharpTest
             Assert.True(browser.History.Count == 1);
             Assert.True(browser.ForwardHistory.Count == 1);
             Assert.True(browser.Document != firstResponseDocument);
-
+            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
+            
             browser.Forward(true);
             Assert.True(browser.ForwardHistory.Count == 0);
             Assert.True(browser.History.Count == 2);
@@ -698,7 +701,8 @@ namespace BrowseSharpTest
             Assert.True(browser.History.Count == 1);
             Assert.True(browser.ForwardHistory.Count == 1);
             Assert.True(browser.Document != firstResponseDocument);
-
+            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
+            
             await browser.ForwardAsync(true);
             Assert.True(browser.ForwardHistory.Count == 0);
             Assert.True(browser.History.Count == 2);
@@ -718,7 +722,8 @@ namespace BrowseSharpTest
             Assert.True(browser.History.Count == 1);
             Assert.True(browser.ForwardHistory.Count == 1);
             Assert.True(browser.Document != firstResponseDocument);
-
+            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
+            
             await browser.ForwardAsync();
             Assert.True(browser.ForwardHistory.Count == 0);
             Assert.True(browser.History.Count == 2);
@@ -774,6 +779,12 @@ namespace BrowseSharpTest
             IDocument documentRefreshed = browser.Refresh();
             Assert.True(documentRefreshed == browser.Document);
             Assert.True(documentRefreshed != document);
+            IDocument secondDocument = browser.Navigate(RequestTesterRouteUri);
+            IDocument thirdDocument = browser.Navigate("https://nuget.org");
+            browser.Back();
+            browser.Refresh();
+            Assert.True(browser.Document != secondDocument);
+            Assert.True(browser.Document.Response.ResponseUri == secondDocument.Response.ResponseUri);
         }
 
         [Test]
@@ -784,6 +795,12 @@ namespace BrowseSharpTest
             IDocument documentRefreshed = await browser.RefreshAsync();
             Assert.True(documentRefreshed == browser.Document);
             Assert.True(documentRefreshed != document);
+            IDocument secondDocument = browser.Navigate(RequestTesterRouteUri);
+            IDocument thirdDocument = browser.Navigate("https://nuget.org");
+            browser.Back();
+            await browser.RefreshAsync();
+            Assert.True(browser.Document != secondDocument);
+            Assert.True(browser.Document.Response.ResponseUri == secondDocument.Response.ResponseUri);
         }
 
         [Test]

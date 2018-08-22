@@ -728,8 +728,7 @@ namespace BrowseSharp
         /// <param name="formData"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData,
-            Dictionary<string, string> headers)
+        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             Uri requestUri = new Uri(uri);
             return await SubmitAsync(requestUri, formData, headers);
@@ -742,8 +741,7 @@ namespace BrowseSharp
         /// <param name="formData"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData,
-            Dictionary<string, string> headers)
+        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             ClearForwardHistory();
             TrimHistory(true);
@@ -812,6 +810,7 @@ namespace BrowseSharp
                 return History.Last();
 
             IDocument oldDocument = History.Pop();
+            _restClient.BaseUrl = oldDocument.RequestUri;
             return Execute(oldDocument.Request);
         }
 
@@ -835,6 +834,7 @@ namespace BrowseSharp
                 return History.Last();
 
             IDocument oldDocument = History.Pop();
+            _restClient.BaseUrl = oldDocument.RequestUri;
             return await ExecuteTaskAsync(oldDocument.Request);
         }
 
@@ -862,8 +862,9 @@ namespace BrowseSharp
                 History.Push(_forwardHistory.Pop());
                 return Document;
             }
-
+            
             IDocument forwardDocument = _forwardHistory.Pop();
+            _restClient.BaseUrl = forwardDocument.RequestUri;
             return Execute(forwardDocument.Request);
 
         }
@@ -894,6 +895,7 @@ namespace BrowseSharp
             }
 
             IDocument forwardDocument = _forwardHistory.Pop();
+            _restClient.BaseUrl = forwardDocument.RequestUri;
             return await ExecuteTaskAsync(forwardDocument.Request);
 
         }
@@ -910,6 +912,7 @@ namespace BrowseSharp
         public IDocument Refresh()
         {
             IDocument oldDocument = History.Pop();
+            _restClient.BaseUrl = oldDocument.RequestUri;
             return Execute(oldDocument.Request);
         }
 
@@ -920,6 +923,7 @@ namespace BrowseSharp
         public async Task<IDocument> RefreshAsync()
         {
             IDocument oldDocument = History.Pop();
+            _restClient.BaseUrl = oldDocument.RequestUri;
             return await ExecuteTaskAsync(oldDocument.Request);
         }
 
@@ -947,6 +951,7 @@ namespace BrowseSharp
         /// <returns></returns>
         private IDocument PackageAndAddDocument(IRestRequest request, IRestResponse response)
         {
+            Uri requestUri = _restClient.BaseUrl;
             HtmlParser parser = new HtmlParser();
             IHtmlDocument htmlDocument = parser.Parse(response.Content);
             IDocument document = new Document(request, response, htmlDocument);
@@ -954,6 +959,7 @@ namespace BrowseSharp
                 JavascriptEngine.Add(document);
             if(StyleScrapingEnabled)
                 StyleEngine.Add(document);
+            document.RequestUri = requestUri;
             Documents.Add(document);
             return document;
         }
@@ -966,6 +972,7 @@ namespace BrowseSharp
         /// <returns></returns>
         private async Task<IDocument> PackageAndAddDocumentAsync(IRestRequest request, Task<IRestResponse> responseTask)
         {
+            Uri requestUri = _restClient.BaseUrl;
             IRestResponse response = await responseTask;
             HtmlParser parser = new HtmlParser();
             IHtmlDocument htmlDocument = parser.Parse(response.Content);
@@ -982,7 +989,7 @@ namespace BrowseSharp
                 await result;
             if(StyleScrapingEnabled && styleResult != null)
                 await styleResult;
-            
+            document.RequestUri = requestUri;
             Documents.Add(document);
             return document;
         }
@@ -1037,7 +1044,7 @@ namespace BrowseSharp
             {
                 while(History.Count > MaxHistorySize)
                     History.RemoveAt(0);
-            }   
+            }
         }
 
     }
