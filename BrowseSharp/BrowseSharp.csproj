@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.4.0</AssemblyVersion>
-    <FileVersion>0.0.4.0</FileVersion>
-    <Version>0.0.4-alpha</Version>
+    <AssemblyVersion>0.0.4.1</AssemblyVersion>
+    <FileVersion>0.0.4.1</FileVersion>
+    <Version>0.0.4-beta</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://github.com/Jayx239/BrowseSharp</PackageProjectUrl>
@@ -14,7 +14,11 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>* Added Browse History Management Methods
+    <PackageReleaseNotes>0.0.4-beta:
+ * Added request uri to Document object.
+ * Fixed bug with history management methods where request uri was not being set properly causing the previous url to be used in the request.
+0.0.4-alpha:
+* Added Browse History Management Methods
  - Clear Histroy
  - Back
  - Forward
