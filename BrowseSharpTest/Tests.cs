@@ -779,6 +779,12 @@ namespace BrowseSharpTest
             IDocument documentRefreshed = browser.Refresh();
             Assert.True(documentRefreshed == browser.Document);
             Assert.True(documentRefreshed != document);
+            IDocument secondDocument = browser.Navigate(RequestTesterRouteUri);
+            IDocument thirdDocument = browser.Navigate("https://nuget.org");
+            browser.Back();
+            browser.Refresh();
+            Assert.True(browser.Document != secondDocument);
+            Assert.True(browser.Document.Response.ResponseUri == secondDocument.Response.ResponseUri);
         }
 
         [Test]
@@ -789,6 +795,12 @@ namespace BrowseSharpTest
             IDocument documentRefreshed = await browser.RefreshAsync();
             Assert.True(documentRefreshed == browser.Document);
             Assert.True(documentRefreshed != document);
+            IDocument secondDocument = browser.Navigate(RequestTesterRouteUri);
+            IDocument thirdDocument = browser.Navigate("https://nuget.org");
+            browser.Back();
+            await browser.RefreshAsync();
+            Assert.True(browser.Document != secondDocument);
+            Assert.True(browser.Document.Response.ResponseUri == secondDocument.Response.ResponseUri);
         }
 
         [Test]
