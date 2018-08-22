@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AngleSharp.Dom.Html;
 using RestSharp;
 
@@ -33,6 +34,11 @@ namespace BrowseSharp
         /// Styles parsed from http response 
         /// </summary>
         List<Style.StyleSheet> Styles { get; set; }
+        
+        /// <summary>
+        /// Uri of request
+        /// </summary>
+        Uri RequestUri { get; set; }
 
     }
 }
