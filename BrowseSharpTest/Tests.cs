@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using BrowseSharp;
 using BrowseSharp.Toolbox;
+using NUnit;
+using NUnit.Framework;
 using RestSharp;
 
 /* Several tests depend on the RequestTester nodejs project
