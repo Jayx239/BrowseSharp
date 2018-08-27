@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
 using BrowseSharp.Toolbox;
-using NUnit;
 using NUnit.Framework;
 using RestSharp;
 
