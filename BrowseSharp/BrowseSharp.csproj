@@ -4,20 +4,18 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.4.1</AssemblyVersion>
-    <FileVersion>0.0.4.1</FileVersion>
-    <Version>0.0.4-beta</Version>
+    <AssemblyVersion>0.0.4.2</AssemblyVersion>
+    <FileVersion>0.0.4.2</FileVersion>
+    <Version>0.0.4</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
-    <PackageProjectUrl>https://github.com/Jayx239/BrowseSharp</PackageProjectUrl>
+    <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jayx239/BrowseSharp</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>0.0.4-beta:
- * Added request uri to Document object.
- * Fixed bug with history management methods where request uri was not being set properly causing the previous url to be used in the request.
-0.0.4-alpha:
+    <PackageReleaseNotes>* Added request uri to Document object.
+* Fixed bug with history management methods where request uri was not being set properly causing the previous url to be used in the request.
 * Added Browse History Management Methods
  - Clear Histroy
  - Back
@@ -25,7 +23,9 @@
  - Set max history size
 * Updated Navigate and Submit methods to manage history
  - Note: Standard web request methods do not manage history currently, if you want history management to work properly stick to using the navigate and submit methods
-* Added the ability to disable javascript scraping and style scraping</PackageReleaseNotes>
+* Added the ability to disable javascript scraping and style scraping
+
+Checkout the new project website at https://www.browsesharp.org/</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
   </PropertyGroup>
