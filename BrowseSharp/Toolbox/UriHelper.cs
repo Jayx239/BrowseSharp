@@ -22,9 +22,14 @@ namespace BrowseSharp.Toolbox
                 scriptUri = new Uri("http://" + scriptSource);
             else if (scriptSource.StartsWith("/"))
                 scriptUri = new Uri(ConcatPath(responseUri.Scheme + "://" + responseUri.Host, scriptSource));
-            else 
-                scriptUri = new Uri(ConcatPath(responseUri.AbsoluteUri, scriptSource));
-            
+            else {
+                string scriptRelativePath = responseUri.Scheme + "://" + responseUri.Host;
+                for (int i = 0; i < responseUri.Segments.Length-1; i++)
+                {
+                    scriptRelativePath += responseUri.Segments[i];
+                }
+                scriptUri = new Uri(ConcatPath(scriptRelativePath,scriptSource));
+            }
             return scriptUri;
         }
         
