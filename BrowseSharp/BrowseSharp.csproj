@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.4.2</AssemblyVersion>
-    <FileVersion>0.0.4.2</FileVersion>
-    <Version>0.0.4</Version>
+    <AssemblyVersion>0.0.5.0</AssemblyVersion>
+    <FileVersion>0.0.5.0</FileVersion>
+    <Version>0.0.5-alpha</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
@@ -14,16 +14,13 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>* Added request uri to Document object.
-* Fixed bug with history management methods where request uri was not being set properly causing the previous url to be used in the request.
-* Added Browse History Management Methods
- - Clear Histroy
- - Back
- - Forward
- - Set max history size
-* Updated Navigate and Submit methods to manage history
- - Note: Standard web request methods do not manage history currently, if you want history management to work properly stick to using the navigate and submit methods
-* Added the ability to disable javascript scraping and style scraping
+    <PackageReleaseNotes>Features:
+ * Added Form model for storing form data
+ * Added SubmitForm methods to browser for submitting the new Form model.
+ * Added logic for scraping forms from each response and store it in a Document.
+ * Added additional attributes to Document for easier access.
+Bug fixes:
+ * Fixed bug with UriHelper that was causing Uri's to be created incorrectly. Caused relative path script and css file links to  be constructed incorrectly, resulting in these files not being retrieved properly and invalid requests to being made.
 
 Checkout the new project website at https://www.browsesharp.org/</PackageReleaseNotes>
     <NeutralLanguage />
