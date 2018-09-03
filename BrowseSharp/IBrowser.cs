@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using BrowseSharp.Html;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
@@ -366,6 +367,21 @@ namespace BrowseSharp
         /// <param name="headers"></param>
         /// <returns></returns>
         IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers);
+
+        /// <summary>
+        /// Submits form
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        IDocument SubmitForm(Form form);
+
+        /// <summary>
+        /// Submits form
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="Headers"></param>
+        /// <returns></returns>
+        IDocument SubmitForm(Form form, Dictionary<string, string> Headers);
         
         /// <summary>
         /// Method that makes an asynchronous post request and creates a document
@@ -416,6 +432,21 @@ namespace BrowseSharp
         /// <returns></returns>
         Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers);
 
+        /// <summary>
+        /// Submits a form asynchronously
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        Task<IDocument> SubmitFormAsync(Form form);
+
+        /// <summary>
+        /// Submits a form asynchronously
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="headers"></param>
+        /// <returns></returns>
+        Task<IDocument> SubmitFormAsync(Form form, Dictionary<string, string> headers);
+        
         /// <summary>
         /// Contains all previous documents stored for each previous request
         /// </summary>

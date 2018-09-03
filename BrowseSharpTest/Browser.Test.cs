@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
-using BrowseSharp.Toolbox;
+using BrowseSharp.Html;
+using Microsoft.DocAsCode.Common;
 using NUnit.Framework;
 using RestSharp;
 
@@ -15,7 +16,7 @@ using RestSharp;
 namespace BrowseSharpTest
 {
     [TestFixture]
-    public class Tests
+    public class BrowserTest
     {
         /* RequestTester Configuration */
         public static int RequestTesterPort = 3000; // This is the port your RequestTester application is listening to
@@ -874,29 +875,140 @@ namespace BrowseSharpTest
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count == 0);
         }
+
+        [Test]
+        public void TestSubmitForm()
+        {
+            Browser browser = new Browser();
+            browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
+            Form postForm = browser.Document.Forms[0];
+            Form getForm = browser.Document.Forms[1];
+            postForm.SetValue("UserName", "TestUser");
+            postForm.SetValue("Password", "TestPassword");
+            
+            IDocument postResponse = browser.SubmitForm(postForm);
+            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
+            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
+
+            getForm.SetValue("Message", "This is the test message");
+            getForm.SetValue("Email", "testemail@test.com");
+            getForm.SetValue("Rating", "3");
+            IDocument getResponse = browser.SubmitForm(getForm);
+            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
+            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
+            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+        }
         
         [Test]
-        public void TestUriHelper()
+        public void TestSubmitFormHeaders()
         {
-            Uri testUri = new Uri("https://google.com/something/else/");
-            Uri result1 = UriHelper.GetUri(testUri, "/js/sass/");
-            Assert.AreEqual(result1.AbsoluteUri, "https://google.com/js/sass/");
-            Uri result2 = UriHelper.GetUri(testUri, "something/different");
-            Assert.AreEqual(result2.AbsoluteUri, "https://google.com/something/else/something/different");
-            Uri result3 = UriHelper.GetUri(testUri, "https://amazon.com/something/different");
-            Assert.AreEqual(result3.AbsoluteUri, "https://amazon.com/something/different");
-            Uri result4 = UriHelper.GetUri(testUri, "www.amazon.com/something/different");
-            Assert.AreEqual(result4.AbsoluteUri, "http://www.amazon.com/something/different");
+            Browser browser = new Browser();
+            browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
+            Form postForm = browser.Document.Forms[0];
+            Form getForm = browser.Document.Forms[1];
+            postForm.SetValue("UserName", "TestUser");
+            postForm.SetValue("Password", "TestPassword");
+            
+            Dictionary<string, string> postHeaders = new Dictionary<string, string>();
+            postHeaders.Add("x-my-header","MyHeaderValue");
+            postHeaders.Add("other-header","this is the other header");
+            
+            IDocument postResponse = browser.SubmitForm(postForm, postHeaders);
+            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
+            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
 
-            Uri testUri2 = new Uri("https://google.com/something/else");
-            result1 = UriHelper.GetUri(testUri2, "/js/sass/");
-            Assert.AreEqual(result1.AbsoluteUri, "https://google.com/js/sass/");
-            result2 = UriHelper.GetUri(testUri2, "something/different");
-            Assert.AreEqual(result2.AbsoluteUri, "https://google.com/something/else/something/different");
-            result3 = UriHelper.GetUri(testUri2, "https://amazon.com/something/different");
-            Assert.AreEqual(result3.AbsoluteUri, "https://amazon.com/something/different");
-            result4 = UriHelper.GetUri(testUri2, "www.amazon.com/something/different");
-            Assert.AreEqual(result4.AbsoluteUri, "http://www.amazon.com/something/different");
+            Assert.True(postResponseJson.headers["x-my-header"].ToString() == "MyHeaderValue");
+            Assert.True(postResponseJson.headers["other-header"].ToString() == "this is the other header");
+            
+            getForm.SetValue("Message", "This is the test message");
+            getForm.SetValue("Email", "testemail@test.com");
+            getForm.SetValue("Rating", "3");
+            
+            Dictionary<string, string> getHeaders = new Dictionary<string, string>();
+            getHeaders.Add("get-header","This is a get header");
+            getHeaders.Add("other-header","Other header value");
+            getHeaders.Add("athirdheader", "A 3rd header");
+            
+            IDocument getResponse = browser.SubmitForm(getForm, getHeaders);
+            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
+            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
+            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+            
+            Assert.True(getResponseJson.headers["get-header"].ToString() == "This is a get header");
+            Assert.True(getResponseJson.headers["other-header"].ToString() == "Other header value");
+            Assert.True(getResponseJson.headers["athirdheader"].ToString() == "A 3rd header");
+        }
+        
+        
+        [Test]
+        public async Task TestSubmitFormAsync()
+        {
+            Browser browser = new Browser();
+            browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
+            Form postForm = browser.Document.Forms[0];
+            Form getForm = browser.Document.Forms[1];
+            postForm.SetValue("UserName", "TestUser");
+            postForm.SetValue("Password", "TestPassword");
+            
+            IDocument postResponse = await browser.SubmitFormAsync(postForm);
+            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
+            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
+
+            getForm.SetValue("Message", "This is the test message");
+            getForm.SetValue("Email", "testemail@test.com");
+            getForm.SetValue("Rating", "3");
+            IDocument getResponse = await browser.SubmitFormAsync(getForm);
+            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
+            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
+            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+        }
+        
+        [Test]
+        public async Task TestSubmitFormAsyncHeaders()
+        {
+            Browser browser = new Browser();
+            browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
+            Form postForm = browser.Document.Forms[0];
+            Form getForm = browser.Document.Forms[1];
+            postForm.SetValue("UserName", "TestUser");
+            postForm.SetValue("Password", "TestPassword");
+            
+            Dictionary<string, string> postHeaders = new Dictionary<string, string>();
+            postHeaders.Add("x-my-header","MyHeaderValue");
+            postHeaders.Add("other-header","this is the other header");
+            
+            IDocument postResponse = await browser.SubmitFormAsync(postForm, postHeaders);
+            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
+            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
+
+            Assert.True(postResponseJson.headers["x-my-header"].ToString() == "MyHeaderValue");
+            Assert.True(postResponseJson.headers["other-header"].ToString() == "this is the other header");
+            
+            getForm.SetValue("Message", "This is the test message");
+            getForm.SetValue("Email", "testemail@test.com");
+            getForm.SetValue("Rating", "3");
+            
+            Dictionary<string, string> getHeaders = new Dictionary<string, string>();
+            getHeaders.Add("get-header","This is a get header");
+            getHeaders.Add("other-header","Other header value");
+            getHeaders.Add("athirdheader", "A 3rd header");
+            
+            IDocument getResponse = await browser.SubmitFormAsync(getForm, getHeaders);
+            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
+            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
+            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
+            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+            
+            Assert.True(getResponseJson.headers["get-header"].ToString() == "This is a get header");
+            Assert.True(getResponseJson.headers["other-header"].ToString() == "Other header value");
+            Assert.True(getResponseJson.headers["athirdheader"].ToString() == "A 3rd header");
         }
     }
 }

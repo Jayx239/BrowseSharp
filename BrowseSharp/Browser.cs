@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
+using BrowseSharp.Html;
 using BrowseSharp.Javascript;
 using BrowseSharp.Style;
 using Jint.Parser;
@@ -668,6 +669,8 @@ namespace BrowseSharp
             return ExecuteAsPost(request, "POST");
         }
 
+        
+
         /// <summary>
         /// Performs a post request asynchronously
         /// </summary>
@@ -942,6 +945,61 @@ namespace BrowseSharp
         /// Stores the forward history when the back method is called 
         /// </summary>
         private List<IDocument> _forwardHistory;
+        
+        
+        /// <summary>
+        /// Submits form
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public IDocument SubmitForm(Form form)
+        {
+            return SubmitForm(form, null);
+        }
+
+        /// <summary>
+        /// Submits form
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="headers"></param>
+        /// <returns></returns>
+        public IDocument SubmitForm(Form form, Dictionary<string, string> headers)
+        {
+            if (form.Method.ToLower() ==  "get")
+                return Navigate(form.Action, headers, form.FormValues);
+            else if (form.Method.ToLower() ==  "post")
+                return Submit(form.Action, form.FormValues, headers);
+            
+            /* Default to post */
+            return Submit(form.Action, form.FormValues, headers);
+        }
+        
+        /// <summary>
+        /// Submits a form asynchronously
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public async Task<IDocument> SubmitFormAsync(Form form)
+        {
+            return await SubmitFormAsync(form, null);
+        }
+
+        /// <summary>
+        /// Submits a form asynchronously
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="headers"></param>
+        /// <returns></returns>
+        public async Task<IDocument> SubmitFormAsync(Form form, Dictionary<string, string> headers)
+        {
+            if (form.Method.ToLower() ==  "get")
+                return await NavigateAsync(form.Action, headers, form.FormValues);
+            else if (form.Method.ToLower() ==  "post")
+                return await SubmitAsync(form.Action, form.FormValues, headers);
+            
+            /* Default to post */
+            return await SubmitAsync(form.Action, form.FormValues, headers);
+        }
         
         /// <summary>
         /// Creates a document from a request and response
