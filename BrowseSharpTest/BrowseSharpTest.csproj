@@ -440,8 +440,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
+    <Compile Include="Form.Test.cs" />
+    <Compile Include="Browser.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UriHelper.Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrowseSharp\BrowseSharp.csproj">
