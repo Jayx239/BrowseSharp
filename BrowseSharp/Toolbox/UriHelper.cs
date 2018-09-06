@@ -8,6 +8,20 @@ namespace BrowseSharp.Toolbox
     public class UriHelper
     {
         /// <summary>
+        /// Default protocol that will be applied to uri if passed in uri string does not contain a protcol
+        /// </summary>
+        public static string DefaultUriProtocol
+        {
+            get { return _defaultUriProtocol;}
+            set { _defaultUriProtocol = value; }
+        }
+
+        /// <summary>
+        /// Default protocol that will be applied to uri if passed in uri string does not contain a protcol
+        /// </summary>
+        private static string _defaultUriProtocol = "http";
+        
+        /// <summary>
         /// Method for constructing uris when parsing document attributes
         /// </summary>
         /// <param name="responseUri"></param>
@@ -47,6 +61,30 @@ namespace BrowseSharp.Toolbox
             else if (!baseTrimmed.EndsWith("/") && !path.StartsWith("/"))
                 baseTrimmed += "/";
             return baseTrimmed + path;
+        }
+
+        /// <summary>
+        /// Creates a uri pre-pending the default protocol if the uriString does not contain one
+        /// </summary>
+        /// <param name="uriString"></param>
+        /// <returns>Uri</returns>
+        public static Uri Uri(string uriString)
+        {
+            return Uri(uriString, DefaultUriProtocol);
+        }
+
+        /// <summary>
+        /// Creates a uri pre-pending the default protocol if the uriString does not contain one
+        /// </summary>
+        /// <param name="uriString"></param>
+        /// <param name="defaultUriProtocol">Default protocol to be used if uriString does not contain a protocol</param>
+        /// <returns>Uri</returns>
+        public static Uri Uri(string uriString, string defaultUriProtocol)
+        {
+            if (uriString.Contains("http"))
+                return new Uri(uriString);
+            else
+                return new Uri(defaultUriProtocol + "://" + uriString);
         }
     }
 }
