@@ -1010,5 +1010,35 @@ namespace BrowseSharpTest
             Assert.True(getResponseJson.headers["other-header"].ToString() == "Other header value");
             Assert.True(getResponseJson.headers["athirdheader"].ToString() == "A 3rd header");
         }
+
+        /// <summary>
+        /// Tests that the submit and navigate methods work with a uri that does not have a protocol attached
+        /// </summary>
+        [Test]
+        public void TestNoProtoclNavigateSubmit()
+        {
+            Browser browser = new Browser();
+            browser.Navigate("google.com");
+            browser.Navigate("google.com", null);
+            browser.Navigate("google.com", null, null);
+            browser.Submit("google.com");
+            browser.Submit("google.com", null);
+            browser.Submit("google.com", null,null);
+        }
+        
+        /// <summary>
+        /// Tests that the submit and navigate methods work with a uri that does not have a protocol attached
+        /// </summary>
+        [Test]
+        public async Task TestNoProtoclNavigateSubmitAsync()
+        {
+            Browser browser = new Browser();
+            await browser.NavigateAsync("google.com");
+            await browser.NavigateAsync("google.com", null);
+            await browser.NavigateAsync("google.com", null, null);
+            await browser.SubmitAsync("google.com");
+            await browser.SubmitAsync("google.com", null);
+            await browser.SubmitAsync("google.com", null,null);
+        }
     }
 }
