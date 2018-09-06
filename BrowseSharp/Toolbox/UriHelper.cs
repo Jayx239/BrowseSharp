@@ -12,8 +12,12 @@ namespace BrowseSharp.Toolbox
         /// </summary>
         public static string DefaultUriProtocol
         {
-            get { return _defaultUriProtocol;}
-            set { _defaultUriProtocol = value; }
+            get => _defaultUriProtocol;
+            set
+            {
+                if(value == "http" || value == "https")
+                    _defaultUriProtocol = value;
+            }
         }
 
         /// <summary>
