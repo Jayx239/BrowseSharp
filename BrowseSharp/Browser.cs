@@ -13,6 +13,7 @@ using AngleSharp.Parser.Html;
 using BrowseSharp.Html;
 using BrowseSharp.Javascript;
 using BrowseSharp.Style;
+using BrowseSharp.Toolbox;
 using Jint.Parser;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -39,6 +40,7 @@ namespace BrowseSharp
             MaxHistorySize = -1;
             StyleScrapingEnabled = true;
             JavascriptScrapingEnabled = true;
+            DefaultUriProtocol = "http";
         }
 
         /// <summary>
@@ -190,6 +192,25 @@ namespace BrowseSharp
             set { _restClient.BaseHost = value; }
         }
 
+        /// <summary>
+        /// The default protocol to be pre-pended to a uri if the uri string does not contain a protocol
+        /// http or https
+        /// </summary>
+        public string DefaultUriProtocol
+        {
+            get => _defaultUriProtocol;
+            set
+            {
+                if(value == "http" || value == "https")
+                    _defaultUriProtocol = value;
+            }
+        }
+        
+        /// <summary>
+        /// The default protocol to be pre-pended to a uri if the uri string does not contain a protocol
+        /// </summary>
+        private string _defaultUriProtocol;
+        
         /// <summary>
         /// Deserialize method for client
         /// </summary>
@@ -422,7 +443,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Navigate(string uri)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Navigate(requestUri);
         }
 
@@ -448,7 +469,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Navigate(string uri, Dictionary<string, string> headers)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Navigate(requestUri, headers);
         }
 
@@ -477,7 +498,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Navigate(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Navigate(requestUri, headers, formData);
         }
 
@@ -506,7 +527,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> NavigateAsync(string uri)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await NavigateAsync(requestUri);
         }
 
@@ -532,7 +553,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await NavigateAsync(requestUri, headers);
         }
 
@@ -562,7 +583,7 @@ namespace BrowseSharp
         public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers,
             Dictionary<string, string> formData)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await NavigateAsync(requestUri, headers, formData);
         }
 
@@ -592,7 +613,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Submit(string uri)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Submit(requestUri);
         }
 
@@ -618,7 +639,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Submit(string uri, Dictionary<string, string> formData)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Submit(requestUri, formData);
         }
 
@@ -647,7 +668,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Submit(requestUri, formData, headers);
         }
 
@@ -678,7 +699,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> SubmitAsync(string uri)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await SubmitAsync(requestUri);
         }
 
@@ -704,7 +725,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await SubmitAsync(requestUri, formData);
         }
 
@@ -733,7 +754,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            Uri requestUri = new Uri(uri);
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await SubmitAsync(requestUri, formData, headers);
         }
 

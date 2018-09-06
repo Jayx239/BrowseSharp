@@ -58,5 +58,27 @@ namespace BrowseSharpTest
             Uri ExpectedResult2 = new Uri("https://www.browsesharp.org/js/jquery-3.3.1.min.js");
             Assert.AreEqual(testUriResult2, ExpectedResult2);
         }
+
+        [Test]
+        public void TestUri()
+        {
+            Uri googleUri = UriHelper.Uri("www.google.com");
+            Assert.IsTrue(googleUri != null);
+            Assert.AreEqual(googleUri, new Uri("http://www.google.com"));
+            
+            Uri facebookUri = UriHelper.Uri("www.facebook.com", "https");
+            Assert.IsTrue(facebookUri != null);
+            Assert.AreEqual(facebookUri, new Uri("https://www.facebook.com"));
+            
+            Uri ebayUri = UriHelper.Uri("https://www.ebay.com");
+            Assert.IsTrue(ebayUri != null);
+            Assert.AreEqual(ebayUri, new Uri("https://www.ebay.com"));
+            
+            UriHelper.DefaultUriProtocol = "https";
+            
+            Uri browsesharpUri = UriHelper.Uri("www.browsesharp.com");
+            Assert.IsTrue(browsesharpUri != null);
+            Assert.AreEqual(browsesharpUri, new Uri("https://www.browsesharp.com"));
+        }
     }
 }
