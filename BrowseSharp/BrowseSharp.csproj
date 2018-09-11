@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.5.1</AssemblyVersion>
-    <FileVersion>0.0.5.1</FileVersion>
-    <Version>0.0.5-beta</Version>
+    <AssemblyVersion>0.0.5.2</AssemblyVersion>
+    <FileVersion>0.0.5.2</FileVersion>
+    <Version>0.0.5</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
@@ -14,12 +14,9 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>0.0.5-beta
-Updated browser submit and navigate methods to accept uri strings that do not contain a protocol. IE: you can pass www.google.com into the submit and navigate methods and it will automatically append the default protocol. The default protocol is set to http but can be set manually.
-Updated UriHelper to have the Uri method which handles pre-pending the protocol to a uri if it is not present.
-
-0.0.5-alpha
-Features:
+    <PackageReleaseNotes>Features:
+ * Updated browser submit and navigate methods to accept uri strings that do not contain a protocol. IE: you can pass www.google.com into the submit and navigate methods and it will automatically append the default protocol. The default protocol is set to http but can be set manually.
+ * Updated UriHelper to have the Uri method which handles pre-pending the protocol to a uri if it is not present.
  * Added Form model for storing form data
  * Added SubmitForm methods to browser for submitting the new Form model.
  * Added logic for scraping forms from each response and store it in a Document.
