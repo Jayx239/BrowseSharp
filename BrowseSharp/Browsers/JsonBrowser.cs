@@ -19,17 +19,17 @@ using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
 
-namespace BrowseSharp
+namespace BrowseSharp.Browsers
 {
     /// <summary>
     /// Headless browser implimentation that creates documents for each web request.
     /// </summary>
-    public class Browser : IBrowser
+    public class JsonBrowser : IBrowser
     {
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public Browser()
+        public JsonBrowser()
         {
             _documents = new List<IDocument>();
             JavascriptEngine = new JavascriptEngine();
@@ -64,7 +64,7 @@ namespace BrowseSharp
         /// <summary>
         /// Rest sharp http client for making web requests
         /// </summary>
-        protected RestClient _restClient;
+        private RestClient _restClient;
 
         /// <summary>
         /// Enables or disables javascript scraping on each request
@@ -1028,7 +1028,7 @@ namespace BrowseSharp
         /// <param name="request"></param>
         /// <param name="response"></param>
         /// <returns></returns>
-        protected IDocument PackageAndAddDocument(IRestRequest request, IRestResponse response)
+        private IDocument PackageAndAddDocument(IRestRequest request, IRestResponse response)
         {
             Uri requestUri = _restClient.BaseUrl;
             HtmlParser parser = new HtmlParser();
@@ -1049,7 +1049,7 @@ namespace BrowseSharp
         /// <param name="request"></param>
         /// <param name="responseTask"></param>
         /// <returns></returns>
-        protected async Task<IDocument> PackageAndAddDocumentAsync(IRestRequest request, Task<IRestResponse> responseTask)
+        private async Task<IDocument> PackageAndAddDocumentAsync(IRestRequest request, Task<IRestResponse> responseTask)
         {
             Uri requestUri = _restClient.BaseUrl;
             IRestResponse response = await responseTask;
@@ -1078,7 +1078,7 @@ namespace BrowseSharp
         /// </summary>
         /// <param name="request"></param>
         /// <param name="formData"></param>
-        protected void AddFormData(IRestRequest request, Dictionary<string,string> formData)
+        private void AddFormData(IRestRequest request, Dictionary<string,string> formData)
         {
             if (formData == null)
                 return;
@@ -1088,13 +1088,13 @@ namespace BrowseSharp
                 request.AddParameter(formInput.Key, formInput.Value);
             }
         }
-
+        
         /// <summary>
         /// Adds headers to the request input
         /// </summary>
         /// <param name="request"></param>
         /// <param name="headers"></param>
-        protected void AddHeaders(IRestRequest request, Dictionary<string,string> headers)
+        private void AddHeaders(IRestRequest request, Dictionary<string,string> headers)
         {
             if (headers == null)
                 return;
@@ -1109,7 +1109,7 @@ namespace BrowseSharp
         /// Trims history to the max history size
         /// </summary>
         /// <param name="beforeNavigate">Indicates whether method is called before or after navigation</param>
-        protected void TrimHistory(bool beforeNavigate)
+        private void TrimHistory(bool beforeNavigate)
         {
             if (MaxHistorySize < 0)
                 return;
