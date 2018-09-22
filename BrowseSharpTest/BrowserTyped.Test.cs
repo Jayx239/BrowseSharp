@@ -1062,6 +1062,8 @@ namespace BrowseSharpTest
             IDocument<DogResponse> dogDocument = browser.Execute<DogResponse>(dogRequest);
             Assert.IsTrue(dogDocument.Data.Status == "success");
             Assert.IsTrue(dogDocument.Data.Message != null);
+            IDocument<RandomObject> invalidDataResponseDocument = browser.Execute<RandomObject>(dogRequest);
+            IDocument<RandomObject> random = new Document<RandomObject>(document);
         }
         #endregion
     }

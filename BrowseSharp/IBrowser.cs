@@ -11,7 +11,7 @@ namespace BrowseSharp
     /// <summary>
     /// Browser interface for BrowseSharp
     /// </summary>
-    public interface IBrowser : IBaseBrowser, IHistory
+    public interface IBrowser : IBaseBrowser, IBrowserHistorySync, IBrowserHistoryAsync
     {
         /// <summary>
         /// Execute method that creates a document from an http request

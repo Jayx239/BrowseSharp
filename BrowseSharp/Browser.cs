@@ -10,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
+using BrowseSharp.Browsers;
+using BrowseSharp.History;
 using BrowseSharp.Html;
 using BrowseSharp.Javascript;
 using BrowseSharp.Style;
@@ -24,23 +26,22 @@ namespace BrowseSharp
     /// <summary>
     /// Headless browser implimentation that creates documents for each web request.
     /// </summary>
-    public class Browser : IBrowser
+    public class Browser : IBrowser, IBrowserHistorySync, IBrowserHistoryAsync
     {
         /// <summary>
         /// Default Constructor
         /// </summary>
         public Browser()
         {
-            _documents = new List<IDocument>();
             JavascriptEngine = new JavascriptEngine();
             StyleEngine = new StyleEngine();
             _restClient = new RestClient();
             _restClient.CookieContainer = new CookieContainer();
-            _forwardHistory = new List<IDocument>();
-            MaxHistorySize = -1;
+            _history = new HistoryManager();
             StyleScrapingEnabled = true;
             JavascriptScrapingEnabled = true;
             DefaultUriProtocol = "http";
+            
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace BrowseSharp
         /// </summary>
         public List<IDocument> Documents
         {
-            get { return _documents; }
+            get { return _history.History; }
         }
 
         /// <summary>
@@ -65,6 +66,8 @@ namespace BrowseSharp
         /// Rest sharp http client for making web requests
         /// </summary>
         protected RestClient _restClient;
+
+        protected HistoryManager _history;
 
         /// <summary>
         /// Enables or disables javascript scraping on each request
@@ -779,14 +782,14 @@ namespace BrowseSharp
         /// <summary>
         /// Contains all previous documents stored for each previous request
         /// </summary>
-        public List<IDocument> History => Documents;
+        public List<IDocument> History => _history.History;
 
         /// <summary>
         /// Stores the forward history when the back method is called 
         /// </summary>
         public List<IDocument> ForwardHistory
         {
-            get { return _forwardHistory; }
+            get { return _history.ForwardHistory; }
         }
 
         /// <summary>
@@ -794,8 +797,7 @@ namespace BrowseSharp
         /// </summary>
         public void ClearHistory()
         {
-            _documents = new List<IDocument>();
-            ClearForwardHistory();
+            _history.ClearHistory();
         }
 
         /// <summary>
@@ -803,16 +805,7 @@ namespace BrowseSharp
         /// </summary>
         public void ClearForwardHistory()
         {
-            if (_forwardHistory == null)
-            {
-                _forwardHistory = new List<IDocument>();
-                return;
-            }
-
-            if (_forwardHistory.Count > 0)
-            {
-                _forwardHistory.Clear();
-            }
+            _history.ClearForwardHistory();
         }
 
         /// <summary>
@@ -829,11 +822,10 @@ namespace BrowseSharp
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
         public IDocument Back(bool useCache)
         {
-            ForwardHistory.Push(History.Pop());
+            IDocument oldDocument = _history.Back(useCache);
             if (useCache)
-                return History.Last();
+                return oldDocument;
 
-            IDocument oldDocument = History.Pop();
             _restClient.BaseUrl = oldDocument.RequestUri;
             return Execute(oldDocument.Request);
         }
@@ -853,11 +845,10 @@ namespace BrowseSharp
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
         public async Task<IDocument> BackAsync(bool useCache)
         {
-            ForwardHistory.Push(History.Pop());
+            IDocument oldDocument = _history.Back(useCache);
             if (useCache)
-                return History.Last();
+                return oldDocument;
 
-            IDocument oldDocument = History.Pop();
             _restClient.BaseUrl = oldDocument.RequestUri;
             return await ExecuteTaskAsync(oldDocument.Request);
         }
@@ -878,16 +869,10 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Forward(bool useCache)
         {
-            if (_forwardHistory.Count < 1)
-                return History.LastOrDefault();
-
+            IDocument forwardDocument = _history.Forward(useCache);
             if (useCache)
-            {
-                History.Push(_forwardHistory.Pop());
-                return Document;
-            }
-            
-            IDocument forwardDocument = _forwardHistory.Pop();
+                return forwardDocument;
+
             _restClient.BaseUrl = forwardDocument.RequestUri;
             return Execute(forwardDocument.Request);
 
@@ -909,16 +894,11 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> ForwardAsync(bool useCache)
         {
-            if (_forwardHistory.Count < 1)
-                return History.LastOrDefault();
 
+            IDocument forwardDocument = _history.Forward(useCache);
             if (useCache)
-            {
-                History.Push(_forwardHistory.Pop());
-                return Document;
-            }
+                return forwardDocument;
 
-            IDocument forwardDocument = _forwardHistory.Pop();
             _restClient.BaseUrl = forwardDocument.RequestUri;
             return await ExecuteTaskAsync(forwardDocument.Request);
 
@@ -927,7 +907,7 @@ namespace BrowseSharp
         /// <summary>
         /// Max amount of history/Documents to be stored by the browser (-1 for no limit)
         /// </summary>
-        public int MaxHistorySize { get; set; }
+        public int MaxHistorySize { get { return _history.MaxHistorySize; } set { _history.MaxHistorySize = value; } }
 
         /// <summary>
         /// Refresh page, re-submits last request
@@ -935,7 +915,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Refresh()
         {
-            IDocument oldDocument = History.Pop();
+            IDocument oldDocument = _history.Refresh();
             _restClient.BaseUrl = oldDocument.RequestUri;
             return Execute(oldDocument.Request);
         }
@@ -946,7 +926,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> RefreshAsync()
         {
-            IDocument oldDocument = History.Pop();
+            IDocument oldDocument = _history.Refresh();
             _restClient.BaseUrl = oldDocument.RequestUri;
             return await ExecuteTaskAsync(oldDocument.Request);
         }
@@ -955,7 +935,7 @@ namespace BrowseSharp
         /// Gets current document from the current request
         /// </summary>
         /// <returns>Current Document</returns>
-        public IDocument Document => Documents.Last();
+        public IDocument Document => _history.Document;
 
         /// <summary>
         /// Documents generated for each request

@@ -3,23 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrowseSharp.Browsers
+namespace BrowseSharp.History
 {
     /// <summary>
-    /// Browse history management methods
+    /// Browse history management methods with type support
     /// </summary>
-    public interface IHistory
+    public interface IHistoryTyped
     {
-        /// <summary>
-        /// Contains all previous documents stored for each previous request
-        /// </summary>
-        List<IDocument> History { get; }
-
-        /// <summary>
-        /// Stores the forward history when the back method is called 
-        /// </summary>
-        List<IDocument> ForwardHistory { get; }
-
         /// <summary>
         /// Clears browse history by re-initializing Documents
         /// </summary>
@@ -33,50 +23,50 @@ namespace BrowseSharp.Browsers
         /// <summary>
         /// Method for navigating to last browser state by re-issuing the previous request
         /// </summary>
-        IDocument Back();
+        IDocument<T> Back<T>();
 
         /// <summary>
         /// Method for navigating to last browser state
         /// </summary>
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
-        IDocument Back(bool useCache);
+        IDocument<T> Back<T>(bool useCache);
 
         /// <summary>
         /// Method for navigating to last browser state by re-issuing the previous request asynchronously
         /// </summary>
-        Task<IDocument> BackAsync();
+        Task<IDocument<T>> BackAsync<T>();
 
         /// <summary>
         /// Method for navigating to last browser state asynchronously
         /// </summary>
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
-        Task<IDocument> BackAsync(bool useCache);
+        Task<IDocument<T>> BackAsync<T>(bool useCache);
 
         /// <summary>
         /// Navigate to next document in forward history
         /// </summary>
         /// <returns></returns>
-        IDocument Forward();
+        IDocument<T> Forward<T>();
 
         /// <summary>
         /// Navigate to next document in forward history
         /// </summary>
         /// <param name="useCache"></param>
         /// <returns></returns>
-        IDocument Forward(bool useCache);
+        IDocument<T> Forward<T>(bool useCache);
 
         /// <summary>
         /// Navigate to next document in forward history asynchronously
         /// </summary>
         /// <returns></returns>
-        Task<IDocument> ForwardAsync();
+        Task<IDocument<T>> ForwardAsync<T>();
 
         /// <summary>
         /// Navigate to next document in forward history asynchronously
         /// </summary>
         /// <param name="useCache"></param>
         /// <returns></returns>
-        Task<IDocument> ForwardAsync(bool useCache);
+        Task<IDocument<T>> ForwardAsync<T>(bool useCache);
 
         /// <summary>
         /// Max amount of history/Documents to be stored by the browser (-1 for no limit)
@@ -87,14 +77,13 @@ namespace BrowseSharp.Browsers
         /// Refresh page, re-submits last request
         /// </summary>
         /// <returns></returns>
-        IDocument Refresh();
+        IDocument<T> Refresh<T>();
 
         /// <summary>
         /// Refresh page, re-submits last request asynchronously
         /// </summary>
         /// <returns></returns>
-        Task<IDocument> RefreshAsync();
+        Task<IDocument<T>> RefreshAsync<T>();
 
     }
-
 }

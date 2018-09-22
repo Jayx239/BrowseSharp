@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
 using BrowseSharp.Html;
+using BrowseSharp.Toolbox;
 using RestSharp;
 
 namespace BrowseSharp.Browsers
@@ -39,17 +40,20 @@ namespace BrowseSharp.Browsers
             IRestResponse<T> response = Deserialize<T>(_restClient.Execute(request));
             IDocument<T> document = PackageAndAddDocument<T>(request, response);
             return document;
-            //throw new NotImplementedException();
         }
 
         public new IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod)
         {
-            throw new NotImplementedException();
+            IRestResponse<T> response = Deserialize<T>(_restClient.ExecuteAsGet(request, httpMethod));
+            IDocument<T> document = PackageAndAddDocument<T>(request, response);
+            return document;
         }
 
         public new IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod)
         {
-            throw new NotImplementedException();
+            IRestResponse<T> response = Deserialize<T>(_restClient.ExecuteAsPost(request, httpMethod));
+            IDocument<T> document = PackageAndAddDocument<T>(request, response);
+            return document;
         }
 
         public new Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request)
@@ -109,32 +113,50 @@ namespace BrowseSharp.Browsers
 
         public new IDocument<T> Navigate<T>(string uri)
         {
-            throw new NotImplementedException();
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
+            return Navigate<T>(requestUri);
         }
 
         public new IDocument<T> Navigate<T>(Uri uri)
         {
-            throw new NotImplementedException();
+            ClearForwardHistory();
+            TrimHistory(true);
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            return Execute<T>(request);
         }
 
         public new IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers)
         {
-            throw new NotImplementedException();
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
+            return Navigate<T>(requestUri, headers);
         }
 
         public new IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers)
         {
-            throw new NotImplementedException();
+            ClearForwardHistory();
+            TrimHistory(true);
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddHeaders(request, headers);
+            return ExecuteAsGet<T>(request, "GET");
         }
 
         public new IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
-            throw new NotImplementedException();
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
+            return Navigate<T>(requestUri, headers, formData);
         }
 
         public new IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
-            throw new NotImplementedException();
+            ClearForwardHistory();
+            TrimHistory(true);
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddHeaders(request, headers);
+            AddFormData(request, formData);
+            return ExecuteAsGet<T>(request, "GET");
         }
 
         public new Task<IDocument<T>> NavigateAsync<T>(string uri)
@@ -179,32 +201,50 @@ namespace BrowseSharp.Browsers
 
         public new IDocument<T> Submit<T>(string uri)
         {
-            throw new NotImplementedException();
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
+            return Submit<T>(requestUri);
         }
 
         public new IDocument<T> Submit<T>(Uri uri)
         {
-            throw new NotImplementedException();
+            ClearForwardHistory();
+            TrimHistory(true);
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            return ExecuteAsPost<T>(request, "POST");
         }
 
         public new IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData)
         {
-            throw new NotImplementedException();
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
+            return Submit<T>(requestUri, formData);
         }
 
         public new IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData)
         {
-            throw new NotImplementedException();
+            ClearForwardHistory();
+            TrimHistory(true);
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddFormData(request, formData);
+            return ExecuteAsPost<T>(request, "POST");
         }
 
         public new IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            throw new NotImplementedException();
+            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
+            return Submit<T>(requestUri, formData, headers);
         }
 
         public new IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            throw new NotImplementedException();
+            ClearForwardHistory();
+            TrimHistory(true);
+            _restClient.BaseUrl = uri;
+            RestRequest request = new RestRequest();
+            AddFormData(request, formData);
+            AddHeaders(request, headers);
+            return ExecuteAsPost<T>(request, "POST");
         }
 
         public new Task<IDocument<T>> SubmitAsync<T>(string uri)
@@ -239,12 +279,18 @@ namespace BrowseSharp.Browsers
 
         public new IDocument<T> SubmitForm<T>(Form form)
         {
-            throw new NotImplementedException();
+            return SubmitForm<T>(form, null);
         }
 
-        public new IDocument<T> SubmitForm<T>(Form form, Dictionary<string, string> Headers)
+        public new IDocument<T> SubmitForm<T>(Form form, Dictionary<string, string> headers)
         {
-            throw new NotImplementedException();
+            if (form.Method.ToLower() == "get")
+                return Navigate<T>(form.Action, headers, form.FormValues);
+            else if (form.Method.ToLower() == "post")
+                return Submit<T>(form.Action, form.FormValues, headers);
+
+            /* Default to post */
+            return Submit<T>(form.Action, form.FormValues, headers);
         }
 
         public new Task<IDocument<T>> SubmitFormAsync<T>(Form form)
