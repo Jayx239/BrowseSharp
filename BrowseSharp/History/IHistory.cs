@@ -60,7 +60,7 @@ namespace BrowseSharp.History
         /// </summary>
         /// <returns></returns>
         IDocument Refresh();
-        
+
 
     }
 }

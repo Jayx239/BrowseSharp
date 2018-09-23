@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp.Browsers;
+using BrowseSharp.Browsers.Core;
 using BrowseSharp.Html;
 using RestSharp;
 
@@ -11,7 +12,7 @@ namespace BrowseSharp
     /// <summary>
     /// Browser interface for BrowseSharp
     /// </summary>
-    public interface IBrowser : IBaseBrowser, IBrowserHistorySync, IBrowserHistoryAsync
+    public interface IBrowser : IBrowserCore
     {
         /// <summary>
         /// Execute method that creates a document from an http request

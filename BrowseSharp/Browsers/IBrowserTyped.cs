@@ -6,9 +6,9 @@ using BrowseSharp.History;
 using BrowseSharp.Html;
 using RestSharp;
 
-namespace BrowseSharp.Browsers
+namespace BrowseSharp.Browsers.Core
 {
-    interface IBrowserTyped : IBrowser, IHistoryTyped
+    interface IBrowserTyped
     {
         /// <summary>
         /// Execute method that creates a document from an http request

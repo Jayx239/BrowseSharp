@@ -121,6 +121,45 @@ namespace BrowseSharp.History
         }
 
         public IDocument Document { get { return History.Last(); } }
+
+        /// <summary>
+        /// Manages history when browser performs a navigate method
+        /// </summary>
+        public void Navigate()
+        {
+            ClearForwardHistory();
+            TrimHistory(true);
+        }
+
+        /// <summary>
+        /// Manages history when browser performs a submit method
+        /// </summary>
+        public void Submit()
+        {
+            Navigate();
+        }
+
+        /// <summary>
+        /// Trims history to the max history size
+        /// </summary>
+        /// <param name="beforeNavigate">Indicates whether method is called before or after navigation</param>
+        protected void TrimHistory(bool beforeNavigate)
+        {
+            if (MaxHistorySize < 0)
+                return;
+
+            if (beforeNavigate)
+            {
+                while (History.Count >= MaxHistorySize)
+                    History.RemoveAt(0);
+            }
+            else
+            {
+                while (History.Count > MaxHistorySize)
+                    History.RemoveAt(0);
+            }
+        }
+
         #endregion
 
     }

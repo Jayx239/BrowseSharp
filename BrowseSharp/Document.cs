@@ -5,7 +5,6 @@ using AngleSharp.Dom;
 using AngleSharp.Dom.Html;
 using BrowseSharp.Html;
 using BrowseSharp.Style;
-using Newtonsoft.Json;
 using RestSharp;
 
 namespace BrowseSharp
@@ -230,11 +229,6 @@ namespace BrowseSharp
         {
             return HtmlDocument.QuerySelectorAll(selectors);
         }
-
-        /// <summary>
-        /// Gets the body as Json.
-        /// </summary>
-        public dynamic BodyAsJson => JsonConvert.DeserializeObject<dynamic>(Body.TextContent);
         
         public object Data { get; set; }
     }

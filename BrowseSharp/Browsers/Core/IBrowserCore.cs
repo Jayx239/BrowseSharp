@@ -9,9 +9,9 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace BrowseSharp.Browsers
+namespace BrowseSharp.Browsers.Core
 {
-    public interface IBaseBrowser
+    public interface IBrowserCore
     {
         /// <summary>
         /// CookieContainer wrapper for internal restsharp client

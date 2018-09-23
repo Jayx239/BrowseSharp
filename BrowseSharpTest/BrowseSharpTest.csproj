@@ -437,10 +437,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowserStandard.Test.cs" />
     <Compile Include="BrowserTyped.Test.cs" />
     <Compile Include="Form.Test.cs" />
     <Compile Include="Browser.Test.cs" />
     <Compile Include="Models\DogResponse.cs" />
+    <Compile Include="Models\Request.cs" />
     <Compile Include="Models\RandomObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UriHelper.Test.cs" />
