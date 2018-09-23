@@ -1,49 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Cache;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
 using BrowseSharp.Browsers;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.History;
 using BrowseSharp.Html;
-using BrowseSharp.Javascript;
-using BrowseSharp.Style;
-using BrowseSharp.Toolbox;
-using Jint.Parser;
 using RestSharp;
-using RestSharp.Authenticators;
-using RestSharp.Deserializers;
 
 namespace BrowseSharp
 {
     /// <summary>
     /// Headless browser implimentation that creates documents for each web request.
     /// </summary>
-    public class Browser : BrowserCore, IBrowser, IBrowserHistorySync, IBrowserHistoryAsync
+    public class Browser : BrowserCore, IBrowser, IBrowserTyped, IBrowserHistorySync
     {
         /// <summary>
         /// Default Constructor
         /// </summary>
         public Browser(): base()
         {
-            /*JavascriptEngine = new JavascriptEngine();
-            StyleEngine = new StyleEngine();
-            _restClient = new RestClient();
-            _restClient.CookieContainer = new CookieContainer();
-            _history = new HistoryManager();*/
-            //_styleScrapingEnabled = true;
-            //_javascriptScrapingEnabled = true;
             _browserStandard = new StandardCore(JavascriptEngine, StyleEngine, _restClient, _restClient.CookieContainer, _history, StyleScrapingEnabled, JavascriptScrapingEnabled, DefaultUriProtocol);
-            //_browserTyped = new BrowserTyped(JavascriptEngine, StyleEngine, _restClient, _restClient.CookieContainer, _history, StyleScrapingEnabled, JavascriptScrapingEnabled, DefaultUriProtocol);
-            //DefaultUriProtocol = "http";
             _browserTyped = new TypedCore(JavascriptEngine, StyleEngine, _restClient, _restClient.CookieContainer, _history, StyleScrapingEnabled, JavascriptScrapingEnabled, DefaultUriProtocol);
 
         }
@@ -66,6 +42,7 @@ namespace BrowseSharp
             set {
                 _javascriptScrapingEnabled = value;
                 _browserStandard.JavascriptScrapingEnabled = value;
+                _browserTyped.JavascriptScrapingEnabled = value;
             }
         }
 
@@ -76,257 +53,10 @@ namespace BrowseSharp
             set {
                 _styleScrapingEnabled = value;
                 _browserStandard.StyleScrapingEnabled = value;
+                _browserTyped.StyleScrapingEnabled = value;
             }
         }
 
-        /*
-        /// <summary>
-        /// Cookie container containing cookies
-        /// </summary>
-        public CookieContainer CookieContainer
-        {
-            get { return _restClient.CookieContainer; }
-            set { _restClient.CookieContainer = value; }
-        }
-
-        /// <summary>
-        /// Automatic decompression attribute for client
-        /// </summary>
-        public bool AutomaticDecompression
-        {
-            get { return _restClient.AutomaticDecompression; }
-            set { _restClient.AutomaticDecompression = value; }
-        }
-
-        /// <summary>
-        /// Max number of redirects to be taken for a request
-        /// </summary>
-        public int? MaxRedirects
-        {
-            get { return _restClient.MaxRedirects; }
-            set { _restClient.MaxRedirects = value; }
-        }
-
-        /// <summary>
-        /// User agent that client should send in request
-        /// </summary>
-        public string UserAgent
-        {
-            get { return _restClient.UserAgent; }
-            set { _restClient.UserAgent = value; }
-        }
-
-        /// <summary>
-        /// Timeout for client
-        /// </summary>
-        public int Timeout
-        {
-            get { return _restClient.Timeout; }
-            set { _restClient.Timeout = value; }
-        }
-
-        /// <summary>
-        /// Read write timeout for client
-        /// </summary>
-        public int ReadWriteTimeout
-        {
-            get { return _restClient.ReadWriteTimeout; }
-            set { _restClient.ReadWriteTimeout = value; }
-        }
-
-        /// <summary>
-        /// Use synchronization context attribute for client
-        /// </summary>
-        public bool UseSynchronizationContext
-        {
-            get { return _restClient.UseSynchronizationContext; }
-            set { _restClient.UseSynchronizationContext = value; }
-        }
-
-        /// <summary>
-        /// Authenticator to be used by client
-        /// </summary>
-        public IAuthenticator Authenticator
-        {
-            get { return _restClient.Authenticator; }
-            set { _restClient.Authenticator = value; }
-        }
-
-        /// <summary>
-        /// Base url for client that is used for each request
-        /// </summary>
-        public Uri BaseUrl
-        {
-            get { return _restClient.BaseUrl; }
-            set { _restClient.BaseUrl = value; }
-        }
-
-        /// <summary>
-        /// Encoding for client request
-        /// </summary>
-        public Encoding Encoding
-        {
-            get { return _restClient.Encoding; }
-            set { _restClient.Encoding = value; }
-        }
-
-        /// <summary>
-        /// Pre-Authenticate parameter for client
-        /// </summary>
-        public bool PreAuthenticate
-        {
-            get { return _restClient.PreAuthenticate; }
-            set { _restClient.PreAuthenticate = value; }
-        }
-
-        /// <summary>
-        /// Default parameters for client
-        /// </summary>
-        public IList<Parameter> DefaultParameters
-        {
-            get { return _restClient.DefaultParameters; }
-        }
-
-        /// <summary>
-        /// Base host for client
-        /// </summary>
-        public string BaseHost
-        {
-            get { return _restClient.BaseHost; }
-            set { _restClient.BaseHost = value; }
-        }
-
-        /// <summary>
-        /// The default protocol to be pre-pended to a uri if the uri string does not contain a protocol
-        /// http or https
-        /// </summary>
-        public string DefaultUriProtocol
-        {
-            get => _defaultUriProtocol;
-            set
-            {
-                if(value == "http" || value == "https")
-                    _defaultUriProtocol = value;
-            }
-        }
-        
-        /// <summary>
-        /// The default protocol to be pre-pended to a uri if the uri string does not contain a protocol
-        /// </summary>
-        private string _defaultUriProtocol;
-        
-        /// <summary>
-        /// Deserialize method for client
-        /// </summary>
-        /// <param name="response"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public IRestResponse<T> Deserialize<T>(IRestResponse response)
-        {
-            return _restClient.Deserialize<T>(response);
-        }
-
-        /// <summary>
-        /// Downloads data from response
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public byte[] DownloadData(IRestRequest request)
-        {
-            return _restClient.DownloadData(request);
-        }
-
-        /// <summary>
-        /// X509Certificates for client
-        /// </summary>
-        public X509CertificateCollection ClientCertificates
-        {
-            get { return _restClient.ClientCertificates; }
-            set { _restClient.ClientCertificates = value; }
-        }
-
-        /// <summary>
-        /// Proxy for client
-        /// </summary>
-        public IWebProxy Proxy
-        {
-            get { return _restClient.Proxy; }
-            set { _restClient.Proxy = value; }
-        }
-
-        /// <summary>
-        /// Request cache policy for client
-        /// </summary>
-        public RequestCachePolicy CachePolicy
-        {
-            get { return _restClient.CachePolicy; }
-            set { _restClient.CachePolicy = value; }
-        }
-
-        /// <summary>
-        /// Pipelined attribute for client
-        /// </summary>
-        public bool Pipelined
-        {
-            get { return _restClient.Pipelined; }
-            set { _restClient.Pipelined = value; }
-        }
-
-        /// <summary>
-        /// Follow Redirects attribute for client
-        /// </summary>
-        public bool FollowRedirects
-        {
-            get { return _restClient.FollowRedirects; }
-            set { _restClient.FollowRedirects = value; }
-        }
-
-        /// <summary>
-        /// Helper for building uri for client
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public Uri BuildUri(IRestRequest request)
-        {
-            return _restClient.BuildUri(request);
-        }
-
-        /// <summary>
-        /// Remote certification validation callback for client
-        /// </summary>
-        public RemoteCertificateValidationCallback RemoteCertificateValidationCallback
-        {
-            get { return _restClient.RemoteCertificateValidationCallback; }
-            set { _restClient.RemoteCertificateValidationCallback = value; }
-        }
-
-        /// <summary>
-        /// Adds handler for client
-        /// </summary>
-        /// <param name="contentType"></param>
-        /// <param name="deserializer"></param>
-        public void AddHandler(string contentType, IDeserializer deserializer)
-        {
-            _restClient.AddHandler(contentType, deserializer);
-        }
-
-        /// <summary>
-        /// Removes handler from client
-        /// </summary>
-        /// <param name="contentType"></param>
-        public void RemoveHandler(string contentType)
-        {
-            _restClient.RemoveHandler(contentType);
-        }
-
-        /// <summary>
-        /// Clears all handlers for client
-        /// </summary>
-        public void ClearHandlers()
-        {
-            _restClient.ClearHandlers();
-        }
-        */
         /// <summary>
         /// Executes a request
         /// </summary>
@@ -335,9 +65,6 @@ namespace BrowseSharp
         public IDocument Execute(IRestRequest request)
         {
             return _browserStandard.Execute(request);
-            /*IRestResponse response = _restClient.Execute(request);
-            IDocument document = PackageAndAddDocument(request, response);
-            return document;*/
         }
 
         /// <summary>
@@ -349,9 +76,6 @@ namespace BrowseSharp
         public IDocument ExecuteAsGet(IRestRequest request, string httpMethod)
         {
             return _browserStandard.ExecuteAsGet(request, httpMethod);
-            IRestResponse response = _restClient.ExecuteAsGet(request, httpMethod);
-            IDocument document = PackageAndAddDocument(request, response);
-            return document;
         }
 
         /// <summary>
@@ -363,9 +87,6 @@ namespace BrowseSharp
         public IDocument ExecuteAsPost(IRestRequest request, string httpMethod)
         {
             return _browserStandard.ExecuteAsPost(request, httpMethod);
-            IRestResponse response = _restClient.ExecuteAsPost(request, httpMethod);
-            IDocument document = PackageAndAddDocument(request, response);
-            return document;
         }
 
         /// <summary>
@@ -374,12 +95,9 @@ namespace BrowseSharp
         /// <param name="request"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
+        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
         {
-            return _browserStandard.ExecuteTaskAsync(request, token);
-            Task<IRestResponse> responseTask = _restClient.ExecuteTaskAsync(request, token);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return documentTask;
+            return await _browserStandard.ExecuteTaskAsync(request, token);
         }
 
         /// <summary>
@@ -387,12 +105,9 @@ namespace BrowseSharp
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Task<IDocument> ExecuteTaskAsync(IRestRequest request)
+        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request)
         {
-            return _browserStandard.ExecuteTaskAsync(request);
-            Task<IRestResponse> responseTask = _restClient.ExecuteTaskAsync(request);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return documentTask;
+            return await _browserStandard.ExecuteTaskAsync(request);
         }
 
         /// <summary>
@@ -400,12 +115,9 @@ namespace BrowseSharp
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
+        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
         {
-            return _browserStandard.ExecuteGetTaskAsync(request);
-            Task<IRestResponse> responseTask = _restClient.ExecuteGetTaskAsync(request);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return documentTask;
+            return await _browserStandard.ExecuteGetTaskAsync(request);
         }
 
         /// <summary>
@@ -414,12 +126,9 @@ namespace BrowseSharp
         /// <param name="request"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
+        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
         {
-            return _browserStandard.ExecuteGetTaskAsync(request, token);
-            Task<IRestResponse> responseTask = _restClient.ExecuteGetTaskAsync(request, token);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return documentTask;
+            return await _browserStandard.ExecuteGetTaskAsync(request, token);
         }
 
         /// <summary>
@@ -427,12 +136,9 @@ namespace BrowseSharp
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
+        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
         {
-            return _browserStandard.ExecutePostTaskAsync(request);
-            Task<IRestResponse> responseTask = _restClient.ExecutePostTaskAsync(request);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return documentTask;
+            return await _browserStandard.ExecutePostTaskAsync(request);
         }
 
         /// <summary>
@@ -441,12 +147,9 @@ namespace BrowseSharp
         /// <param name="request"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
+        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
         {
-            return _browserStandard.ExecutePostTaskAsync(request, token);
-            Task<IRestResponse> responseTask = _restClient.ExecutePostTaskAsync(request, token);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return documentTask;
+            return await _browserStandard.ExecutePostTaskAsync(request, token);
         }
 
         /// <summary>
@@ -457,8 +160,6 @@ namespace BrowseSharp
         public IDocument Navigate(string uri)
         {
             return _browserStandard.Navigate(uri);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Navigate(requestUri);
         }
 
         /// <summary>
@@ -469,10 +170,6 @@ namespace BrowseSharp
         public IDocument Navigate(Uri uri)
         {
             return _browserStandard.Navigate(uri);
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return Execute(request);
         }
 
         /// <summary>
@@ -484,8 +181,6 @@ namespace BrowseSharp
         public IDocument Navigate(string uri, Dictionary<string, string> headers)
         {
             return _browserStandard.Navigate(uri, headers);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Navigate(requestUri, headers);
         }
 
         /// <summary>
@@ -497,11 +192,6 @@ namespace BrowseSharp
         public IDocument Navigate(Uri uri, Dictionary<string, string> headers)
         {
             return _browserStandard.Navigate(uri, headers);
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            return ExecuteAsGet(request, "GET");
         }
 
         /// <summary>
@@ -514,8 +204,6 @@ namespace BrowseSharp
         public IDocument Navigate(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return _browserStandard.Navigate(uri, headers, formData);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Navigate(requestUri, headers, formData);
         }
 
         /// <summary>
@@ -528,12 +216,6 @@ namespace BrowseSharp
         public IDocument Navigate(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return _browserStandard.Navigate(uri, headers, formData);
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            AddFormData(request, formData);
-            return ExecuteAsGet(request, "GET");
         }
 
         /// <summary>
@@ -544,8 +226,6 @@ namespace BrowseSharp
         public async Task<IDocument> NavigateAsync(string uri)
         {
             return await _browserStandard.NavigateAsync(uri);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await NavigateAsync(requestUri);
         }
 
         /// <summary>
@@ -556,10 +236,6 @@ namespace BrowseSharp
         public async Task<IDocument> NavigateAsync(Uri uri)
         {
             return await _browserStandard.NavigateAsync(uri);
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return await ExecuteTaskAsync(request);
         }
 
         /// <summary>
@@ -571,8 +247,6 @@ namespace BrowseSharp
         public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers)
         {
             return await _browserStandard.NavigateAsync(uri, headers);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await NavigateAsync(requestUri, headers);
         }
 
         /// <summary>
@@ -584,11 +258,6 @@ namespace BrowseSharp
         public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers)
         {
             return await _browserStandard.NavigateAsync(uri, headers);
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            return await ExecuteTaskAsync(request);
         }
 
         /// <summary>
@@ -602,8 +271,6 @@ namespace BrowseSharp
             Dictionary<string, string> formData)
         {
             return await _browserStandard.NavigateAsync(uri, headers, formData);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await NavigateAsync(requestUri, headers, formData);
         }
 
         /// <summary>
@@ -617,12 +284,6 @@ namespace BrowseSharp
             Dictionary<string, string> formData)
         {
             return await _browserStandard.NavigateAsync(uri, headers, formData);
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            AddFormData(request, formData);
-            return await ExecuteTaskAsync(request);
         }
 
         /// <summary>
@@ -633,8 +294,6 @@ namespace BrowseSharp
         public IDocument Submit(string uri)
         {
             return _browserStandard.Submit(uri);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Submit(requestUri);
         }
 
         /// <summary>
@@ -645,10 +304,6 @@ namespace BrowseSharp
         public IDocument Submit(Uri uri)
         {
             return _browserStandard.Submit(uri);
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return ExecuteAsPost(request, "POST"); /* TODO: Check this */
         }
 
         /// <summary>
@@ -660,8 +315,6 @@ namespace BrowseSharp
         public IDocument Submit(string uri, Dictionary<string, string> formData)
         {
             return _browserStandard.Submit(uri, formData);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Submit(requestUri, formData);
         }
 
         /// <summary>
@@ -673,11 +326,6 @@ namespace BrowseSharp
         public IDocument Submit(Uri uri, Dictionary<string, string> formData)
         {
             return _browserStandard.Submit(uri, formData);
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            return ExecuteAsPost(request, "POST");
         }
 
         /// <summary>
@@ -690,8 +338,6 @@ namespace BrowseSharp
         public IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return _browserStandard.Submit(uri, formData, headers);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Submit(requestUri, formData, headers);
         }
 
         /// <summary>
@@ -704,12 +350,6 @@ namespace BrowseSharp
         public IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return _browserStandard.Submit(uri, formData, headers);
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            AddHeaders(request, headers);
-            return ExecuteAsPost(request, "POST");
         }
 
         
@@ -722,8 +362,6 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitAsync(string uri)
         {
             return await _browserStandard.SubmitAsync(uri);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await SubmitAsync(requestUri);
         }
 
         /// <summary>
@@ -734,10 +372,6 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitAsync(Uri uri)
         {
             return await _browserStandard.SubmitAsync(uri);
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return await ExecutePostTaskAsync(request);
         }
 
         /// <summary>
@@ -749,8 +383,6 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
         {
             return await _browserStandard.SubmitAsync(uri, formData);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await SubmitAsync(requestUri, formData);
         }
 
         /// <summary>
@@ -762,11 +394,6 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData)
         {
             return await _browserStandard.SubmitAsync(uri, formData);
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            return await ExecutePostTaskAsync(request);
         }
 
         /// <summary>
@@ -779,8 +406,6 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return await _browserStandard.SubmitAsync(uri, formData, headers);
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await SubmitAsync(requestUri, formData, headers);
         }
 
         /// <summary>
@@ -793,12 +418,6 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return await _browserStandard.SubmitAsync(uri, formData, headers);
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            AddHeaders(request, headers);
-            return await ExecutePostTaskAsync(request);
         }
 
         /// <summary>
@@ -845,12 +464,6 @@ namespace BrowseSharp
         public IDocument Back(bool useCache)
         {
             return _browserStandard.Back(useCache);
-            IDocument oldDocument = _history.Back(useCache);
-            if (useCache)
-                return oldDocument;
-
-            _restClient.BaseUrl = oldDocument.RequestUri;
-            return Execute(oldDocument.Request);
         }
 
 
@@ -869,12 +482,6 @@ namespace BrowseSharp
         public async Task<IDocument> BackAsync(bool useCache)
         {
             return await _browserStandard.BackAsync(useCache);
-            IDocument oldDocument = _history.Back(useCache);
-            if (useCache)
-                return oldDocument;
-
-            _restClient.BaseUrl = oldDocument.RequestUri;
-            return await ExecuteTaskAsync(oldDocument.Request);
         }
 
         /// <summary>
@@ -884,7 +491,6 @@ namespace BrowseSharp
         public IDocument Forward()
         {
             return _browserStandard.Forward();
-            return Forward(false);
         }
 
         /// <summary>
@@ -895,13 +501,6 @@ namespace BrowseSharp
         public IDocument Forward(bool useCache)
         {
             return _browserStandard.Forward(useCache);
-            IDocument forwardDocument = _history.Forward(useCache);
-            if (useCache)
-                return forwardDocument;
-
-            _restClient.BaseUrl = forwardDocument.RequestUri;
-            return Execute(forwardDocument.Request);
-
         }
 
         /// <summary>
@@ -911,7 +510,6 @@ namespace BrowseSharp
         public async Task<IDocument> ForwardAsync()
         {
             return await _browserStandard.ForwardAsync();
-            return await ForwardAsync(false);
         }
 
         /// <summary>
@@ -922,13 +520,6 @@ namespace BrowseSharp
         public async Task<IDocument> ForwardAsync(bool useCache)
         {
             return await _browserStandard.ForwardAsync(useCache);
-            IDocument forwardDocument = _history.Forward(useCache);
-            if (useCache)
-                return forwardDocument;
-
-            _restClient.BaseUrl = forwardDocument.RequestUri;
-            return await ExecuteTaskAsync(forwardDocument.Request);
-
         }
 
         /// <summary>
@@ -943,9 +534,6 @@ namespace BrowseSharp
         public IDocument Refresh()
         {
             return _browserStandard.Refresh();
-            IDocument oldDocument = _history.Refresh();
-            _restClient.BaseUrl = oldDocument.RequestUri;
-            return Execute(oldDocument.Request);
         }
 
         /// <summary>
@@ -955,9 +543,6 @@ namespace BrowseSharp
         public async Task<IDocument> RefreshAsync()
         {
             return await _browserStandard.RefreshAsync();
-            IDocument oldDocument = _history.Refresh();
-            _restClient.BaseUrl = oldDocument.RequestUri;
-            return await ExecuteTaskAsync(oldDocument.Request);
         }
 
         /// <summary>
@@ -965,17 +550,6 @@ namespace BrowseSharp
         /// </summary>
         /// <returns>Current Document</returns>
         public IDocument Document => _history.Document;
-
-        /// <summary>
-        /// Documents generated for each request
-        /// </summary>
-        private List<IDocument> _documents;
-
-        /// <summary>
-        /// Stores the forward history when the back method is called 
-        /// </summary>
-        private List<IDocument> _forwardHistory;
-        
         
         /// <summary>
         /// Submits form
@@ -985,7 +559,6 @@ namespace BrowseSharp
         public IDocument SubmitForm(Form form)
         {
             return _browserStandard.SubmitForm(form);
-            return SubmitForm(form, null);
         }
 
         /// <summary>
@@ -997,13 +570,6 @@ namespace BrowseSharp
         public IDocument SubmitForm(Form form, Dictionary<string, string> headers)
         {
             return _browserStandard.SubmitForm(form,headers);
-            if (form.Method.ToLower() ==  "get")
-                return Navigate(form.Action, headers, form.FormValues);
-            else if (form.Method.ToLower() ==  "post")
-                return Submit(form.Action, form.FormValues, headers);
-            
-            /* Default to post */
-            return Submit(form.Action, form.FormValues, headers);
         }
         
         /// <summary>
@@ -1014,7 +580,6 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitFormAsync(Form form)
         {
             return await _browserStandard.SubmitFormAsync(form);
-            return await SubmitFormAsync(form, null);
         }
 
         /// <summary>
@@ -1026,97 +591,196 @@ namespace BrowseSharp
         public async Task<IDocument> SubmitFormAsync(Form form, Dictionary<string, string> headers)
         {
             return await _browserStandard.SubmitFormAsync(form, headers);
-            if (form.Method.ToLower() ==  "get")
-                return await NavigateAsync(form.Action, headers, form.FormValues);
-            else if (form.Method.ToLower() ==  "post")
-                return await SubmitAsync(form.Action, form.FormValues, headers);
-            
-            /* Default to post */
-            return await SubmitAsync(form.Action, form.FormValues, headers);
-        }
-        
-        /// <summary>
-        /// Creates a document from a request and response
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="response"></param>
-        /// <returns></returns>
-        protected IDocument PackageAndAddDocument(IRestRequest request, IRestResponse response)
-        {
-            Uri requestUri = _restClient.BaseUrl;
-            HtmlParser parser = new HtmlParser();
-            IHtmlDocument htmlDocument = parser.Parse(response.Content);
-            IDocument document = new Document(request, response, htmlDocument);
-            if(JavascriptScrapingEnabled)
-                JavascriptEngine.Add(document);
-            if(StyleScrapingEnabled)
-                StyleEngine.Add(document);
-            document.RequestUri = requestUri;
-            Documents.Add(document);
-            return document;
         }
 
-        /// <summary>
-        /// Creates a document from a request and response asynchronously
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="responseTask"></param>
-        /// <returns></returns>
-        protected async Task<IDocument> PackageAndAddDocumentAsync(IRestRequest request, Task<IRestResponse> responseTask)
+        public IDocument<T> Execute<T>(IRestRequest request)
         {
-            Uri requestUri = _restClient.BaseUrl;
-            IRestResponse response = await responseTask;
-            HtmlParser parser = new HtmlParser();
-            IHtmlDocument htmlDocument = parser.Parse(response.Content);
-            IDocument document = new Document(request, response, htmlDocument);
-            
-            Task<int> result = null;
-            Task<int> styleResult = null;
-            if(JavascriptScrapingEnabled)
-                result = JavascriptEngine.AddAsync(document);
-            if(StyleScrapingEnabled)
-                styleResult = StyleEngine.AddAsync(document);
-            
-            if(JavascriptScrapingEnabled && result != null)
-                await result;
-            if(StyleScrapingEnabled && styleResult != null)
-                await styleResult;
-            document.RequestUri = requestUri;
-            Documents.Add(document);
-            return document;
+            return _browserTyped.Execute<T>(request);
         }
 
-        /// <summary>
-        /// Adds form data to the request input
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="formData"></param>
-        protected void AddFormData(IRestRequest request, Dictionary<string,string> formData)
+        public IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod)
         {
-            if (formData == null)
-                return;
-            
-            foreach (var formInput in formData)
-            {
-                request.AddParameter(formInput.Key, formInput.Value);
-            }
+            return _browserTyped.ExecuteAsGet<T>(request, httpMethod);
         }
 
-        /// <summary>
-        /// Adds headers to the request input
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="headers"></param>
-        protected void AddHeaders(IRestRequest request, Dictionary<string,string> headers)
+        public IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod)
         {
-            if (headers == null)
-                return;
-            
-            foreach (var formInput in headers)
-            {
-                request.AddHeader(formInput.Key, formInput.Value);
-            }
+            return _browserTyped.ExecuteAsPost<T>(request, httpMethod);
         }
 
+        public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request, CancellationToken token)
+        {
+            return await _browserTyped.ExecuteTaskAsync<T>(request, token);
+        }
+
+        public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request)
+        {
+            return await _browserTyped.ExecuteTaskAsync<T>(request);
+        }
+
+        public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request)
+        {
+            return await _browserTyped.ExecuteGetTaskAsync<T>(request);
+        }
+
+        public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request, CancellationToken token)
+        {
+            return await _browserTyped.ExecuteGetTaskAsync<T>(request, token);
+        }
+
+        public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request)
+        {
+            return await _browserTyped.ExecutePostTaskAsync<T>(request);
+        }
+
+        public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request, CancellationToken token)
+        {
+            return await _browserTyped.ExecutePostTaskAsync<T>(request, token);
+        }
+
+        public IDocument<T> Navigate<T>(string uri)
+        {
+            return _browserTyped.Navigate<T>(uri);
+        }
+
+        public IDocument<T> Navigate<T>(Uri uri)
+        {
+            return _browserTyped.Navigate<T>(uri);
+        }
+
+        public IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers)
+        {
+            return _browserTyped.Navigate<T>(uri, headers);
+        }
+
+        public IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers)
+        {
+            return _browserTyped.Navigate<T>(uri, headers);
+        }
+
+        public IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        {
+            return _browserTyped.Navigate<T>(uri, headers, formData);
+        }
+
+        public IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        {
+            return _browserTyped.Navigate<T>(uri, headers, formData);
+        }
+
+        public async Task<IDocument<T>> NavigateAsync<T>(string uri)
+        {
+            return await _browserTyped.NavigateAsync<T>(uri);
+        }
+
+        public async Task<IDocument<T>> NavigateAsync<T>(Uri uri)
+        {
+            return await _browserTyped.NavigateAsync<T>(uri);
+        }
+
+        public async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers)
+        {
+            return await _browserTyped.NavigateAsync<T>(uri, headers);
+        }
+
+        public async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers)
+        {
+            return await _browserTyped.NavigateAsync<T>(uri, headers);
+        }
+
+        public async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        {
+            return await _browserTyped.NavigateAsync<T>(uri, headers, formData);
+        }
+
+        public async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        {
+            return await _browserTyped.NavigateAsync<T>(uri, headers, formData);
+        }
+
+        public IDocument<T> Submit<T>(string uri)
+        {
+            return _browserTyped.Submit<T>(uri);
+        }
+
+        public IDocument<T> Submit<T>(Uri uri)
+        {
+            return _browserTyped.Submit<T>(uri);
+        }
+
+        public IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData)
+        {
+            return _browserTyped.Submit<T>(uri, formData);
+        }
+
+        public IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData)
+        {
+            return _browserTyped.Submit<T>(uri, formData);
+        }
+
+        public IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            return _browserTyped.Submit<T>(uri, formData, headers);
+        }
+
+        public IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            return _browserTyped.Submit<T>(uri, formData, headers);
+        }
+
+        public IDocument<T> SubmitForm<T>(Form form)
+        {
+            return _browserTyped.SubmitForm<T>(form);
+        }
+
+        public IDocument<T> SubmitForm<T>(Form form, Dictionary<string, string> headers)
+        {
+            return _browserTyped.SubmitForm<T>(form, headers);
+        }
+
+        public async Task<IDocument<T>> SubmitAsync<T>(string uri)
+        {
+            return await _browserTyped.SubmitAsync<T>(uri);
+        }
+
+        public async Task<IDocument<T>> SubmitAsync<T>(Uri uri)
+        {
+            return await _browserTyped.SubmitAsync<T>(uri);
+        }
+
+        public async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData)
+        {
+            return await _browserTyped.SubmitAsync<T>(uri, formData);
+        }
+
+        public async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData)
+        {
+            return await _browserTyped.SubmitAsync<T>(uri, formData);
+        }
+
+        public async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            return await _browserTyped.SubmitAsync<T>(uri, formData, headers);
+        }
+
+        public async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        {
+            return await _browserTyped.SubmitAsync<T>(uri, formData, headers);
+        }
+
+        public async Task<IDocument<T>> SubmitFormAsync<T>(Form form)
+        {
+            return await _browserTyped.SubmitFormAsync<T>(form);
+        }
+
+        public async Task<IDocument<T>> SubmitFormAsync<T>(Form form, Dictionary<string, string> headers)
+        {
+            return await _browserTyped.SubmitFormAsync<T>(form, headers);
+        }
+
+        public IDocument<T> GetDocumentTyped<T>()
+        {
+            return _browserTyped.GetDocumentTyped<T>();
+        }
     }
 }

@@ -237,9 +237,9 @@ namespace BrowseSharp
         /// Submits form
         /// </summary>
         /// <param name="form"></param>
-        /// <param name="Headers"></param>
+        /// <param name="headers"></param>
         /// <returns></returns>
-        IDocument SubmitForm(Form form, Dictionary<string, string> Headers);
+        IDocument SubmitForm(Form form, Dictionary<string, string> headers);
         
         /// <summary>
         /// Method that makes an asynchronous post request and creates a document
