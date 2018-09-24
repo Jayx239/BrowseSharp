@@ -300,15 +300,6 @@ namespace BrowseSharp.Browsers.Core
         /// <param name="headers"></param>
         /// <returns></returns>
         Task<IDocument<T>> SubmitFormAsync<T>(Form form, Dictionary<string, string> headers);
-
-        /// <summary>
-        /// Gets current document from the current request
-        /// </summary>
-        /// <returns>Current Document</returns>
-        /// <summary>
-        /// Gets current document from the current request
-        /// </summary>
-        /// <returns>Current Document</returns>
-        IDocument<T> GetDocumentTyped<T>();
+        
     }
 }

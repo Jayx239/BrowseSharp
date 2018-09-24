@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
@@ -11,7 +10,6 @@ using BrowseSharp.Html;
 using BrowseSharp.Javascript;
 using BrowseSharp.Style;
 using BrowseSharp.Toolbox;
-using BrowseSharp.Browsers.Core;
 using RestSharp;
 
 namespace BrowseSharp.Browsers.Core
@@ -104,11 +102,6 @@ namespace BrowseSharp.Browsers.Core
             return await documentTask;
         }
 
-        public IDocument<T> GetDocumentTyped<T>()
-        {
-            throw new NotImplementedException();
-        }
-
         public IDocument<T> Navigate<T>(string uri)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
@@ -186,7 +179,7 @@ namespace BrowseSharp.Browsers.Core
         public async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await NavigateAsync<T>(requestUri,headers,formData);
+            return await NavigateAsync<T>(requestUri, headers, formData);
         }
 
         public async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)

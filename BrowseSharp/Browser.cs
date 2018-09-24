@@ -777,10 +777,5 @@ namespace BrowseSharp
         {
             return await _browserTyped.SubmitFormAsync<T>(form, headers);
         }
-
-        public IDocument<T> GetDocumentTyped<T>()
-        {
-            return _browserTyped.GetDocumentTyped<T>();
-        }
     }
 }

@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
 using BrowseSharp.Html;
+using BrowseSharpTest.Models;
 using Microsoft.DocAsCode.Common;
 using NUnit.Framework;
 using RestSharp;
@@ -21,6 +22,7 @@ namespace BrowseSharpTest
         /* RequestTester Configuration */
         public static int RequestTesterPort = 3000; // This is the port your RequestTester application is listening to
         public static string RequestTesterRouteUri = "https://requesttester.com/tester/view" ;//"http://localhost:" + RequestTesterPort + "/tester/view";
+        public static string RequestTesterRouteJsonUri = "https://requesttester.com/tester";
         #region BrowserStandard Tests
         [Test]
         public void TestExecute()
@@ -98,7 +100,7 @@ namespace BrowseSharpTest
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
 
-            CancellationToken cancellationToken = new CancellationToken();
+                CancellationToken cancellationToken = new CancellationToken();
             var response = await browser.ExecuteTaskAsync(request, cancellationToken);
             
             Assert.True(browser.Documents.Count == 1);
@@ -1042,5 +1044,392 @@ namespace BrowseSharpTest
         }
         #endregion
 
+        #region Typed Tests
+        [Test]
+        public void TestExecuteTyped()
+        {
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            RestRequest request = new RestRequest();
+            IDocument<dynamic> document = browser.Execute<dynamic>(request);
+
+            dynamic data = document.Data;
+
+            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
+            RestRequest dogRequest = new RestRequest();
+            IDocument<DogResponse> dogDocument = browser.Execute<DogResponse>(dogRequest);
+            Assert.IsTrue(dogDocument.Data.Status == "success");
+            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
+            Assert.IsTrue(dogDocument.Data.Message != null);
+            IDocument<RandomObject> invalidDataResponseDocument = browser.Execute<RandomObject>(dogRequest);
+            IDocument<RandomObject> random = new Document<RandomObject>(document);
+        }
+
+        [Test]
+        public void TestExecuteAsGetTyped()
+        {
+
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            RestRequest request = new RestRequest();
+            IDocument<dynamic> document = browser.ExecuteAsGet<dynamic>(request, "GET");
+
+            dynamic data = document.Data;
+
+            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
+            RestRequest dogRequest = new RestRequest();
+            IDocument<DogResponse> dogDocument = browser.ExecuteAsGet<DogResponse>(dogRequest, "GET");
+            Assert.IsTrue(dogDocument.Data.Status == "success");
+            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
+            Assert.IsTrue(dogDocument.Data.Message != null);
+            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
+            IDocument<RandomObject> random = new Document<RandomObject>(document);
+            
+        }
+
+        [Test]
+        public void TestExecuteAsPostTyped()
+        {
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            IRestRequest request = new RestRequest();
+
+            request.AddParameter("Username", "FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            var response = browser.ExecuteAsPost<Request>(request, "Post");
+            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
+            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
+            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
+            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
+            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
+            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
+
+        }
+
+        [Test]
+        public async Task TestExecuteGetTaskAsyncTyped()
+        {
+
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            RestRequest request = new RestRequest();
+            IDocument<dynamic> document = await browser.ExecuteGetTaskAsync<dynamic>(request);
+
+            dynamic data = document.Data;
+
+            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
+            RestRequest dogRequest = new RestRequest();
+            IDocument<DogResponse> dogDocument = await browser.ExecuteGetTaskAsync<DogResponse>(dogRequest);
+            Assert.IsTrue(dogDocument.Data.Status == "success");
+            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
+            Assert.IsTrue(dogDocument.Data.Message != null);
+            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
+            IDocument<RandomObject> random = new Document<RandomObject>(document);
+        }
+        
+        [Test]
+        public async Task TestExecuteGetTaskAsyncTokenTyped()
+        {
+
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            RestRequest request = new RestRequest();
+            CancellationToken cancellationToken = new CancellationToken();
+            IDocument<dynamic> document = await browser.ExecuteGetTaskAsync<dynamic>(request, cancellationToken);
+
+            dynamic data = document.Data;
+
+            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
+            RestRequest dogRequest = new RestRequest();
+            IDocument<DogResponse> dogDocument = await browser.ExecuteGetTaskAsync<DogResponse>(dogRequest);
+            Assert.IsTrue(dogDocument.Data.Status == "success");
+            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
+            Assert.IsTrue(dogDocument.Data.Message != null);
+            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
+            IDocument<RandomObject> random = new Document<RandomObject>(document);
+        }
+        
+        [Test]
+        public async Task TestExecutePostTaskAsyncTyped()
+        {
+
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            IRestRequest request = new RestRequest();
+
+            request.AddParameter("Username", "FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            var response = await browser.ExecutePostTaskAsync<Request>(request);
+            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
+            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
+            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
+            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
+            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
+            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
+        }
+        
+        [Test]
+        public async Task TestExecutePostTaskAsyncTokenTyped()
+        {
+
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            IRestRequest request = new RestRequest();
+
+            request.AddParameter("Username", "FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            CancellationToken cancellationToken = new CancellationToken();
+            var response = await browser.ExecutePostTaskAsync<Request>(request, cancellationToken);
+            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
+            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
+            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
+            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
+            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
+            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
+            
+        }
+        [Test]
+        public async Task TestExecuteTaskAsyncTyped()
+        {
+
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            IRestRequest request = new RestRequest();
+
+            request.AddParameter("Username", "FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            var response = await browser.ExecuteTaskAsync<Request>(request);
+            Assert.IsTrue(response.Data.Query.ContainsKey("Username"));
+            Assert.IsTrue(response.Data.Query.ContainsKey("Password"));
+            Assert.IsTrue(response.Data.Query.ContainsKey("SecretMessage"));
+            Assert.IsTrue(response.Data.Query["Username"] == "FakeUserName");
+            Assert.IsTrue(response.Data.Query["Password"] == "FakePassword123");
+            Assert.IsTrue(response.Data.Query["SecretMessage"] == "This is a secret message");
+        }
+        
+        [Test]
+        public async Task TestExecuteTaskAsyncTokenTyped()
+        {
+
+            Browser browser = new Browser();
+            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
+            IRestRequest request = new RestRequest();
+
+            request.AddParameter("Username", "FakeUserName");
+            request.AddParameter("Password", "FakePassword123");
+            request.AddParameter("SecretMessage", "This is a secret message");
+            CancellationToken cancellationToken = new CancellationToken();
+            var response = await browser.ExecuteTaskAsync<Request>(request, cancellationToken);
+            Assert.IsTrue(response.Data.Query.ContainsKey("Username"));
+            Assert.IsTrue(response.Data.Query.ContainsKey("Password"));
+            Assert.IsTrue(response.Data.Query.ContainsKey("SecretMessage"));
+            Assert.IsTrue(response.Data.Query["Username"] == "FakeUserName");
+            Assert.IsTrue(response.Data.Query["Password"] == "FakePassword123");
+            Assert.IsTrue(response.Data.Query["SecretMessage"] == "This is a secret message");
+            
+        }
+        
+        [Test]
+        public void TestNavigateTyped()
+        {
+            Browser browser = new Browser();
+            var response = browser.Navigate<Request>(RequestTesterRouteJsonUri);
+            Assert.IsTrue(response.Data != null);
+            Assert.IsTrue(response.Data is Request);
+        }
+        
+        [Test]
+        public void TestNavigateHeadersTyped()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            IDocument<Request> response = browser.Navigate<Request>(RequestTesterRouteJsonUri, headers);
+
+            Request request = response.Data;
+            Assert.IsTrue(request.Headers.ContainsKey("x-csrf-token"));
+            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
+        }
+
+        [Test]
+        public void TestNavigateHeadersAndDataTyped()
+        {
+            Browser browser = new Browser();
+            
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            IDocument<Request> response = browser.Navigate<Request>(RequestTesterRouteJsonUri, headers, formData);
+            Request request = response.Data;
+            
+            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
+            Assert.IsTrue(request.Query["Username"] == "FakeUserName");
+            Assert.IsTrue(request.Query["Password"] == "FakePassword123");
+            Assert.IsTrue(request.Query["SecretMessage"] == "This is a secret message");
+        }
+        
+        [Test]
+        public async Task TestNavigateAsyncTyped()
+        {
+            Browser browser = new Browser();
+            var response = await browser.NavigateAsync<Request>(RequestTesterRouteJsonUri);
+            Assert.IsTrue(response.Data != null);
+            Assert.IsTrue(response.Data is Request);
+        }
+        
+        [Test]
+        public async Task TestNavigateHeadersAsyncTyped()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            IDocument<Request> response = await browser.NavigateAsync<Request>(RequestTesterRouteJsonUri, headers);
+
+            Request request = response.Data;
+            Assert.IsTrue(request.Headers.ContainsKey("x-csrf-token"));
+            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
+        }
+
+        [Test]
+        public async Task TestNavigateHeadersAndDataAsyncTyped()
+        {
+            Browser browser = new Browser();
+            
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            IDocument<Request> response = await browser.NavigateAsync<Request>(RequestTesterRouteJsonUri, headers, formData);
+            Request request = response.Data;
+            
+            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
+            Assert.IsTrue(request.Query["Username"] == "FakeUserName");
+            Assert.IsTrue(request.Query["Password"] == "FakePassword123");
+            Assert.IsTrue(request.Query["SecretMessage"] == "This is a secret message");
+        }
+
+        
+        [Test]
+        public void TestSubmitNothingTyped()
+        {
+            Browser browser = new Browser();
+            
+            IDocument<Request> response = browser.Submit<Request>(RequestTesterRouteJsonUri);
+            Request request = response.Data;
+            
+            Assert.IsTrue(request.Headers.Count > 0);
+            
+        }
+        
+        [Test]
+        public void TestSubmitTyped()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            IDocument<Request> response = browser.Submit<Request>(RequestTesterRouteJsonUri, formData);
+            Request request = response.Data;
+            
+            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
+            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
+            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
+        }
+        
+        
+        [Test]
+        public void TestSubmitHeadersTyped()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            IDocument<Request> response = browser.Submit<Request>(RequestTesterRouteJsonUri, formData, headers);
+            Request request = response.Data;
+            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
+            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
+            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
+            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
+        }
+        
+        [Test]
+        public async Task TestSubmitAsyncNothingTyped()
+        {
+            Browser browser = new Browser();
+            
+            IDocument<Request> response = await browser.SubmitAsync<Request>(RequestTesterRouteJsonUri);
+            Request request = response.Data;
+            
+            Assert.IsTrue(request.Headers.Count > 0);
+            
+        }
+        
+        [Test]
+        public async Task TestSubmitAsyncTyped()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            IDocument<Request> response = await browser.SubmitAsync<Request>(RequestTesterRouteJsonUri, formData);
+            Request request = response.Data;
+            
+            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
+            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
+            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
+        }
+        
+        
+        [Test]
+        public async Task TestSubmitAsyncHeadersTyped()
+        {
+            Browser browser = new Browser();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>();
+            formData.Add("Username","FakeUserName");
+            formData.Add("Password", "FakePassword123");
+            formData.Add("SecretMessage", "This is a secret message");
+            
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("x-csrf-token", "axsd82os21");
+            
+            IDocument<Request> response = await browser.SubmitAsync<Request>(RequestTesterRouteJsonUri, formData, headers);
+            Request request = response.Data;
+            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
+            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
+            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
+            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
+        }
+        
+        #endregion
     }
 }

@@ -16,15 +16,15 @@ namespace BrowseSharpTest.Models
 
         }
 
-        public Request(Dictionary<string,string> header, Dictionary<string,string> cookies, Dictionary<string,string> formData, Dictionary<string,string> query)
+        public Request(Dictionary<string,string> headers, Dictionary<string,string> cookies, Dictionary<string,string> formData, Dictionary<string,string> query)
         {
-            Header = header;
+            Headers = headers;
             Cookies = cookies;
             FormData = formData;
             Query = query;
         }
 
-        public Dictionary<string, string> Header { get; set; } 
+        public Dictionary<string, string> Headers { get; set; } 
         public Dictionary<string,string> Cookies { get; set; }
         public Dictionary<string, string> FormData { get; set; }
         public Dictionary<string,string> Query { get; set; }
