@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
+using BrowseSharp.Browsers;
 using BrowseSharp.Html;
-using BrowseSharpTest.Models;
 using Microsoft.DocAsCode.Common;
 using NUnit.Framework;
 using RestSharp;
@@ -17,17 +17,16 @@ using RestSharp;
 namespace BrowseSharpTest
 {
     [TestFixture]
-    public class BrowserTest
+    public class BrowserStandardTest
     {
         /* RequestTester Configuration */
         public static int RequestTesterPort = 3000; // This is the port your RequestTester application is listening to
         public static string RequestTesterRouteUri = "https://requesttester.com/tester/view" ;//"http://localhost:" + RequestTesterPort + "/tester/view";
-        public static string RequestTesterRouteJsonUri = "https://requesttester.com/tester";
-        #region BrowserStandard Tests
+        
         [Test]
         public void TestExecute()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             browser.Execute(request);
@@ -51,7 +50,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestExecuteAsGet()
         {
-            Browser browser = new BrowseSharp.Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             browser.ExecuteAsGet(request,"GET");
@@ -74,7 +73,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestExecuteAsPost()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
             IRestRequest request = new RestRequest();
             
@@ -96,11 +95,11 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteTaskAsyncToken()
         {
-            Browser browser = new BrowseSharp.Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
 
-                CancellationToken cancellationToken = new CancellationToken();
+            CancellationToken cancellationToken = new CancellationToken();
             var response = await browser.ExecuteTaskAsync(request, cancellationToken);
             
             Assert.True(browser.Documents.Count == 1);
@@ -137,7 +136,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteTaskAsync()
         {
-            Browser browser = new BrowseSharp.Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             
@@ -177,7 +176,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteGetTaskAsync()
         {
-            Browser browser = new BrowseSharp.Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             
@@ -217,7 +216,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteGetTaskAsyncToken()
         {
-            Browser browser = new BrowseSharp.Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             
@@ -258,7 +257,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecutePostTaskAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
             IRestRequest request = new RestRequest();
             
@@ -280,7 +279,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecutePostTaskAsyncToken()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
             IRestRequest request = new RestRequest();
             
@@ -302,7 +301,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNavigate()
         {
-            Browser browser = new BrowseSharp.Browser();
+            BrowserStandard browser = new BrowserStandard();
             
             var response = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             
@@ -341,7 +340,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNavigateHeaders()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("x-csrf-token", "axsd82os21");
@@ -358,7 +357,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNavigateHeadersAndData()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -383,7 +382,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNavigateAsync()
         {
-            Browser browser = new BrowseSharp.Browser();
+            BrowserStandard browser = new BrowserStandard();
             
             var response = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             
@@ -422,7 +421,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNavigateAsyncHeaders()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("x-csrf-token", "axsd82os21");
@@ -439,7 +438,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNavigateAsyncHeadersAndData()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -464,7 +463,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmit()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -487,7 +486,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmitHeaders()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -513,7 +512,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -536,7 +535,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitAsyncHeaders()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -562,7 +561,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestClearHistory()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.Navigate("http://google.com");
             Assert.True(browser.History.Count == 1);
             browser.ClearHistory();
@@ -572,7 +571,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestClearForwardHistory()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.Navigate("http://google.com");
             Assert.True(browser.History.Count == 1);
             browser.Navigate("https://facebook.com");
@@ -587,7 +586,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestBack()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = browser.Navigate("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -603,7 +602,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestBackCache()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = browser.Navigate("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -619,7 +618,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestBackAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = browser.Navigate("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -636,7 +635,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestBackAsyncCache()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = browser.Navigate("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -652,7 +651,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestForward()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = browser.Navigate("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -673,7 +672,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestForwardCache()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = browser.Navigate("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -694,7 +693,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestForwardAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = await browser.NavigateAsync("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -715,7 +714,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestForwardAsyncCache()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument firstResponseDocument = await browser.NavigateAsync("http://google.com");
             Assert.True(firstResponseDocument == browser.Document);
             Assert.True(browser.History.Count == 1);
@@ -736,7 +735,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestMaxHistorySize()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.MaxHistorySize = 2;
             IDocument document1 = await browser.NavigateAsync("https://github.com");
             Assert.True(document1 == browser.Document);
@@ -751,7 +750,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestMaxHistorySizeUnlimited()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
         
             IDocument document1 = await browser.NavigateAsync("https://github.com");
             Assert.True(document1 == browser.Document);
@@ -777,7 +776,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestRefresh()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument document = browser.Navigate("https://github.com");
             IDocument documentRefreshed = browser.Refresh();
             Assert.True(documentRefreshed == browser.Document);
@@ -793,7 +792,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestRefreshAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             IDocument document = await browser.NavigateAsync("https://github.com");
             IDocument documentRefreshed = await browser.RefreshAsync();
             Assert.True(documentRefreshed == browser.Document);
@@ -809,7 +808,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestJavascriptScrapingEnabled()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.JavascriptScrapingEnabled = true;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count > 0);
@@ -818,7 +817,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestJavascriptScrapingDisabled()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.JavascriptScrapingEnabled = false;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count == 0);
@@ -827,7 +826,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestJavascriptScrapingEnabledAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.JavascriptScrapingEnabled = true;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count > 0);
@@ -836,7 +835,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestJavascriptScrapingDisabledAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.JavascriptScrapingEnabled = false;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count == 0);
@@ -845,7 +844,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestStyleScrapingEnabled()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.StyleScrapingEnabled = true;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count > 0);
@@ -854,7 +853,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestStyleScrapingDisabled()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.StyleScrapingEnabled = false;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count == 0);
@@ -863,7 +862,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestStyleScrapingEnabledAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.StyleScrapingEnabled = true;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count > 0);
@@ -872,7 +871,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestStyleScrapingDisabledAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.StyleScrapingEnabled = false;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count == 0);
@@ -881,7 +880,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmitForm()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -906,7 +905,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmitFormHeaders()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -949,7 +948,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitFormAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -974,7 +973,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitFormAsyncHeaders()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -1019,7 +1018,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNoProtoclNavigateSubmit()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             browser.Navigate("google.com");
             browser.Navigate("google.com", null);
             browser.Navigate("google.com", null, null);
@@ -1034,7 +1033,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNoProtoclNavigateSubmitAsync()
         {
-            Browser browser = new Browser();
+            BrowserStandard browser = new BrowserStandard();
             await browser.NavigateAsync("google.com");
             await browser.NavigateAsync("google.com", null);
             await browser.NavigateAsync("google.com", null, null);
@@ -1042,394 +1041,5 @@ namespace BrowseSharpTest
             await browser.SubmitAsync("google.com", null);
             await browser.SubmitAsync("google.com", null,null);
         }
-        #endregion
-
-        #region Typed Tests
-        [Test]
-        public void TestExecuteTyped()
-        {
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            IDocument<dynamic> document = browser.Execute<dynamic>(request);
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = browser.Execute<DogResponse>(dogRequest);
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.Execute<RandomObject>(dogRequest);
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
-        }
-
-        [Test]
-        public void TestExecuteAsGetTyped()
-        {
-
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            IDocument<dynamic> document = browser.ExecuteAsGet<dynamic>(request, "GET");
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = browser.ExecuteAsGet<DogResponse>(dogRequest, "GET");
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
-            
-        }
-
-        [Test]
-        public void TestExecuteAsPostTyped()
-        {
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            var response = browser.ExecuteAsPost<Request>(request, "Post");
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
-
-        }
-
-        [Test]
-        public async Task TestExecuteGetTaskAsyncTyped()
-        {
-
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            IDocument<dynamic> document = await browser.ExecuteGetTaskAsync<dynamic>(request);
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = await browser.ExecuteGetTaskAsync<DogResponse>(dogRequest);
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
-        }
-        
-        [Test]
-        public async Task TestExecuteGetTaskAsyncTokenTyped()
-        {
-
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            CancellationToken cancellationToken = new CancellationToken();
-            IDocument<dynamic> document = await browser.ExecuteGetTaskAsync<dynamic>(request, cancellationToken);
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = await browser.ExecuteGetTaskAsync<DogResponse>(dogRequest);
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
-        }
-        
-        [Test]
-        public async Task TestExecutePostTaskAsyncTyped()
-        {
-
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            var response = await browser.ExecutePostTaskAsync<Request>(request);
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
-        }
-        
-        [Test]
-        public async Task TestExecutePostTaskAsyncTokenTyped()
-        {
-
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            CancellationToken cancellationToken = new CancellationToken();
-            var response = await browser.ExecutePostTaskAsync<Request>(request, cancellationToken);
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
-            
-        }
-        [Test]
-        public async Task TestExecuteTaskAsyncTyped()
-        {
-
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            var response = await browser.ExecuteTaskAsync<Request>(request);
-            Assert.IsTrue(response.Data.Query.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.Query["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.Query["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.Query["SecretMessage"] == "This is a secret message");
-        }
-        
-        [Test]
-        public async Task TestExecuteTaskAsyncTokenTyped()
-        {
-
-            Browser browser = new Browser();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            CancellationToken cancellationToken = new CancellationToken();
-            var response = await browser.ExecuteTaskAsync<Request>(request, cancellationToken);
-            Assert.IsTrue(response.Data.Query.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.Query["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.Query["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.Query["SecretMessage"] == "This is a secret message");
-            
-        }
-        
-        [Test]
-        public void TestNavigateTyped()
-        {
-            Browser browser = new Browser();
-            var response = browser.Navigate<Request>(RequestTesterRouteJsonUri);
-            Assert.IsTrue(response.Data != null);
-            Assert.IsTrue(response.Data is Request);
-        }
-        
-        [Test]
-        public void TestNavigateHeadersTyped()
-        {
-            Browser browser = new Browser();
-
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("x-csrf-token", "axsd82os21");
-            
-            IDocument<Request> response = browser.Navigate<Request>(RequestTesterRouteJsonUri, headers);
-
-            Request request = response.Data;
-            Assert.IsTrue(request.Headers.ContainsKey("x-csrf-token"));
-            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
-        }
-
-        [Test]
-        public void TestNavigateHeadersAndDataTyped()
-        {
-            Browser browser = new Browser();
-            
-            Dictionary<string, string> formData = new Dictionary<string, string>();
-            formData.Add("Username","FakeUserName");
-            formData.Add("Password", "FakePassword123");
-            formData.Add("SecretMessage", "This is a secret message");
-            
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("x-csrf-token", "axsd82os21");
-            
-            IDocument<Request> response = browser.Navigate<Request>(RequestTesterRouteJsonUri, headers, formData);
-            Request request = response.Data;
-            
-            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
-            Assert.IsTrue(request.Query["Username"] == "FakeUserName");
-            Assert.IsTrue(request.Query["Password"] == "FakePassword123");
-            Assert.IsTrue(request.Query["SecretMessage"] == "This is a secret message");
-        }
-        
-        [Test]
-        public async Task TestNavigateAsyncTyped()
-        {
-            Browser browser = new Browser();
-            var response = await browser.NavigateAsync<Request>(RequestTesterRouteJsonUri);
-            Assert.IsTrue(response.Data != null);
-            Assert.IsTrue(response.Data is Request);
-        }
-        
-        [Test]
-        public async Task TestNavigateHeadersAsyncTyped()
-        {
-            Browser browser = new Browser();
-
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("x-csrf-token", "axsd82os21");
-            
-            IDocument<Request> response = await browser.NavigateAsync<Request>(RequestTesterRouteJsonUri, headers);
-
-            Request request = response.Data;
-            Assert.IsTrue(request.Headers.ContainsKey("x-csrf-token"));
-            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
-        }
-
-        [Test]
-        public async Task TestNavigateHeadersAndDataAsyncTyped()
-        {
-            Browser browser = new Browser();
-            
-            Dictionary<string, string> formData = new Dictionary<string, string>();
-            formData.Add("Username","FakeUserName");
-            formData.Add("Password", "FakePassword123");
-            formData.Add("SecretMessage", "This is a secret message");
-            
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("x-csrf-token", "axsd82os21");
-            
-            IDocument<Request> response = await browser.NavigateAsync<Request>(RequestTesterRouteJsonUri, headers, formData);
-            Request request = response.Data;
-            
-            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
-            Assert.IsTrue(request.Query["Username"] == "FakeUserName");
-            Assert.IsTrue(request.Query["Password"] == "FakePassword123");
-            Assert.IsTrue(request.Query["SecretMessage"] == "This is a secret message");
-        }
-
-        
-        [Test]
-        public void TestSubmitNothingTyped()
-        {
-            Browser browser = new Browser();
-            
-            IDocument<Request> response = browser.Submit<Request>(RequestTesterRouteJsonUri);
-            Request request = response.Data;
-            
-            Assert.IsTrue(request.Headers.Count > 0);
-            
-        }
-        
-        [Test]
-        public void TestSubmitTyped()
-        {
-            Browser browser = new Browser();
-
-            Dictionary<string, string> formData = new Dictionary<string, string>();
-            formData.Add("Username","FakeUserName");
-            formData.Add("Password", "FakePassword123");
-            formData.Add("SecretMessage", "This is a secret message");
-            
-            IDocument<Request> response = browser.Submit<Request>(RequestTesterRouteJsonUri, formData);
-            Request request = response.Data;
-            
-            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
-        }
-        
-        
-        [Test]
-        public void TestSubmitHeadersTyped()
-        {
-            Browser browser = new Browser();
-
-            Dictionary<string, string> formData = new Dictionary<string, string>();
-            formData.Add("Username","FakeUserName");
-            formData.Add("Password", "FakePassword123");
-            formData.Add("SecretMessage", "This is a secret message");
-            
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("x-csrf-token", "axsd82os21");
-            
-            IDocument<Request> response = browser.Submit<Request>(RequestTesterRouteJsonUri, formData, headers);
-            Request request = response.Data;
-            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
-            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
-        }
-        
-        [Test]
-        public async Task TestSubmitAsyncNothingTyped()
-        {
-            Browser browser = new Browser();
-            
-            IDocument<Request> response = await browser.SubmitAsync<Request>(RequestTesterRouteJsonUri);
-            Request request = response.Data;
-            
-            Assert.IsTrue(request.Headers.Count > 0);
-            
-        }
-        
-        [Test]
-        public async Task TestSubmitAsyncTyped()
-        {
-            Browser browser = new Browser();
-
-            Dictionary<string, string> formData = new Dictionary<string, string>();
-            formData.Add("Username","FakeUserName");
-            formData.Add("Password", "FakePassword123");
-            formData.Add("SecretMessage", "This is a secret message");
-            
-            IDocument<Request> response = await browser.SubmitAsync<Request>(RequestTesterRouteJsonUri, formData);
-            Request request = response.Data;
-            
-            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
-        }
-        
-        
-        [Test]
-        public async Task TestSubmitAsyncHeadersTyped()
-        {
-            Browser browser = new Browser();
-
-            Dictionary<string, string> formData = new Dictionary<string, string>();
-            formData.Add("Username","FakeUserName");
-            formData.Add("Password", "FakePassword123");
-            formData.Add("SecretMessage", "This is a secret message");
-            
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("x-csrf-token", "axsd82os21");
-            
-            IDocument<Request> response = await browser.SubmitAsync<Request>(RequestTesterRouteJsonUri, formData, headers);
-            Request request = response.Data;
-            Assert.IsTrue(request.Headers["x-csrf-token"] == "axsd82os21");
-            Assert.IsTrue(request.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(request.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(request.FormData["SecretMessage"] == "This is a secret message");
-        }
-        
-        #endregion
     }
 }

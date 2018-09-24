@@ -230,5 +230,33 @@ namespace BrowseSharp
             return HtmlDocument.QuerySelectorAll(selectors);
         }
         
+        public object Data { get; set; }
+    }
+    public class Document<T> : Document, IDocument<T>
+    {
+        public Document() : base()
+        {
+
+        }
+
+        public Document(IDocument document):base(document.Request, document.Response, document.HtmlDocument)
+        {
+            Data = (T) document.Data;
+        }
+
+        public Document(IRestRequest request, IRestResponse<T> response) : base(request, response)
+        {
+            Data = response.Data;
+        }
+
+        public Document(IRestRequest request, IRestResponse<T> response, IHtmlDocument htmlDocument) : base(request, response, htmlDocument)
+        {
+            Data = response.Data;
+        }
+
+        /// <summary>
+        /// Gets data as type
+        /// </summary>
+        public T Data { get; set; }
     }
 }
