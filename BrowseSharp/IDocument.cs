@@ -17,37 +17,37 @@ namespace BrowseSharp
         /// Response returned from http request
         /// </summary>
         IRestResponse Response { get; set; }
-        
+
         /// <summary>
         /// Http request object
         /// </summary>
         IRestRequest Request { get; set; }
-        
+
         /// <summary>
         /// AngleSharp html document scraped from response
         /// </summary>
-        IHtmlDocument HtmlDocument { get ; set; }
-        
+        IHtmlDocument HtmlDocument { get; set; }
+
         /// <summary>
         /// Javascripts scraped from http response
         /// </summary>
         List<Javascript.Javascript> Scripts { get; set; }
-        
+
         /// <summary>
         /// Styles parsed from http response 
         /// </summary>
         List<Style.StyleSheet> Styles { get; set; }
-        
+
         /// <summary>
         /// Uri of request
         /// </summary>
         Uri RequestUri { get; set; }
-        
+
         /// <summary>
         /// Forms scraped from response 
         /// </summary>
         List<Form> Forms { get; set; }
-        
+
         /* AngleSharp wrappers */
         /// <summary>
         /// Returns a list of elements with a given name in the HTML document.
@@ -113,7 +113,7 @@ namespace BrowseSharp
         /// </summary>
         [DomName("body")]
         IHtmlElement Body { get; set; }
-        
+
         /// <summary>
         /// Gets the child elements.
         /// </summary>
@@ -152,5 +152,17 @@ namespace BrowseSharp
         [DomName("querySelectorAll")]
         IHtmlCollection<IElement> QuerySelectorAll(String selectors);
 
+        Object Data { get; set; }
+    }
+
+    /// <summary>
+    /// BrowseSharp Document containing info about an http request and result and a data object of input type
+    /// </summary>
+    public interface IDocument<T>: IDocument
+    {
+        /// <summary>
+        /// Deserialized body data as type
+        /// </summary>
+        T Data { get; set; }
     }
 }
