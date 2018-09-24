@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.5.2</AssemblyVersion>
-    <FileVersion>0.0.5.2</FileVersion>
-    <Version>0.0.5</Version>
+    <AssemblyVersion>0.0.6.0</AssemblyVersion>
+    <FileVersion>0.0.6.0</FileVersion>
+    <Version>0.0.6-alpha</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
@@ -15,16 +15,15 @@
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
     <Company>Jason Gallagher</Company>
     <PackageReleaseNotes>Features:
- * Updated browser submit and navigate methods to accept uri strings that do not contain a protocol. IE: you can pass www.google.com into the submit and navigate methods and it will automatically append the default protocol. The default protocol is set to http but can be set manually.
- * Updated UriHelper to have the Uri method which handles pre-pending the protocol to a uri if it is not present.
- * Added Form model for storing form data
- * Added SubmitForm methods to browser for submitting the new Form model.
- * Added logic for scraping forms from each response and store it in a Document.
- * Added additional attributes to Document for easier access.
-Bug fixes:
- * Fixed bug with UriHelper that was causing Uri's to be created incorrectly. Caused relative path script and css file links to  be constructed incorrectly, resulting in these files not being retrieved properly and invalid requests to being made.
-
-Checkout the new project website at https://www.browsesharp.org/</PackageReleaseNotes>
+ * Added type deserialization for browser methods.
+    - You can now call a browser method with a given type and the response body will be deserialized into an object.
+    - For example, if you call Document = Execute&lt;Dog&gt;() you would be able retreive the Dog object from the response document by calling Dog dog = Document.Data;
+In progress:
+  * There will be an additional 2 browsers with release 0.0.6
+    * BrowserStandard - This will have the standard methods present in BrowseSharp versions prior to 0.0.6
+    * BrowserTyped - This will have the Typed methods that are being added with this release
+  * The Browser will have support for all of these methods.
+</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
   </PropertyGroup>
