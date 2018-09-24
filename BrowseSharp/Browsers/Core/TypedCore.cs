@@ -23,19 +23,27 @@ namespace BrowseSharp.Browsers.Core
         {
 
         }
+        
+        /// <summary>
+        /// Secondary initializer
+        /// </summary>
+        /// <param name="javascriptEngine"></param>
+        /// <param name="styleEngine"></param>
+        /// <param name="restClient"></param>
+        /// <param name="cookieContainer"></param>
+        /// <param name="historyManager"></param>
+        /// <param name="styleScrapingEnabled"></param>
+        /// <param name="javascriptScrapingEnabled"></param>
+        /// <param name="defaultUriProtocol"></param>
         public TypedCore(JavascriptEngine javascriptEngine, StyleEngine styleEngine,
                 RestClient restClient, CookieContainer cookieContainer,
                 HistoryManager historyManager, bool styleScrapingEnabled,
-                bool javascriptScrapingEnabled, string defaultUriProtocol)
+                bool javascriptScrapingEnabled, string defaultUriProtocol): 
+            base(javascriptEngine, styleEngine,restClient,
+                cookieContainer,historyManager,styleScrapingEnabled,
+                javascriptScrapingEnabled,defaultUriProtocol)
         {
-            _javascriptEngine = javascriptEngine;
-            _styleEngine = styleEngine;
-            _restClient = restClient;
-            _restClient.CookieContainer = cookieContainer;
-            _history = historyManager;
-            StyleScrapingEnabled = styleScrapingEnabled;
-            JavascriptScrapingEnabled = javascriptScrapingEnabled;
-            DefaultUriProtocol = defaultUriProtocol;
+            
         }
 
         public IDocument<T> Execute<T>(IRestRequest request)

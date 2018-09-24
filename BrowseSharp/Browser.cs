@@ -38,9 +38,9 @@ namespace BrowseSharp
         /// Enables or disables javascript scraping on each request, sets for all browsers
         /// </summary>
         public override bool JavascriptScrapingEnabled {
-            get { return _javascriptScrapingEnabled; }
+            get { return base.JavascriptScrapingEnabled; }
             set {
-                _javascriptScrapingEnabled = value;
+                base.JavascriptScrapingEnabled = value;
                 _browserStandard.JavascriptScrapingEnabled = value;
                 _browserTyped.JavascriptScrapingEnabled = value;
             }
@@ -49,9 +49,10 @@ namespace BrowseSharp
         /// <summary>
         /// Enables or disables style scraping on each request, sets for all browsers
         /// </summary>
-        public override bool StyleScrapingEnabled { get { return _styleScrapingEnabled; }
+        public override bool StyleScrapingEnabled { 
+            get { return base.StyleScrapingEnabled; }
             set {
-                _styleScrapingEnabled = value;
+                base.StyleScrapingEnabled = value;
                 _browserStandard.StyleScrapingEnabled = value;
                 _browserTyped.StyleScrapingEnabled = value;
             }
@@ -454,7 +455,7 @@ namespace BrowseSharp
         /// </summary>
         public IDocument Back()
         {
-            return _browserStandard.Back();
+            return Back(false);
         }
 
         /// <summary>
@@ -463,7 +464,12 @@ namespace BrowseSharp
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
         public IDocument Back(bool useCache)
         {
-            return _browserStandard.Back(useCache);
+            IDocument oldDocument = _history.Back(useCache);
+            if (useCache)
+                return oldDocument;
+
+            _browserStandard.BaseUrl = oldDocument.RequestUri;
+            return _browserStandard.Execute(oldDocument.Request);
         }
 
 
@@ -472,7 +478,7 @@ namespace BrowseSharp
         /// </summary>
         public async Task<IDocument> BackAsync()
         {
-            return await _browserStandard.BackAsync();
+            return await BackAsync(false);
         }
 
         /// <summary>
@@ -481,7 +487,12 @@ namespace BrowseSharp
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
         public async Task<IDocument> BackAsync(bool useCache)
         {
-            return await _browserStandard.BackAsync(useCache);
+            IDocument oldDocument = _history.Back(useCache);
+            if (useCache)
+                return oldDocument;
+
+            _browserStandard.BaseUrl = oldDocument.RequestUri;
+            return await _browserStandard.ExecuteTaskAsync(oldDocument.Request);
         }
 
         /// <summary>
@@ -490,7 +501,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Forward()
         {
-            return _browserStandard.Forward();
+            return Forward(false);
         }
 
         /// <summary>
@@ -500,7 +511,12 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Forward(bool useCache)
         {
-            return _browserStandard.Forward(useCache);
+            IDocument forwardDocument = _history.Forward(useCache);
+            if (useCache)
+                return forwardDocument;
+
+            _browserStandard.BaseUrl = forwardDocument.RequestUri;
+            return _browserStandard.Execute(forwardDocument.Request);
         }
 
         /// <summary>
@@ -509,7 +525,7 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> ForwardAsync()
         {
-            return await _browserStandard.ForwardAsync();
+            return await ForwardAsync(false);
         }
 
         /// <summary>
@@ -519,7 +535,12 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> ForwardAsync(bool useCache)
         {
-            return await _browserStandard.ForwardAsync(useCache);
+            IDocument forwardDocument = _history.Forward(useCache);
+            if (useCache)
+                return forwardDocument;
+
+            _browserStandard.BaseUrl = forwardDocument.RequestUri;
+            return await _browserStandard.ExecuteTaskAsync(forwardDocument.Request);
         }
 
         /// <summary>
@@ -533,7 +554,9 @@ namespace BrowseSharp
         /// <returns></returns>
         public IDocument Refresh()
         {
-            return _browserStandard.Refresh();
+            IDocument oldDocument = _history.Refresh();
+            _browserStandard.BaseUrl = oldDocument.RequestUri;
+            return _browserStandard.Execute(oldDocument.Request);
         }
 
         /// <summary>
@@ -542,7 +565,9 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> RefreshAsync()
         {
-            return await _browserStandard.RefreshAsync();
+            IDocument oldDocument = _history.Refresh();
+            _browserStandard.BaseUrl = oldDocument.RequestUri;
+            return await _browserStandard.ExecuteTaskAsync(oldDocument.Request);
         }
 
         /// <summary>

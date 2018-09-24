@@ -53,8 +53,8 @@ namespace BrowseSharp.Browsers.Core
             _restClient = restClient;
             _restClient.CookieContainer = cookieContainer;
             _history = historyManager;
-            StyleScrapingEnabled = styleScrapingEnabled;
-            JavascriptScrapingEnabled = javascriptScrapingEnabled;
+            _styleScrapingEnabled = styleScrapingEnabled;
+            _javascriptScrapingEnabled = javascriptScrapingEnabled;
             DefaultUriProtocol = defaultUriProtocol;
         }
 
@@ -95,14 +95,14 @@ namespace BrowseSharp.Browsers.Core
         /// </summary>
         public virtual bool JavascriptScrapingEnabled { get { return _javascriptScrapingEnabled; } set { _javascriptScrapingEnabled = value; } }
 
-        protected bool _javascriptScrapingEnabled;
+        private bool _javascriptScrapingEnabled;
 
         /// <summary>
         /// Enables or disables style scraping on each request
         /// </summary>
         public virtual bool StyleScrapingEnabled { get { return _styleScrapingEnabled; } set { _styleScrapingEnabled = value; } }
 
-        protected bool _styleScrapingEnabled;
+        private bool _styleScrapingEnabled;
 
         /// <summary>
         /// Cookie container containing cookies
