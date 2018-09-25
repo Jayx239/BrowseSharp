@@ -16,7 +16,7 @@ using BrowseSharp.Browsers.Core;
 namespace BrowseSharp.Browsers
 {
     /// <summary>
-    /// Headless browser implimentation that creates documents for each web request.
+    /// Headless browser implementation that creates documents for each web request.
     /// </summary>
     public class BrowserStandard : BrowserCore, IBrowser
     {

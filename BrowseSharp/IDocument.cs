@@ -152,6 +152,9 @@ namespace BrowseSharp
         [DomName("querySelectorAll")]
         IHtmlCollection<IElement> QuerySelectorAll(String selectors);
 
+        /// <summary>
+        /// Response body data
+        /// </summary>
         Object Data { get; set; }
     }
 

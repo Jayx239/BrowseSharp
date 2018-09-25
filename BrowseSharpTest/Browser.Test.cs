@@ -1431,5 +1431,30 @@ namespace BrowseSharpTest
         }
         
         #endregion
+
+        #region Mixed Base and Typed
+
+        [Test]
+        public void TestSharedHistory()
+        {
+            Browser browser = new Browser();
+
+            IDocument document1 = browser.Navigate("github.com");
+            Assert.IsTrue(browser.History.Count == 1);
+            
+            IDocument document2 = browser.Navigate<dynamic>("nuget.com");
+            Assert.IsTrue(browser.History.Count == 2);
+
+            IDocument documentBack = browser.Back();
+            Assert.IsTrue(browser.History.Count == 1);
+            Assert.IsTrue(browser.History.Count == 1);
+            Assert.IsTrue(documentBack.RequestUri == document1.RequestUri);
+            Assert.IsTrue(browser.ForwardHistory[0].RequestUri == document2.RequestUri);
+        }
+        
+        #endregion
+
+        
+        
     }
 }

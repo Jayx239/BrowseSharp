@@ -14,6 +14,9 @@ using RestSharp;
 
 namespace BrowseSharp.Browsers.Core
 {
+    /// <summary>
+    /// Browser core supporting type deserialization
+    /// </summary>
     public class TypedCore : BrowserCore, IBrowserTyped
     {
         /// <summary>
@@ -46,6 +49,7 @@ namespace BrowseSharp.Browsers.Core
             
         }
 
+        /// <inheritdoc />
         public IDocument<T> Execute<T>(IRestRequest request)
         {
             IRestResponse<T> response = Deserialize<T>(_restClient.Execute(request));
@@ -53,6 +57,7 @@ namespace BrowseSharp.Browsers.Core
             return document;
         }
 
+        /// <inheritdoc />
         public IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod)
         {
             IRestResponse<T> response = Deserialize<T>(_restClient.ExecuteAsGet(request, httpMethod));
@@ -60,6 +65,7 @@ namespace BrowseSharp.Browsers.Core
             return document;
         }
 
+        /// <inheritdoc />
         public IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod)
         {
             IRestResponse<T> response = Deserialize<T>(_restClient.ExecuteAsPost(request, httpMethod));
@@ -67,6 +73,7 @@ namespace BrowseSharp.Browsers.Core
             return document;
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecuteGetTaskAsync<T>(request);
@@ -74,6 +81,7 @@ namespace BrowseSharp.Browsers.Core
             return await documentTask;
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecuteGetTaskAsync<T>(request,token);
@@ -81,6 +89,7 @@ namespace BrowseSharp.Browsers.Core
             return await documentTask;
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecutePostTaskAsync<T>(request);
@@ -88,6 +97,7 @@ namespace BrowseSharp.Browsers.Core
             return await documentTask;
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecutePostTaskAsync<T>(request, token);
@@ -95,6 +105,7 @@ namespace BrowseSharp.Browsers.Core
             return await documentTask;
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecuteTaskAsync<T>(request, token);
@@ -102,6 +113,7 @@ namespace BrowseSharp.Browsers.Core
             return await documentTask;
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request)
         {
 
@@ -110,12 +122,14 @@ namespace BrowseSharp.Browsers.Core
             return await documentTask;
         }
 
+        /// <inheritdoc />
         public IDocument<T> Navigate<T>(string uri)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Navigate<T>(requestUri);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Navigate<T>(Uri uri)
         {
             _history.Navigate();
@@ -124,12 +138,14 @@ namespace BrowseSharp.Browsers.Core
             return Execute<T>(request);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Navigate<T>(requestUri, headers);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers)
         {
             _history.Navigate();
@@ -139,12 +155,14 @@ namespace BrowseSharp.Browsers.Core
             return ExecuteAsGet<T>(request, "GET");
         }
 
+        /// <inheritdoc />
         public IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Navigate<T>(requestUri, headers, formData);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             _history.Navigate();
@@ -155,12 +173,14 @@ namespace BrowseSharp.Browsers.Core
             return ExecuteAsGet<T>(request, "GET");
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> NavigateAsync<T>(string uri)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await NavigateAsync<T>(requestUri);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> NavigateAsync<T>(Uri uri)
         {
             _history.Navigate();
@@ -169,12 +189,14 @@ namespace BrowseSharp.Browsers.Core
             return await ExecuteTaskAsync<T>(request);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await NavigateAsync<T>(requestUri,headers);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers)
         {
             _history.Navigate();
@@ -184,12 +206,14 @@ namespace BrowseSharp.Browsers.Core
             return await ExecuteTaskAsync<T>(request);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await NavigateAsync<T>(requestUri, headers, formData);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             _history.Navigate();
@@ -200,12 +224,14 @@ namespace BrowseSharp.Browsers.Core
             return await ExecuteTaskAsync<T>(request);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Submit<T>(string uri)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Submit<T>(requestUri);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Submit<T>(Uri uri)
         {
             _history.Submit();
@@ -214,12 +240,14 @@ namespace BrowseSharp.Browsers.Core
             return ExecuteAsPost<T>(request, "POST");
         }
 
+        /// <inheritdoc />
         public IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Submit<T>(requestUri, formData);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData)
         {
             _history.Submit();
@@ -229,12 +257,14 @@ namespace BrowseSharp.Browsers.Core
             return ExecuteAsPost<T>(request, "POST");
         }
 
+        /// <inheritdoc />
         public IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return Submit<T>(requestUri, formData, headers);
         }
 
+        /// <inheritdoc />
         public IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             _history.Submit();
@@ -245,12 +275,14 @@ namespace BrowseSharp.Browsers.Core
             return ExecuteAsPost<T>(request, "POST");
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitAsync<T>(string uri)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await SubmitAsync<T>(requestUri);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitAsync<T>(Uri uri)
         {
             _history.Submit();
@@ -259,12 +291,14 @@ namespace BrowseSharp.Browsers.Core
             return await ExecutePostTaskAsync<T>(request);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await SubmitAsync<T>(requestUri, formData);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData)
         {
             _history.Submit();
@@ -273,13 +307,15 @@ namespace BrowseSharp.Browsers.Core
             AddFormData(request, formData);
             return await ExecutePostTaskAsync<T>(request);
         }
-
+        
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
             return await SubmitAsync<T>(requestUri, formData, headers);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             _history.Submit();
@@ -290,11 +326,13 @@ namespace BrowseSharp.Browsers.Core
             return await ExecutePostTaskAsync<T>(request);
         }
 
+        /// <inheritdoc />
         public IDocument<T> SubmitForm<T>(Form form)
         {
             return SubmitForm<T>(form, null);
         }
 
+        /// <inheritdoc />
         public IDocument<T> SubmitForm<T>(Form form, Dictionary<string, string> headers)
         {
             if (form.Method.ToLower() == "get")
@@ -306,11 +344,13 @@ namespace BrowseSharp.Browsers.Core
             return Submit<T>(form.Action, form.FormValues, headers);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitFormAsync<T>(Form form)
         {
             return await SubmitFormAsync<T>(form, null);
         }
 
+        /// <inheritdoc />
         public async Task<IDocument<T>> SubmitFormAsync<T>(Form form, Dictionary<string, string> headers)
         {
             if (form.Method.ToLower() == "get")
