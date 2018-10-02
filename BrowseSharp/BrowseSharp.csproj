@@ -4,26 +4,20 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.6.0</AssemblyVersion>
-    <FileVersion>0.0.6.0</FileVersion>
-    <Version>0.0.6-alpha</Version>
+    <AssemblyVersion>0.0.6.1</AssemblyVersion>
+    <FileVersion>0.0.6.1</FileVersion>
+    <Version>0.0.6-beta</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jayx239/BrowseSharp</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint</PackageTags>
+    <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint Type Deserialization API Testing Security Automation Bot</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>Features:
- * Added type deserialization for browser methods.
-    - You can now call a browser method with a given type and the response body will be deserialized into an object.
-    - For example, if you call Document = Execute&lt;Dog&gt;() you would be able retreive the Dog object from the response document by calling Dog dog = Document.Data;
-In progress:
-  * There will be an additional 2 browsers with release 0.0.6
-    * BrowserStandard - This will have the standard methods present in BrowseSharp versions prior to 0.0.6
-    * BrowserTyped - This will have the Typed methods that are being added with this release
-  * The Browser will have support for all of these methods.
-</PackageReleaseNotes>
+    <PackageReleaseNotes>Implemented 2 browsers:
+  * BrowserStandard - This will have the standard methods present in BrowseSharp versions prior to 0.0.6
+  * BrowserTyped - This will have the Typed methods that are being added with this release
+  * Browser has support for all of these methods.</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
   </PropertyGroup>
