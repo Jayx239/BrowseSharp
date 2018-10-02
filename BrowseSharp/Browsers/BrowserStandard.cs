@@ -16,7 +16,7 @@ using BrowseSharp.Browsers.Core;
 namespace BrowseSharp.Browsers
 {
     /// <summary>
-    /// Headless browser implimentation that creates documents for each web request.
+    /// Headless browser implementation that creates documents for each web request.
     /// </summary>
     public class BrowserStandard : BrowserCore, IBrowser
     {
@@ -25,463 +25,234 @@ namespace BrowseSharp.Browsers
         /// </summary>
         public BrowserStandard(): base()
         {
-
-        }
-
-        public BrowserStandard(JavascriptEngine javascriptEngine, StyleEngine styleEngine, 
-            RestClient restClient, CookieContainer cookieContainer, 
-            HistoryManager historyManager, bool styleScrapingEnabled, 
-            bool javascriptScrapingEnabled, string defaultUriProtocol)
-        {
-            _javascriptEngine = javascriptEngine;
-            _styleEngine = styleEngine;
-            _restClient = restClient;
-            _restClient.CookieContainer = cookieContainer;
-            _history = historyManager;
-            StyleScrapingEnabled = styleScrapingEnabled;
-            JavascriptScrapingEnabled = javascriptScrapingEnabled;
-            DefaultUriProtocol = defaultUriProtocol;
+            _browserStandard = new StandardCore(base.JavascriptEngine, base.StyleEngine, _restClient, _restClient.CookieContainer, _history, base.StyleScrapingEnabled, base.JavascriptScrapingEnabled, DefaultUriProtocol);
         }
         
         /// <summary>
-        /// Executes a request
+        /// Standard browser client for making standard web requests
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        private StandardCore _browserStandard;
+
+        /// <summary>
+        /// Enables or disables javascript scraping on each request, sets for all browsers
+        /// </summary>
+        public override bool JavascriptScrapingEnabled {
+            get { return base.JavascriptScrapingEnabled; }
+            set {
+                base.JavascriptScrapingEnabled = value;
+                _browserStandard.JavascriptScrapingEnabled = value;
+            }
+        }
+
+        /// <summary>
+        /// Enables or disables style scraping on each request, sets for all browsers
+        /// </summary>
+        public override bool StyleScrapingEnabled { 
+            get { return base.StyleScrapingEnabled; }
+            set {
+                base.StyleScrapingEnabled = value;
+                _browserStandard.StyleScrapingEnabled = value;
+            }
+        }
+        
+        /// <inheritdoc />
         public IDocument Execute(IRestRequest request)
         {
-            IRestResponse response = _restClient.Execute(request);
-            IDocument document = PackageAndAddDocument(request, response);
-            return document;
+            return _browserStandard.Execute(request);
         }
 
-        /// <summary>
-        /// Executes get request
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="httpMethod"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument ExecuteAsGet(IRestRequest request, string httpMethod)
         {
-            IRestResponse response = _restClient.ExecuteAsGet(request, httpMethod);
-            IDocument document = PackageAndAddDocument(request, response);
-            return document;
+            return _browserStandard.ExecuteAsGet(request, httpMethod);
         }
 
-        /// <summary>
-        /// Executes post request
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="httpMethod"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument ExecuteAsPost(IRestRequest request, string httpMethod)
         {
-            IRestResponse response = _restClient.ExecuteAsPost(request, httpMethod);
-            IDocument document = PackageAndAddDocument(request, response);
-            return document;
+            return _browserStandard.ExecuteAsPost(request, httpMethod);
         }
 
-        /// <summary>
-        /// Executes request asynchronously
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
         {
-            Task<IRestResponse> responseTask = _restClient.ExecuteTaskAsync(request, token);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return await documentTask;
+            return await _browserStandard.ExecuteTaskAsync(request, token);
         }
 
-        /// <summary>
-        /// Executes request asynchronously
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> ExecuteTaskAsync(IRestRequest request)
         {
-            Task<IRestResponse> responseTask = _restClient.ExecuteTaskAsync(request);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return await documentTask;
+            return await _browserStandard.ExecuteTaskAsync(request);
         }
 
-        /// <summary>
-        /// Executes get request asynchronously
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
         {
-            Task<IRestResponse> responseTask = _restClient.ExecuteGetTaskAsync(request);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return await documentTask;
+            return await _browserStandard.ExecuteGetTaskAsync(request);
         }
 
-        /// <summary>
-        /// Executes get request asynchronously
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
         {
-            Task<IRestResponse> responseTask = _restClient.ExecuteGetTaskAsync(request, token);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return await documentTask;
+            return await _browserStandard.ExecuteGetTaskAsync(request, token);
         }
 
-        /// <summary>
-        /// Executes post request asynchronously
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
         {
-            Task<IRestResponse> responseTask = _restClient.ExecutePostTaskAsync(request);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return await documentTask;
+            return await _browserStandard.ExecutePostTaskAsync(request);
         }
 
-        /// <summary>
-        /// Executes post request asynchronously
-        /// </summary>
-        /// <param name="request"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
         {
-            Task<IRestResponse> responseTask = _restClient.ExecutePostTaskAsync(request, token);
-            Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
-            return await documentTask;
+            return await _browserStandard.ExecutePostTaskAsync(request, token);
         }
 
-        /// <summary>
-        /// Performs get request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Navigate(string uri)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Navigate(requestUri);
+            return _browserStandard.Navigate(uri);
         }
 
-        /// <summary>
-        /// Performs get request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Navigate(Uri uri)
         {
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return Execute(request);
+            return _browserStandard.Navigate(uri);
         }
 
-        /// <summary>
-        /// Performs get request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Navigate(string uri, Dictionary<string, string> headers)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Navigate(requestUri, headers);
+            return _browserStandard.Navigate(uri, headers);
         }
 
-        /// <summary>
-        /// Performs get request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Navigate(Uri uri, Dictionary<string, string> headers)
         {
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            return ExecuteAsGet(request, "GET");
+            return _browserStandard.Navigate(uri, headers);
         }
 
-        /// <summary>
-        /// Performs get request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Navigate(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Navigate(requestUri, headers, formData);
+            return _browserStandard.Navigate(uri, headers, formData);
         }
 
-        /// <summary>
-        /// Performs get request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Navigate(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            AddFormData(request, formData);
-            return ExecuteAsGet(request, "GET");
+            return _browserStandard.Navigate(uri, headers, formData);
         }
 
-        /// <summary>
-        /// Performs get request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> NavigateAsync(string uri)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await NavigateAsync(requestUri);
+            return await _browserStandard.NavigateAsync(uri);
         }
 
-        /// <summary>
-        /// Performs get request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> NavigateAsync(Uri uri)
         {
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return await ExecuteTaskAsync(request);
+            return await _browserStandard.NavigateAsync(uri);
         }
 
-        /// <summary>
-        /// Performs get request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await NavigateAsync(requestUri, headers);
+            return await _browserStandard.NavigateAsync(uri, headers);
         }
 
-        /// <summary>
-        /// Performs get request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers)
         {
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            return await ExecuteTaskAsync(request);
+            return await _browserStandard.NavigateAsync(uri, headers);
         }
 
-        /// <summary>
-        /// Performs get request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers,
             Dictionary<string, string> formData)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await NavigateAsync(requestUri, headers, formData);
+            return await _browserStandard.NavigateAsync(uri, headers, formData);
         }
 
-        /// <summary>
-        /// Performs get request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="headers"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers,
             Dictionary<string, string> formData)
         {
-            _history.Navigate();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddHeaders(request, headers);
-            AddFormData(request, formData);
-            return await ExecuteTaskAsync(request);
+            return await _browserStandard.NavigateAsync(uri, headers, formData);
         }
 
-        /// <summary>
-        /// Performs a post request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Submit(string uri)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Submit(requestUri);
+            return _browserStandard.Submit(uri);
         }
 
-        /// <summary>
-        /// Performs a post request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Submit(Uri uri)
         {
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return ExecuteAsPost(request, "POST"); /* TODO: Check this */
+            return _browserStandard.Submit(uri);
         }
 
-        /// <summary>
-        /// Performs a post request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Submit(string uri, Dictionary<string, string> formData)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Submit(requestUri, formData);
+            return _browserStandard.Submit(uri, formData);
         }
 
-        /// <summary>
-        /// Performs a post request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Submit(Uri uri, Dictionary<string, string> formData)
         {
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            return ExecuteAsPost(request, "POST");
+            return _browserStandard.Submit(uri, formData);
         }
 
-        /// <summary>
-        /// Performs a post request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return Submit(requestUri, formData, headers);
+            return _browserStandard.Submit(uri, formData, headers);
         }
 
-        /// <summary>
-        /// Performs a post request
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            AddHeaders(request, headers);
-            return ExecuteAsPost(request, "POST");
+            return _browserStandard.Submit(uri, formData, headers);
         }
 
-
-
-        /// <summary>
-        /// Performs a post request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> SubmitAsync(string uri)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await SubmitAsync(requestUri);
+            return await _browserStandard.SubmitAsync(uri);
         }
 
-        /// <summary>
-        /// Performs a post request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> SubmitAsync(Uri uri)
         {
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            return await ExecutePostTaskAsync(request);
+            return await _browserStandard.SubmitAsync(uri);
         }
 
-        /// <summary>
-        /// Performs a post request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await SubmitAsync(requestUri, formData);
+            return await _browserStandard.SubmitAsync(uri, formData);
         }
 
-        /// <summary>
-        /// Performs a post request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData)
         {
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            return await ExecutePostTaskAsync(request);
+            return await _browserStandard.SubmitAsync(uri, formData);
         }
 
-        /// <summary>
-        /// Performs a post request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            Uri requestUri = UriHelper.Uri(uri, DefaultUriProtocol);
-            return await SubmitAsync(requestUri, formData, headers);
+            return await _browserStandard.SubmitAsync(uri, formData, headers);
         }
 
-        /// <summary>
-        /// Performs a post request asynchronously
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="formData"></param>
-        /// <param name="headers"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
-            _history.Submit();
-            _restClient.BaseUrl = uri;
-            RestRequest request = new RestRequest();
-            AddFormData(request, formData);
-            AddHeaders(request, headers);
-            return await ExecutePostTaskAsync(request);
+            return await _browserStandard.SubmitAsync(uri, formData, headers);
         }
 
         /// <summary>
