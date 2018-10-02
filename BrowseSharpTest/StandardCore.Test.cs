@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
 using BrowseSharp.Browsers;
+using BrowseSharp.Browsers.Core;
 using BrowseSharp.Html;
 using Microsoft.DocAsCode.Common;
 using NUnit.Framework;
@@ -17,7 +18,7 @@ using RestSharp;
 namespace BrowseSharpTest
 {
     [TestFixture]
-    public class BrowserStandardTest
+    public class StandardCoreTest
     {
         /* RequestTester Configuration */
         public static int RequestTesterPort = 3000; // This is the port your RequestTester application is listening to
@@ -26,7 +27,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestExecute()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             browser.Execute(request);
@@ -50,7 +51,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestExecuteAsGet()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             browser.ExecuteAsGet(request,"GET");
@@ -73,7 +74,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestExecuteAsPost()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
             IRestRequest request = new RestRequest();
             
@@ -95,7 +96,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteTaskAsyncToken()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
 
@@ -136,7 +137,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteTaskAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             
@@ -176,7 +177,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteGetTaskAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             
@@ -216,7 +217,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecuteGetTaskAsyncToken()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://jayx239.github.io/BrowseSharpTest/");
             RestRequest request = new RestRequest();
             
@@ -257,7 +258,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecutePostTaskAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
             IRestRequest request = new RestRequest();
             
@@ -279,7 +280,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestExecutePostTaskAsyncToken()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.BaseUrl = new Uri("https://www.hashemian.com/tools/form-post-tester.php");
             IRestRequest request = new RestRequest();
             
@@ -301,7 +302,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNavigate()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             
             var response = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             
@@ -340,7 +341,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNavigateHeaders()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("x-csrf-token", "axsd82os21");
@@ -357,7 +358,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNavigateHeadersAndData()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -382,7 +383,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNavigateAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             
             var response = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             
@@ -421,7 +422,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNavigateAsyncHeaders()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("x-csrf-token", "axsd82os21");
@@ -438,7 +439,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNavigateAsyncHeadersAndData()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -463,7 +464,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmit()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -486,7 +487,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmitHeaders()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -512,7 +513,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -535,7 +536,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitAsyncHeaders()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
 
             Dictionary<string, string> formData = new Dictionary<string, string>();
             formData.Add("Username","FakeUserName");
@@ -557,262 +558,11 @@ namespace BrowseSharpTest
             }
             
         }
-        
-        #region History methods
-        
-        [Test]
-        public void TestClearHistory()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            browser.Navigate("http://google.com");
-            Assert.True(browser.History.Count == 1);
-            browser.ClearHistory();
-            Assert.True(browser.History.Count == 0);
-        }
 
-        [Test]
-        public void TestClearForwardHistory()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            browser.Navigate("http://google.com");
-            Assert.True(browser.History.Count == 1);
-            browser.Navigate("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            browser.Back();
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            browser.ClearForwardHistory();
-            Assert.True(browser.ForwardHistory.Count == 0);
-        }
-
-        [Test]
-        public void TestBack()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = browser.Navigate("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            browser.Navigate("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            browser.Back();
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document != firstResponseDocument);
-            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
-        }
-        
-        [Test]
-        public void TestBackCache()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = browser.Navigate("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            browser.Navigate("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            browser.Back(true);
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document == firstResponseDocument);
-
-        }
-
-        [Test]
-        public async Task TestBackAsync()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = browser.Navigate("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            browser.Navigate("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            await browser.BackAsync();
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document != firstResponseDocument);
-            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
-
-        }
-        
-        [Test]
-        public async Task TestBackAsyncCache()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = browser.Navigate("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            browser.Navigate("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            await browser.BackAsync(true);
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document == firstResponseDocument);
-
-        }
-
-        [Test]
-        public void TestForward()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = browser.Navigate("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            IDocument secondDocument = browser.Navigate("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            browser.Back();
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document != firstResponseDocument);
-            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
-            
-            browser.Forward();
-            Assert.True(browser.ForwardHistory.Count == 0);
-            Assert.True(browser.History.Count == 2);
-            Assert.True(secondDocument.Response.ResponseUri == browser.Document.Response.ResponseUri);
-        }
-        
-        [Test]
-        public void TestForwardCache()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = browser.Navigate("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            IDocument secondDocument = browser.Navigate("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            browser.Back();
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document != firstResponseDocument);
-            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
-            
-            browser.Forward(true);
-            Assert.True(browser.ForwardHistory.Count == 0);
-            Assert.True(browser.History.Count == 2);
-            Assert.True(secondDocument == browser.Document);
-        }
-        
-        [Test]
-        public async Task TestForwardAsync()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = await browser.NavigateAsync("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            IDocument secondDocument = await browser.NavigateAsync("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            await browser.BackAsync();
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document != firstResponseDocument);
-            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
-            
-            await browser.ForwardAsync(true);
-            Assert.True(browser.ForwardHistory.Count == 0);
-            Assert.True(browser.History.Count == 2);
-            Assert.True(secondDocument == browser.Document);
-        }
-
-        [Test]
-        public async Task TestForwardAsyncCache()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument firstResponseDocument = await browser.NavigateAsync("http://google.com");
-            Assert.True(firstResponseDocument == browser.Document);
-            Assert.True(browser.History.Count == 1);
-            IDocument secondDocument = await browser.NavigateAsync("https://facebook.com");
-            Assert.True(browser.History.Count == 2);
-            await browser.BackAsync();
-            Assert.True(browser.History.Count == 1);
-            Assert.True(browser.ForwardHistory.Count == 1);
-            Assert.True(browser.Document != firstResponseDocument);
-            Assert.True(browser.Document.Response.ResponseUri == firstResponseDocument.Response.ResponseUri);
-            
-            await browser.ForwardAsync();
-            Assert.True(browser.ForwardHistory.Count == 0);
-            Assert.True(browser.History.Count == 2);
-            Assert.True(secondDocument.Response.ResponseUri == browser.Document.Response.ResponseUri);
-        }
-
-        [Test]
-        public async Task TestMaxHistorySize()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            browser.MaxHistorySize = 2;
-            IDocument document1 = await browser.NavigateAsync("https://github.com");
-            Assert.True(document1 == browser.Document);
-            IDocument document2 = await browser.NavigateAsync(RequestTesterRouteUri);
-            Assert.True(document2 == browser.Document);
-            IDocument document3 = await browser.NavigateAsync("https://nuget.org");
-            Assert.True(document3 == browser.Document);
-            Assert.True(browser.History.Count == 2);
-            Assert.True(browser.Documents[0] == document2);
-        }
-        
-        [Test]
-        public async Task TestMaxHistorySizeUnlimited()
-        {
-            BrowserStandard browser = new BrowserStandard();
-        
-            IDocument document1 = await browser.NavigateAsync("https://github.com");
-            Assert.True(document1 == browser.Document);
-            IDocument document2 = await browser.NavigateAsync(RequestTesterRouteUri);
-            Assert.True(document2 == browser.Document);
-            IDocument document3 = await browser.NavigateAsync("https://nuget.org");
-            Assert.True(document3 == browser.Document);
-            await browser.NavigateAsync("https://github.com");
-            await browser.NavigateAsync(RequestTesterRouteUri);
-            await browser.NavigateAsync("https://nuget.org");
-            
-            await browser.NavigateAsync("https://github.com");
-            await browser.NavigateAsync(RequestTesterRouteUri);
-            await browser.NavigateAsync("https://nuget.org");
-            
-            await browser.NavigateAsync("https://github.com");
-            await browser.NavigateAsync(RequestTesterRouteUri);
-            await browser.NavigateAsync("https://nuget.org");
-            
-            Assert.True(browser.History.Count == 12);
-        }
-        
-        [Test]
-        public void TestRefresh()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument document = browser.Navigate("https://github.com");
-            IDocument documentRefreshed = browser.Refresh();
-            Assert.True(documentRefreshed == browser.Document);
-            Assert.True(documentRefreshed != document);
-            IDocument secondDocument = browser.Navigate(RequestTesterRouteUri);
-            IDocument thirdDocument = browser.Navigate("https://nuget.org");
-            browser.Back();
-            browser.Refresh();
-            Assert.True(browser.Document != secondDocument);
-            Assert.True(browser.Document.Response.ResponseUri == secondDocument.Response.ResponseUri);
-        }
-
-        [Test]
-        public async Task TestRefreshAsync()
-        {
-            BrowserStandard browser = new BrowserStandard();
-            IDocument document = await browser.NavigateAsync("https://github.com");
-            IDocument documentRefreshed = await browser.RefreshAsync();
-            Assert.True(documentRefreshed == browser.Document);
-            Assert.True(documentRefreshed != document);
-            IDocument secondDocument = browser.Navigate(RequestTesterRouteUri);
-            IDocument thirdDocument = browser.Navigate("https://nuget.org");
-            browser.Back();
-            await browser.RefreshAsync();
-            Assert.True(browser.Document != secondDocument);
-            Assert.True(browser.Document.Response.ResponseUri == secondDocument.Response.ResponseUri);
-        }
-        
-        #endregion
-        
         [Test]
         public void TestJavascriptScrapingEnabled()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.JavascriptScrapingEnabled = true;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count > 0);
@@ -821,7 +571,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestJavascriptScrapingDisabled()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.JavascriptScrapingEnabled = false;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count == 0);
@@ -830,7 +580,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestJavascriptScrapingEnabledAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.JavascriptScrapingEnabled = true;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count > 0);
@@ -839,7 +589,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestJavascriptScrapingDisabledAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.JavascriptScrapingEnabled = false;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Scripts.Count == 0);
@@ -848,7 +598,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestStyleScrapingEnabled()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.StyleScrapingEnabled = true;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count > 0);
@@ -857,7 +607,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestStyleScrapingDisabled()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.StyleScrapingEnabled = false;
             IDocument document = browser.Navigate("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count == 0);
@@ -866,7 +616,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestStyleScrapingEnabledAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.StyleScrapingEnabled = true;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count > 0);
@@ -875,7 +625,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestStyleScrapingDisabledAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.StyleScrapingEnabled = false;
             IDocument document = await browser.NavigateAsync("https://jayx239.github.io/BrowseSharpTest/");
             Assert.True(document.Styles.Count == 0);
@@ -884,7 +634,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmitForm()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -909,7 +659,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestSubmitFormHeaders()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -952,7 +702,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitFormAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -977,7 +727,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestSubmitFormAsyncHeaders()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
             Form postForm = browser.Document.Forms[0];
             Form getForm = browser.Document.Forms[1];
@@ -1022,7 +772,7 @@ namespace BrowseSharpTest
         [Test]
         public void TestNoProtoclNavigateSubmit()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             browser.Navigate("google.com");
             browser.Navigate("google.com", null);
             browser.Navigate("google.com", null, null);
@@ -1037,7 +787,7 @@ namespace BrowseSharpTest
         [Test]
         public async Task TestNoProtoclNavigateSubmitAsync()
         {
-            BrowserStandard browser = new BrowserStandard();
+            StandardCore browser = new StandardCore();
             await browser.NavigateAsync("google.com");
             await browser.NavigateAsync("google.com", null);
             await browser.NavigateAsync("google.com", null, null);

@@ -1,263 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.Browsers;
-using BrowseSharp.Browsers.Core;
+using AngleSharp.Dom.Html;
+using AngleSharp.Parser.Html;
+using BrowseSharp.History;
 using BrowseSharp.Html;
+using BrowseSharp.Javascript;
+using BrowseSharp.Style;
+using BrowseSharp.Toolbox;
 using RestSharp;
+using BrowseSharp.Browsers.Core;
 
-namespace BrowseSharp
+namespace BrowseSharp.Browsers
 {
     /// <summary>
     /// Headless browser implementation that creates documents for each web request.
     /// </summary>
-    public class Browser : BrowserCore, IBrowser, IBrowserTyped, IBrowserHistorySync
+    public class BrowserTyped : TypedCore, IBrowserTyped, IBrowserHistorySync
     {
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public Browser(): base()
+        public BrowserTyped(): base()
         {
-            _browserStandard = new StandardCore(base.JavascriptEngine, base.StyleEngine, _restClient, _restClient.CookieContainer, _history, base.StyleScrapingEnabled, base.JavascriptScrapingEnabled, DefaultUriProtocol);
             _browserTyped = new TypedCore(base.JavascriptEngine, base.StyleEngine, _restClient, _restClient.CookieContainer, _history, base.StyleScrapingEnabled, base.JavascriptScrapingEnabled, DefaultUriProtocol);
-
         }
-
-        /// <summary>
-        /// Standard browser client for making standard web requests
-        /// </summary>
-        private StandardCore _browserStandard;
 
         /// <summary>
         /// Browser for making typed requests, deserializes response body to typed objects
         /// </summary>
         private TypedCore _browserTyped;
+        
+        /// <summary>
+        /// Javascript engine used by browser
+        /// </summary>
+        public virtual JavascriptEngine JavascriptEngine { get { return _javascriptEngine; } }
+
+        protected JavascriptEngine _javascriptEngine;
 
         /// <summary>
-        /// Enables or disables javascript scraping on each request, sets for all browsers
+        /// Style engine for parsing css styles 
         /// </summary>
-        public override bool JavascriptScrapingEnabled {
-            get { return base.JavascriptScrapingEnabled; }
-            set {
-                base.JavascriptScrapingEnabled = value;
-                _browserStandard.JavascriptScrapingEnabled = value;
+        public virtual StyleEngine StyleEngine { get { return _styleEngine; } }
+
+        protected StyleEngine _styleEngine;
+        
+        /// <summary>
+        /// Enables or disables javascript scraping on each request
+        /// </summary>
+        public virtual bool JavascriptScrapingEnabled { get { return _javascriptScrapingEnabled; }
+            set
+            {
+                _javascriptScrapingEnabled = value;
                 _browserTyped.JavascriptScrapingEnabled = value;
-            }
+            } 
         }
+
+        private bool _javascriptScrapingEnabled;
 
         /// <summary>
-        /// Enables or disables style scraping on each request, sets for all browsers
+        /// Enables or disables style scraping on each request
         /// </summary>
-        public override bool StyleScrapingEnabled { 
-            get { return base.StyleScrapingEnabled; }
-            set {
-                base.StyleScrapingEnabled = value;
-                _browserStandard.StyleScrapingEnabled = value;
+        public virtual bool StyleScrapingEnabled { get { return _styleScrapingEnabled; }
+            set
+            {
+                _styleScrapingEnabled = value;
                 _browserTyped.StyleScrapingEnabled = value;
-            }
+            } 
         }
 
-        /// <inheritdoc />
-        public IDocument Execute(IRestRequest request)
-        {
-            return _browserStandard.Execute(request);
-        }
-
-        /// <inheritdoc />
-        public IDocument ExecuteAsGet(IRestRequest request, string httpMethod)
-        {
-            return _browserStandard.ExecuteAsGet(request, httpMethod);
-        }
-
-        /// <inheritdoc />
-        public IDocument ExecuteAsPost(IRestRequest request, string httpMethod)
-        {
-            return _browserStandard.ExecuteAsPost(request, httpMethod);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecuteTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecuteTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecuteGetTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecuteGetTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecutePostTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecutePostTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
-        public IDocument Navigate(string uri)
-        {
-            return _browserStandard.Navigate(uri);
-        }
-
-        /// <inheritdoc />
-        public IDocument Navigate(Uri uri)
-        {
-            return _browserStandard.Navigate(uri);
-        }
-
-        /// <inheritdoc />
-        public IDocument Navigate(string uri, Dictionary<string, string> headers)
-        {
-            return _browserStandard.Navigate(uri, headers);
-        }
-
-        /// <inheritdoc />
-        public IDocument Navigate(Uri uri, Dictionary<string, string> headers)
-        {
-            return _browserStandard.Navigate(uri, headers);
-        }
-
-        /// <inheritdoc />
-        public IDocument Navigate(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
-        {
-            return _browserStandard.Navigate(uri, headers, formData);
-        }
-
-        /// <inheritdoc />
-        public IDocument Navigate(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
-        {
-            return _browserStandard.Navigate(uri, headers, formData);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(string uri)
-        {
-            return await _browserStandard.NavigateAsync(uri);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(Uri uri)
-        {
-            return await _browserStandard.NavigateAsync(uri);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers)
-        {
-            return await _browserStandard.NavigateAsync(uri, headers);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers)
-        {
-            return await _browserStandard.NavigateAsync(uri, headers);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers,
-            Dictionary<string, string> formData)
-        {
-            return await _browserStandard.NavigateAsync(uri, headers, formData);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers,
-            Dictionary<string, string> formData)
-        {
-            return await _browserStandard.NavigateAsync(uri, headers, formData);
-        }
-
-        /// <inheritdoc />
-        public IDocument Submit(string uri)
-        {
-            return _browserStandard.Submit(uri);
-        }
-
-        /// <inheritdoc />
-        public IDocument Submit(Uri uri)
-        {
-            return _browserStandard.Submit(uri);
-        }
-
-        /// <inheritdoc />
-        public IDocument Submit(string uri, Dictionary<string, string> formData)
-        {
-            return _browserStandard.Submit(uri, formData);
-        }
-
-        /// <inheritdoc />
-        public IDocument Submit(Uri uri, Dictionary<string, string> formData)
-        {
-            return _browserStandard.Submit(uri, formData);
-        }
-
-        /// <inheritdoc />
-        public IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
-        {
-            return _browserStandard.Submit(uri, formData, headers);
-        }
-
-        /// <inheritdoc />
-        public IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
-        {
-            return _browserStandard.Submit(uri, formData, headers);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(string uri)
-        {
-            return await _browserStandard.SubmitAsync(uri);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(Uri uri)
-        {
-            return await _browserStandard.SubmitAsync(uri);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
-        {
-            return await _browserStandard.SubmitAsync(uri, formData);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData)
-        {
-            return await _browserStandard.SubmitAsync(uri, formData);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
-        {
-            return await _browserStandard.SubmitAsync(uri, formData, headers);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
-        {
-            return await _browserStandard.SubmitAsync(uri, formData, headers);
-        }
-
+        private bool _styleScrapingEnabled;
+        
         /// <summary>
         /// Contains all previous documents stored for each previous request
         /// </summary>
@@ -305,8 +120,8 @@ namespace BrowseSharp
             if (useCache)
                 return oldDocument;
 
-            _browserStandard.BaseUrl = oldDocument.RequestUri;
-            return _browserStandard.Execute(oldDocument.Request);
+            _restClient.BaseUrl = oldDocument.RequestUri;
+            return Execute<Object>(oldDocument.Request);
         }
 
 
@@ -328,8 +143,8 @@ namespace BrowseSharp
             if (useCache)
                 return oldDocument;
 
-            _browserStandard.BaseUrl = oldDocument.RequestUri;
-            return await _browserStandard.ExecuteTaskAsync(oldDocument.Request);
+            _restClient.BaseUrl = oldDocument.RequestUri;
+            return await ExecuteTaskAsync<Object>(oldDocument.Request);
         }
 
         /// <summary>
@@ -352,8 +167,9 @@ namespace BrowseSharp
             if (useCache)
                 return forwardDocument;
 
-            _browserStandard.BaseUrl = forwardDocument.RequestUri;
-            return _browserStandard.Execute(forwardDocument.Request);
+            _restClient.BaseUrl = forwardDocument.RequestUri;
+            return Execute<Object>(forwardDocument.Request);
+
         }
 
         /// <summary>
@@ -372,12 +188,14 @@ namespace BrowseSharp
         /// <returns></returns>
         public async Task<IDocument> ForwardAsync(bool useCache)
         {
+
             IDocument forwardDocument = _history.Forward(useCache);
             if (useCache)
                 return forwardDocument;
 
-            _browserStandard.BaseUrl = forwardDocument.RequestUri;
-            return await _browserStandard.ExecuteTaskAsync(forwardDocument.Request);
+            _restClient.BaseUrl = forwardDocument.RequestUri;
+            return await ExecuteTaskAsync<Object>(forwardDocument.Request);
+
         }
 
         /// <summary>
@@ -392,8 +210,8 @@ namespace BrowseSharp
         public IDocument Refresh()
         {
             IDocument oldDocument = _history.Refresh();
-            _browserStandard.BaseUrl = oldDocument.RequestUri;
-            return _browserStandard.Execute(oldDocument.Request);
+            _restClient.BaseUrl = oldDocument.RequestUri;
+            return Execute<Object>(oldDocument.Request);
         }
 
         /// <summary>
@@ -403,8 +221,8 @@ namespace BrowseSharp
         public async Task<IDocument> RefreshAsync()
         {
             IDocument oldDocument = _history.Refresh();
-            _browserStandard.BaseUrl = oldDocument.RequestUri;
-            return await _browserStandard.ExecuteTaskAsync(oldDocument.Request);
+            _restClient.BaseUrl = oldDocument.RequestUri;
+            return await ExecuteTaskAsync<Object>(oldDocument.Request);
         }
 
         /// <summary>
@@ -412,35 +230,68 @@ namespace BrowseSharp
         /// </summary>
         /// <returns>Current Document</returns>
         public IDocument Document => _history.Document;
+
+        /// <summary>
+        /// Documents generated for each request
+        /// </summary>
+        private List<IDocument> _documents;
+
+        /// <summary>
+        /// Stores the forward history when the back method is called 
+        /// </summary>
+        private List<IDocument> _forwardHistory;
         
         /// <summary>
-        /// Submits form
+        /// Creates a document from a request and response
         /// </summary>
-        /// <param name="form"></param>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
         /// <returns></returns>
-        public IDocument SubmitForm(Form form)
+        protected IDocument PackageAndAddDocument(IRestRequest request, IRestResponse response)
         {
-            return _browserStandard.SubmitForm(form);
+            Uri requestUri = _restClient.BaseUrl;
+            HtmlParser parser = new HtmlParser();
+            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            IDocument document = new Document(request, response, htmlDocument);
+            if (JavascriptScrapingEnabled)
+                JavascriptEngine.Add(document);
+            if (StyleScrapingEnabled)
+                StyleEngine.Add(document);
+            document.RequestUri = requestUri;
+            Documents.Add(document);
+            return document;
         }
 
-        /// <inheritdoc />
-        public IDocument SubmitForm(Form form, Dictionary<string, string> headers)
+        /// <summary>
+        /// Creates a document from a request and response asynchronously
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="responseTask"></param>
+        /// <returns></returns>
+        protected async Task<IDocument> PackageAndAddDocumentAsync(IRestRequest request, Task<IRestResponse> responseTask)
         {
-            return _browserStandard.SubmitForm(form,headers);
-        }
-        
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitFormAsync(Form form)
-        {
-            return await _browserStandard.SubmitFormAsync(form);
+            Uri requestUri = _restClient.BaseUrl;
+            IRestResponse response = await responseTask;
+            HtmlParser parser = new HtmlParser();
+            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            IDocument document = new Document(request, response, htmlDocument);
+
+            Task<int> result = null;
+            Task<int> styleResult = null;
+            if (JavascriptScrapingEnabled)
+                result = JavascriptEngine.AddAsync(document);
+            if (StyleScrapingEnabled)
+                styleResult = StyleEngine.AddAsync(document);
+
+            if (JavascriptScrapingEnabled && result != null)
+                await result;
+            if (StyleScrapingEnabled && styleResult != null)
+                await styleResult;
+            document.RequestUri = requestUri;
+            Documents.Add(document);
+            return document;
         }
 
-        /// <inheritdoc />
-        public async Task<IDocument> SubmitFormAsync(Form form, Dictionary<string, string> headers)
-        {
-            return await _browserStandard.SubmitFormAsync(form, headers);
-        }
-        
         /// <inheritdoc />
         public IDocument<T> Execute<T>(IRestRequest request)
         {
@@ -667,6 +518,38 @@ namespace BrowseSharp
         public IDocument<T> DocumentTyped<T>()
         {
             return _browserTyped.DocumentTyped<T>();
+        }
+        
+        /// <summary>
+        /// Adds form data to the request input
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="formData"></param>
+        protected void AddFormData(IRestRequest request, Dictionary<string, string> formData)
+        {
+            if (formData == null)
+                return;
+
+            foreach (var formInput in formData)
+            {
+                request.AddParameter(formInput.Key, formInput.Value);
+            }
+        }
+
+        /// <summary>
+        /// Adds headers to the request input
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="headers"></param>
+        protected void AddHeaders(IRestRequest request, Dictionary<string, string> headers)
+        {
+            if (headers == null)
+                return;
+
+            foreach (var formInput in headers)
+            {
+                request.AddHeader(formInput.Key, formInput.Value);
+            }
         }
     }
 }

@@ -234,21 +234,30 @@ namespace BrowseSharp
     }
     public class Document<T> : Document, IDocument<T>
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Document() : base()
         {
 
         }
 
-        public Document(IDocument document):base(document.Request, document.Response, document.HtmlDocument)
-        {
-            Data = (T) document.Data;
-        }
-
+        /// <summary>
+        /// Secondary Contstructor
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
         public Document(IRestRequest request, IRestResponse<T> response) : base(request, response)
         {
             Data = response.Data;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
+        /// <param name="htmlDocument"></param>
         public Document(IRestRequest request, IRestResponse<T> response, IHtmlDocument htmlDocument) : base(request, response, htmlDocument)
         {
             Data = response.Data;

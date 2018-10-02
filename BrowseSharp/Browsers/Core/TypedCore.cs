@@ -361,6 +361,18 @@ namespace BrowseSharp.Browsers.Core
             /* Default to post */
             return await SubmitAsync<T>(form.Action, form.FormValues, headers);
         }
+        
+        /// <summary>
+        /// Gets current document from the current request
+        /// </summary>
+        /// <returns>Current Document</returns>
+        public IDocument Document => _history.Document;
+        
+        /// <inheritdoc /> 
+        public IDocument<T> DocumentTyped<T>()
+        {
+            return (IDocument<T>) _history.Document;
+        }
 
         protected IDocument<T> PackageAndAddDocument<T>(IRestRequest request, IRestResponse<T> response)
         {

@@ -1062,7 +1062,6 @@ namespace BrowseSharpTest
             Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
             Assert.IsTrue(dogDocument.Data.Message != null);
             IDocument<RandomObject> invalidDataResponseDocument = browser.Execute<RandomObject>(dogRequest);
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
         }
 
         [Test]
@@ -1083,7 +1082,6 @@ namespace BrowseSharpTest
             Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
             Assert.IsTrue(dogDocument.Data.Message != null);
             IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
             
         }
 
@@ -1125,7 +1123,6 @@ namespace BrowseSharpTest
             Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
             Assert.IsTrue(dogDocument.Data.Message != null);
             IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
         }
         
         [Test]
@@ -1147,7 +1144,6 @@ namespace BrowseSharpTest
             Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
             Assert.IsTrue(dogDocument.Data.Message != null);
             IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-            IDocument<RandomObject> random = new Document<RandomObject>(document);
         }
         
         [Test]
@@ -1450,6 +1446,67 @@ namespace BrowseSharpTest
             Assert.IsTrue(browser.History.Count == 1);
             Assert.IsTrue(documentBack.RequestUri == document1.RequestUri);
             Assert.IsTrue(browser.ForwardHistory[0].RequestUri == document2.RequestUri);
+        }
+
+        [Test]
+        public void TestSharedJavascriptScrapingEnabledFlag()
+        {
+            Browser browser = new Browser();
+            
+            IDocument document1 = browser.Navigate("browsesharp.org");
+            Assert.IsTrue(document1.Scripts.Count > 0);
+            
+            IDocument<dynamic> document2 = browser.Navigate<dynamic>("browsesharp.org");
+            Assert.IsTrue(document2.Scripts.Count > 0);
+
+            browser.JavascriptScrapingEnabled = false;
+
+            IDocument document3 = browser.Navigate("browsesharp.org");
+            Assert.IsTrue(document3.Scripts.Count == 0);
+            
+            IDocument<dynamic> document4 = browser.Navigate<dynamic>("browsesharp.org");
+            Assert.IsTrue(document4.Scripts.Count == 0);
+
+
+        }
+
+        [Test]
+        public void TestSharedSyleScrapingEnabledFlag()
+        {
+            Browser browser = new Browser();
+            
+            IDocument document1 = browser.Navigate("browsesharp.org");
+            Assert.IsTrue(document1.Styles.Count > 0);
+            
+            IDocument<dynamic> document2 = browser.Navigate<dynamic>("browsesharp.org");
+            Assert.IsTrue(document2.Styles.Count > 0);
+
+            browser.StyleScrapingEnabled = false;
+
+            IDocument document3 = browser.Navigate("browsesharp.org");
+            Assert.IsTrue(document3.Styles.Count == 0);
+            
+            IDocument<dynamic> document4 = browser.Navigate<dynamic>("browsesharp.org");
+            Assert.IsTrue(document4.Styles.Count == 0);
+        }
+
+        [Test]
+        public void TestDocumentToTypedDocument()
+        {
+            Browser browser = new Browser();
+            
+            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
+            RestRequest dogRequest = new RestRequest();
+            IDocument<DogResponse> dogDocument = browser.Execute<DogResponse>(dogRequest);
+            
+            IDocument<DogResponse> documentGot = browser.DocumentTyped<DogResponse>();
+            Assert.IsTrue(documentGot == dogDocument);
+            Assert.IsTrue(documentGot is IDocument<DogResponse>);
+            Assert.IsTrue(documentGot.Data is DogResponse);
+            Assert.IsTrue(documentGot.Data.Status == "success");
+            Assert.IsTrue(documentGot.Data.Message != null);
+            Assert.IsTrue(documentGot.Data.Status == dogDocument.Data.Status);
+            Assert.IsTrue(documentGot.Data.Message == dogDocument.Data.Message);
         }
         
         #endregion
