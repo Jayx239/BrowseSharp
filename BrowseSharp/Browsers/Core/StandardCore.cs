@@ -13,7 +13,7 @@ using RestSharp;
 namespace BrowseSharp.Browsers.Core
 {
     /// <summary>
-    /// Headless browser implimentation that creates documents for each web request.
+    /// Headless browser core that creates documents for each web request.
     /// </summary>
     public class StandardCore : BrowserCore, IBrowser
     {
