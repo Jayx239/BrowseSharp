@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
 using BrowseSharp.History;
-using BrowseSharp.Html;
 using BrowseSharp.Javascript;
 using BrowseSharp.Style;
-using BrowseSharp.Toolbox;
-using Jint.Parser;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
@@ -43,6 +38,17 @@ namespace BrowseSharp.Browsers.Core
 
         }
 
+        /// <summary>
+        /// Browser core secondary constructor
+        /// </summary>
+        /// <param name="javascriptEngine"></param>
+        /// <param name="styleEngine"></param>
+        /// <param name="restClient"></param>
+        /// <param name="cookieContainer"></param>
+        /// <param name="historyManager"></param>
+        /// <param name="styleScrapingEnabled"></param>
+        /// <param name="javascriptScrapingEnabled"></param>
+        /// <param name="defaultUriProtocol"></param>
         public BrowserCore(JavascriptEngine javascriptEngine, StyleEngine styleEngine, 
             RestClient restClient, CookieContainer cookieContainer, 
             HistoryManager historyManager, bool styleScrapingEnabled, 
@@ -71,6 +77,9 @@ namespace BrowseSharp.Browsers.Core
         /// </summary>
         public virtual JavascriptEngine JavascriptEngine { get { return _javascriptEngine; } }
 
+        /// <summary>
+        /// Javascript engine used by browser
+        /// </summary>
         protected JavascriptEngine _javascriptEngine;
 
         /// <summary>
@@ -78,6 +87,9 @@ namespace BrowseSharp.Browsers.Core
         /// </summary>
         public virtual StyleEngine StyleEngine { get { return _styleEngine; } }
 
+        /// <summary>
+        /// Style engine for parsing css styles 
+        /// </summary>
         protected StyleEngine _styleEngine;
 
         /// <summary>

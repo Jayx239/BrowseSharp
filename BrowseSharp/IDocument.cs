@@ -166,6 +166,6 @@ namespace BrowseSharp
         /// <summary>
         /// Deserialized body data as type
         /// </summary>
-        T Data { get; set; }
+        new T Data { get; set; }
     }
 }

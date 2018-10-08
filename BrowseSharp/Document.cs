@@ -230,8 +230,15 @@ namespace BrowseSharp
             return HtmlDocument.QuerySelectorAll(selectors);
         }
         
+        /// <summary>
+        /// Body data
+        /// </summary>
         public object Data { get; set; }
     }
+    /// <summary>
+    /// Document with typed body
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Document<T> : Document, IDocument<T>
     {
         /// <summary>
@@ -266,6 +273,6 @@ namespace BrowseSharp
         /// <summary>
         /// Gets data as type
         /// </summary>
-        public T Data { get; set; }
+        public new T Data { get; set; }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.Browsers;
 using BrowseSharp.Browsers.Core;
 using BrowseSharp.Html;
 using RestSharp;

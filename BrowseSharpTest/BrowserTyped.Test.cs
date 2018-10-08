@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
 using BrowseSharp.Browsers;
-using BrowseSharp.Browsers.Core;
 using BrowseSharp.Html;
 using BrowseSharpTest.Models;
 using NUnit.Framework;

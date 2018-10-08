@@ -1,21 +1,29 @@
 ﻿using Jint.Parser;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrowseSharp.History
 {
-    public class HistoryManager : IHistory
+    /// <summary>
+    /// Class for managing browser history
+    /// </summary>
+    public class HistoryManager : IHistorySync
     {
         #region Constructors
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public HistoryManager()
         {
             _history = new List<IDocument>();
             _forwardHistory = new List<IDocument>();
             MaxHistorySize = -1;
         }
+        /// <summary>
+        /// Secondary constructor for intializing with history and forward history
+        /// </summary>
+        /// <param name="history">Browser history</param>
+        /// <param name="forwardHistory">Forward browser history</param>
 
         public HistoryManager(List<IDocument> history, List<IDocument> forwardHistory)
         {
@@ -24,6 +32,12 @@ namespace BrowseSharp.History
             MaxHistorySize = -1;
         }
 
+        /// <summary>
+        /// Secondary constructor for initializing with history, forward history, and max history size
+        /// </summary>
+        /// <param name="history">Browser history</param>
+        /// <param name="forwardHistory">Forward browser history</param>
+        /// <param name="maxHistorySize">Maximum history size</param>
         public HistoryManager(List<IDocument> history, List<IDocument> forwardHistory, int maxHistorySize)
         {
             _history = history;
@@ -34,25 +48,43 @@ namespace BrowseSharp.History
         #endregion
 
         #region Public Attributes
+        /// <summary>
+        /// List of documents in history
+        /// </summary>
         public List<IDocument> History { get { return _history; } }
+        /// <summary>
+        /// List of forward history
+        /// </summary>
         public List<IDocument> ForwardHistory { get { return _forwardHistory; } }
+        /// <summary>
+        /// Maximum history size
+        /// </summary>
         public int MaxHistorySize { get; set; }
         #endregion
 
         #region Private Attributes
-
+        /// <summary>
+        /// History documents
+        /// </summary>
         private List<IDocument> _history;
+        /// <summary>
+        /// Forward history documents
+        /// </summary>
         private List<IDocument> _forwardHistory;
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// Navigate back to previous history document without cache
+        /// </summary>
+        /// <returns></returns>
         public IDocument Back()
         {
             return Back(false);
         }
-
+        /// <inheritdoc/>
         public IDocument Back(bool useCache)
         {
             ForwardHistory.Push(History.Pop());
@@ -79,6 +111,7 @@ namespace BrowseSharp.History
             }
         }
 
+        /// <inheritdoc/>
         public void ClearHistory()
         {
             if (_history == null)
@@ -95,11 +128,13 @@ namespace BrowseSharp.History
             ClearForwardHistory();
         }
 
+        /// <inheritdoc/>
         public IDocument Forward()
         {
             return Forward(false);
         }
 
+        /// <inheritdoc/>
         public IDocument Forward(bool useCache)
         {
             if (_forwardHistory.Count < 1)
@@ -115,11 +150,15 @@ namespace BrowseSharp.History
             return forwardDocument;
         }
 
+        /// <inheritdoc/>
         public IDocument Refresh()
         {
             return History.Pop();
         }
 
+        /// <summary>
+        /// Current document
+        /// </summary>
         public IDocument Document { get { return History.Last(); } }
 
         /// <summary>
