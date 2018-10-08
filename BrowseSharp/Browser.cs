@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.Browsers;
 using BrowseSharp.Browsers.Core;
+using BrowseSharp.History;
 using BrowseSharp.Html;
 using RestSharp;
 
@@ -12,7 +12,7 @@ namespace BrowseSharp
     /// <summary>
     /// Headless browser implementation that creates documents for each web request.
     /// </summary>
-    public class Browser : BrowserCore, IBrowser, IBrowserTyped, IBrowserHistorySync
+    public class Browser : BrowserCore, IBrowser, IBrowserTyped, IHistorySync, IHistoryAsync
     {
         /// <summary>
         /// Default Constructor
