@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BrowseSharp.History
 {
-    public interface IHistory
+    /// <summary>
+    /// History methods
+    /// </summary>
+    public interface IHistorySync
     {
         /// <summary>
         /// Contains all previous documents stored for each previous request
@@ -35,19 +36,20 @@ namespace BrowseSharp.History
         /// Method for navigating to last browser state
         /// </summary>
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
+        /// <returns>Previous document</returns>
         IDocument Back(bool useCache);
         
         /// <summary>
         /// Navigate to next document in forward history
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Forward history document</returns>
         IDocument Forward();
 
         /// <summary>
         /// Navigate to next document in forward history
         /// </summary>
         /// <param name="useCache"></param>
-        /// <returns></returns>
+        /// <returns>Forward history document</returns>
         IDocument Forward(bool useCache);
         
         /// <summary>

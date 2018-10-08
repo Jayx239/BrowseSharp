@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BrowseSharp.Browsers.Core
 {
+    /// <summary>
+    /// Browse core methods
+    /// </summary>
     public interface IBrowserCore
     {
         /// <summary>

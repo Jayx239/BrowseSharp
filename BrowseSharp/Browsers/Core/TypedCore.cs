@@ -374,6 +374,13 @@ namespace BrowseSharp.Browsers.Core
             return (IDocument<T>) _history.Document;
         }
 
+        /// <summary>
+        /// Package typed document
+        /// </summary>
+        /// <typeparam name="T">Type of document body</typeparam>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
         protected IDocument<T> PackageAndAddDocument<T>(IRestRequest request, IRestResponse<T> response)
         {
             Uri requestUri = _restClient.BaseUrl;
@@ -389,6 +396,13 @@ namespace BrowseSharp.Browsers.Core
             return document;
         }
 
+        /// <summary>
+        /// Package typed document asynchronously
+        /// </summary>
+        /// <typeparam name="T">Type of document body</typeparam>
+        /// <param name="request">Request to be packaged</param>
+        /// <param name="responseTask">Reponse task to be packaged</param>
+        /// <returns>Packaged document</returns>
         protected async Task<IDocument<T>> PackageAndAddDocumentAsync<T>(IRestRequest request, Task<IRestResponse<T>> responseTask)
         {
             Uri requestUri = _restClient.BaseUrl;
