@@ -42,6 +42,9 @@
     <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea">
       <HintPath>..\packages\AngleSharp.0.9.9.2\lib\net45\AngleSharp.dll</HintPath>
     </Reference>
+    <Reference Include="AngleSharp.Scripting.JavaScript, Version=0.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.Scripting.JavaScript.0.5.1\lib\portable-windows8+net45+windowsphone8+wpa+monoandroid+monotouch\AngleSharp.Scripting.JavaScript.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -78,8 +81,8 @@
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Jint, Version=0.0.0.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jint.2.11.58\lib\net451\Jint.dll</HintPath>
+    <Reference Include="jint, Version=2.10.4.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
+      <HintPath>..\packages\jint.2.10.4\lib\net45\jint.dll</HintPath>
     </Reference>
     <Reference Include="Markdig, Version=0.15.1.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Markdig.0.15.1\lib\net40\Markdig.dll</HintPath>
@@ -352,6 +355,7 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.Contracts" />
     <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.Diagnostics.FileVersionInfo.4.3.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
     </Reference>
@@ -437,6 +441,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JavascriptEngine.Test.cs" />
     <Compile Include="StandardCore.Test.cs" />
     <Compile Include="TypedCore.Test.cs" />
     <Compile Include="BrowserStandard.Test.cs" />
