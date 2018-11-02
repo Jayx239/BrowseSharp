@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net452;net46;netstandard2.0</TargetFrameworks>
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -22,6 +22,7 @@
   - Added ability to set request headers</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/B%23.png</PackageIconUrl>
+    <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\netstandard2.0\BrowseSharp.xml</DocumentationFile>
@@ -34,5 +35,8 @@
     <PackageReference Include="Jint" Version="2.11.55" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="RestSharp" Version="106.3.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net452'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 </Project>
