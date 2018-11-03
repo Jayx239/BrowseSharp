@@ -4,9 +4,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.6.2</AssemblyVersion>
-    <FileVersion>0.0.6.2</FileVersion>
-    <Version>0.0.6</Version>
+    <AssemblyVersion>0.0.7.0</AssemblyVersion>
+    <FileVersion>0.0.7.0</FileVersion>
+    <Version>0.0.7-alpha</Version>
     <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2018 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
@@ -14,11 +14,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint Type Deserialization API Testing Security Automation Bot</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>* Added type support for browser.
-* Implemented 2 new browsers:
-  * BrowserStandard - This will have the standard methods present in BrowseSharp versions prior to 0.0.6
-  * BrowserTyped - This will have the Typed methods that are being added with this release
-  * Browser has support for all of these methods.</PackageReleaseNotes>
+    <PackageReleaseNotes>* Added target frameworks for .net 4.5.2 and .net 4.6</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
