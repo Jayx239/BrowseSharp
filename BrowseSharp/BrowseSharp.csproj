@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net452;net46;netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
