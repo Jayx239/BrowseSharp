@@ -437,6 +437,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowserThreadFail.cs" />
+    <Compile Include="BrowserThreadSafe.Test.cs" />
+    <Compile Include="RaceConditionProof.Test.cs" />
     <Compile Include="StandardCore.Test.cs" />
     <Compile Include="TypedCore.Test.cs" />
     <Compile Include="BrowserStandard.Test.cs" />
