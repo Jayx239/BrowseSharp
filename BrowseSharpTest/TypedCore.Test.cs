@@ -6,7 +6,6 @@ using BrowseSharp;
 using BrowseSharp.Browsers.Core;
 using BrowseSharp.Html;
 using BrowseSharpTest.Models;
-using Microsoft.DocAsCode.Common;
 using NUnit.Framework;
 using RestSharp;
 
@@ -563,7 +562,7 @@ namespace BrowseSharpTest
             Assert.True(getResponseJson.Query["Message"] == "This is the test message");
             Assert.True(getResponseJson.Query["Email"] == "testemail@test.com");
             Assert.True(getResponseJson.Query["Rating"] == "3");
-            
+
             Assert.True(getResponseJson.Headers["get-header"].ToString() == "This is a get header");
             Assert.True(getResponseJson.Headers["other-header"].ToString() == "Other header value");
             Assert.True(getResponseJson.Headers["athirdheader"].ToString() == "A 3rd header");
