@@ -7,7 +7,6 @@ using BrowseSharp;
 using BrowseSharp.Browsers;
 using BrowseSharp.Html;
 using BrowseSharpTest.Models;
-using Microsoft.DocAsCode.Common;
 using NUnit.Framework;
 using RestSharp;
 
