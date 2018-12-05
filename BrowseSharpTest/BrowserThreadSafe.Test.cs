@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using BrowseSharp;
 using BrowseSharp.Browsers;
 using BrowseSharp.Html;
@@ -890,18 +891,18 @@ namespace BrowseSharpTest
             postForm.SetValue("Password", "TestPassword");
             
             IDocument postResponse = browser.SubmitForm(postForm);
-            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
-            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
+            dynamic postResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(postResponse.Body.TextContent);
+            Assert.True(postResponseJson["formData"]["UserName"] == "TestUser");
+            Assert.True(postResponseJson["formData"]["Password"] == "TestPassword");
 
             getForm.SetValue("Message", "This is the test message");
             getForm.SetValue("Email", "testemail@test.com");
             getForm.SetValue("Rating", "3");
             IDocument getResponse = browser.SubmitForm(getForm);
-            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
-            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
-            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+            dynamic getResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(getResponse.Body.TextContent);
+            Assert.True(getResponseJson["query"]["Message"] == "This is the test message");
+            Assert.True(getResponseJson["query"]["Email"] == "testemail@test.com");
+            Assert.True(getResponseJson["query"]["Rating"] == "3");
         }
         
         [Test]
@@ -919,12 +920,12 @@ namespace BrowseSharpTest
             postHeaders.Add("other-header","this is the other header");
             
             IDocument postResponse = browser.SubmitForm(postForm, postHeaders);
-            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
-            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
+            dynamic postResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(postResponse.Body.TextContent);
+            Assert.True(postResponseJson["formData"]["UserName"] == "TestUser");
+            Assert.True(postResponseJson["formData"]["Password"] == "TestPassword");
 
-            Assert.True(postResponseJson.headers["x-my-header"].ToString() == "MyHeaderValue");
-            Assert.True(postResponseJson.headers["other-header"].ToString() == "this is the other header");
+            Assert.True(postResponseJson["headers"]["x-my-header"] == "MyHeaderValue");
+            Assert.True(postResponseJson["headers"]["other-header"].ToString() == "this is the other header");
             
             getForm.SetValue("Message", "This is the test message");
             getForm.SetValue("Email", "testemail@test.com");
@@ -936,14 +937,14 @@ namespace BrowseSharpTest
             getHeaders.Add("athirdheader", "A 3rd header");
             
             IDocument getResponse = browser.SubmitForm(getForm, getHeaders);
-            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
-            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
-            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+            dynamic getResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(getResponse.Body.TextContent);
+            Assert.True(getResponseJson["query"]["Message"] == "This is the test message");
+            Assert.True(getResponseJson["query"]["Email"] == "testemail@test.com");
+            Assert.True(getResponseJson["query"]["Rating"] == "3");
             
-            Assert.True(getResponseJson.headers["get-header"].ToString() == "This is a get header");
-            Assert.True(getResponseJson.headers["other-header"].ToString() == "Other header value");
-            Assert.True(getResponseJson.headers["athirdheader"].ToString() == "A 3rd header");
+            Assert.True(getResponseJson["headers"]["get-header"] == "This is a get header");
+            Assert.True(getResponseJson["headers"]["other-header"].ToString() == "Other header value");
+            Assert.True(getResponseJson["headers"]["athirdheader"].ToString() == "A 3rd header");
         }
         
         
@@ -958,18 +959,18 @@ namespace BrowseSharpTest
             postForm.SetValue("Password", "TestPassword");
             
             IDocument postResponse = await browser.SubmitFormAsync(postForm);
-            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
-            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
+            dynamic postResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(postResponse.Body.TextContent);
+            Assert.True(postResponseJson["formData"]["UserName"] == "TestUser");
+            Assert.True(postResponseJson["formData"]["Password"] == "TestPassword");
 
             getForm.SetValue("Message", "This is the test message");
             getForm.SetValue("Email", "testemail@test.com");
             getForm.SetValue("Rating", "3");
             IDocument getResponse = await browser.SubmitFormAsync(getForm);
-            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
-            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
-            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+            dynamic getResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(getResponse.Body.TextContent);
+            Assert.True(getResponseJson["query"]["Message"] == "This is the test message");
+            Assert.True(getResponseJson["query"]["Email"] == "testemail@test.com");
+            Assert.True(getResponseJson["query"]["Rating"] == "3");
         }
         
         [Test]
@@ -987,12 +988,12 @@ namespace BrowseSharpTest
             postHeaders.Add("other-header","this is the other header");
             
             IDocument postResponse = await browser.SubmitFormAsync(postForm, postHeaders);
-            dynamic postResponseJson = postResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(postResponseJson.formData.UserName.ToString() == "TestUser");
-            Assert.True(postResponseJson.formData.Password.ToString() == "TestPassword");
+            dynamic postResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(postResponse.Body.TextContent);
+            Assert.True(postResponseJson["formData"]["UserName"] == "TestUser");
+            Assert.True(postResponseJson["formData"]["Password"] == "TestPassword");
 
-            Assert.True(postResponseJson.headers["x-my-header"].ToString() == "MyHeaderValue");
-            Assert.True(postResponseJson.headers["other-header"].ToString() == "this is the other header");
+            Assert.True(postResponseJson["headers"]["x-my-header"] == "MyHeaderValue");
+            Assert.True(postResponseJson["headers"]["other-header"].ToString() == "this is the other header");
             
             getForm.SetValue("Message", "This is the test message");
             getForm.SetValue("Email", "testemail@test.com");
@@ -1004,14 +1005,14 @@ namespace BrowseSharpTest
             getHeaders.Add("athirdheader", "A 3rd header");
             
             IDocument getResponse = await browser.SubmitFormAsync(getForm, getHeaders);
-            dynamic getResponseJson = getResponse.Body.TextContent.FromJsonString<dynamic>();
-            Assert.True(getResponseJson.query.Message.ToString() == "This is the test message");
-            Assert.True(getResponseJson.query.Email.ToString() == "testemail@test.com");
-            Assert.True(getResponseJson.query.Rating.ToString() == "3");
+            dynamic getResponseJson = new JavaScriptSerializer().Deserialize<dynamic>(getResponse.Body.TextContent);
+            Assert.True(getResponseJson["query"]["Message"] == "This is the test message");
+            Assert.True(getResponseJson["query"]["Email"] == "testemail@test.com");
+            Assert.True(getResponseJson["query"]["Rating"] == "3");
             
-            Assert.True(getResponseJson.headers["get-header"].ToString() == "This is a get header");
-            Assert.True(getResponseJson.headers["other-header"].ToString() == "Other header value");
-            Assert.True(getResponseJson.headers["athirdheader"].ToString() == "A 3rd header");
+            Assert.True(getResponseJson["headers"]["get-header"] == "This is a get header");
+            Assert.True(getResponseJson["headers"]["other-header"].ToString() == "Other header value");
+            Assert.True(getResponseJson["headers"]["athirdheader"].ToString() == "A 3rd header");
         }
 
         /// <summary>

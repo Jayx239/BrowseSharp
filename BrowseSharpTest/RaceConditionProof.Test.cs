@@ -21,7 +21,7 @@ namespace BrowseSharpTest
 
             try
             {
-                BrowserThreadSafe browser = new BrowserThreadSafe();
+                BrowserThreadFail browser = new BrowserThreadFail();
                 List<Task<IDocument>> navigateTasks = new List<Task<IDocument>>();
                 navigateTasks.Add(browser.NavigateAsync("facebook.com"));
                 navigateTasks.Add(browser.NavigateAsync("requesttester.com"));
