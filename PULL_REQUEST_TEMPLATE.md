@@ -7,11 +7,6 @@
 
 (c) Optimization
 
+(d) Other - Describe below:
 
-### Overview of pull request, descript briefly what changes are in the pull request:
-
-### Describe the need for the changes in the pull request:
-
-### Describe what measures were used to test the code changes:
-
-### Provide a link to the unit tests for this pull request, requests will not be accepted if appropriate unit tests are not provided:
+### Describe briefly what changes are in the pull request and why they are relevant:
