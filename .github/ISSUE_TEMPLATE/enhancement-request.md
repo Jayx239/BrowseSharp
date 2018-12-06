@@ -1,6 +1,9 @@
 ---
 name: Enhancement request
 about: Suggest an enhancement to the current project
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
