@@ -1,5 +1,8 @@
 # BrowseSharp
+[BrowseSharp.org](https://browsesharp.org)
 [![NuGet](https://img.shields.io/nuget/v/BrowseSharp.svg)](https://www.nuget.org/packages/BrowseSharp)
+
+
 
 A headless browser supporting web navigation, html parsing, and javascript execution.
 
@@ -11,7 +14,10 @@ A headless browser supporting web navigation, html parsing, and javascript execu
     * Stores css styles
 2. Browser
 	* Supports asynchronous and synchronous web requests
-	* Generates Documents for each web request.
+	* Generates Documents for each web request
+    * Type deserialization of response data
+    * Simple nagivate and submit methods for get/post requests
+    * Browser history for backward forward navigation and refreshing the current document
 3. Javascript Engine
 	* Used by browser to scrape JavaScript content from inline scripts and externally linked scripts.
 4. StyleEngine
@@ -21,11 +27,57 @@ A headless browser supporting web navigation, html parsing, and javascript execu
 ```
 static void Main(string[] args)
 {
-    /* Make request */
-    BrowseSharp.Browser browser = new Browser();
-    browser.BaseUrl = new Uri("https://www.w3schools.com");
-    RestSharp.RestRequest request = new RestSharp.RestRequest(RestSharp.Method.GET);
-    RestSharp.IRestResponse response = browser.Execute(request);
+    /* Initialize Browser */
+    Browser browser = new Browser();
+
+    /* Navigate to a website */
+    IDocument document = browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
+
+    / * Navigate with headers */
+    Dictionary<string, string> headers = new Dictionary<string, string>();
+    headers.Add("x-csrf-token", "2342342");
+    var response = browser.Navigate(RequestTesterRouteUri, headers);
+
+    /* Navigate with data */
+    Dictionary<string, string> formData = new Dictionary<string, string>();
+    formData.Add("Username","FakeUserName");
+    formData.Add("Password", "FakePassword123");
+    formData.Add("SecretMessage", "This is a secret message");
+    var response = browser.Navigate(RequestTesterRouteUri, headers, formData);
+
+
+
+    /* SubmitForm */
+    /* Form */
+    browser.Navigate("https://www.browsesharp.org/testsitesforms.html");
+    Form postForm = browser.Document.Forms[0];
+    postForm.SetValue("UserName", "TestUser");
+    postForm.SetValue("Password", "TestPassword");
+    IDocument postResponse = browser.SubmitForm(postForm);
+    
+    /* Form as dictionary */
+    var response = browser.Submit("https://www.hashemian.com/tools/form-post-tester.php", formData);
+    
+    /* With headers */
+    var response = browser.Submit("https://requesttester.com", formData, headers);
+
+
+    /* Async calls */
+    var response = await browser.NavigateAsync("https://www.browsesharp.org/testsitesforms.html");
+
+
+    /* Get current document */
+    IDocument lastDocument = browser.Document;
+
+
+    /* Typed Responses 
+        Note: Request is a custom class unrelated to this library
+    */
+    /* Make request that is deserialized into a request object */
+    IDocument<Request> response = browser.Navigate<Request>(RequestTesterRouteJsonUri, headers, formData);
+    Request request = response.Data; /* Get the Request object from the response */
+
+
 
     /* Run script - This will be cleaned up! */
     browser.JavascriptEngine.Document = browser.Documents[0].Scripts[2].JavascriptString;
