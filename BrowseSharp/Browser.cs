@@ -113,147 +113,147 @@ namespace BrowseSharp
         }
 
         /// <inheritdoc />
-        public IDocument Navigate(string uri)
+        public virtual IDocument Navigate(string uri)
         {
             return _browserStandard.Navigate(uri);
         }
 
         /// <inheritdoc />
-        public IDocument Navigate(Uri uri)
+        public virtual IDocument Navigate(Uri uri)
         {
             return _browserStandard.Navigate(uri);
         }
 
         /// <inheritdoc />
-        public IDocument Navigate(string uri, Dictionary<string, string> headers)
+        public virtual IDocument Navigate(string uri, Dictionary<string, string> headers)
         {
             return _browserStandard.Navigate(uri, headers);
         }
 
         /// <inheritdoc />
-        public IDocument Navigate(Uri uri, Dictionary<string, string> headers)
+        public virtual IDocument Navigate(Uri uri, Dictionary<string, string> headers)
         {
             return _browserStandard.Navigate(uri, headers);
         }
 
         /// <inheritdoc />
-        public IDocument Navigate(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        public virtual IDocument Navigate(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return _browserStandard.Navigate(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public IDocument Navigate(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        public virtual IDocument Navigate(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return _browserStandard.Navigate(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(string uri)
+        public virtual async Task<IDocument> NavigateAsync(string uri)
         {
             return await _browserStandard.NavigateAsync(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(Uri uri)
+        public virtual async Task<IDocument> NavigateAsync(Uri uri)
         {
             return await _browserStandard.NavigateAsync(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers)
+        public virtual async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers)
         {
             return await _browserStandard.NavigateAsync(uri, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers)
+        public virtual async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers)
         {
             return await _browserStandard.NavigateAsync(uri, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers,
+        public virtual async Task<IDocument> NavigateAsync(string uri, Dictionary<string, string> headers,
             Dictionary<string, string> formData)
         {
             return await _browserStandard.NavigateAsync(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers,
+        public virtual async Task<IDocument> NavigateAsync(Uri uri, Dictionary<string, string> headers,
             Dictionary<string, string> formData)
         {
             return await _browserStandard.NavigateAsync(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public IDocument Submit(string uri)
+        public virtual IDocument Submit(string uri)
         {
             return _browserStandard.Submit(uri);
         }
 
         /// <inheritdoc />
-        public IDocument Submit(Uri uri)
+        public virtual IDocument Submit(Uri uri)
         {
             return _browserStandard.Submit(uri);
         }
 
         /// <inheritdoc />
-        public IDocument Submit(string uri, Dictionary<string, string> formData)
+        public virtual IDocument Submit(string uri, Dictionary<string, string> formData)
         {
             return _browserStandard.Submit(uri, formData);
         }
 
         /// <inheritdoc />
-        public IDocument Submit(Uri uri, Dictionary<string, string> formData)
+        public virtual IDocument Submit(Uri uri, Dictionary<string, string> formData)
         {
             return _browserStandard.Submit(uri, formData);
         }
 
         /// <inheritdoc />
-        public IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual IDocument Submit(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return _browserStandard.Submit(uri, formData, headers);
         }
 
         /// <inheritdoc />
-        public IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual IDocument Submit(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return _browserStandard.Submit(uri, formData, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(string uri)
+        public virtual async Task<IDocument> SubmitAsync(string uri)
         {
             return await _browserStandard.SubmitAsync(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(Uri uri)
+        public virtual async Task<IDocument> SubmitAsync(Uri uri)
         {
             return await _browserStandard.SubmitAsync(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
+        public virtual async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData)
         {
             return await _browserStandard.SubmitAsync(uri, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData)
+        public virtual async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData)
         {
             return await _browserStandard.SubmitAsync(uri, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual async Task<IDocument> SubmitAsync(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return await _browserStandard.SubmitAsync(uri, formData, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual async Task<IDocument> SubmitAsync(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return await _browserStandard.SubmitAsync(uri, formData, headers);
         }
@@ -274,7 +274,7 @@ namespace BrowseSharp
         /// <summary>
         /// Clears browse history by re-initializing Documents
         /// </summary>
-        public void ClearHistory()
+        public virtual void ClearHistory()
         {
             _history.ClearHistory();
         }
@@ -282,7 +282,7 @@ namespace BrowseSharp
         /// <summary>
         /// Clears forward history
         /// </summary>
-        public void ClearForwardHistory()
+        public virtual void ClearForwardHistory()
         {
             _history.ClearForwardHistory();
         }
@@ -290,7 +290,7 @@ namespace BrowseSharp
         /// <summary>
         /// Method for navigating to last browser state by re-issuing the previous request
         /// </summary>
-        public IDocument Back()
+        public virtual IDocument Back()
         {
             return Back(false);
         }
@@ -299,7 +299,7 @@ namespace BrowseSharp
         /// Method for navigating to last browser state
         /// </summary>
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
-        public IDocument Back(bool useCache)
+        public virtual IDocument Back(bool useCache)
         {
             IDocument oldDocument = _history.Back(useCache);
             if (useCache)
@@ -313,7 +313,7 @@ namespace BrowseSharp
         /// <summary>
         /// Method for navigating to last browser state by re-issuing the previous request asynchronously
         /// </summary>
-        public async Task<IDocument> BackAsync()
+        public virtual async Task<IDocument> BackAsync()
         {
             return await BackAsync(false);
         }
@@ -322,7 +322,7 @@ namespace BrowseSharp
         /// Method for navigating to last browser state asynchronously
         /// </summary>
         /// <param name="useCache">Determines whether to re-issue request or reload last document</param>
-        public async Task<IDocument> BackAsync(bool useCache)
+        public virtual async Task<IDocument> BackAsync(bool useCache)
         {
             IDocument oldDocument = _history.Back(useCache);
             if (useCache)
@@ -336,7 +336,7 @@ namespace BrowseSharp
         /// Navigate to next document in forward history
         /// </summary>
         /// <returns></returns>
-        public IDocument Forward()
+        public virtual IDocument Forward()
         {
             return Forward(false);
         }
@@ -346,7 +346,7 @@ namespace BrowseSharp
         /// </summary>
         /// <param name="useCache"></param>
         /// <returns></returns>
-        public IDocument Forward(bool useCache)
+        public virtual IDocument Forward(bool useCache)
         {
             IDocument forwardDocument = _history.Forward(useCache);
             if (useCache)
@@ -360,7 +360,7 @@ namespace BrowseSharp
         /// Navigate to next document in forward history asynchronously
         /// </summary>
         /// <returns></returns>
-        public async Task<IDocument> ForwardAsync()
+        public virtual async Task<IDocument> ForwardAsync()
         {
             return await ForwardAsync(false);
         }
@@ -370,7 +370,7 @@ namespace BrowseSharp
         /// </summary>
         /// <param name="useCache"></param>
         /// <returns></returns>
-        public async Task<IDocument> ForwardAsync(bool useCache)
+        public virtual async Task<IDocument> ForwardAsync(bool useCache)
         {
             IDocument forwardDocument = _history.Forward(useCache);
             if (useCache)
@@ -383,13 +383,13 @@ namespace BrowseSharp
         /// <summary>
         /// Max amount of history/Documents to be stored by the browser (-1 for no limit)
         /// </summary>
-        public int MaxHistorySize { get { return _history.MaxHistorySize; } set { _history.MaxHistorySize = value; } }
+        public virtual int MaxHistorySize { get { return _history.MaxHistorySize; } set { _history.MaxHistorySize = value; } }
 
         /// <summary>
         /// Refresh page, re-submits last request
         /// </summary>
         /// <returns></returns>
-        public IDocument Refresh()
+        public virtual IDocument Refresh()
         {
             IDocument oldDocument = _history.Refresh();
             _browserStandard.BaseUrl = oldDocument.RequestUri;
@@ -400,7 +400,7 @@ namespace BrowseSharp
         /// Refresh page, re-submits last request asynchronously
         /// </summary>
         /// <returns></returns>
-        public async Task<IDocument> RefreshAsync()
+        public virtual async Task<IDocument> RefreshAsync()
         {
             IDocument oldDocument = _history.Refresh();
             _browserStandard.BaseUrl = oldDocument.RequestUri;
@@ -411,260 +411,260 @@ namespace BrowseSharp
         /// Gets current document from the current request
         /// </summary>
         /// <returns>Current Document</returns>
-        public IDocument Document => _history.Document;
+        public virtual IDocument Document => _history.Document;
         
         /// <summary>
         /// Submits form
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
-        public IDocument SubmitForm(Form form)
+        public virtual IDocument SubmitForm(Form form)
         {
             return _browserStandard.SubmitForm(form);
         }
 
         /// <inheritdoc />
-        public IDocument SubmitForm(Form form, Dictionary<string, string> headers)
+        public virtual IDocument SubmitForm(Form form, Dictionary<string, string> headers)
         {
             return _browserStandard.SubmitForm(form,headers);
         }
         
         /// <inheritdoc />
-        public async Task<IDocument> SubmitFormAsync(Form form)
+        public virtual async Task<IDocument> SubmitFormAsync(Form form)
         {
             return await _browserStandard.SubmitFormAsync(form);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument> SubmitFormAsync(Form form, Dictionary<string, string> headers)
+        public virtual async Task<IDocument> SubmitFormAsync(Form form, Dictionary<string, string> headers)
         {
             return await _browserStandard.SubmitFormAsync(form, headers);
         }
         
         /// <inheritdoc />
-        public IDocument<T> Execute<T>(IRestRequest request)
+        public virtual IDocument<T> Execute<T>(IRestRequest request)
         {
             return _browserTyped.Execute<T>(request);
         }
         
         /// <inheritdoc />
-        public IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod)
+        public virtual IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod)
         {
             return _browserTyped.ExecuteAsGet<T>(request, httpMethod);
         }
 
         /// <inheritdoc />
-        public IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod)
+        public virtual IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod)
         {
             return _browserTyped.ExecuteAsPost<T>(request, httpMethod);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request, CancellationToken token)
+        public virtual async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             return await _browserTyped.ExecuteTaskAsync<T>(request, token);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request)
+        public virtual async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request)
         {
             return await _browserTyped.ExecuteTaskAsync<T>(request);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request)
+        public virtual async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request)
         {
             return await _browserTyped.ExecuteGetTaskAsync<T>(request);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request, CancellationToken token)
+        public virtual async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             return await _browserTyped.ExecuteGetTaskAsync<T>(request, token);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request)
+        public virtual async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request)
         {
             return await _browserTyped.ExecutePostTaskAsync<T>(request);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request, CancellationToken token)
+        public virtual async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             return await _browserTyped.ExecutePostTaskAsync<T>(request, token);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Navigate<T>(string uri)
+        public virtual IDocument<T> Navigate<T>(string uri)
         {
             return _browserTyped.Navigate<T>(uri);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Navigate<T>(Uri uri)
+        public virtual IDocument<T> Navigate<T>(Uri uri)
         {
             return _browserTyped.Navigate<T>(uri);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers)
+        public virtual IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers)
         {
             return _browserTyped.Navigate<T>(uri, headers);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers)
+        public virtual IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers)
         {
             return _browserTyped.Navigate<T>(uri, headers);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        public virtual IDocument<T> Navigate<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return _browserTyped.Navigate<T>(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        public virtual IDocument<T> Navigate<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return _browserTyped.Navigate<T>(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> NavigateAsync<T>(string uri)
+        public virtual async Task<IDocument<T>> NavigateAsync<T>(string uri)
         {
             return await _browserTyped.NavigateAsync<T>(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> NavigateAsync<T>(Uri uri)
+        public virtual async Task<IDocument<T>> NavigateAsync<T>(Uri uri)
         {
             return await _browserTyped.NavigateAsync<T>(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers)
+        public virtual async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers)
         {
             return await _browserTyped.NavigateAsync<T>(uri, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers)
+        public virtual async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers)
         {
             return await _browserTyped.NavigateAsync<T>(uri, headers);
         }
         
         /// <inheritdoc />
-        public async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        public virtual async Task<IDocument<T>> NavigateAsync<T>(string uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return await _browserTyped.NavigateAsync<T>(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
+        public virtual async Task<IDocument<T>> NavigateAsync<T>(Uri uri, Dictionary<string, string> headers, Dictionary<string, string> formData)
         {
             return await _browserTyped.NavigateAsync<T>(uri, headers, formData);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Submit<T>(string uri)
+        public virtual IDocument<T> Submit<T>(string uri)
         {
             return _browserTyped.Submit<T>(uri);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Submit<T>(Uri uri)
+        public virtual IDocument<T> Submit<T>(Uri uri)
         {
             return _browserTyped.Submit<T>(uri);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData)
+        public virtual IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData)
         {
             return _browserTyped.Submit<T>(uri, formData);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData)
+        public virtual IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData)
         {
             return _browserTyped.Submit<T>(uri, formData);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual IDocument<T> Submit<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return _browserTyped.Submit<T>(uri, formData, headers);
         }
 
         /// <inheritdoc />
-        public IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual IDocument<T> Submit<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return _browserTyped.Submit<T>(uri, formData, headers);
         }
 
         /// <inheritdoc />
-        public IDocument<T> SubmitForm<T>(Form form)
+        public virtual IDocument<T> SubmitForm<T>(Form form)
         {
             return _browserTyped.SubmitForm<T>(form);
         }
 
         /// <inheritdoc />
-        public IDocument<T> SubmitForm<T>(Form form, Dictionary<string, string> headers)
+        public virtual IDocument<T> SubmitForm<T>(Form form, Dictionary<string, string> headers)
         {
             return _browserTyped.SubmitForm<T>(form, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitAsync<T>(string uri)
+        public virtual async Task<IDocument<T>> SubmitAsync<T>(string uri)
         {
             return await _browserTyped.SubmitAsync<T>(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitAsync<T>(Uri uri)
+        public virtual async Task<IDocument<T>> SubmitAsync<T>(Uri uri)
         {
             return await _browserTyped.SubmitAsync<T>(uri);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData)
+        public virtual async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData)
         {
             return await _browserTyped.SubmitAsync<T>(uri, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData)
+        public virtual async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData)
         {
             return await _browserTyped.SubmitAsync<T>(uri, formData);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual async Task<IDocument<T>> SubmitAsync<T>(string uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return await _browserTyped.SubmitAsync<T>(uri, formData, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
+        public virtual async Task<IDocument<T>> SubmitAsync<T>(Uri uri, Dictionary<string, string> formData, Dictionary<string, string> headers)
         {
             return await _browserTyped.SubmitAsync<T>(uri, formData, headers);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitFormAsync<T>(Form form)
+        public virtual async Task<IDocument<T>> SubmitFormAsync<T>(Form form)
         {
             return await _browserTyped.SubmitFormAsync<T>(form);
         }
 
         /// <inheritdoc />
-        public async Task<IDocument<T>> SubmitFormAsync<T>(Form form, Dictionary<string, string> headers)
+        public virtual async Task<IDocument<T>> SubmitFormAsync<T>(Form form, Dictionary<string, string> headers)
         {
             return await _browserTyped.SubmitFormAsync<T>(form, headers);
         }
 
         /// <inheritdoc/>
-        public IDocument<T> DocumentTyped<T>()
+        public virtual IDocument<T> DocumentTyped<T>()
         {
             return _browserTyped.DocumentTyped<T>();
         }
