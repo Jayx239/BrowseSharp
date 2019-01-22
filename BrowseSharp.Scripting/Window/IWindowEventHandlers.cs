@@ -1,0 +1,78 @@
+﻿namespace BrowseSharp.Scripting.Window
+{
+    public interface IWindowEventHandlers
+    {
+        #region EventHandlers
+        /*Window.onappinstalled
+Window.onbeforeinstallprompt
+Window.ondevicelight
+Window.ondevicemotion
+Window.ondeviceorientation
+Window.ondeviceorientationabsolute
+Window.ondeviceproximity
+Window.ongamepadconnected
+Window.ongamepaddisconnected
+Window.onmozbeforepaint
+Window.onpaint
+Window.onrejectionhandled
+Window.onuserproximity
+Window.onvrdisplayconnect
+Window.onvrdisplaydisconnect
+Window.onvrdisplayactivate
+Window.onvrdisplaydeactivate
+Window.onvrdisplayblur
+Window.onvrdisplayfocus
+Window.onvrdisplaypresentchange
+GlobalEventHandlers.onabort
+WindowEventHandlers.onafterprint
+WindowEventHandlers.onbeforeprint
+WindowEventHandlers.onbeforeunload
+GlobalEventHandlers.onblur
+GlobalEventHandlers.onchange
+GlobalEventHandlers.onclick
+GlobalEventHandlers.ondblclick
+GlobalEventHandlers.onclose
+GlobalEventHandlers.oncontextmenu
+GlobalEventHandlers.onerror
+GlobalEventHandlers.onfocus
+WindowEventHandlers.onhashchange
+GlobalEventHandlers.oninput
+GlobalEventHandlers.onkeydown
+GlobalEventHandlers.onkeypress
+GlobalEventHandlers.onkeyup
+WindowEventHandlers.onlanguagechange
+GlobalEventHandlers.onload
+WindowEventHandlers.onmessage
+GlobalEventHandlers.onmousedown
+GlobalEventHandlers.onmousemove
+GlobalEventHandlers.onmouseout
+GlobalEventHandlers.onmouseover
+GlobalEventHandlers.onmouseup
+WindowEventHandlers.onoffline
+WindowEventHandlers.ononline
+WindowEventHandlers.onpagehide
+WindowEventHandlers.onpageshow
+WindowEventHandlers.onpopstate
+GlobalEventHandlers.onreset
+GlobalEventHandlers.onresize
+GlobalEventHandlers.onscroll
+GlobalEventHandlers.onwheel
+GlobalEventHandlers.onselect
+GlobalEventHandlers.onselectionchange
+WindowEventHandlers.onstorage
+GlobalEventHandlers.onsubmit
+WindowEventHandlers.onunhandledrejection
+WindowEventHandlers.onunload
+DOMParser
+Window.GeckoActiveXObject
+Image
+Option
+Window.QueryInterface
+Window.StaticRange
+Worker
+Window.XMLSerializer
+Window.XPCNativeWrapper
+Window.XPCSafeJSObjectWrapper*/
+            #endregion
+    }
+}

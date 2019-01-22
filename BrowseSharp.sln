@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharp", "BrowseSharp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharpTest", "BrowseSharpTest\BrowseSharpTest.csproj", "{07B0ECC1-24C5-435D-9F0D-6860297A5772}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharp.Scripting", "BrowseSharp.Scripting\BrowseSharp.Scripting.csproj", "{DACB0217-6861-438A-AEDB-69F554124943}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{07B0ECC1-24C5-435D-9F0D-6860297A5772}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07B0ECC1-24C5-435D-9F0D-6860297A5772}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07B0ECC1-24C5-435D-9F0D-6860297A5772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACB0217-6861-438A-AEDB-69F554124943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACB0217-6861-438A-AEDB-69F554124943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACB0217-6861-438A-AEDB-69F554124943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACB0217-6861-438A-AEDB-69F554124943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
