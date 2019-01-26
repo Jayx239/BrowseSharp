@@ -42,8 +42,10 @@ namespace BrowseSharp.Toolbox
                 scriptUri = new Uri(ConcatPath(responseUri.Scheme + "://" + responseUri.Host, scriptSource));
             else {
                 string scriptRelativePath = responseUri.Scheme + "://" + responseUri.Host;
-                for (int i = 0; i < responseUri.Segments.Length-1; i++)
+                for (int i = 0; i < responseUri.Segments.Length; i++)
                 {
+                    if (!responseUri.Segments[i].EndsWith("/"))
+                        break;
                     scriptRelativePath += responseUri.Segments[i];
                 }
                 scriptUri = new Uri(ConcatPath(scriptRelativePath,scriptSource));

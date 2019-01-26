@@ -20,7 +20,7 @@ namespace BrowseSharpTest
             Uri result1 = UriHelper.GetUri(testUri, "/js/sass/");
             Assert.AreEqual(result1.AbsoluteUri, "https://google.com/js/sass/");
             Uri result2 = UriHelper.GetUri(testUri, "something/different");
-            Assert.AreEqual(result2.AbsoluteUri, "https://google.com/something/something/different");
+            Assert.AreEqual(result2.AbsoluteUri, "https://google.com/something/else/something/different");
             Uri result3 = UriHelper.GetUri(testUri, "https://amazon.com/something/different");
             Assert.AreEqual(result3.AbsoluteUri, "https://amazon.com/something/different");
             Uri result4 = UriHelper.GetUri(testUri, "www.amazon.com/something/different");
@@ -79,6 +79,14 @@ namespace BrowseSharpTest
             Uri browsesharpUri = UriHelper.Uri("www.browsesharp.com");
             Assert.IsTrue(browsesharpUri != null);
             Assert.AreEqual(browsesharpUri, new Uri("https://www.browsesharp.com"));
+        }
+
+        /* Bug fix release 0.0.8-beta */
+        [Test]
+        public void TestRelativeUri()
+        {
+            Uri uri = UriHelper.GetUri(new Uri("https://jayx239.github.io/BrowseSharpTest/"), "js/vendor/modernizr-3.6.0.min.js");
+            Assert.AreEqual(uri.AbsoluteUri, "https://jayx239.github.io/BrowseSharpTest/js/vendor/modernizr-3.6.0.min.js");
         }
     }
 }
