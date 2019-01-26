@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace BrowseSharp.Toolbox
 {
@@ -42,10 +43,9 @@ namespace BrowseSharp.Toolbox
                 scriptUri = new Uri(ConcatPath(responseUri.Scheme + "://" + responseUri.Host, scriptSource));
             else {
                 string scriptRelativePath = responseUri.Scheme + "://" + responseUri.Host;
-                for (int i = 0; i < responseUri.Segments.Length; i++)
+                int endSegments = String.IsNullOrWhiteSpace(Path.GetFileName(responseUri.LocalPath)) ? responseUri.Segments.Length : responseUri.Segments.Length - 1;
+                for (int i = 0; i < endSegments; i++)
                 {
-                    if (!responseUri.Segments[i].EndsWith("/"))
-                        break;
                     scriptRelativePath += responseUri.Segments[i];
                 }
                 scriptUri = new Uri(ConcatPath(scriptRelativePath,scriptSource));
