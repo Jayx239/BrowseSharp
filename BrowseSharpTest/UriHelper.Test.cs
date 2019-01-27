@@ -88,5 +88,12 @@ namespace BrowseSharpTest
             Uri uri = UriHelper.GetUri(new Uri("https://jayx239.github.io/BrowseSharpTest/"), "js/vendor/modernizr-3.6.0.min.js");
             Assert.AreEqual(uri.AbsoluteUri, "https://jayx239.github.io/BrowseSharpTest/js/vendor/modernizr-3.6.0.min.js");
         }
+
+        [Test]
+        public void TestParentDirectoyRelativeUri()
+        {
+            Uri uri = UriHelper.GetUri(new Uri("https://jayx239.github.io/BrowseSharpTest/"), "../js/vendor/modernizr-3.6.0.min.js");
+            Assert.AreEqual(uri.AbsoluteUri, "https://jayx239.github.io/js/vendor/modernizr-3.6.0.min.js");
+        }
     }
 }
