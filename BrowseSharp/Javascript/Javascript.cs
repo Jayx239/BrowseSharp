@@ -15,6 +15,7 @@ namespace BrowseSharp.Javascript
         public Javascript(IHtmlScriptElement scriptElement)
         {
             ScriptElement = scriptElement;
+            Content = scriptElement.Text;
         }
         
         /// <summary>
@@ -25,20 +26,12 @@ namespace BrowseSharp.Javascript
         /// <summary>
         /// Uri of script source
         /// </summary>
-        public Uri SourceUri
-        {
-            get { return !string.IsNullOrEmpty(ScriptElement.Source) ? new Uri(ScriptElement.Source) : null; }
-            set { ScriptElement.Source = value.AbsoluteUri; }
-        }
+        public Uri SourceUri { get; set; }
 
         /// <summary>
         /// Script content
         /// </summary>
-        public String Content
-        {
-            get { return ScriptElement != null ? ScriptElement.Text : ""; }
-            set { ScriptElement.Text = value; }
-        }
+        public String Content { get; set; }
         
         /// <summary>
         /// Same as script content, may be deprecated in the future, use Content instead
