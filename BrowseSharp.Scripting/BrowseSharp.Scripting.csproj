@@ -44,23 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Navigator\INavigator.cs" />
-    <Compile Include="Navigator\INavigatorProperties.cs" />
-    <Compile Include="Navigator\Navigator.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Window\IWindowEventHandlers.cs" />
-    <Compile Include="Window\IWindowMethods.cs" />
-    <Compile Include="Window\IWindowProperties.cs" />
-    <Compile Include="Window\Window.cs" />
-    <Compile Include="Window\IWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrowseSharp\BrowseSharp.csproj">
-      <Project>{5892995f-8cbc-439a-9802-464e4333734e}</Project>
-      <Name>BrowseSharp</Name>
+    <ProjectReference Include="..\BrowseSharp.BOM\BrowseSharp.BOM.csproj">
+      <Project>{983b6c61-fb64-4a55-aaa0-ff4b4969ab6f}</Project>
+      <Name>BrowseSharp.BOM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrowseSharp.Types\BrowseSharp.Types.csproj">
+      <Project>{de99cb0d-2056-411e-bc07-fbaad271f406}</Project>
+      <Name>BrowseSharp.Types</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

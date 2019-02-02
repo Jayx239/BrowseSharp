@@ -1,4 +1,4 @@
-﻿namespace BrowseSharp.Scripting.Navigator
+﻿namespace BrowseSharp.BOM.Navigator
 {
     public interface INavigator : INavigatorProperties
     {

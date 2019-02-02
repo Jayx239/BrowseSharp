@@ -57,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.BOM\BrowseSharp.BOM.csproj">
+      <Project>{983b6c61-fb64-4a55-aaa0-ff4b4969ab6f}</Project>
+      <Name>BrowseSharp.BOM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BrowseSharp.Scripting\BrowseSharp.Scripting.csproj">
       <Project>{dacb0217-6861-438a-aedb-69f554124943}</Project>
       <Name>BrowseSharp.Scripting</Name>

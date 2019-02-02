@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrowseSharp.Scripting.Navigator
+namespace BrowseSharp.BOM.Navigator
 {
     public class Navigator : INavigator
     {

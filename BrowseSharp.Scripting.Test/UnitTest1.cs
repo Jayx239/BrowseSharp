@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BrowseSharp.Scripting.Navigator;
-using BrowseSharp.Scripting.Window;
+using BrowseSharp.BOM.Navigator;
+using BrowseSharp.BOM.Window;
 
-namespace BrowseSharp.Scripting.Test
+namespace BrowseSharp.BOM.Test
 {
     [TestClass]
     public class UnitTest1
@@ -30,7 +30,7 @@ namespace BrowseSharp.Scripting.Test
             doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
             Jint.Engine engine = new Jint.Engine();
             engine.SetValue("document", doc.HtmlDocument);
-            engine.SetValue("window", new BrowseSharp.Scripting.Window.Window(doc));
+            engine.SetValue("window", new BrowseSharp.BOM.Window.Window(doc));
             var scripts = "document.getElementById('content').textContent = 'this is the content';";
             
             Assert.AreEqual(doc.HtmlDocument.Body.QuerySelector("#content").TextContent.Trim(), "");
@@ -44,7 +44,7 @@ namespace BrowseSharp.Scripting.Test
             IDocument doc = new Document();
             doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
             Jint.Engine engine = new Jint.Engine();
-            engine.SetValue("window", new BrowseSharp.Scripting.Window.Window(doc));
+            engine.SetValue("window", new BrowseSharp.BOM.Window.Window(doc));
             var scripts = "document.getElementById('content').textContent = 'this is the content';";
 
             try

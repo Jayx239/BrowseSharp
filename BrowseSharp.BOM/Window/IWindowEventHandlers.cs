@@ -1,4 +1,4 @@
-﻿namespace BrowseSharp.Scripting.Window
+﻿namespace BrowseSharp.BOM.Window
 {
     public interface IWindowEventHandlers
     {

@@ -1,6 +1,6 @@
 ﻿using BrowseSharp;
-using BrowseSharp.Scripting.Navigator;
-using BrowseSharp.Scripting.Window;
+using BrowseSharp.BOM.Navigator;
+using BrowseSharp.BOM.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace BrowseSharpPlayground
 </html>";
         static void Main(string[] args)
         {
-            Browser browser = new Browser();
+            /*Browser browser = new Browser();
             IDocument doc = browser.Navigate("http://www.espn.com/");
             //doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
             Jint.Engine engine = new Jint.Engine();
@@ -51,6 +51,44 @@ namespace BrowseSharpPlayground
             }
             var result = engine.Execute(scripts);
             Console.Write("!");
+            */
+            Jint.Engine engine = new Jint.Engine();
+            engine.SetValue("console", new Action<object>(Console.WriteLine));
+            var consoleLog = engine.GetValue("console");
+            var res = engine.Execute("function executableFunction() {return otherFunction;}\n function otherFunction() { return true;};");
+            
+            Console.WriteLine(res.ToString());
+            
+            Jint.Native.JsValue executableFunction = res.GetValue("executableFunction");
+            res.SetValue("executableFunction","wer");
+            var newExecutableFunction = res.GetValue("executableFunction");
+            var MyValue = "My value is nigh";
+            engine.SetValue("MyValue", MyValue);
+            Console.WriteLine(MyValue);
+            engine.Execute("MyValue = 'Something different';");
+            Console.WriteLine(MyValue);
+            
+
+            //More stuff
+
+            Window window = new Window();
+            Jint.Engine engine2 = new Jint.Engine();
+            engine2.SetValue("write", new Action<string>(Console.Write));
+            engine2.SetValue("window", window);
+            window.onappinstalled = (e)=> Console.Write(e);
+            Console.WriteLine(window.DevicePixelRatio);
+            //engine2.Execute("window.devicePixelRatio = 19;");
+            var pixRatio = engine2.Execute("window.devicePixelRatio");
+            //engine2.Execute("window.OnAppInstalled = function() {write('hello world');}");
+            engine2.Execute("window.onappinstalled('asd');");
+            engine2.Execute("window.onappinstalled = function(a) {write('a');};");
+            //engine2.Execute("window.onappinstalled('asd');");
+            Console.WriteLine(pixRatio);
+            Console.WriteLine(window.DevicePixelRatio);
+            var windowVal = engine2.Execute("window.myValue = 35;");
+            var w = windowVal.GetValue("window");
+            engine2.Execute("window.myValue = 'MyValue';");
+
         }
     }
 }

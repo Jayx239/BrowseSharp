@@ -1,12 +1,12 @@
 ﻿using AngleSharp.Dom.Html;
-using BrowseSharp.Scripting.Navigator;
+using BrowseSharp.BOM.Navigator;
 
-namespace BrowseSharp.Scripting.Window
+namespace BrowseSharp.BOM.Window
 {
     public interface IWindowProperties
     {
         #region Properties
-        bool closed { get; }
+        bool Closed { get; }
 // TODO: Console console { get; }
 //Window.content
 // TODO: XULController controllers { get; }
@@ -15,10 +15,10 @@ namespace BrowseSharp.Scripting.Window
         // TODO: Crypto crypto { get; }
 
 //Window.defaultStatus
-int devicePixelRatio { get; }
+int DevicePixelRatio { get; }
 // TODO: nsIArray dialogArguments { get; }
 // TODO: PersonalBar Window.directories { get; }
-        IHtmlDocument document { get;}
+        //IHtmlDocument document { get;}
 // TODO: DOMMatrix DOMMatrix { get; }
 // TODO: DOMMatrixReadOnly DOMMatrixReadOnly { get; }
 // TODO: DOMPoint DOMPoint { get; }
@@ -29,53 +29,53 @@ int devicePixelRatio { get; }
 // TODO: Event event { get; }
 // TODO: Element frameElement { get; }
 // TODO: List<Element> frames { get; }
-bool fullScreen { get; }
+bool FullScreen { get; }
 //Window.globalStorage
 // TODO: History Window.history { get; }
-int innerHeight { get; }
-int innerWidth { get; }
-bool isSecureContext { get; }
-int length { get; }
-string location { get; }
+int InnerHeight { get; }
+int InnerWidth { get; }
+bool IsSecureContext { get; }
+int Length { get; }
+string Location { get; }
 // TODO: LocationBar locationbar { get; }
 // TODO: LocalStorage localStorage { get; }
 // TODO: MenuBar menubar { get;  }
 // TODO: MessageManager messageManager { get; set; } // May be deprecated
-int mozAnimationStartTime { get; }
-int mozInnerScreenX { get; }
-int mozInnerScreenY { get; }
-int mozPaintCount { get; }
-string name { get; set; }
-INavigator navigator { get; }
+int MozAnimationStartTime { get; }
+int MozInnerScreenX { get; }
+int MozInnerScreenY { get; }
+int MozPaintCount { get; }
+string Name { get; set; }
+INavigator Navigator { get; }
 // TODO: Opener opener { get; set; } 
-int orientation { get; }
-int outerHeight { get; }
-int outerWidth { get; }
-int pageXOffset { get; }
-int pageYOffset { get; }
+int Orientation { get; }
+int OuterHeight { get; }
+int OuterWidth { get; }
+int PageXOffset { get; }
+int PageYOffset { get; }
 // TODO: Parent parent { get; }
 // TODO: Performance performance { get; }
 // TODO: PersonalBar personalbar { get; }
 //Window.pkcs11
 //Window.returnValue
 // TODO: Screen screen { get; }
-int screenX { get; }
-int screenLeft { get; }
-int screenY { get; }
-int screenTop { get; }
+int ScreenX { get; }
+int ScreenLeft { get; }
+int ScreenY { get; }
+int ScreenTop { get; }
 // TODO: ScrollBars scrollbars { get; }
-int scrollMaxX { get; }
-int scrollMaxY { get; }
-int scrollX { get; }
-int scrollY { get; }
-Window self { get; }
+int ScrollMaxX { get; }
+int ScrollMaxY { get; }
+int ScrollX { get; }
+int ScrollY { get; }
+Window Self { get; }
 // TODO: SessionStorage sessionStorage { get; set; }
-Window sidebar { get; }
+Window Sidebar { get; }
 // TODO: SpeechSynthesis speechSynthesis { get; }
-string status { get; set; }
+string Status { get; set; }
 // TODO: StatusBar statusbar { get; }
 // TODO: ToolBar toolbar { get; }
-Window top { get; }
+Window Top { get; }
 // TODO: VisualViewport visualViewport { get; }
 Window window { get; }
 //List<Window> window[0]

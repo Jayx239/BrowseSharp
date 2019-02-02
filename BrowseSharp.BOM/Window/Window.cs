@@ -1,7 +1,9 @@
 ﻿using AngleSharp.Dom.Html;
-using BrowseSharp.Scripting.Navigator;
+using BrowseSharp.BOM.Navigator;
+using BrowseSharp.Types;
+using System;
 
-namespace BrowseSharp.Scripting.Window
+namespace BrowseSharp.BOM.Window
 {
     public class Window : IWindow
     {
@@ -11,255 +13,266 @@ namespace BrowseSharp.Scripting.Window
         {
             _document = document;
         }
+        public Window()
+        {
+            DevicePixelRatio = 23;
+        }
         #endregion
         #region Public
-        public bool closed { get; }
-        public int devicePixelRatio { get; }
+        #region Attributes
+        public bool Closed { get; }
+        public int DevicePixelRatio { get; }
         public IHtmlDocument document { get { return _document.HtmlDocument; } }
-        public bool fullScreen { get; }
-        public int innerHeight { get; }
-        public int innerWidth { get; }
-        public bool isSecureContext { get; }
-        public int length { get; }
-        public string location { get; }
-        public int mozAnimationStartTime { get; }
-        public int mozInnerScreenX { get; }
-        public int mozInnerScreenY { get; }
-        public int mozPaintCount { get; }
-        public string name { get; set; }
-        public INavigator navigator { get; }
-        public int orientation { get; }
-        public int outerHeight { get; }
-        public int outerWidth { get; }
-        public int pageXOffset { get; }
-        public int pageYOffset { get; }
-        public int screenX { get; }
-        public int screenLeft { get; }
-        public int screenY { get; }
-        public int screenTop { get; }
-        public int scrollMaxX { get; }
-        public int scrollMaxY { get; }
-        public int scrollX { get; }
-        public int scrollY { get; }
-        public Window self { get; }
-        public Window sidebar { get; }
-        public string status { get; set; }
-        public Window top { get; }
-        public Window window { get; }
-        public void alert()
+        public bool FullScreen { get; }
+        public int InnerHeight { get; }
+        public int InnerWidth { get; }
+        public bool IsSecureContext { get; }
+        public int Length { get; }
+        public string Location { get; }
+        public int MozAnimationStartTime { get; }
+        public int MozInnerScreenX { get; }
+        public int MozInnerScreenY { get; }
+        public int MozPaintCount { get; }
+        public string Name { get; set; }
+        public INavigator Navigator { get; }
+        public int Orientation { get; }
+        public int OuterHeight { get; }
+        public int OuterWidth { get; }
+        public int PageXOffset { get; }
+        public int PageYOffset { get; }
+        public int ScreenX { get; }
+        public int ScreenLeft { get; }
+        public int ScreenY { get; }
+        public int ScreenTop { get; }
+        public int ScrollMaxX { get; }
+        public int ScrollMaxY { get; }
+        public int ScrollX { get; }
+        public int ScrollY { get; }
+        public Window Self { get; }
+        public Window Sidebar { get; }
+        public string Status { get; set; }
+        public Window Top { get; }
+        public Window window { get { return this; } } // lowercase to since same as class name
+        #endregion
+        #region Methods
+        public void Alert()
         {
             throw new System.NotImplementedException();
         }
 
-        public void blur()
+        public void Blur()
         {
             throw new System.NotImplementedException();
         }
 
-        public void cancelAnimationFrame()
+        public void CancelAnimationFrame()
         {
             throw new System.NotImplementedException();
         }
 
-        public void cancelIdleCallback()
+        public void CancelIdleCallback()
         {
             throw new System.NotImplementedException();
         }
 
-        public void captureEvents()
+        public void CaptureEvents()
         {
             throw new System.NotImplementedException();
         }
 
-        public void clearImmediate()
+        public void ClearImmediate()
         {
             throw new System.NotImplementedException();
         }
 
-        public void close()
+        public void Close()
         {
             throw new System.NotImplementedException();
         }
 
-        public void confirm()
+        public void Confirm()
         {
             throw new System.NotImplementedException();
         }
 
-        public void dispatchEvent()
+        public void DispatchEvent()
         {
             throw new System.NotImplementedException();
         }
 
-        public void dump()
+        public void Dump()
         {
             throw new System.NotImplementedException();
         }
 
-        public void find()
+        public void Find()
         {
             throw new System.NotImplementedException();
         }
 
-        public void focus()
+        public void Focus()
         {
             throw new System.NotImplementedException();
         }
 
-        public void forward()
+        public void Forward()
         {
             throw new System.NotImplementedException();
         }
 
-        public void getAttention()
+        public void GetAttention()
         {
             throw new System.NotImplementedException();
         }
 
-        public void home()
+        public void Home()
         {
             throw new System.NotImplementedException();
         }
 
-        public void maximize()
+        public void Maximize()
         {
             throw new System.NotImplementedException();
         }
 
-        public void minimize()
+        public void Minimize()
         {
             throw new System.NotImplementedException();
         }
 
-        public void moveBy()
+        public void MoveBy()
         {
             throw new System.NotImplementedException();
         }
 
-        public void moveTo()
+        public void MoveTo()
         {
             throw new System.NotImplementedException();
         }
 
-        public void open()
+        public void Open()
         {
             throw new System.NotImplementedException();
         }
 
-        public void openDialog()
+        public void OpenDialog()
         {
             throw new System.NotImplementedException();
         }
 
-        public void postMessage()
+        public void PostMessage()
         {
             throw new System.NotImplementedException();
         }
 
-        public void print()
+        public void Print()
         {
             throw new System.NotImplementedException();
         }
 
-        public void prompt()
+        public void Prompt()
         {
             throw new System.NotImplementedException();
         }
 
-        public void releaseEvents()
+        public void ReleaseEvents()
         {
             throw new System.NotImplementedException();
         }
 
-        public void requestAnimationFrame()
+        public void RequestAnimationFrame()
         {
             throw new System.NotImplementedException();
         }
 
-        public void requestIdleCallback()
+        public void RequestIdleCallback()
         {
             throw new System.NotImplementedException();
         }
 
-        public void resizeBy()
+        public void ResizeBy()
         {
             throw new System.NotImplementedException();
         }
 
-        public void resizeTo()
+        public void ResizeTo()
         {
             throw new System.NotImplementedException();
         }
 
-        public void restore()
+        public void Restore()
         {
             throw new System.NotImplementedException();
         }
 
-        public void routeEvent()
+        public void RouteEvent()
         {
             throw new System.NotImplementedException();
         }
 
-        public void scroll()
+        public void Scroll()
         {
             throw new System.NotImplementedException();
         }
 
-        public void scrollBy()
+        public void ScrollBy()
         {
             throw new System.NotImplementedException();
         }
 
-        public void scrollByLines()
+        public void ScrollByLines()
         {
             throw new System.NotImplementedException();
         }
 
-        public void scrollByPages()
+        public void ScrollByPages()
         {
             throw new System.NotImplementedException();
         }
 
-        public void scrollTo()
+        public void ScrollTo()
         {
             throw new System.NotImplementedException();
         }
 
-        public void setCursor()
+        public void SetCursor()
         {
             throw new System.NotImplementedException();
         }
 
-        public void setImmediate()
+        public void SetImmediate()
         {
             throw new System.NotImplementedException();
         }
 
-        public void setResizable()
+        public void SetResizable()
         {
             throw new System.NotImplementedException();
         }
 
-        public void sizeToContent()
+        public void SizeToContent()
         {
             throw new System.NotImplementedException();
         }
 
-        public void stop()
+        public void Stop()
         {
             throw new System.NotImplementedException();
         }
 
-        public void updateCommands()
+        public void UpdateCommands()
         {
             throw new System.NotImplementedException();
         }
 
-        public void addEventListener()
+        public void AddEventListener()
         {
             throw new System.NotImplementedException();
         }
+        #endregion
+        #region Event Listeners
+        public Action<object> onappinstalled { get; set; }
+        #endregion
         #endregion
         #region Private
 
