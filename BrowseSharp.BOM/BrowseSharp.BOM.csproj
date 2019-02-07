@@ -13,4 +13,8 @@
     <PackageReference Include="AngleSharp" Version="0.9.9.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.Types\BrowseSharp.Types.csproj" />
+  </ItemGroup>
+
 </Project>
