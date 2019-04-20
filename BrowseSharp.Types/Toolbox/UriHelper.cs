@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace BrowseSharp.Types.Toolbox
 {
@@ -15,7 +16,7 @@ namespace BrowseSharp.Types.Toolbox
             get => _defaultUriProtocol;
             set
             {
-                if(value == "http" || value == "https")
+                if (value == "http" || value == "https")
                     _defaultUriProtocol = value;
             }
         }
@@ -24,33 +25,36 @@ namespace BrowseSharp.Types.Toolbox
         /// Default protocol that will be applied to uri if passed in uri string does not contain a protcol
         /// </summary>
         private static string _defaultUriProtocol = "http";
-        
+
         /// <summary>
         /// Method for constructing uris when parsing document attributes
         /// </summary>
         /// <param name="responseUri"></param>
         /// <param name="scriptSource"></param>
         /// <returns></returns>
-        public static Uri GetUri(Uri responseUri, string scriptSource) { 
-            
+        public static Uri GetUri(Uri responseUri, string scriptSource)
+        {
+
             Uri scriptUri;
-            if(scriptSource.StartsWith("http"))
+            if (scriptSource.StartsWith("http"))
                 scriptUri = new Uri(scriptSource);
-            else if(scriptSource.StartsWith("www"))
+            else if (scriptSource.StartsWith("www"))
                 scriptUri = new Uri("http://" + scriptSource);
             else if (scriptSource.StartsWith("/"))
                 scriptUri = new Uri(ConcatPath(responseUri.Scheme + "://" + responseUri.Host, scriptSource));
-            else {
+            else
+            {
                 string scriptRelativePath = responseUri.Scheme + "://" + responseUri.Host;
-                for (int i = 0; i < responseUri.Segments.Length-1; i++)
+                int endSegments = String.IsNullOrWhiteSpace(Path.GetFileName(responseUri.LocalPath)) ? responseUri.Segments.Length : responseUri.Segments.Length - 1;
+                for (int i = 0; i < endSegments; i++)
                 {
                     scriptRelativePath += responseUri.Segments[i];
                 }
-                scriptUri = new Uri(ConcatPath(scriptRelativePath,scriptSource));
+                scriptUri = new Uri(ConcatPath(scriptRelativePath, scriptSource));
             }
             return scriptUri;
         }
-        
+
         /// <summary>
         /// Method for concatinating url components
         /// </summary>

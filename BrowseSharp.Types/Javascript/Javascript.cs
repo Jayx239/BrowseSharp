@@ -1,5 +1,6 @@
 ﻿using System;
 using AngleSharp.Dom.Html;
+using BrowseSharp.Types;
 
 namespace BrowseSharp.Types.Javascript
 {
@@ -9,44 +10,29 @@ namespace BrowseSharp.Types.Javascript
     public class Javascript : ISource
     {
         /// <summary>
-        /// Default constructor
-        /// </summary>
-        /// <param name="scriptElement"></param>
-        public Javascript()
-        {
-        }
-
-        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="scriptElement"></param>
         public Javascript(IHtmlScriptElement scriptElement)
         {
             ScriptElement = scriptElement;
+            Content = scriptElement.Text;
         }
-        
+
         /// <summary>
         /// AngleSharp html element for script
         /// </summary>
         public IHtmlScriptElement ScriptElement { get; set; }
-        
+
         /// <summary>
         /// Uri of script source
         /// </summary>
-        public Uri SourceUri
-        {
-            get { return !string.IsNullOrEmpty(ScriptElement.Source) ? new Uri(ScriptElement.Source) : null; }
-            set { ScriptElement.Source = value.AbsoluteUri; }
-        }
+        public Uri SourceUri { get; set; }
 
         /// <summary>
         /// Script content
         /// </summary>
-        public String Content
-        {
-            get { return ScriptElement != null ? ScriptElement.Text : ""; }
-            set { ScriptElement.Text = value; }
-        }
+        public String Content { get; set; }
 
         /// <summary>
         /// Same as script content, may be deprecated in the future, use Content instead

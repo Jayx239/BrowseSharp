@@ -31,13 +31,13 @@ namespace BrowseSharpPlayground
         {
             IDocument htmlDocument = new Document();
             htmlDocument.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
-            var script1 = new Javascript();
-            script1.Content = "document.getElementById('content').textContent = 'this is the content';";
-            htmlDocument.Scripts.Add(script1);
+            //var script1 = new Javascript();
+            string script1 = "document.getElementById('content').textContent = 'this is the content';";
+            //htmlDocument.Scripts.Add(script1);
 
             Jint.Engine engine = new Jint.Engine();
             engine.SetValue("document",htmlDocument.HtmlDocument);
-            engine.Execute(script1.Content);
+            engine.Execute(script1);
             Browser browser = new Browser();
             IDocument doc = browser.Navigate("https://browsesharp.org/testsitesjqueryrender.html");
             doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
