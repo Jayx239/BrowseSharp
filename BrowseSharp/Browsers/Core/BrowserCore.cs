@@ -35,8 +35,6 @@ namespace BrowseSharp.Browsers.Core
             _styleScrapingEnabled = true;
             _javascriptScrapingEnabled = true;
             DefaultUriProtocol = "http";
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls; // Updates protocol for target framework 4.5.2
-
         }
 
         /// <summary>
