@@ -18,7 +18,7 @@ namespace BrowseSharp.BOM.Test
             Engine jintEngine = new Engine();
             jintEngine.SetValue("context", new { time = "10:2:01" });
             var val = jintEngine.GetValue("context");
-            Assert.AreEqual("10:2:01", val);
+            Assert.AreEqual("10:2:01", val.AsObject().GetOwnProperty("time").Value);
         }
 
         public void Test2()

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AngleSharp.Dom.Html;
 
-namespace BrowseSharp.Html
+namespace BrowseSharp.Types.Html
 {
     /// <summary>
     /// Object containing form attributes

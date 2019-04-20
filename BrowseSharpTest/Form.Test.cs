@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using BrowseSharp;
-using BrowseSharp.Html;
+using BrowseSharp.Types.Html;
 using NUnit.Framework;
 
 namespace BrowseSharpTest

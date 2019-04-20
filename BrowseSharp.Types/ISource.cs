@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BrowseSharp
+namespace BrowseSharp.Types
 {
     /// <summary>
     /// Interface for objects that have a uri and content

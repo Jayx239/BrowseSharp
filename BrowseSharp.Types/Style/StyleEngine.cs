@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using BrowseSharp.Toolbox;
+using BrowseSharp.Types.Toolbox;
 using RestSharp;
 
-namespace BrowseSharp.Style
+namespace BrowseSharp.Types.Style
 {
     /// <summary>
     /// Class for scraping css styles

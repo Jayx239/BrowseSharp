@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrowseSharp", "BrowseSharp\BrowseSharp.csproj", "{5892995F-8CBC-439A-9802-464E4333734E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharpTest", "BrowseSharpTest\BrowseSharpTest.csproj", "{07B0ECC1-24C5-435D-9F0D-6860297A5772}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharp.Test", "BrowseSharpTest\BrowseSharp.Test.csproj", "{07B0ECC1-24C5-435D-9F0D-6860297A5772}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharp.Scripting", "BrowseSharp.Scripting\BrowseSharp.Scripting.csproj", "{DACB0217-6861-438A-AEDB-69F554124943}"
 EndProject
@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrowseSharp.BOM", "BrowseSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrowseSharp.BOM.Test", "BrowseSharp.BOM.Test\BrowseSharp.BOM.Test.csproj", "{04041387-605E-4DFB-BFB9-CABE3956D3FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseSharp.Types", "BrowseSharp.Types\BrowseSharp.Types.csproj", "{DE99CB0D-2056-411E-BC07-FBAAD271F406}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrowseSharp.Types", "BrowseSharp.Types\BrowseSharp.Types.csproj", "{DE99CB0D-2056-411E-BC07-FBAAD271F406}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

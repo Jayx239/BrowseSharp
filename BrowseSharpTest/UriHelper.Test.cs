@@ -1,5 +1,5 @@
 ﻿using System;
-using BrowseSharp.Toolbox;
+using BrowseSharp.Types.Toolbox;
 using NUnit.Framework;
 
 /* Several tests depend on the RequestTester nodejs project

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BrowseSharp.History
+namespace BrowseSharp.Types.History
 {
     /// <summary>
     /// Browse history management methods with type support

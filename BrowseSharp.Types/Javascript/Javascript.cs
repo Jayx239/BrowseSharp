@@ -1,13 +1,21 @@
 ﻿using System;
 using AngleSharp.Dom.Html;
 
-namespace BrowseSharp.Javascript
+namespace BrowseSharp.Types.Javascript
 {
     /// <summary>
     /// Class containing javascript details
     /// </summary>
     public class Javascript : ISource
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="scriptElement"></param>
+        public Javascript()
+        {
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -39,7 +47,7 @@ namespace BrowseSharp.Javascript
             get { return ScriptElement != null ? ScriptElement.Text : ""; }
             set { ScriptElement.Text = value; }
         }
-        
+
         /// <summary>
         /// Same as script content, may be deprecated in the future, use Content instead
         /// </summary>

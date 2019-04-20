@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace BrowseSharp.Style
+namespace BrowseSharp.Types.Style
 {
     /// <summary>
     /// Handler for scraping stylesheets asynchronously

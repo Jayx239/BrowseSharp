@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.Html;
+using BrowseSharp.Types;
+using BrowseSharp.Types.Html;
 using RestSharp;
 
 namespace BrowseSharp.Browsers.Core
@@ -10,7 +11,7 @@ namespace BrowseSharp.Browsers.Core
     /// <summary>
     /// Methods for browser supporting data deserialization
     /// </summary>
-    interface IBrowserTyped
+    public interface IBrowserTyped
     {
         /// <summary>
         /// Execute method that creates a document from an http request and deserializes response content

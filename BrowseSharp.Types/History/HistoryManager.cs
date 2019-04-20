@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BrowseSharp.History
+namespace BrowseSharp.Types.History
 {
     /// <summary>
     /// Class for managing browser history

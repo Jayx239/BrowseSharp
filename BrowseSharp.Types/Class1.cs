@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BrowseSharp.Types
+namespace BrowseSharp.Types.Types
 {
     public class Class1
     {

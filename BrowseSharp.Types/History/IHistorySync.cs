@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BrowseSharp.History
+namespace BrowseSharp.Types.History
 {
     /// <summary>
     /// History methods

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
-using BrowseSharp.Toolbox;
+using BrowseSharp.Types.Toolbox;
 using Jint;
 using RestSharp;
 
-namespace BrowseSharp.Javascript
+namespace BrowseSharp.Types.Javascript
 {
     /// <summary>
     /// Javascript scraper and executor

@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace BrowseSharp.Javascript
+namespace BrowseSharp.Types.Javascript
 {
     /// <summary>
     /// Handler for scraping javascripts asynchronously

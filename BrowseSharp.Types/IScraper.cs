@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BrowseSharp
+namespace BrowseSharp.Types
 {
     /// <summary>
     /// Interface for scrapers

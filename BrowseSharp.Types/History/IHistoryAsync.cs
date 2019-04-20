@@ -1,7 +1,7 @@
-﻿using BrowseSharp.History;
+﻿using BrowseSharp.Types.History;
 using System.Threading.Tasks;
 
-namespace BrowseSharp.History
+namespace BrowseSharp.Types.History
 {
     /// <summary>
     /// Async browser history methods

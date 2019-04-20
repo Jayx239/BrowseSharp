@@ -1,6 +1,8 @@
 ﻿using BrowseSharp;
+using BrowseSharp.Types;
 using BrowseSharp.BOM.Navigator;
 using BrowseSharp.BOM.Window;
+using BrowseSharp.Types.Javascript;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,10 +29,19 @@ namespace BrowseSharpPlayground
 </html>";
         static void Main(string[] args)
         {
+            IDocument htmlDocument = new Document();
+            htmlDocument.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
+            var script1 = new Javascript();
+            script1.Content = "document.getElementById('content').textContent = 'this is the content';";
+            htmlDocument.Scripts.Add(script1);
+
+            Jint.Engine engine = new Jint.Engine();
+            engine.SetValue("document",htmlDocument.HtmlDocument);
+            engine.Execute(script1.Content);
             Browser browser = new Browser();
             IDocument doc = browser.Navigate("https://browsesharp.org/testsitesjqueryrender.html");
-            //doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
-            Jint.Engine engine = new Jint.Engine();
+            doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
+            //Jint.Engine engine = new Jint.Engine();
             engine.SetValue("document", doc.HtmlDocument);
             //engine.SetValue("d", doc.HtmlDocument);
             Navigator navigator = new Navigator(engine);
@@ -43,7 +54,7 @@ namespace BrowseSharpPlayground
             
             //engine.SetValue("window", );
             var scripts = "";// "var require = function(asd){};\nvar window = {};\nvar module = new Object();\nvar exports = new Object()\n;";
-            int skipFirst = -1;
+            int skipFirst = 0;
             //scripts += doc.Scripts[2].JavascriptString + "\n" + doc.Scripts[6].JavascriptString;
             foreach (var script in doc.Scripts)
             {

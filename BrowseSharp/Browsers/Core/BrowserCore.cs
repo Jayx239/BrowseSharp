@@ -8,9 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
-using BrowseSharp.History;
-using BrowseSharp.Javascript;
-using BrowseSharp.Style;
+using BrowseSharp.Types;
+using BrowseSharp.Types.History;
+using BrowseSharp.Types.Javascript;
+using BrowseSharp.Types.Style;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
@@ -35,8 +36,6 @@ namespace BrowseSharp.Browsers.Core
             _styleScrapingEnabled = true;
             _javascriptScrapingEnabled = true;
             DefaultUriProtocol = "http";
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls; // Updates protocol for target framework 4.5.2
-
         }
 
         /// <summary>

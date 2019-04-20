@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>BrowseSharpPlayground</RootNamespace>
     <AssemblyName>BrowseSharpPlayground</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -39,8 +39,12 @@
     <Reference Include="Jint, Version=0.0.0.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
       <HintPath>..\packages\Jint.2.11.58\lib\net451\Jint.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,10 +64,6 @@
     <ProjectReference Include="..\BrowseSharp.BOM\BrowseSharp.BOM.csproj">
       <Project>{983b6c61-fb64-4a55-aaa0-ff4b4969ab6f}</Project>
       <Name>BrowseSharp.BOM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BrowseSharp.Scripting\BrowseSharp.Scripting.csproj">
-      <Project>{dacb0217-6861-438a-aedb-69f554124943}</Project>
-      <Name>BrowseSharp.Scripting</Name>
     </ProjectReference>
     <ProjectReference Include="..\BrowseSharp.Types\BrowseSharp.Types.csproj">
       <Project>{de99cb0d-2056-411e-bc07-fbaad271f406}</Project>

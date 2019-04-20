@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BrowseSharp.Style
+namespace BrowseSharp.Types.Style
 {
     /// <summary>
     /// Class containing stylesheet content

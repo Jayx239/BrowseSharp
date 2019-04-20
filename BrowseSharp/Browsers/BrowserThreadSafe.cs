@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.Html;
+using BrowseSharp.Types;
+using BrowseSharp.Types.Html;
 
 namespace BrowseSharp.Browsers
 {
