@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BrowseSharp.Types.Toolbox
+namespace BrowseSharp.Toolbox
 {
     /// <summary>
     /// Helper class for Uri's

@@ -1,7 +1,7 @@
 ﻿using System;
 using AngleSharp.Dom.Html;
 
-namespace BrowseSharp.Types.Javascript
+namespace BrowseSharp.Javascript
 {
     /// <summary>
     /// Class containing javascript details

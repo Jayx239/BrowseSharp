@@ -1,6 +1,6 @@
 ﻿namespace BrowseSharp.BOM.Navigator
 {
-    public interface INavigator : INavigatorProperties
+    public interface INavigator : INavigatorProperties, IEngine
     {
 
         // TODO: VRDisplay getVRDisplays();

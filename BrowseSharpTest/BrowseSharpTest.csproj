@@ -317,8 +317,8 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=106.5.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.5.4\lib\net452\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.7\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SimpleSyndicate, Version=1.0.38.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\SimpleSyndicate.1.0.38\lib\net45\SimpleSyndicate.dll</HintPath>
@@ -458,6 +458,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.Types\BrowseSharp.Types.csproj">
+      <Project>{de99cb0d-2056-411e-bc07-fbaad271f406}</Project>
+      <Name>BrowseSharp.Types</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BrowseSharp\BrowseSharp.csproj">
       <Project>{5892995f-8cbc-439a-9802-464e4333734e}</Project>
       <Name>BrowseSharp</Name>

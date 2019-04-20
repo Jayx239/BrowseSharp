@@ -1,12 +1,15 @@
 ﻿using AngleSharp.Dom.Html;
 using BrowseSharp.BOM.Navigator;
 using BrowseSharp.Types;
+using Jint;
 using System;
+using System.Runtime.Serialization;
 
 namespace BrowseSharp.BOM.Window
 {
-    public class Window : IWindow
+    public class Window : IWindow, IExtensibleDataObject
     {
+        Engine _jintEngine;
         #region Constructor
 
         public Window(IDocument document)
@@ -17,41 +20,53 @@ namespace BrowseSharp.BOM.Window
         {
             DevicePixelRatio = 23;
         }
+
+        public Window(Engine jintEngine)
+        {
+            _jintEngine = jintEngine;
+        }
+
+        public Window(Engine jintEngine, IDocument document)
+        {
+            _jintEngine = jintEngine;
+            _document = document;
+        }
+
         #endregion
         #region Public
         #region Attributes
-        public bool Closed { get; }
-        public int DevicePixelRatio { get; }
-        public IHtmlDocument document { get { return _document.HtmlDocument; } }
-        public bool FullScreen { get; }
-        public int InnerHeight { get; }
-        public int InnerWidth { get; }
-        public bool IsSecureContext { get; }
-        public int Length { get; }
-        public string Location { get; }
-        public int MozAnimationStartTime { get; }
-        public int MozInnerScreenX { get; }
-        public int MozInnerScreenY { get; }
-        public int MozPaintCount { get; }
+        public bool Closed { get; set; }
+        public int DevicePixelRatio { get; set; }
+        public IHtmlDocument document { get; set; }
+        public bool FullScreen { get; set; }
+        public int InnerHeight { get; set; }
+        public int InnerWidth { get; set; }
+        public bool IsSecureContext { get; set; }
+        public int Length { get; set; }
+        public string Location { get; set; }
+        public int MozAnimationStartTime { get; set; }
+        public int MozInnerScreenX { get; set; }
+        public int MozInnerScreenY { get; set; }
+        public int MozPaintCount { get; set; }
         public string Name { get; set; }
-        public INavigator Navigator { get; }
-        public int Orientation { get; }
-        public int OuterHeight { get; }
-        public int OuterWidth { get; }
-        public int PageXOffset { get; }
-        public int PageYOffset { get; }
-        public int ScreenX { get; }
-        public int ScreenLeft { get; }
-        public int ScreenY { get; }
-        public int ScreenTop { get; }
-        public int ScrollMaxX { get; }
-        public int ScrollMaxY { get; }
-        public int ScrollX { get; }
-        public int ScrollY { get; }
-        public Window Self { get; }
-        public Window Sidebar { get; }
+        public INavigator Navigator { get; set; }
+        public int Orientation { get; set; }
+        public int OuterHeight { get; set; }
+        public int OuterWidth { get; set; }
+        public int PageXOffset { get; set; }
+        public int PageYOffset { get; set; }
+        public int ScreenX { get; set; }
+        public int ScreenLeft { get; set; }
+        public int ScreenY { get; set; }
+        public int ScreenTop { get; set; }
+        public int ScrollMaxX { get; set; }
+        public int ScrollMaxY { get; set; }
+        public int ScrollX { get; set; }
+        public int ScrollY { get; set; }
+        public Window Self { get; set; }
+        public Window Sidebar { get; set; }
         public string Status { get; set; }
-        public Window Top { get; }
+        public Window Top { get; set; }
         public Window window { get { return this; } } // lowercase to since same as class name
         #endregion
         #region Methods
@@ -269,6 +284,11 @@ namespace BrowseSharp.BOM.Window
         {
             throw new System.NotImplementedException();
         }
+
+        public void InitializeEngine()
+        {
+            _jintEngine.SetValue("window", this);
+        }
         #endregion
         #region Event Listeners
         public Action<object> onappinstalled { get; set; }
@@ -277,7 +297,18 @@ namespace BrowseSharp.BOM.Window
         #region Private
 
         private IDocument _document;
-
+        private ExtensionDataObject extensionDataObject_value;
+        public ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return extensionDataObject_value;
+            }
+            set
+            {
+                extensionDataObject_value = value;
+            }
+        }
         #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jint;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,30 +9,46 @@ namespace BrowseSharp.BOM.Navigator
 {
     public class Navigator : INavigator
     {
-        public string appCodeName => throw new NotImplementedException();
 
-        public bool cookieEnabled => throw new NotImplementedException();
+        protected Engine _jintEngine;
+        public Navigator(Engine jintEngine)
+        {
+            _jintEngine = jintEngine;
+        }
 
-        public int maxTouchPoints => throw new NotImplementedException();
+        protected INavigator _navigator => _jintEngine.GetValue("Navigator").TryCast<INavigator>();
 
-        public bool onLine => throw new NotImplementedException();
+        public string appCodeName { get; set; }
 
-        public string oscpu => throw new NotImplementedException();
+        public bool cookieEnabled { get; set; }
 
-        public string platform => throw new NotImplementedException();
+        public int maxTouchPoints { get; set; }
 
-        public string product => throw new NotImplementedException();
+        public bool onLine { get; set; }
 
-        public string userAgent => throw new NotImplementedException();
+        public string oscpu { get; set; }
 
-        public bool webdriver => throw new NotImplementedException();
+        public string platform { get; set; }
 
-        public int deviceMemory => throw new NotImplementedException();
+        public string product { get; set; }
 
-        public string doNotTrack => throw new NotImplementedException();
+        public string userAgent { get; set; }
 
-        public string vendor => throw new NotImplementedException();
+        public bool webdriver { get; set; }
 
-        public string vendorSub => throw new NotImplementedException();
+        public int deviceMemory { get; set; }
+
+        public string doNotTrack { get; set; }
+
+        public string vendor { get; set; }
+
+        public string vendorSub { get; set; }
+
+        public void InitializeEngine()
+        {
+            _jintEngine.SetValue("Navigator", this);
+            _jintEngine.SetValue("navigator", this);
+
+        }
     }
 }

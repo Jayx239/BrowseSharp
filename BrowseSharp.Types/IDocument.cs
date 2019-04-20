@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using AngleSharp.Attributes;
 using AngleSharp.Dom;
 using AngleSharp.Dom.Html;
-using BrowseSharp.Types.Html;
+using BrowseSharp.Html;
 using RestSharp;
 
-namespace BrowseSharp.Types
+namespace BrowseSharp
 {
     /// <summary>
     /// BrowseSharp Document containing info about an http request and result

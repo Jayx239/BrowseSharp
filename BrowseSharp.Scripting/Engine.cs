@@ -11,12 +11,12 @@ namespace BrowseSharp.Scripting
     public class Engine
     {
         protected Jint.Engine JinEngine { get; set; }
-        public BrowserObjectModel BrowserObjectModel { get; }
+        //public BrowserObjectModel BrowserObjectModel { get; }
         public IDocument Document { get; set; }
         public Engine()
         {
             JinEngine = new Jint.Engine();
-            BrowserObjectModel = new BrowserObjectModel();
+          //  BrowserObjectModel = new BrowserObjectModel();
         }
         public Engine(IDocument document) : base()
         {

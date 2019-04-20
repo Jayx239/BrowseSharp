@@ -23,7 +23,7 @@ namespace BrowseSharp.BOM.Test
 	</body>
 </html>";
 
-        [TestMethod]
+        /*[TestMethod]
         public void TestDocument()
         {
             IDocument doc = new Document();
@@ -55,6 +55,6 @@ namespace BrowseSharp.BOM.Test
             {
                 Assert.AreEqual(ex.Message, "document is not defined");
             }
-        }
+        }*/
     }
 }
