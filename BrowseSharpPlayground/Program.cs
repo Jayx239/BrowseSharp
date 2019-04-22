@@ -42,19 +42,24 @@ namespace BrowseSharpPlayground
             IDocument doc = browser.Navigate("https://browsesharp.org/testsitesjqueryrender.html");
             doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
             //Jint.Engine engine = new Jint.Engine();
-            engine.SetValue("document", doc.HtmlDocument);
+            //engine.SetValue("document", doc.HtmlDocument);
             //engine.SetValue("d", doc.HtmlDocument);
             Navigator navigator = new Navigator(engine);
             Window window1 = new Window(engine);
             window1.document = doc.HtmlDocument;
-            engine.SetValue("window.document", doc);
+            
+            //engine.SetValue("window.document", doc);
+
             navigator.InitializeEngine();
             window1.InitializeEngine();
             //engine.SetValue("navigator", navigator);
             
             //engine.SetValue("window", );
             var scripts = "";// "var require = function(asd){};\nvar window = {};\nvar module = new Object();\nvar exports = new Object()\n;";
-            int skipFirst = 0;
+            int skipFirst = -3;
+            //engine.SetValue("console.log", new Action<object>(Console.WriteLine));
+            var jquery = System.IO.File.ReadAllText(@"C:\Users\Jason\source\repos\BrowseSharp\BrowseSharpPlayground\jquery.js");
+            engine.Execute(jquery);
             //scripts += doc.Scripts[2].JavascriptString + "\n" + doc.Scripts[6].JavascriptString;
             foreach (var script in doc.Scripts)
             {
@@ -63,10 +68,10 @@ namespace BrowseSharpPlayground
                     skipFirst++;
                     continue;
                 }
-
+                var result = engine.Execute(script.JavascriptString.Replace(";",";\n"));
                 scripts += script.JavascriptString + "\n";
             }
-            var result = engine.Execute(scripts);
+            //var result = engine.Execute(scripts);
             Console.Write("!");
             
             /*Jint.Engine engine = new Jint.Engine();
@@ -110,4 +115,5 @@ namespace BrowseSharpPlayground
 
         }
     }
+
 }
