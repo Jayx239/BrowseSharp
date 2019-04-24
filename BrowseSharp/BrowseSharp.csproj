@@ -37,6 +37,6 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrowseSharp.Types\BrowseSharp.Types.csproj" />
+    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
   </ItemGroup>
 </Project>

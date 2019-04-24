@@ -1,6 +1,6 @@
 ﻿using AngleSharp.Dom.Html;
 using BrowseSharp.BOM.Navigator;
-using BrowseSharp.Types;
+using BrowseSharp.Common;
 using Jint;
 using System;
 using System.Runtime.Serialization;

@@ -1,8 +1,8 @@
 ﻿using BrowseSharp;
-using BrowseSharp.Types;
+using BrowseSharp.Common;
 using BrowseSharp.BOM.Navigator;
 using BrowseSharp.BOM.Window;
-using BrowseSharp.Types.Javascript;
+using BrowseSharp.Common.Javascript;
 using System;
 using System.Collections.Generic;
 using System.Linq;

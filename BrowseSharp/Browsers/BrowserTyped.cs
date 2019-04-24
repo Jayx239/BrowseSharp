@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BrowseSharp.Types.History;
+using BrowseSharp.Common.History;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.Types;
+using BrowseSharp.Common;
 
 namespace BrowseSharp.Browsers
 {

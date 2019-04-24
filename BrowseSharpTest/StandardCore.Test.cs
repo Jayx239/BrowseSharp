@@ -6,8 +6,8 @@ using System.Web.Script.Serialization;
 using BrowseSharp;
 using BrowseSharp.Browsers;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.Types;
-using BrowseSharp.Types.Html;
+using BrowseSharp.Common;
+using BrowseSharp.Common.Html;
 using NUnit.Framework;
 using RestSharp;
 

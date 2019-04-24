@@ -4,10 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.Types;
-using BrowseSharp.Types.History;
-using BrowseSharp.Types.Javascript;
-using BrowseSharp.Types.Style;
+using BrowseSharp.Common;
+using BrowseSharp.Common.History;
+using BrowseSharp.Common.Javascript;
+using BrowseSharp.Common.Style;
 using RestSharp;
 
 namespace BrowseSharpTest

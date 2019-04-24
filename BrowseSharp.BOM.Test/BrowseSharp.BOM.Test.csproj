@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BrowseSharp.BOM\BrowseSharp.BOM.csproj" />
+    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
   </ItemGroup>
 
 </Project>

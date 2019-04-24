@@ -5,12 +5,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom.Html;
 using AngleSharp.Parser.Html;
-using BrowseSharp.Types;
-using BrowseSharp.Types.History;
-using BrowseSharp.Types.Html;
-using BrowseSharp.Types.Javascript;
-using BrowseSharp.Types.Style;
-using BrowseSharp.Types.Toolbox;
+using BrowseSharp.Common;
+using BrowseSharp.Common.History;
+using BrowseSharp.Common.Html;
+using BrowseSharp.Common.Javascript;
+using BrowseSharp.Common.Style;
+using BrowseSharp.Common.Toolbox;
 using RestSharp;
 
 namespace BrowseSharp.Browsers.Core

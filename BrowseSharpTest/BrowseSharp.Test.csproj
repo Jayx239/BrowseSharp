@@ -458,6 +458,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj">
+      <Project>{3934c547-c64f-4551-8cfb-391f6838d306}</Project>
+      <Name>BrowseSharp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BrowseSharp.Types\BrowseSharp.Types.csproj">
       <Project>{de99cb0d-2056-411e-bc07-fbaad271f406}</Project>
       <Name>BrowseSharp.Types</Name>

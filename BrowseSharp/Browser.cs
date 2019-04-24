@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.Types;
-using BrowseSharp.Types.History;
-using BrowseSharp.Types.Html;
+using BrowseSharp.Common;
+using BrowseSharp.Common.History;
+using BrowseSharp.Common.Html;
 using RestSharp;
 
 namespace BrowseSharp
