@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using AngleSharp.Dom.Html;
+using AngleSharp.Html.Dom;
 
 namespace BrowseSharp.Common.Html
 {

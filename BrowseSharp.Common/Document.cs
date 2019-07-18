@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using AngleSharp.Attributes;
 using AngleSharp.Dom;
-using AngleSharp.Dom.Html;
+using AngleSharp.Html.Dom;
 using BrowseSharp.Common.Html;
 using BrowseSharp.Common.Style;
 using RestSharp;

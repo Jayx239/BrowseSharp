@@ -1,5 +1,5 @@
 ﻿using System;
-using AngleSharp.Dom.Html;
+using AngleSharp.Html.Dom;
 using BrowseSharp.Common;
 
 namespace BrowseSharp.Common.Javascript

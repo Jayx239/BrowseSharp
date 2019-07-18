@@ -6,8 +6,8 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
+using AngleSharp.Html.Dom;
+using AngleSharp.Html.Parser;
 using BrowseSharp.Common;
 using BrowseSharp.Common.History;
 using BrowseSharp.Common.Javascript;
@@ -373,7 +373,7 @@ namespace BrowseSharp.Browsers.Core
         {
             Uri requestUri = _restClient.BaseUrl;
             HtmlParser parser = new HtmlParser();
-            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            IHtmlDocument htmlDocument = parser.ParseDocument(response.Content);
             IDocument document = new Document(request, response, htmlDocument);
             if (JavascriptScrapingEnabled)
                 JavascriptEngine.Add(document);
@@ -395,7 +395,7 @@ namespace BrowseSharp.Browsers.Core
             Uri requestUri = _restClient.BaseUrl;
             IRestResponse response = await responseTask;
             HtmlParser parser = new HtmlParser();
-            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            IHtmlDocument htmlDocument = parser.ParseDocument(response.Content);
             IDocument document = new Document(request, response, htmlDocument);
 
             Task<int> result = null;

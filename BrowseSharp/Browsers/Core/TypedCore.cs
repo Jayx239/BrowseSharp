@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
+using AngleSharp.Html.Dom;
+using AngleSharp.Html.Parser;
 using BrowseSharp.Common;
 using BrowseSharp.Common.History;
 using BrowseSharp.Common.Html;
@@ -386,7 +386,7 @@ namespace BrowseSharp.Browsers.Core
         {
             Uri requestUri = _restClient.BaseUrl;
             HtmlParser parser = new HtmlParser();
-            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            IHtmlDocument htmlDocument = parser.ParseDocument(response.Content);
             IDocument<T> document = new Document<T>(request, response, htmlDocument);
             if (JavascriptScrapingEnabled)
                 JavascriptEngine.Add(document);
@@ -409,7 +409,7 @@ namespace BrowseSharp.Browsers.Core
             Uri requestUri = _restClient.BaseUrl;
             IRestResponse<T> response = await responseTask;
             HtmlParser parser = new HtmlParser();
-            IHtmlDocument htmlDocument = parser.Parse(response.Content);
+            IHtmlDocument htmlDocument = parser.ParseDocument(response.Content);
             IDocument<T> document = new Document<T>(request, response, htmlDocument);
 
             Task<int> result = null;

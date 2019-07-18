@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AngleSharp.Html;
+using AngleSharp.Html.Dom;
 
 namespace BrowseSharpPlayground
 {
@@ -29,8 +31,9 @@ namespace BrowseSharpPlayground
 </html>";
         static void Main(string[] args)
         {
+            
             IDocument htmlDocument = new Document();
-            htmlDocument.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
+            htmlDocument.HtmlDocument = new AngleSharp.Html.Parser.HtmlParser().ParseDocument(htmlContent);
             //var script1 = new Javascript();
             string script1 = "document.getElementById('content').textContent = 'this is the content';";
             //htmlDocument.Scripts.Add(script1);
@@ -40,38 +43,60 @@ namespace BrowseSharpPlayground
             engine.Execute(script1);
             Browser browser = new Browser();
             IDocument doc = browser.Navigate("https://browsesharp.org/testsitesjqueryrender.html");
-            doc.HtmlDocument = new AngleSharp.Parser.Html.HtmlParser().Parse(htmlContent);
+            //doc.HtmlDocument = new AngleSharp.Html.Parser.HtmlParser().ParseDocument(htmlContent);
             //Jint.Engine engine = new Jint.Engine();
             //engine.SetValue("document", doc.HtmlDocument);
             //engine.SetValue("d", doc.HtmlDocument);
-            Navigator navigator = new Navigator(engine);
+            //Navigator navigator = new Navigator(engine);
             Window window1 = new Window(engine);
             window1.document = doc.HtmlDocument;
-            
+            //engine.Execute("Window = {};");
+            //engine.SetValue("window.document", doc.HtmlDocument);
             //engine.SetValue("window.document", doc);
 
-            navigator.InitializeEngine();
+            //navigator.InitializeEngine();
             window1.InitializeEngine();
+            Action<string> console = (val) => { Console.WriteLine(val); };
+            engine.SetValue("write", console);
             //engine.SetValue("navigator", navigator);
             
             //engine.SetValue("window", );
             var scripts = "";// "var require = function(asd){};\nvar window = {};\nvar module = new Object();\nvar exports = new Object()\n;";
             int skipFirst = -3;
             //engine.SetValue("console.log", new Action<object>(Console.WriteLine));
+            //var windowJs = System.IO.File.ReadAllText(@"C:\Users\Jason\source\repos\BrowseSharp\BrowseSharpPlayground\window.js");
+
+           
+
             var jquery = System.IO.File.ReadAllText(@"C:\Users\Jason\source\repos\BrowseSharp\BrowseSharpPlayground\jquery.js");
+            //engine.Execute(windowJs);
+            engine.Execute("var noGlobal = true; ");
+            try { 
             engine.Execute(jquery);
-            //scripts += doc.Scripts[2].JavascriptString + "\n" + doc.Scripts[6].JavascriptString;
+            }catch(Exception ex)
+            {
+                Console.Write(String.Format("Execption: {0}", ex.StackTrace));
+            }
+            //engine.Execute("window.jQuery = jQuery;");
+            engine.Execute("var $ = window.jQuery");
+            scripts += doc.Scripts[6].JavascriptString;
             foreach (var script in doc.Scripts)
             {
-                if (skipFirst < 0)
+                if (script.Content.Contains("jQuery"))
                 {
                     skipFirst++;
                     continue;
                 }
-                var result = engine.Execute(script.JavascriptString.Replace(";",";\n"));
-                scripts += script.JavascriptString + "\n";
+                //var result = engine.Execute(script.Content);
+                //scripts += script.JavascriptString + "\n";
             }
-            //var result = engine.Execute(scripts);
+
+            try { 
+            var result = engine.Execute(scripts);
+            } catch(Exception ex)
+            {
+                Console.Write("");
+            }
             Console.Write("!");
             
             /*Jint.Engine engine = new Jint.Engine();
@@ -99,13 +124,16 @@ namespace BrowseSharpPlayground
             window.InitializeEngine();
             //engine2.SetValue("write", new Action<string>(Console.Write));
             //engine2.SetValue("window", window);
-            window.onappinstalled = (e)=> Console.Write(e);
+            window.onappinstalled = Console.Write;
+            window.onappinstalled("on app installed works");
+            
             Console.WriteLine(window.DevicePixelRatio);
             //engine2.Execute("window.devicePixelRatio = 19;");
             var pixRatio = engine2.Execute("window.devicePixelRatio");
             //engine2.Execute("window.OnAppInstalled = function() {write('hello world');}");
             engine2.Execute("window.onappinstalled('asd');");
-            engine2.Execute("window.onappinstalled = function(a) {write('a');};");
+            engine2.Execute("window.onappinstalled = window.LogArray");
+
             //engine2.Execute("window.onappinstalled('asd');");
             Console.WriteLine(pixRatio);
             Console.WriteLine(window.DevicePixelRatio);

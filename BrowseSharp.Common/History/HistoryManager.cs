@@ -1,7 +1,7 @@
 ﻿using BrowseSharp.Common.Toolbox;
 using System.Collections.Generic;
 using System.Linq;
-
+using BrowseSharp.Common.Extensions;
 namespace BrowseSharp.Common.History
 {
     /// <summary>

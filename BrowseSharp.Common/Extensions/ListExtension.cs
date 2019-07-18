@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BrowseSharp.Common.Toolbox
+namespace BrowseSharp.Common.Extensions
 {
     static class ListExtension
     {

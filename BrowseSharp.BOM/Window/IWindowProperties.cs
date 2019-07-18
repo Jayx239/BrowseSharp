@@ -1,4 +1,4 @@
-﻿using AngleSharp.Dom.Html;
+﻿
 using BrowseSharp.BOM.Navigator;
 
 namespace BrowseSharp.BOM.Window

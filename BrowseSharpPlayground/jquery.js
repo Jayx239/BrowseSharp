@@ -4869,7 +4869,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 	return fragment;
 }
 
-
+    /*
 ( function() {
 	var fragment = document.createDocumentFragment(),
 		div = fragment.appendChild( document.createElement( "div" ) ),
@@ -4894,7 +4894,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 	div.innerHTML = "<textarea>x</textarea>";
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 } )();
-
+*/
 
 var
 	rkeyEvent = /^key/,
@@ -10014,12 +10014,12 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 // collapse sibling forms: the second one becomes a child of the first one.
 // Because of that, this security measure has to be disabled in Safari 8.
 // https://bugs.webkit.org/show_bug.cgi?id=137337
-support.createHTMLDocument = ( function() {
+/*support.createHTMLDocument = ( function() {
 	var body = document.implementation.createHTMLDocument( "" ).body;
 	body.innerHTML = "<form></form><form></form>";
 	return body.childNodes.length === 2;
 } )();
-
+*/
 
 // Argument "data" should be string of html
 // context (optional): If specified, the fragment will be created in this context,
@@ -10578,7 +10578,7 @@ jQuery.noConflict = function( deep ) {
 // (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
 if ( !noGlobal ) {
-	window.jQuery = window.$ = jQuery;
+	window.jQuery = jQuery;
 }
 
 

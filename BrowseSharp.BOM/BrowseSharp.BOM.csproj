@@ -10,8 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="0.9.9.2" />
-    <PackageReference Include="Jint" Version="2.11.58" />
+    <PackageReference Include="AngleSharp" Version="0.11.0" />
+    <PackageReference Include="Jint" Version="3.0.0-beta-1525" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>

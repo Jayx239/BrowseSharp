@@ -5,8 +5,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
+using AngleSharp.Html.Dom;
+using AngleSharp.Html.Parser;
 using BrowseSharp.Common.Toolbox;
 using Jint;
 using RestSharp;
@@ -107,7 +107,7 @@ namespace BrowseSharp.Common.Javascript
         private IHtmlCollection<IHtmlScriptElement> ScrapeScripts(string documentString)
         {
             HtmlParser parser = new HtmlParser();
-            var document = parser.Parse(documentString);
+            var document = parser.ParseDocument(documentString);
             IHtmlCollection<IHtmlScriptElement> scripts = document.Scripts;
             return scripts;
         }

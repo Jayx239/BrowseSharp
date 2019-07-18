@@ -23,7 +23,8 @@ namespace BrowseSharp.BOM.Test
 
         public void Test2()
         {
-
+            Window.Window window = new Window.Window();
+            
         }
     }
 }
