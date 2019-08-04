@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AngleSharp.Html;
 using AngleSharp.Html.Dom;
-
+using BrowseSharp.Scripting;
 namespace BrowseSharpPlayground
 {
     class Program
@@ -31,7 +31,10 @@ namespace BrowseSharpPlayground
 </html>";
         static void Main(string[] args)
         {
-            
+            //Console.WriteLine(Say.somethingToDo());
+            //Say.doSomethingIn(() => { return 10; });
+            //Console.WriteLine(Say.somethingToDo());
+
             IDocument htmlDocument = new Document();
             htmlDocument.HtmlDocument = new AngleSharp.Html.Parser.HtmlParser().ParseDocument(htmlContent);
             //var script1 = new Javascript();
@@ -68,17 +71,25 @@ namespace BrowseSharpPlayground
 
            
 
-            var jquery = System.IO.File.ReadAllText(@"C:\Users\Jason\source\repos\BrowseSharp\BrowseSharpPlayground\jquery.js");
+            var jquery = System.IO.File.ReadAllText(@"C:\Users\j_roc\source\repos\BrowseSharp\BrowseSharpPlayground\jquery.js");
             //engine.Execute(windowJs);
-            engine.Execute("var noGlobal = true; ");
+            engine.Execute("window.test = 'test';");
+            engine.Execute("var noGlobal = false; ");
+            dynamic window1d = window1;
             try { 
-            engine.Execute(jquery);
-            }catch(Exception ex)
+            engine.Execute(jquery + "\nvar document = window.document;\nvar $ = window.jQuery;\n$(document).ready(function(){\n$('#Area1').text('hello there');\n});\n var document = window.document;\n$(document).ready() ");
+            }
+            catch(Exception ex)
             {
                 Console.Write(String.Format("Execption: {0}", ex.StackTrace));
             }
+
+            //engine.Execute("window.jQuery.ready();");
+
+            //engine.Execute("document.ready()");
+            engine.Execute("(function($, window, document){$('#Area1').val('hello there');})(window.jQuery, window, window.document);");
             //engine.Execute("window.jQuery = jQuery;");
-            engine.Execute("var $ = window.jQuery");
+            engine.Execute("var $ = window.jQuery()('");
             scripts += doc.Scripts[6].JavascriptString;
             foreach (var script in doc.Scripts)
             {
@@ -97,6 +108,7 @@ namespace BrowseSharpPlayground
             {
                 Console.Write("");
             }
+            string[] vals = { "div" };
             Console.Write("!");
             
             /*Jint.Engine engine = new Jint.Engine();

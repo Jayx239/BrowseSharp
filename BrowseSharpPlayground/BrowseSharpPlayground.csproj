@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AngleSharp, Version=0.11.0.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
-      <HintPath>..\packages\AngleSharp.0.11.0\lib\net46\AngleSharp.dll</HintPath>
+    <Reference Include="AngleSharp, Version=0.12.1.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.12.1\lib\net46\AngleSharp.dll</HintPath>
     </Reference>
     <Reference Include="Esprima, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
       <HintPath>..\packages\Esprima.1.0.0-beta-1186\lib\net45\Esprima.dll</HintPath>
@@ -77,6 +77,10 @@
     <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj">
       <Project>{3934c547-c64f-4551-8cfb-391f6838d306}</Project>
       <Name>BrowseSharp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrowseSharp.Scripting\BrowseSharp.Scripting.fsproj">
+      <Project>{73c71b03-9af0-4712-9c51-df133c5be25b}</Project>
+      <Name>BrowseSharp.Scripting</Name>
     </ProjectReference>
     <ProjectReference Include="..\BrowseSharp\BrowseSharp.csproj">
       <Project>{5892995f-8cbc-439a-9802-464e4333734e}</Project>

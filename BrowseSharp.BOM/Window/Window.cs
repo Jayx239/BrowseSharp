@@ -3,18 +3,20 @@ using AngleSharp.Html.Dom;
 using BrowseSharp.BOM.Navigator;
 using BrowseSharp.Common;
 using Jint;
+using Jint.Native;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Threading;
 
 namespace BrowseSharp.BOM.Window
 {
     public partial class Window : DynamicObject//, IWindow
     {
-        Engine _jintEngine;
+        private Engine _jintEngine;
 
         // The inner dictionary.
-        Dictionary<string, dynamic> dictionary;
+        private Dictionary<string, dynamic> dictionary;
             
         // If you try to get a value of a property 
         // not defined in the class, this method is called.
@@ -28,7 +30,10 @@ namespace BrowseSharp.BOM.Window
             // If the property name is found in a dictionary,
             // set the result parameter to the property value and return true.
             // Otherwise, return false.
-            return dictionary.TryGetValue(name, out result);
+            bool exists = dictionary.TryGetValue(name, out result);
+            if (!exists)
+                result = new { };
+            return exists;
         }
 
         // If you try to set a value of a property that is
@@ -36,10 +41,10 @@ namespace BrowseSharp.BOM.Window
         public override bool TrySetMember(
             SetMemberBinder binder, dynamic value)
         {
-            // Converting the property name to lowercase
-            // so that property names become case-insensitive.
-            dictionary[binder.Name] = value;
-
+            if (dictionary.ContainsKey(binder.Name))
+                dictionary[binder.Name] = value;
+            else
+                dictionary.Add(binder.Name, value);
             // You can always add a value to a dictionary,
             // so this method always returns true.
             return true;
@@ -61,7 +66,7 @@ namespace BrowseSharp.BOM.Window
             _jintEngine = jintEngine;
         }
 
-        public Window(Engine jintEngine, IDocument document)
+        public Window(Engine jintEngine, IDocument document) : this()
         {
             _jintEngine = jintEngine;
             _document = document;
@@ -103,12 +108,33 @@ namespace BrowseSharp.BOM.Window
         public Window Top { get; set; }
         public Window window { get { return this; } } // lowercase to since same as class name
         public Location location { get; set; }
+        public JsValue jQuery { get; set; }
+        
         #endregion
 
-        private dynamic _jquery;
+        /*private dynamic _jquery;
 
         [DomName("jQuery")]
-        public dynamic jQuery { get { return _jquery;  } set { _jquery = value; if (dictionary.ContainsKey("$")) { dictionary["$"] = value; } else { dictionary.Add("$", value); } } }
+        public dynamic jQuery {
+            get { return _jquery;  }
+            set
+            {
+                _jquery = value;
+                if (dictionary.ContainsKey("$"))
+                {
+                    dictionary["$"] = value;
+                }
+                else
+                {
+                    dictionary.Add("$", value);
+                }
+            }
+        }
+        */
+        public dynamic Get(string name)
+        {
+            return dictionary[name];
+        }
 
         /*
         [DomName("$")]
@@ -116,12 +142,14 @@ namespace BrowseSharp.BOM.Window
         public void InitializeEngine()
         {
             Func<object, int> setTimeout = (func) => { return 0; };
-            this.setTimeout = setTimeout;
+            //this.setTimeout = setTimeout;
             location = new Location();
             dynamic dynamicWindow = this;
+            
             _jintEngine.SetValue("window", dynamicWindow);
-            _jintEngine.Execute("window.jQuery = {};");
-            _jintEngine.Execute("window.$ = {};");
+            _jintEngine.SetValue("document",document);
+            //_jintEngine.Execute("window.jQuery = {};");
+            //_jintEngine.Execute("window.$ = {};");
             //dictionary.Add("jQuery");
             /*_jintEngine.Execute("var window = {document: {}};");
             _jintEngine.Execute("window.window = window;");

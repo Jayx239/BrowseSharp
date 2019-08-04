@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BrowseSharp.BOM.Window
 {
@@ -94,8 +96,15 @@ namespace BrowseSharp.BOM.Window
         public dynamic UpdateCommands { get; set; }
         
         public dynamic AddEventListener { get; set; }
-        public dynamic setTimeout { get; set; }
-        
+        public async Task<int> setTimeout(dynamic func, int timeout = 500, dynamic arguments = null)
+        {
+            
+            await Task.Delay(timeout);
+            if(arguments != null)
+                func(arguments);
+            return 0;
+        }
+
         #endregion
     }
 }

@@ -10574,14 +10574,12 @@
         _$ = window.$;
 
     jQuery.noConflict = function (deep) {
-        /*if (window.$ === jQuery) {
+        if (window.$ === jQuery) {
             window.$ = _$;
-            $ = _$;
-        }*/
+        }
 
         if (deep && window.jQuery === jQuery) {
             window.jQuery = _jQuery;
-            jQuery = _jQuery;
         }
 
         return jQuery;
