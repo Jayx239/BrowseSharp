@@ -54,7 +54,7 @@ namespace BrowseSharp.BOM.Test
             window1.document = htmlDocument.HtmlDocument;
 
             window1.InitializeEngine();
-            var jquery = System.IO.File.ReadAllText(@"C:\Users\j_roc\source\repos\BrowseSharp\BrowseSharpPlayground\jquery.js");
+            var jquery = System.IO.File.ReadAllText(@"../../../../BrowseSharpPlayground/jquery.js");
             engine.Execute(jquery);
 
             engine.Execute("$(document).ready(function(){$('#content').text('hello there it worked');});");

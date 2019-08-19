@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using AngleSharp.Html;
 using AngleSharp.Html.Dom;
 using BrowseSharp.Scripting;
+
+
+
 namespace BrowseSharpPlayground
 {
     class Program
@@ -67,27 +70,31 @@ namespace BrowseSharpPlayground
             var scripts = "";// "var require = function(asd){};\nvar window = {};\nvar module = new Object();\nvar exports = new Object()\n;";
             int skipFirst = -3;
             //engine.SetValue("console.log", new Action<object>(Console.WriteLine));
-            //var windowJs = System.IO.File.ReadAllText(@"C:\Users\Jason\source\repos\BrowseSharp\BrowseSharpPlayground\window.js");
+            
 
            
 
-            var jquery = System.IO.File.ReadAllText(@"C:\Users\j_roc\source\repos\BrowseSharp\BrowseSharpPlayground\jquery.js");
+            var jquery = System.IO.File.ReadAllText(@"../../jquery.js");
             //engine.Execute(windowJs);
             engine.Execute("window.test = 'test';");
             engine.Execute("var noGlobal = false; ");
             dynamic window1d = window1;
             try { 
-            engine.Execute(jquery + "\nvar document = window.document;\nvar $ = window.jQuery;\n$(document).ready(function(){\n$('#Area1').text('hello there');\n});\n var document = window.document;\n$(document).ready() ");
+            engine.Execute(jquery + "\nvar document = window.document;\nvar $ = window.jQuery;\n$(document).ready(function(){\n$('h3.mt-4').text('hello there');\n});\n var document = window.document;\n$(document).ready() ");
             }
             catch(Exception ex)
             {
                 Console.Write(String.Format("Execption: {0}", ex.StackTrace));
             }
 
-            //engine.Execute("window.jQuery.ready();");
+            engine.Execute("window.jQuery.ready();");
 
             //engine.Execute("document.ready()");
-            engine.Execute("(function($, window, document){$('#Area1').val('hello there');})(window.jQuery, window, window.document);");
+            engine.Execute("(function($, window, document){$('#Area1').text('hello there');})(window.jQuery, window, window.document);");
+
+            string newValue = engine.Execute("$('#Area1').text()").GetCompletionValue().ToString(); // This is the value set in the previous line with jquery
+            string newValueFromDOM = window1.document.GetElementById("Area1").TextContent; // Get new value from DOM
+
             //engine.Execute("window.jQuery = jQuery;");
             engine.Execute("var $ = window.jQuery()('");
             scripts += doc.Scripts[6].JavascriptString;
