@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.History;
-using BrowseSharp.Html;
-using BrowseSharp.Javascript;
-using BrowseSharp.Style;
-using BrowseSharp.Toolbox;
+using BrowseSharp.Common;
+using BrowseSharp.Common.History;
+using BrowseSharp.Common.Html;
+using BrowseSharp.Common.Javascript;
+using BrowseSharp.Common.Style;
+using BrowseSharp.Common.Toolbox;
 using RestSharp;
 
 namespace BrowseSharp.Browsers.Core
@@ -52,7 +53,7 @@ namespace BrowseSharp.Browsers.Core
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public IDocument Execute(IRestRequest request)
+        internal IDocument Execute(IRestRequest request)
         {
             IRestResponse response = _restClient.Execute(request);
             IDocument document = PackageAndAddDocument(request, response);
@@ -65,7 +66,7 @@ namespace BrowseSharp.Browsers.Core
         /// <param name="request"></param>
         /// <param name="httpMethod"></param>
         /// <returns></returns>
-        public IDocument ExecuteAsGet(IRestRequest request, string httpMethod)
+        internal IDocument ExecuteAsGet(IRestRequest request, string httpMethod)
         {
             IRestResponse response = _restClient.ExecuteAsGet(request, httpMethod);
             IDocument document = PackageAndAddDocument(request, response);
@@ -78,7 +79,7 @@ namespace BrowseSharp.Browsers.Core
         /// <param name="request"></param>
         /// <param name="httpMethod"></param>
         /// <returns></returns>
-        public IDocument ExecuteAsPost(IRestRequest request, string httpMethod)
+        internal IDocument ExecuteAsPost(IRestRequest request, string httpMethod)
         {
             IRestResponse response = _restClient.ExecuteAsPost(request, httpMethod);
             IDocument document = PackageAndAddDocument(request, response);
@@ -91,7 +92,7 @@ namespace BrowseSharp.Browsers.Core
         /// <param name="request"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
+        internal async Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse> responseTask = _restClient.ExecuteTaskAsync(request, token);
             Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
@@ -103,7 +104,7 @@ namespace BrowseSharp.Browsers.Core
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request)
+        internal async Task<IDocument> ExecuteTaskAsync(IRestRequest request)
         {
             Task<IRestResponse> responseTask = _restClient.ExecuteTaskAsync(request);
             Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
@@ -115,7 +116,7 @@ namespace BrowseSharp.Browsers.Core
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
+        internal async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
         {
             Task<IRestResponse> responseTask = _restClient.ExecuteGetTaskAsync(request);
             Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
@@ -128,7 +129,7 @@ namespace BrowseSharp.Browsers.Core
         /// <param name="request"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
+        internal async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse> responseTask = _restClient.ExecuteGetTaskAsync(request, token);
             Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
@@ -140,7 +141,7 @@ namespace BrowseSharp.Browsers.Core
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
+        internal async Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
         {
             Task<IRestResponse> responseTask = _restClient.ExecutePostTaskAsync(request);
             Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);
@@ -153,7 +154,7 @@ namespace BrowseSharp.Browsers.Core
         /// <param name="request"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
+        internal async Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse> responseTask = _restClient.ExecutePostTaskAsync(request, token);
             Task<IDocument> documentTask = PackageAndAddDocumentAsync(request, responseTask);

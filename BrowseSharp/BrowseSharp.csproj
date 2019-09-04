@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net46;net452;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -32,12 +32,15 @@
     <DocumentationFile>bin\Release\netstandard2.0\BrowseSharp.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="0.9.9.2" />
-    <PackageReference Include="Jint" Version="2.11.55" />
+    <PackageReference Include="AngleSharp" Version="0.13.0-alpha-768" />
+    <PackageReference Include="Jint" Version="3.0.0-beta-1525" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
-    <PackageReference Include="RestSharp" Version="106.5.4" />
+    <PackageReference Include="RestSharp" Version="106.6.7" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net452'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net472'">
     <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
   </ItemGroup>
 </Project>
