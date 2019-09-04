@@ -35,7 +35,7 @@ namespace BrowseSharpTest
             _sleepAmount -= 1000;
             await Task.Delay(_sleepAmount + 1000);
             RestRequest request = new RestRequest();
-            return await _browser.ExecuteTaskAsync(request);
+            return await _browser.NavigateAsync(_restClient.BaseUrl);
         }
         
         public async Task<IDocument> NavigateAsyncSafe(string uri)
@@ -48,7 +48,7 @@ namespace BrowseSharpTest
                 _sleepAmount -= 1000;
                 await Task.Delay(_sleepAmount + 1000);
                 RestRequest request = new RestRequest();
-                return await _browser.ExecuteTaskAsync(request);
+                return await _browser.NavigateAsync(_restClient.BaseUrl);
             }
             finally
             {

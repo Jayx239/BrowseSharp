@@ -22,195 +22,12 @@ namespace BrowseSharpTest
     {
         /* RequestTester Configuration */
         public static int RequestTesterPort = 3000; // This is the port your RequestTester application is listening to
-        public static string RequestTesterRouteUri = "https://requesttester.com/tester/view";//"http://localhost:" + RequestTesterPort + "/tester/view";
-        public static string RequestTesterRouteJsonUri = "https://requesttester.com/tester";
+        public static string RequestTesterRouteUri = Globals.RequestTesterRouteUri;//"http://localhost:" + RequestTesterPort + "/tester/view";
+        public static string RequestTesterRouteJsonUri = Globals.RequestTesterRouteJsonUri;
 
         
 
         #region Typed Tests
-        [Test]
-        public void TestExecute()
-        {
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            IDocument<dynamic> document = browser.Execute<dynamic>(request);
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = browser.Execute<DogResponse>(dogRequest);
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.Execute<RandomObject>(dogRequest);
-        }
-
-        [Test]
-        public void TestExecuteAsGet()
-        {
-
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            IDocument<dynamic> document = browser.ExecuteAsGet<dynamic>(request, "GET");
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = browser.ExecuteAsGet<DogResponse>(dogRequest, "GET");
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-            
-        }
-
-        [Test]
-        public void TestExecuteAsPost()
-        {
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            var response = browser.ExecuteAsPost<Request>(request, "Post");
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
-
-        }
-
-        [Test]
-        public async Task TestExecuteGetTaskAsync()
-        {
-
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            IDocument<dynamic> document = await browser.ExecuteGetTaskAsync<dynamic>(request);
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = await browser.ExecuteGetTaskAsync<DogResponse>(dogRequest);
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-        }
-        
-        [Test]
-        public async Task TestExecuteGetTaskAsyncToken()
-        {
-
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            RestRequest request = new RestRequest();
-            CancellationToken cancellationToken = new CancellationToken();
-            IDocument<dynamic> document = await browser.ExecuteGetTaskAsync<dynamic>(request, cancellationToken);
-
-            dynamic data = document.Data;
-
-            browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = await browser.ExecuteGetTaskAsync<DogResponse>(dogRequest);
-            Assert.IsTrue(dogDocument.Data.Status == "success");
-            Assert.IsTrue(dogDocument.Data.Message.StartsWith("http"));
-            Assert.IsTrue(dogDocument.Data.Message != null);
-            IDocument<RandomObject> invalidDataResponseDocument = browser.ExecuteAsGet<RandomObject>(dogRequest, "GET");
-        }
-        
-        [Test]
-        public async Task TestExecutePostTaskAsync()
-        {
-
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            var response = await browser.ExecutePostTaskAsync<Request>(request);
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
-        }
-        
-        [Test]
-        public async Task TestExecutePostTaskAsyncToken()
-        {
-
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            CancellationToken cancellationToken = new CancellationToken();
-            var response = await browser.ExecutePostTaskAsync<Request>(request, cancellationToken);
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.FormData.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.FormData["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.FormData["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.FormData["SecretMessage"] == "This is a secret message");
-            
-        }
-        [Test]
-        public async Task TestExecuteTaskAsync()
-        {
-
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            var response = await browser.ExecuteTaskAsync<Request>(request);
-            Assert.IsTrue(response.Data.Query.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.Query["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.Query["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.Query["SecretMessage"] == "This is a secret message");
-        }
-        
-        [Test]
-        public async Task TestExecuteTaskAsyncToken()
-        {
-
-            TypedCore browser = new TypedCore();
-            browser.BaseUrl = new Uri(RequestTesterRouteJsonUri);
-            IRestRequest request = new RestRequest();
-
-            request.AddParameter("Username", "FakeUserName");
-            request.AddParameter("Password", "FakePassword123");
-            request.AddParameter("SecretMessage", "This is a secret message");
-            CancellationToken cancellationToken = new CancellationToken();
-            var response = await browser.ExecuteTaskAsync<Request>(request, cancellationToken);
-            Assert.IsTrue(response.Data.Query.ContainsKey("Username"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("Password"));
-            Assert.IsTrue(response.Data.Query.ContainsKey("SecretMessage"));
-            Assert.IsTrue(response.Data.Query["Username"] == "FakeUserName");
-            Assert.IsTrue(response.Data.Query["Password"] == "FakePassword123");
-            Assert.IsTrue(response.Data.Query["SecretMessage"] == "This is a secret message");
-            
-        }
         
         [Test]
         public void TestNavigate()
@@ -415,8 +232,8 @@ namespace BrowseSharpTest
             TypedCore browser = new TypedCore();
             
             browser.BaseUrl = new Uri("https://dog.ceo/api/breeds/image/random");
-            RestRequest dogRequest = new RestRequest();
-            IDocument<DogResponse> dogDocument = browser.Execute<DogResponse>(dogRequest);
+            //RestRequest dogRequest = new RestRequest();
+            IDocument<DogResponse> dogDocument = browser.Navigate<DogResponse>(browser.BaseUrl);
             
             IDocument<DogResponse> documentGot = browser.DocumentTyped<DogResponse>();
             Assert.IsTrue(documentGot == dogDocument);

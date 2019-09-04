@@ -141,51 +141,13 @@ namespace BrowseSharp.BOM.Window
         public dynamic dollarsign { get; set; }*/
         public void InitializeEngine()
         {
-            Func<object, int> setTimeout = (func) => { return 0; };
+            Func<object, int, int> setTimeout = (func, timeout) => { Thread.Sleep(timeout); return 1; };
             //this.setTimeout = setTimeout;
             location = new Location();
             dynamic dynamicWindow = this;
             
-            _jintEngine.SetValue("window", dynamicWindow);
+            _jintEngine.SetValue("window", this);
             _jintEngine.SetValue("document",document);
-            //_jintEngine.Execute("window.jQuery = {};");
-            //_jintEngine.Execute("window.$ = {};");
-            //dictionary.Add("jQuery");
-            /*_jintEngine.Execute("var window = {document: {}};");
-            _jintEngine.Execute("window.window = window;");
-            _jintEngine.SetValue("window.DevicePixelRatio", DevicePixelRatio);
-            _jintEngine.SetValue("window.document", document);
-            _jintEngine.SetValue("document", document);
-            _jintEngine.SetValue("window.FullScreen", FullScreen);
-            _jintEngine.SetValue("window.InnerHeight", InnerHeight);
-            _jintEngine.SetValue("window.InnerWidth", InnerWidth);
-            _jintEngine.SetValue("window.IsSecureContext", IsSecureContext);
-            _jintEngine.SetValue("window.Length", Length);
-            _jintEngine.SetValue("window.MozAnimationStartTime", MozAnimationStartTime);
-            _jintEngine.SetValue("window.MozInnerScreenX", MozInnerScreenX);
-            _jintEngine.SetValue("window.MozInnerScreenY", MozInnerScreenY);
-            _jintEngine.SetValue("window.MozPaintCount", MozPaintCount);
-            _jintEngine.SetValue("window.Name", Name);
-            _jintEngine.SetValue("window.Navigator", Navigator);
-            _jintEngine.SetValue("window.Orientation", Orientation);
-            _jintEngine.SetValue("window.OuterHeight", OuterHeight);
-            _jintEngine.SetValue("window.OuterWidth", OuterWidth);
-            _jintEngine.SetValue("window.PageXOffset", PageXOffset);
-            _jintEngine.SetValue("window.PageYOffset", PageYOffset);
-            _jintEngine.SetValue("window.ScreenX", ScreenX);
-            _jintEngine.SetValue("window.ScreenLeft", ScreenLeft);
-            _jintEngine.SetValue("window.ScreenY", ScreenY);
-            _jintEngine.SetValue("window.ScreenTop", ScreenTop);
-            _jintEngine.SetValue("window.ScrollMaxX", ScrollMaxX);
-            _jintEngine.SetValue("window.ScrollMaxY", ScrollMaxY);
-            _jintEngine.SetValue("window.ScrollX", ScrollX);
-            _jintEngine.SetValue("window.ScrollY", ScrollY);
-            _jintEngine.SetValue("window.Self", Self);
-            _jintEngine.SetValue("window.Sidebar", Sidebar);
-            _jintEngine.SetValue("window.Status", Status);
-            _jintEngine.SetValue("window.Top", Top);
-            _jintEngine.SetValue("window.location", location);
-            */
         }
 
         #region Private

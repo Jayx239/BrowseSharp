@@ -60,60 +60,6 @@ namespace BrowseSharp
         }
 
         /// <inheritdoc />
-        public IDocument Execute(IRestRequest request)
-        {
-            return _browserStandard.Execute(request);
-        }
-
-        /// <inheritdoc />
-        public IDocument ExecuteAsGet(IRestRequest request, string httpMethod)
-        {
-            return _browserStandard.ExecuteAsGet(request, httpMethod);
-        }
-
-        /// <inheritdoc />
-        public IDocument ExecuteAsPost(IRestRequest request, string httpMethod)
-        {
-            return _browserStandard.ExecuteAsPost(request, httpMethod);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecuteTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecuteTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecuteGetTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecuteGetTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecutePostTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecutePostTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
         public virtual IDocument Navigate(string uri)
         {
             return _browserStandard.Navigate(uri);

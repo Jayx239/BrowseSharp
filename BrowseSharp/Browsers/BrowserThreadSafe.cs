@@ -347,19 +347,6 @@ namespace BrowseSharp.Browsers
         }
 
         /// <summary>
-        /// Contains all previous documents stored for each previous request
-        /// </summary>
-        public List<IDocument> History => _history.History;
-
-        /// <summary>
-        /// Stores the forward history when the back method is called 
-        /// </summary>
-        public List<IDocument> ForwardHistory
-        {
-            get { return _history.ForwardHistory; }
-        }
-
-        /// <summary>
         /// Clears browse history by re-initializing Documents
         /// </summary>
         public override void ClearHistory()

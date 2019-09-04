@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 using AngleSharp.Html;
 using AngleSharp.Html.Dom;
 using BrowseSharp.Scripting;
-
-
+using System.Threading;
 
 namespace BrowseSharpPlayground
 {
@@ -32,6 +31,7 @@ namespace BrowseSharpPlayground
 		</script>
 	</body>
 </html>";
+        //AngleSharp 0.12.1
         static void Main(string[] args)
         {
             //Console.WriteLine(Say.somethingToDo());
@@ -39,8 +39,17 @@ namespace BrowseSharpPlayground
             //Console.WriteLine(Say.somethingToDo());
 
             IDocument htmlDocument = new Document();
-            htmlDocument.HtmlDocument = new AngleSharp.Html.Parser.HtmlParser().ParseDocument(htmlContent);
+            var parser = new AngleSharp.Html.Parser.HtmlParser();
+            
+            htmlDocument.HtmlDocument = parser.ParseDocument(htmlContent);
             //var script1 = new Javascript();
+            CancellationToken loadedToken;
+            ((AngleSharp.Dom.Document)htmlDocument.HtmlDocument).DelayLoad(Task.Run(async () => {
+                while (true)
+                {
+                    await Task.Delay(10000, loadedToken); // <- await with cancellation
+                }
+            }, loadedToken));
             string script1 = "document.getElementById('content').textContent = 'this is the content';";
             //htmlDocument.Scripts.Add(script1);
 

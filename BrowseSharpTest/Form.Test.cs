@@ -10,8 +10,9 @@ namespace BrowseSharpTest
     {
         /* RequestTester Configuration */
         public static int RequestTesterPort = 3000; // This is the port your RequestTester application is listening to
-        public static string RequestTesterRouteUri = "https://requesttester.com/tester/view" ;//"http://localhost:" + RequestTesterPort + "/tester/view";
-        
+        public static string RequestTesterRouteUri = Globals.RequestTesterRouteUri;//"http://localhost:" + RequestTesterPort + "/tester/view";
+        public static string RequestTesterRouteJsonUri = Globals.RequestTesterRouteJsonUri;
+
         [Test]
         public void TestExecute()
         {

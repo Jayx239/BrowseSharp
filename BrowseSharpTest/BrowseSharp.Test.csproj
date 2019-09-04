@@ -40,8 +40,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AngleSharp, Version=0.12.1.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
-      <HintPath>..\packages\AngleSharp.0.12.1\lib\net46\AngleSharp.dll</HintPath>
+    <Reference Include="AngleSharp, Version=0.13.0.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.13.0-alpha-768\lib\net46\AngleSharp.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
@@ -446,6 +446,7 @@
   <ItemGroup>
     <Compile Include="BrowserThreadFail.cs" />
     <Compile Include="BrowserThreadSafe.Test.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="RaceConditionProof.Test.cs" />
     <Compile Include="BrowserStandard.Test.cs" />
     <Compile Include="BrowserTyped.Test.cs" />

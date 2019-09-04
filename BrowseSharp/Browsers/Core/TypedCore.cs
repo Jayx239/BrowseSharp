@@ -50,72 +50,115 @@ namespace BrowseSharp.Browsers.Core
             
         }
 
-        /// <inheritdoc />
-        public IDocument<T> Execute<T>(IRestRequest request)
+        /// <summary>
+        /// Execute method that creates a document from an http request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <returns>Response Document</returns>
+
+        internal IDocument<T> Execute<T>(IRestRequest request)
         {
             IRestResponse<T> response = Deserialize<T>(_restClient.Execute(request));
             IDocument<T> document = PackageAndAddDocument<T>(request, response);
             return document;
         }
 
-        /// <inheritdoc />
-        public IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod)
+        /// <summary>
+        /// Execute method that creates a document from an http get request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <param name="httpMethod">Http method of request</param>
+        /// <returns>Response Document</returns>
+
+        internal IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod)
         {
             IRestResponse<T> response = Deserialize<T>(_restClient.ExecuteAsGet(request, httpMethod));
             IDocument<T> document = PackageAndAddDocument<T>(request, response);
             return document;
         }
 
-        /// <inheritdoc />
-        public IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod)
+        /// <summary>
+        /// Execute method that creates a document from an http post request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <param name="httpMethod">Http method of request</param>
+        /// <returns>Response Document</returns>
+        internal IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod)
         {
             IRestResponse<T> response = Deserialize<T>(_restClient.ExecuteAsPost(request, httpMethod));
             IDocument<T> document = PackageAndAddDocument<T>(request, response);
             return document;
         }
 
-        /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request)
+        /// <summary>
+        /// Execute method that creates a document from an asynchronous http get request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <returns>Response Document Task</returns>
+        internal async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecuteGetTaskAsync<T>(request);
             Task<IDocument<T>> documentTask = PackageAndAddDocumentAsync(request, responseTask);
             return await documentTask;
         }
 
-        /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request, CancellationToken token)
+        /// <summary>
+        /// Execute method that creates a document from an asynchronous http get request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns>Response Document Task</returns>
+        internal async Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecuteGetTaskAsync<T>(request,token);
             Task<IDocument<T>> documentTask = PackageAndAddDocumentAsync(request, responseTask);
             return await documentTask;
         }
 
-        /// <inheritdoc />
-        public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request)
+        /// <summary>
+        /// Execute method that creates a document from an asynchronous http post request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <returns>Response Document Task</returns>
+        internal async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecutePostTaskAsync<T>(request);
             Task<IDocument<T>> documentTask = PackageAndAddDocumentAsync(request, responseTask);
             return await documentTask;
         }
 
-        /// <inheritdoc />
-        public async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request, CancellationToken token)
+        /// <summary>
+        /// Execute method that creates a document from an asynchronous http post request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns>Response Document Task</returns>
+        internal async Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecutePostTaskAsync<T>(request, token);
             Task<IDocument<T>> documentTask = PackageAndAddDocumentAsync(request, responseTask);
             return await documentTask;
         }
 
-        /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request, CancellationToken token)
+        /// <summary>
+        /// Execute method that creates a document from an asynchronous http request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns>Response Document Task</returns>
+        internal async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request, CancellationToken token)
         {
             Task<IRestResponse<T>> responseTask = _restClient.ExecuteTaskAsync<T>(request, token);
             Task<IDocument<T>> documentTask = PackageAndAddDocumentAsync(request, responseTask);
             return await documentTask;
         }
 
-        /// <inheritdoc />
-        public async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request)
+        /// <summary>
+        /// Execute method that creates a document from an asynchronous http request and deserializes response content
+        /// </summary>
+        /// <param name="request">Request to be made</param>
+        /// <returns>Response Document Task</returns>
+        internal async Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request)
         {
 
             Task<IRestResponse<T>> responseTask = _restClient.ExecuteTaskAsync<T>(request);
