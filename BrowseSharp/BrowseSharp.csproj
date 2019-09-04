@@ -26,6 +26,7 @@
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\netstandard2.0\BrowseSharp.xml</DocumentationFile>
@@ -44,5 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
