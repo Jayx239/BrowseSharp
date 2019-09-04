@@ -1,26 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net46;net452;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.8.2</AssemblyVersion>
-    <FileVersion>0.0.8.2</FileVersion>
-    <Version>0.0.8</Version>
-    <PackageLicenseUrl>https://github.com/Jayx239/BrowseSharp/blob/master/LICENSE</PackageLicenseUrl>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <Version>0.1.0</Version>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <Copyright>Copyright (c) 2019 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jayx239/BrowseSharp</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint Type Deserialization API Testing Security Automation Bot Thread Safe</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>* Added BrowserThreadSafe
-  * Ensures that async calls will execute successfully one at a time
-  * Maintains same functionality as base Browser
-* Fixed bug with UriHelper that was causing certain relative uri paths to not be constructed properly. Lead to certain external Javascript/Css styles to not be retrieved properly.
-* Removed direct manipulation of AngleSharp object in Javascript Object.
-* Removed logic that set SecurityProtocol in the BrowserCore that was causing issues with .net core
-  * See https://github.com/Jayx239/BrowseSharp/issues/62</PackageReleaseNotes>
+    <PackageReleaseNotes>Warning: This is a breaking change, upgrading will require existing projects to update their namespace references.
+* Moved types into the new BrowseSharp.Common namespace
+* Made execute methods internal only:
+    - Execute
+    - ExecuteAsGet
+    - ExecuteAsPost
+    - ExecuteTaskAsync
+    - ExecuteGetTaskAsync
+    - ExecutePostTaskAsync</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
@@ -32,12 +34,15 @@
     <DocumentationFile>bin\Release\netstandard2.0\BrowseSharp.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="0.9.9.2" />
-    <PackageReference Include="Jint" Version="2.11.55" />
+    <PackageReference Include="AngleSharp" Version="0.13.0-alpha-768" />
+    <PackageReference Include="Jint" Version="3.0.0-beta-1525" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
-    <PackageReference Include="RestSharp" Version="106.5.4" />
+    <PackageReference Include="RestSharp" Version="106.6.7" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net452'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net472'">
     <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
   </ItemGroup>
 </Project>

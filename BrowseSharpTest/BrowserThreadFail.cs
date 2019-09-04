@@ -4,9 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.History;
-using BrowseSharp.Javascript;
-using BrowseSharp.Style;
+using BrowseSharp.Common;
+using BrowseSharp.Common.History;
+using BrowseSharp.Common.Javascript;
+using BrowseSharp.Common.Style;
 using RestSharp;
 
 namespace BrowseSharpTest
@@ -34,7 +35,7 @@ namespace BrowseSharpTest
             _sleepAmount -= 1000;
             await Task.Delay(_sleepAmount + 1000);
             RestRequest request = new RestRequest();
-            return await _browser.ExecuteTaskAsync(request);
+            return await _browser.NavigateAsync(_restClient.BaseUrl);
         }
         
         public async Task<IDocument> NavigateAsyncSafe(string uri)
@@ -47,7 +48,7 @@ namespace BrowseSharpTest
                 _sleepAmount -= 1000;
                 await Task.Delay(_sleepAmount + 1000);
                 RestRequest request = new RestRequest();
-                return await _browser.ExecuteTaskAsync(request);
+                return await _browser.NavigateAsync(_restClient.BaseUrl);
             }
             finally
             {

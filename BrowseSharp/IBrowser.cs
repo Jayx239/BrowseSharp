@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.Html;
+using BrowseSharp.Common;
+using BrowseSharp.Common.Html;
 using RestSharp;
 
 namespace BrowseSharp
@@ -13,74 +14,6 @@ namespace BrowseSharp
     /// </summary>
     public interface IBrowser : IBrowserCore
     {
-        /// <summary>
-        /// Execute method that creates a document from an http request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document</returns>
-        IDocument Execute(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an http get request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="httpMethod"></param>
-        /// <returns>Response Document</returns>
-        IDocument ExecuteAsGet(IRestRequest request, string httpMethod);
-
-        /// <summary>
-        /// Execute method that creates a document from an http post request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="httpMethod"></param>
-        /// <returns>Response Document</returns>
-        IDocument ExecuteAsPost(IRestRequest request, string httpMethod);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="token">Cancellation token</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument> ExecuteTaskAsync(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http get request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument> ExecuteGetTaskAsync(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http get request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="token">Cancellation token</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http post request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument> ExecutePostTaskAsync(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http post request
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="token">Cancellation token</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token);
-        
         /// <summary>
         /// Method that makes a get request and creates a document
         /// </summary>

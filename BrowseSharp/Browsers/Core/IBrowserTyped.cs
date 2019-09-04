@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.Html;
+using BrowseSharp.Common;
+using BrowseSharp.Common.Html;
 using RestSharp;
 
 namespace BrowseSharp.Browsers.Core
@@ -10,76 +11,8 @@ namespace BrowseSharp.Browsers.Core
     /// <summary>
     /// Methods for browser supporting data deserialization
     /// </summary>
-    interface IBrowserTyped
+    public interface IBrowserTyped
     {
-        /// <summary>
-        /// Execute method that creates a document from an http request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document</returns>
-        IDocument<T> Execute<T>(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an http get request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="httpMethod">Http method of request</param>
-        /// <returns>Response Document</returns>
-        IDocument<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod);
-
-        /// <summary>
-        /// Execute method that creates a document from an http post request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="httpMethod">Http method of request</param>
-        /// <returns>Response Document</returns>
-        IDocument<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="token">Cancellation token</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request, CancellationToken token);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument<T>> ExecuteTaskAsync<T>(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http get request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http get request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="token">Cancellation token</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument<T>> ExecuteGetTaskAsync<T>(IRestRequest request, CancellationToken token);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http post request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request);
-
-        /// <summary>
-        /// Execute method that creates a document from an asynchronous http post request and deserializes response content
-        /// </summary>
-        /// <param name="request">Request to be made</param>
-        /// <param name="token">Cancellation token</param>
-        /// <returns>Response Document Task</returns>
-        Task<IDocument<T>> ExecutePostTaskAsync<T>(IRestRequest request, CancellationToken token);
-
         /// <summary>
         /// Method that makes a get request and creates a document and deserializes response content
         /// </summary>

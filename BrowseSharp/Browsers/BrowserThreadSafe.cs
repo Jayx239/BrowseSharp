@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BrowseSharp.Html;
+using BrowseSharp.Common;
+using BrowseSharp.Common.Html;
 
 namespace BrowseSharp.Browsers
 {
@@ -343,19 +344,6 @@ namespace BrowseSharp.Browsers
             {
                 _asyncSemaphore.Release();
             }
-        }
-
-        /// <summary>
-        /// Contains all previous documents stored for each previous request
-        /// </summary>
-        public List<IDocument> History => _history.History;
-
-        /// <summary>
-        /// Stores the forward history when the back method is called 
-        /// </summary>
-        public List<IDocument> ForwardHistory
-        {
-            get { return _history.ForwardHistory; }
         }
 
         /// <summary>

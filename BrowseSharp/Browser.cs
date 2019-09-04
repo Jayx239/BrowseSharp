@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BrowseSharp.Browsers.Core;
-using BrowseSharp.History;
-using BrowseSharp.Html;
+using BrowseSharp.Common;
+using BrowseSharp.Common.History;
+using BrowseSharp.Common.Html;
 using RestSharp;
 
 namespace BrowseSharp
@@ -56,60 +57,6 @@ namespace BrowseSharp
                 _browserStandard.StyleScrapingEnabled = value;
                 _browserTyped.StyleScrapingEnabled = value;
             }
-        }
-
-        /// <inheritdoc />
-        public IDocument Execute(IRestRequest request)
-        {
-            return _browserStandard.Execute(request);
-        }
-
-        /// <inheritdoc />
-        public IDocument ExecuteAsGet(IRestRequest request, string httpMethod)
-        {
-            return _browserStandard.ExecuteAsGet(request, httpMethod);
-        }
-
-        /// <inheritdoc />
-        public IDocument ExecuteAsPost(IRestRequest request, string httpMethod)
-        {
-            return _browserStandard.ExecuteAsPost(request, httpMethod);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecuteTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecuteTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecuteGetTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecuteGetTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecuteGetTaskAsync(request, token);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request)
-        {
-            return await _browserStandard.ExecutePostTaskAsync(request);
-        }
-
-        /// <inheritdoc />
-        public async Task<IDocument> ExecutePostTaskAsync(IRestRequest request, CancellationToken token)
-        {
-            return await _browserStandard.ExecutePostTaskAsync(request, token);
         }
 
         /// <inheritdoc />
