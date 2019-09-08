@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Title>BrowseSharp</Title>
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -27,6 +28,7 @@ Note: This package now uses BrowseSharp.Common (See https://www.nuget.org/packag
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\netstandard2.0\BrowseSharp.xml</DocumentationFile>
@@ -36,14 +38,15 @@ Note: This package now uses BrowseSharp.Common (See https://www.nuget.org/packag
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.13.0-alpha-768" />
+    <PackageReference Include="BrowseSharp.Common" Version="0.1.1-alpha" />
     <PackageReference Include="Jint" Version="3.0.0-beta-1525" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="RestSharp" Version="106.6.7" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net472'">
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
