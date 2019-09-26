@@ -41,10 +41,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AngleSharp, Version=0.13.0.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
-      <HintPath>..\packages\AngleSharp.0.13.0-alpha-768\lib\net46\AngleSharp.dll</HintPath>
+      <HintPath>..\packages\AngleSharp.0.13.0\lib\net46\AngleSharp.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="BrowseSharp.Common, Version=0.1.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BrowseSharp.Common.0.1.1-beta\lib\netstandard2.0\BrowseSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32">
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
@@ -384,10 +387,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj">
-      <Project>{3934c547-c64f-4551-8cfb-391f6838d306}</Project>
-      <Name>BrowseSharp.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BrowseSharp\BrowseSharp.csproj">
       <Project>{5892995f-8cbc-439a-9802-464e4333734e}</Project>
       <Name>BrowseSharp</Name>
