@@ -5,9 +5,9 @@
     <Authors>Jason Gallagher</Authors>
     <Description>A headless browser supporting web navigation, html parsing, css style parsing, and javascript parsing/execution.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.1.1.1</AssemblyVersion>
-    <FileVersion>0.1.1.1</FileVersion>
-    <Version>0.1.1-beta</Version>
+    <AssemblyVersion>0.1.1.2</AssemblyVersion>
+    <FileVersion>0.1.1.2</FileVersion>
+    <Version>0.1.1</Version>
     <PackageLicenseUrl></PackageLicenseUrl>
     <Copyright>Copyright (c) 2019 Jason Gallagher</Copyright>
     <PackageProjectUrl>https://www.browsesharp.org/</PackageProjectUrl>
@@ -15,7 +15,16 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Headless Browser Javascript HTML Parser Web RestSharp AngleSharp Jint Type Deserialization API Testing Security Automation Bot Thread Safe</PackageTags>
     <Company>Jason Gallagher</Company>
-    <PackageReleaseNotes>Updated AngleSharp package to latest stable</PackageReleaseNotes>
+    <PackageReleaseNotes>Warning: This is a breaking change, upgrading from 0.0.8 will require existing projects to update their namespace references.
+Note: This package now uses BrowseSharp.Common (See https://www.nuget.org/packages/BrowseSharp.Common/0.1.1).
+* Moved types into the new BrowseSharp.Common namespace
+* Made execute methods internal only:
+   - Execute
+   - ExecuteAsGet
+   - ExecuteAsPost
+   - ExecuteTaskAsync
+   - ExecuteGetTaskAsync
+   - ExecutePostTaskAsync</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageIconUrl>https://raw.githubusercontent.com/Jayx239/BrowseSharp/master/BrowseSharp.png</PackageIconUrl>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
@@ -29,7 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.13.0" />
-    <PackageReference Include="BrowseSharp.Common" Version="0.1.1-beta" />
+    <PackageReference Include="BrowseSharp.Common" Version="0.1.1" />
     <PackageReference Include="Jint" Version="3.0.0-beta-1525" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="RestSharp" Version="106.6.7" />
