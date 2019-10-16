@@ -39,4 +39,7 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
+  </ItemGroup>
 </Project>
