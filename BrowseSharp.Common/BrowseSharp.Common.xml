@@ -1,0 +1,1055 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BrowseSharp.Common</name>
+    </assembly>
+    <members>
+        <member name="T:BrowseSharp.Common.Document">
+            <summary>
+            Documents that contain data about each http request
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.#ctor">
+            <summary>
+            Default constructor generating new Document
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse)">
+            <summary>
+            Constructor generating new Document
+            </summary>
+            <param name="request"></param>
+            <param name="response"></param>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse,AngleSharp.Html.Dom.IHtmlDocument)">
+            <summary>
+            Constructor generating new Document
+            </summary>
+            <param name="request"></param>
+            <param name="response"></param>
+            <param name="htmlDocument"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Response">
+            <summary>
+            Response returned by http request
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Request">
+            <summary>
+            Request made by client
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.HtmlDocument">
+            <summary>
+            Anglesharp document parsed from response
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Scripts">
+            <summary>
+            Javascripts parsed from response
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Styles">
+            <summary>
+            Stylesheets parsed from response
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.RequestUri">
+            <summary>
+            Uri of request
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Forms">
+            <summary>
+            Forms scraped from response 
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.GetElementsByName(System.String)">
+            <summary>
+            Returns a list of elements with a given name in the HTML document.
+            </summary>
+            <param name="name">
+            The value of the name attribute of the element.
+            </param>
+            <returns>A collection of HTML elements.</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.GetElementsByClassName(System.String)">
+            <summary>
+            Returns a set of elements which have all the given class names.
+            </summary>
+            <param name="classNames">
+            A string representing the list of class names to match; class names
+            are separated by whitespace.
+            </param>
+            <returns>A collection of elements.</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.GetElementsByTagName(System.String)">
+            <summary>
+            Returns a NodeList of elements with the given tag name. The
+            complete document is searched, including the root node.
+            </summary>
+            <param name="tagName">
+            A string representing the name of the elements. The special string
+            "*" represents all elements.
+            </param>
+            <returns>
+            A collection of elements in the order they appear in the tree.
+            </returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.GetElementsByTagName(System.String,System.String)">
+            <summary>
+            Returns a list of elements with the given tag name belonging to the
+            given namespace. The complete document is searched, including the
+            root node.
+            </summary>
+            <param name="namespaceUri">
+            The namespace URI of elements to look for.
+            </param>
+            <param name="tagName">
+            Either the local name of elements to look for or the special value
+            "*", which matches all elements.
+            </param>
+            <returns>
+            A collection of elements in the order they appear in the tree.
+            </returns>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Head">
+            <summary>
+            Gets or sets the head element.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Body">
+            <summary>
+            Gets the body element.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Children">
+            <summary>
+            Gets the child elements.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.FirstElementChild">
+            <summary>
+            Gets the first child element of this element.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.LastElementChild">
+            <summary>
+            Gets the last child element of this element.
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.QuerySelector(System.String)">
+            <summary>
+            Returns the first element within the document (using depth-first
+            pre-order traversal of the document's nodes) that matches the
+            specified group of selectors.
+            </summary>
+            <param name="selectors">The group of selectors to use.</param>
+            <returns>The found element.</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Document.QuerySelectorAll(System.String)">
+            <summary>
+            Returns a list of the elements within the document (using
+            depth-first pre-order traversal of the document's nodes) that match
+            the specified group of selectors.
+            </summary>
+            <param name="selectors">The group of selectors to use.</param>
+            <returns>A non-live NodeList of element objects.</returns>
+        </member>
+        <member name="P:BrowseSharp.Common.Document.Data">
+            <summary>
+            Body data
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.Document`1">
+            <summary>
+            Document with typed body
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:BrowseSharp.Common.Document`1.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Document`1.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse{`0})">
+            <summary>
+            Secondary Contstructor
+            </summary>
+            <param name="request"></param>
+            <param name="response"></param>
+        </member>
+        <member name="M:BrowseSharp.Common.Document`1.#ctor(RestSharp.IRestRequest,RestSharp.IRestResponse{`0},AngleSharp.Html.Dom.IHtmlDocument)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="request"></param>
+            <param name="response"></param>
+            <param name="htmlDocument"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Document`1.Data">
+            <summary>
+            Gets data as type
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.History.HistoryManager">
+            <summary>
+            Class for managing browser history
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.#ctor(System.Collections.Generic.List{BrowseSharp.Common.IDocument},System.Collections.Generic.List{BrowseSharp.Common.IDocument})">
+            <summary>
+            Secondary constructor for intializing with history and forward history
+            </summary>
+            <param name="history">Browser history</param>
+            <param name="forwardHistory">Forward browser history</param>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.#ctor(System.Collections.Generic.List{BrowseSharp.Common.IDocument},System.Collections.Generic.List{BrowseSharp.Common.IDocument},System.Int32)">
+            <summary>
+            Secondary constructor for initializing with history, forward history, and max history size
+            </summary>
+            <param name="history">Browser history</param>
+            <param name="forwardHistory">Forward browser history</param>
+            <param name="maxHistorySize">Maximum history size</param>
+        </member>
+        <member name="P:BrowseSharp.Common.History.HistoryManager.History">
+            <summary>
+            List of documents in history
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.History.HistoryManager.ForwardHistory">
+            <summary>
+            List of forward history
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.History.HistoryManager.MaxHistorySize">
+            <summary>
+            Maximum history size
+            </summary>
+        </member>
+        <member name="F:BrowseSharp.Common.History.HistoryManager._history">
+            <summary>
+            History documents
+            </summary>
+        </member>
+        <member name="F:BrowseSharp.Common.History.HistoryManager._forwardHistory">
+            <summary>
+            Forward history documents
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.Back">
+            <summary>
+            Navigate back to previous history document without cache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.Back(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.ClearForwardHistory">
+            <summary>
+            Clears forward history
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.ClearHistory">
+            <inheritdoc/>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.Forward">
+            <inheritdoc/>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.Forward(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.Refresh">
+            <inheritdoc/>
+        </member>
+        <member name="P:BrowseSharp.Common.History.HistoryManager.Document">
+            <summary>
+            Current document
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.Navigate">
+            <summary>
+            Manages history when browser performs a navigate method
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.Submit">
+            <summary>
+            Manages history when browser performs a submit method
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.HistoryManager.TrimHistory(System.Boolean)">
+            <summary>
+            Trims history to the max history size
+            </summary>
+            <param name="beforeNavigate">Indicates whether method is called before or after navigation</param>
+        </member>
+        <member name="T:BrowseSharp.Common.History.IHistoryAsync">
+            <summary>
+            Async browser history methods
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryAsync.BackAsync">
+            <summary>
+            Method for navigating to last browser state by re-issuing the previous request asynchronously
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryAsync.BackAsync(System.Boolean)">
+            <summary>
+            Method for navigating to last browser state asynchronously
+            </summary>
+            <param name="useCache">Determines whether to re-issue request or reload last document</param>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryAsync.ForwardAsync">
+            <summary>
+            Navigate to next document in forward history asynchronously
+            </summary>
+            <returns>Forward history document</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryAsync.ForwardAsync(System.Boolean)">
+            <summary>
+            Navigate to next document in forward history asynchronously
+            </summary>
+            <param name="useCache"></param>
+            <returns>Forward history document</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryAsync.RefreshAsync">
+            <summary>
+            Refresh page, re-submits last request asynchronously
+            </summary>
+            <returns>Current history document</returns>
+        </member>
+        <member name="T:BrowseSharp.Common.History.IHistorySync">
+            <summary>
+            History methods
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.History.IHistorySync.History">
+            <summary>
+            Contains all previous documents stored for each previous request
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.History.IHistorySync.ForwardHistory">
+            <summary>
+            Stores the forward history when the back method is called 
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistorySync.ClearHistory">
+            <summary>
+            Clears browse history by re-initializing Documents
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistorySync.ClearForwardHistory">
+            <summary>
+            Clears forward history
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistorySync.Back">
+            <summary>
+            Method for navigating to last browser state by re-issuing the previous request
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistorySync.Back(System.Boolean)">
+            <summary>
+            Method for navigating to last browser state
+            </summary>
+            <param name="useCache">Determines whether to re-issue request or reload last document</param>
+            <returns>Previous document</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistorySync.Forward">
+            <summary>
+            Navigate to next document in forward history
+            </summary>
+            <returns>Forward history document</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistorySync.Forward(System.Boolean)">
+            <summary>
+            Navigate to next document in forward history
+            </summary>
+            <param name="useCache"></param>
+            <returns>Forward history document</returns>
+        </member>
+        <member name="P:BrowseSharp.Common.History.IHistorySync.MaxHistorySize">
+            <summary>
+            Max amount of history/Documents to be stored by the browser (-1 for no limit)
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistorySync.Refresh">
+            <summary>
+            Refresh page, re-submits last request
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BrowseSharp.Common.History.IHistoryTyped">
+            <summary>
+            Browse history management methods with type support
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.ClearHistory">
+            <summary>
+            Clears browse history by re-initializing Documents
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.ClearForwardHistory">
+            <summary>
+            Clears forward history
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.Back``1">
+            <summary>
+            Method for navigating to last browser state by re-issuing the previous request
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.Back``1(System.Boolean)">
+            <summary>
+            Method for navigating to last browser state
+            </summary>
+            <param name="useCache">Determines whether to re-issue request or reload last document</param>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.BackAsync``1">
+            <summary>
+            Method for navigating to last browser state by re-issuing the previous request asynchronously
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.BackAsync``1(System.Boolean)">
+            <summary>
+            Method for navigating to last browser state asynchronously
+            </summary>
+            <param name="useCache">Determines whether to re-issue request or reload last document</param>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.Forward``1">
+            <summary>
+            Navigate to next document in forward history
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.Forward``1(System.Boolean)">
+            <summary>
+            Navigate to next document in forward history
+            </summary>
+            <param name="useCache"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.ForwardAsync``1">
+            <summary>
+            Navigate to next document in forward history asynchronously
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.ForwardAsync``1(System.Boolean)">
+            <summary>
+            Navigate to next document in forward history asynchronously
+            </summary>
+            <param name="useCache"></param>
+            <returns></returns>
+        </member>
+        <member name="P:BrowseSharp.Common.History.IHistoryTyped.MaxHistorySize">
+            <summary>
+            Max amount of history/Documents to be stored by the browser (-1 for no limit)
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.Refresh``1">
+            <summary>
+            Refresh page, re-submits last request
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.History.IHistoryTyped.RefreshAsync``1">
+            <summary>
+            Refresh page, re-submits last request asynchronously
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BrowseSharp.Common.Html.Form">
+            <summary>
+            Object containing form attributes
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Html.Form.#ctor(AngleSharp.Html.Dom.IHtmlFormElement)">
+            <summary>
+            Initializes form with AngleSharp form element
+            </summary>
+            <param name="formElement"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Html.Form.HtmlForm">
+            <summary>
+            AngleSharp Html Form
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Html.Form.FormControls">
+            <summary>
+            AngleSharp FormControls object
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Html.Form.FormValues">
+            <summary>
+            Form key value pairs
+            </summary>
+        </member>
+        <member name="F:BrowseSharp.Common.Html.Form._formControls">
+            <summary>
+            AngleSharp FormControls object
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Html.Form.Method">
+            <summary>
+            Form method (post,get)
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Html.Form.Action">
+            <summary>
+            Form action
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Html.Form.GetEmptyForm">
+            <summary>
+            Gets the form key value pairs with empty values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Html.Form.SetValue(System.String,System.String)">
+            <summary>
+            Sets a form value
+            </summary>
+            <param name="inputName">Form element name</param>
+            <param name="inputValue">Form element value</param>
+            <returns>Boolean indicating if form element was set</returns>
+        </member>
+        <member name="T:BrowseSharp.Common.IDocument">
+            <summary>
+            BrowseSharp Document containing info about an http request and result
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Response">
+            <summary>
+            Response returned from http request
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Request">
+            <summary>
+            Http request object
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.HtmlDocument">
+            <summary>
+            AngleSharp html document scraped from response
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Scripts">
+            <summary>
+            Javascripts scraped from http response
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Styles">
+            <summary>
+            Styles parsed from http response 
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.RequestUri">
+            <summary>
+            Uri of request
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Forms">
+            <summary>
+            Forms scraped from response 
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.IDocument.GetElementsByName(System.String)">
+            <summary>
+            Returns a list of elements with a given name in the HTML document.
+            </summary>
+            <param name="name">
+            The value of the name attribute of the element.
+            </param>
+            <returns>A collection of HTML elements.</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.IDocument.GetElementsByClassName(System.String)">
+            <summary>
+            Returns a set of elements which have all the given class names.
+            </summary>
+            <param name="classNames">
+            A string representing the list of class names to match; class names
+            are separated by whitespace.
+            </param>
+            <returns>A collection of elements.</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.IDocument.GetElementsByTagName(System.String)">
+            <summary>
+            Returns a NodeList of elements with the given tag name. The
+            complete document is searched, including the root node.
+            </summary>
+            <param name="tagName">
+            A string representing the name of the elements. The special string
+            "*" represents all elements.
+            </param>
+            <returns>
+            A collection of elements in the order they appear in the tree.
+            </returns>
+        </member>
+        <member name="M:BrowseSharp.Common.IDocument.GetElementsByTagName(System.String,System.String)">
+            <summary>
+            Returns a list of elements with the given tag name belonging to the
+            given namespace. The complete document is searched, including the
+            root node.
+            </summary>
+            <param name="namespaceUri">
+            The namespace URI of elements to look for.
+            </param>
+            <param name="tagName">
+            Either the local name of elements to look for or the special value
+            "*", which matches all elements.
+            </param>
+            <returns>
+            A collection of elements in the order they appear in the tree.
+            </returns>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Head">
+            <summary>
+            Gets or sets the head element.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Body">
+            <summary>
+            Gets the body element.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Children">
+            <summary>
+            Gets the child elements.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.FirstElementChild">
+            <summary>
+            Gets the first child element of this element.
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.LastElementChild">
+            <summary>
+            Gets the last child element of this element.
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.IDocument.QuerySelector(System.String)">
+            <summary>
+            Returns the first element within the document (using depth-first
+            pre-order traversal of the document's nodes) that matches the
+            specified group of selectors.
+            </summary>
+            <param name="selectors">The group of selectors to use.</param>
+            <returns>The found element.</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.IDocument.QuerySelectorAll(System.String)">
+            <summary>
+            Returns a list of the elements within the document (using
+            depth-first pre-order traversal of the document's nodes) that match
+            the specified group of selectors.
+            </summary>
+            <param name="selectors">The group of selectors to use.</param>
+            <returns>A non-live NodeList of element objects.</returns>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument.Data">
+            <summary>
+            Response body data
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.IDocument`1">
+            <summary>
+            BrowseSharp Document containing info about an http request and result and a data object of input type
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.IDocument`1.Data">
+            <summary>
+            Deserialized body data as type
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.IScraper">
+            <summary>
+            Interface for scrapers
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.IScraper.Add(BrowseSharp.Common.IDocument)">
+            <summary>
+            Method for adding scraped elements to a document
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.IScraper.AddAsync(BrowseSharp.Common.IDocument)">
+            <summary>
+            Method for adding scraped elements to a document asynchronously
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BrowseSharp.Common.ISource">
+            <summary>
+            Interface for objects that have a uri and content
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.ISource.SourceUri">
+            <summary>
+            Uri of object source
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.ISource.Content">
+            <summary>
+            Content of object
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.Javascript.Javascript">
+            <summary>
+            Class containing javascript details
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.Javascript.#ctor(AngleSharp.Html.Dom.IHtmlScriptElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="scriptElement"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.Javascript.ScriptElement">
+            <summary>
+            AngleSharp html element for script
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.Javascript.SourceUri">
+            <summary>
+            Uri of script source
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.Javascript.Content">
+            <summary>
+            Script content
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.Javascript.JavascriptString">
+            <summary>
+            Same as script content, may be deprecated in the future, use Content instead
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.Javascript.JavascriptEngine">
+            <summary>
+            Javascript scraper and executor
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.JavascriptEngine.Document">
+            <summary>
+            String containing scripts to be executed
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.JavascriptEngine.GlobalVariables">
+            <summary>
+            Global variables that may be used in script execution 
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.Execute(System.String)">
+            <summary>
+            Method for executing javascript command, uses document
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.Add(BrowseSharp.Common.IDocument)">
+            <summary>
+            Adds scripts to document
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.AddAsync(BrowseSharp.Common.IDocument)">
+            <summary>
+            Adds scripts to document asynchronously
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.AddScripts(BrowseSharp.Common.IDocument)">
+            <summary>
+            Same as Add method
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.ScrapeScripts(System.String)">
+            <summary>
+            Internal method for parsing scripts
+            </summary>
+            <param name="documentString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.ScrapeScripts(AngleSharp.Html.Dom.IHtmlDocument)">
+            <summary>
+            Internal method for parsing scripts
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.ScrapeScriptSrc(BrowseSharp.Common.IDocument)">
+            <summary>
+            Internal method for scraping external scripts
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.ScrapeScriptSrcAsync(BrowseSharp.Common.IDocument)">
+            <summary>
+            Internal method for scraping external scripts asynchronously
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.InitializeGlobals">
+            <summary>
+            Method for initializing globals with default js variables
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.GetGlobalString">
+            <summary>
+            Gets global variable collection as a string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.ConvertToJavascripts(AngleSharp.Dom.IHtmlCollection{AngleSharp.Html.Dom.IHtmlScriptElement})">
+            <summary>
+            Converts AngleSharp Scripts to BrowseSharp Javascripts
+            </summary>
+            <param name="scriptElements"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptEngine.ConvertToJavascript(AngleSharp.Html.Dom.IHtmlScriptElement)">
+            <summary>
+            Converts AngleSharp Script to BrowseSharp Javascript
+            </summary>
+            <param name="scriptElement"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BrowseSharp.Common.Javascript.JavascriptRequestAsyncHandle">
+            <summary>
+            Handler for scraping javascripts asynchronously
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Javascript.JavascriptRequestAsyncHandle.#ctor(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},BrowseSharp.Common.Javascript.Javascript)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="responseAsyncTask"></param>
+            <param name="script"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.JavascriptRequestAsyncHandle.ResponseAsyncTask">
+            <summary>
+            Task attribute containing asynchronous call task
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Javascript.JavascriptRequestAsyncHandle.Script">
+            <summary>
+            Javascript scraped from asynchronous http call
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.Style.Style">
+            <summary>
+            Class containing a css style
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.Style.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.Style.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="styleString"></param>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.Style.#ctor(System.String,System.Uri)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="styleString"></param>
+            <param name="sourceUri"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Style.Style.Content">
+            <summary>
+            CSS style content
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Style.Style.SourceUri">
+            <summary>
+            CSS style source uri
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Style.Style.StyleString">
+            <summary>
+            Same ass Content, use Content instead
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.Style.StyleEngine">
+            <summary>
+            Class for scraping css styles
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleEngine.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="F:BrowseSharp.Common.Style.StyleEngine._scrapeStyleRegex">
+            <summary>
+            Regex used for parsing inline styles
+            </summary>
+        </member>
+        <member name="F:BrowseSharp.Common.Style.StyleEngine._scrapeStyleSrcRegex">
+            <summary>
+            Regex used for scraping style srcs from html
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleEngine.Add(BrowseSharp.Common.IDocument)">
+            <summary>
+            Method for adding styles to a document. Returns number of script script found added 
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleEngine.AddAsync(BrowseSharp.Common.IDocument)">
+            <summary>
+            Method for adding styles to a document asynchronously. Returns number of script script found added
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleEngine.ScrapeStyles(System.String)">
+            <summary>
+            Method for scraping styles from a document
+            </summary>
+            <param name="documentString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleEngine.ScrapeStylesSrc(BrowseSharp.Common.IDocument)">
+            <summary>
+            Method for scraping styles and adding them to a document
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleEngine.ScrapeStylesSrcAsync(BrowseSharp.Common.IDocument)">
+            <summary>
+            Method for scraping external styles and adding them to a document
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BrowseSharp.Common.Style.StyleSheet">
+            <summary>
+            Class containing stylesheet content
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleSheet.#ctor(System.Uri)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sourceUri"></param>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleSheet.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="styleSheetString"></param>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleSheet.#ctor(System.String,System.Uri)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="styleSheetString"></param>
+            <param name="sourceUri"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Style.StyleSheet.SourceUri">
+            <summary>
+            Source uri of stylesheet
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Style.StyleSheet.Content">
+            <summary>
+            Content of stylesheet
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.Style.StyleSheetRequestAsyncHandle">
+            <summary>
+            Handler for scraping stylesheets asynchronously
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Style.StyleSheetRequestAsyncHandle.#ctor(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},BrowseSharp.Common.Style.StyleSheet)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="responseAsyncTask"></param>
+            <param name="styleSheet"></param>
+        </member>
+        <member name="P:BrowseSharp.Common.Style.StyleSheetRequestAsyncHandle.ResponseAsyncTask">
+            <summary>
+            Task attribute containing asynchronous call task
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Style.StyleSheetRequestAsyncHandle.StyleSheet">
+            <summary>
+            StyleSheet scraped from asynchronous http call
+            </summary>
+        </member>
+        <member name="T:BrowseSharp.Common.Toolbox.UriHelper">
+            <summary>
+            Helper class for Uri's
+            </summary>
+        </member>
+        <member name="P:BrowseSharp.Common.Toolbox.UriHelper.DefaultUriProtocol">
+            <summary>
+            Default protocol that will be applied to uri if passed in uri string does not contain a protcol
+            </summary>
+        </member>
+        <member name="F:BrowseSharp.Common.Toolbox.UriHelper._defaultUriProtocol">
+            <summary>
+            Default protocol that will be applied to uri if passed in uri string does not contain a protcol
+            </summary>
+        </member>
+        <member name="M:BrowseSharp.Common.Toolbox.UriHelper.GetUri(System.Uri,System.String)">
+            <summary>
+            Method for constructing uris when parsing document attributes
+            </summary>
+            <param name="responseUri"></param>
+            <param name="scriptSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Toolbox.UriHelper.ConcatPath(System.String,System.String)">
+            <summary>
+            Method for concatinating url components
+            </summary>
+            <param name="baseString"></param>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Toolbox.UriHelper.Uri(System.String)">
+            <summary>
+            Creates a uri pre-pending the default protocol if the uriString does not contain one
+            </summary>
+            <param name="uriString"></param>
+            <returns>Uri</returns>
+        </member>
+        <member name="M:BrowseSharp.Common.Toolbox.UriHelper.Uri(System.String,System.String)">
+            <summary>
+            Creates a uri pre-pending the default protocol if the uriString does not contain one
+            </summary>
+            <param name="uriString"></param>
+            <param name="defaultUriProtocol">Default protocol to be used if uriString does not contain a protocol</param>
+            <returns>Uri</returns>
+        </member>
+    </members>
+</doc>

@@ -57,14 +57,15 @@ namespace BrowseSharpPlayground
             engine.SetValue("document",htmlDocument.HtmlDocument);
             engine.Execute(script1);
             Browser browser = new Browser();
+            browser.Navigate("https://www.coinfield.com/ref/0/ID159F0248CB");
             IDocument doc = browser.Navigate("https://browsesharp.org/testsitesjqueryrender.html");
             //doc.HtmlDocument = new AngleSharp.Html.Parser.HtmlParser().ParseDocument(htmlContent);
             //Jint.Engine engine = new Jint.Engine();
             //engine.SetValue("document", doc.HtmlDocument);
             //engine.SetValue("d", doc.HtmlDocument);
             //Navigator navigator = new Navigator(engine);
-            Window window1 = new Window(engine);
-            window1.document = doc.HtmlDocument;
+            Window window1 = new Window(engine, doc);
+            //window1.Document = doc.HtmlDocument;
             //engine.Execute("Window = {};");
             //engine.SetValue("window.document", doc.HtmlDocument);
             //engine.SetValue("window.document", doc);
@@ -102,7 +103,7 @@ namespace BrowseSharpPlayground
             engine.Execute("(function($, window, document){$('#Area1').text('hello there');})(window.jQuery, window, window.document);");
 
             string newValue = engine.Execute("$('#Area1').text()").GetCompletionValue().ToString(); // This is the value set in the previous line with jquery
-            string newValueFromDOM = window1.document.GetElementById("Area1").TextContent; // Get new value from DOM
+            string newValueFromDOM = window1.Document.GetElementById("Area1").TextContent; // Get new value from DOM
 
             //engine.Execute("window.jQuery = jQuery;");
             engine.Execute("var $ = window.jQuery()('");

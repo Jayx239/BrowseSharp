@@ -1,17 +1,18 @@
 ﻿using AngleSharp.Attributes;
-using AngleSharp.Html.Dom;
 using BrowseSharp.BOM.Navigator;
 using BrowseSharp.Common;
 using Jint;
 using Jint.Native;
+using Jint.Runtime.Environments;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Text;
 using System.Threading;
 
 namespace BrowseSharp.BOM.Window
 {
-    public partial class Window : DynamicObject//, IWindow
+    public partial class Window : DynamicObject, IWindow
     {
         private Engine _jintEngine;
 
@@ -31,9 +32,13 @@ namespace BrowseSharp.BOM.Window
             // set the result parameter to the property value and return true.
             // Otherwise, return false.
             bool exists = dictionary.TryGetValue(name, out result);
-            if (!exists)
+            /*if (!exists)
+            {
                 result = new { };
-            return exists;
+                //_jintEngine.Execute("var " + binder.Name + "=" + result + ";");
+            }*/
+
+            return true;// exists;
         }
 
         // If you try to set a value of a property that is
@@ -42,9 +47,16 @@ namespace BrowseSharp.BOM.Window
             SetMemberBinder binder, dynamic value)
         {
             if (dictionary.ContainsKey(binder.Name))
+            {
                 dictionary[binder.Name] = value;
+                //_jintEngine.Execute(binder.Name + "=" + value + ";");
+            }
             else
+            {
                 dictionary.Add(binder.Name, value);
+                //_jintEngine.Execute("var " + binder.Name + "=" + value + ";");
+            }
+                
             // You can always add a value to a dictionary,
             // so this method always returns true.
             return true;
@@ -76,13 +88,13 @@ namespace BrowseSharp.BOM.Window
         #region Public Attributes
         public bool Closed { get; set; }
         public int DevicePixelRatio { get; set; }
-        public IHtmlDocument document { get; set; }
+        public AngleSharp.Html.Dom.IHtmlDocument Document { get { return _document.HtmlDocument; } }
         public bool FullScreen { get; set; }
         public int InnerHeight { get; set; }
         public int InnerWidth { get; set; }
         public bool IsSecureContext { get; set; }
         public int Length { get; set; }
-        //public string Location { get; set; }
+        public string Location { get; set; }
         public int MozAnimationStartTime { get; set; }
         public int MozInnerScreenX { get; set; }
         public int MozInnerScreenY { get; set; }
@@ -106,7 +118,7 @@ namespace BrowseSharp.BOM.Window
         public Window Sidebar { get; set; }
         public string Status { get; set; }
         public Window Top { get; set; }
-        public Window window { get { return this; } } // lowercase to since same as class name
+        public dynamic window { get { return (dynamic)this; } } // lowercase to since same as class name
         public Location location { get; set; }
         public JsValue jQuery { get; set; }
         
@@ -144,10 +156,21 @@ namespace BrowseSharp.BOM.Window
             Func<object, int, int> setTimeout = (func, timeout) => { Thread.Sleep(timeout); return 1; };
             //this.setTimeout = setTimeout;
             location = new Location();
-            dynamic dynamicWindow = this;
+            dynamic dynamicWindow = (dynamic) this;
+            var environment = LexicalEnvironment.NewObjectEnvironment(_jintEngine,
+                JsValue.FromObject(_jintEngine, (dynamic)this).AsObject(), _jintEngine.GlobalEnvironment, true);
+            _jintEngine.EnterExecutionContext(environment, environment, JsValue.FromObject(_jintEngine, (dynamic) this).AsObject());
+            _jintEngine.SetValue("window", (dynamic) this);
             
-            _jintEngine.SetValue("window", this);
-            _jintEngine.SetValue("document",document);
+            _jintEngine.SetValue("document",Document);
+            _jintEngine.Execute("window.google = window;");
+            StringBuilder sb = new StringBuilder();
+            foreach(var script in _document.Scripts)
+            {
+                sb.Append(script.Content);
+                sb.Append("\n");
+            }
+            _jintEngine.Execute(sb.ToString());
         }
 
         #region Private

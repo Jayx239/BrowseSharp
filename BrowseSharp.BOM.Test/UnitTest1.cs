@@ -56,8 +56,8 @@ namespace BrowseSharp.BOM.Test
             IDocument htmlDocument = new Document();
             htmlDocument.HtmlDocument = new AngleSharp.Html.Parser.HtmlParser().ParseDocument(htmlContent);
 
-            Window.Window window1 = new Window.Window(engine);
-            window1.document = htmlDocument.HtmlDocument;
+            Window.Window window1 = new Window.Window(engine, htmlDocument);
+            //window1.Document = htmlDocument;
 
             window1.InitializeEngine();
             var jquery = System.IO.File.ReadAllText(@"../../../../BrowseSharpPlayground/jquery.js");
@@ -65,7 +65,7 @@ namespace BrowseSharp.BOM.Test
             engine.Execute("var $ = window.jQuery;");
             engine.Execute("$('#content').text('hello there it worked');");
             //engine.Execute("$(document).trigger('ready')");
-            Assert.AreEqual("hello there it worked", window1.document.GetElementById("content").TextContent);
+            Assert.AreEqual("hello there it worked", window1.Document.GetElementById("content").TextContent);
         }
         [TestMethod]
         public void Test4()
@@ -74,8 +74,8 @@ namespace BrowseSharp.BOM.Test
             IDocument htmlDocument = new Document();
             htmlDocument.HtmlDocument = new AngleSharp.Html.Parser.HtmlParser().ParseDocument(htmlContent);
 
-            Window.Window window1 = new Window.Window(engine);
-            window1.document = htmlDocument.HtmlDocument;
+            Window.Window window1 = new Window.Window(engine, htmlDocument);
+            //window1.Document = htmlDocument;
 
             window1.InitializeEngine();
             var jquery = System.IO.File.ReadAllText(@"../../../../BrowseSharpPlayground/jquery.js");
@@ -90,7 +90,7 @@ namespace BrowseSharp.BOM.Test
             //engine.Execute("window.document.readyState = 'complete'");
             //engine.Execute("$(document).trigger('ready',window.document)");
             //engine.Execute("$(document).trigger('ready')");
-            Assert.AreEqual("hello there it worked", window1.document.GetElementById("content").TextContent);
+            Assert.AreEqual("hello there it worked", window1.Document.GetElementById("content").TextContent);
         }
 
         [TestMethod]
@@ -147,8 +147,10 @@ namespace BrowseSharp.BOM.Test
             {
 
             }*/
-            Window.Window window1 = new Window.Window(engine);
-            window1.document = parser.ParseDocument(html);
+            //IDocument document = new Document();
+            document.HtmlDocument = parser.ParseDocument(html);
+            Window.Window window1 = new Window.Window(engine, document);
+            //window1.Document = parser.ParseDocument(html);
 
                 window1.InitializeEngine();
                 var jquery = System.IO.File.ReadAllText(@"../../../../BrowseSharpPlayground/jquery.js");
@@ -188,8 +190,8 @@ namespace BrowseSharp.BOM.Test
             Jint.Engine engine = new Jint.Engine();
             IDocument htmlDocument = new Document();
 
-            Window.Window window1 = new Window.Window(engine);
-            window1.document = htmlDocument.HtmlDocument;
+            Window.Window window1 = new Window.Window(engine, htmlDocument);
+            //window1.Document = htmlDocument.HtmlDocument;
 
             window1.InitializeEngine();
             var jquery = System.IO.File.ReadAllText(@"../../../../BrowseSharpPlayground/jquery.js");
@@ -201,7 +203,7 @@ namespace BrowseSharp.BOM.Test
 
             CheckMessage(engine, htmlDocument, "empty");
 
-            ((AngleSharp.Html.Dom.IHtmlElement)window1.document.GetElementById("btn")).DoClick();
+            ((AngleSharp.Html.Dom.IHtmlElement)window1.Document.GetElementById("btn")).DoClick();
             CheckMessage(engine, htmlDocument, "hello there you clicked the button 1 times");
 
 

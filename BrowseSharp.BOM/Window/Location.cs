@@ -11,7 +11,8 @@ namespace BrowseSharp.BOM.Window
         public string pathname { get; set; }
         public string protocol { get; set; }
         public string assign { get; set; }
-
+        public void Reload() { }
+        public void Replace() { }
         public Location()
         {
             href = string.Empty;

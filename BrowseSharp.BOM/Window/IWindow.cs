@@ -1,6 +1,6 @@
 ﻿namespace BrowseSharp.BOM.Window
 {
-    public interface IWindow: IWindowProperties, IWindowMethods,IWindowEventHandlers, IEngine
+    public interface IWindow: IEngine, IWindowProperties//, IWindowMethods,IWindowEventHandlers
     {
 
     }

@@ -1,4 +1,5 @@
 ﻿
+using AngleSharp.Html.Dom;
 using BrowseSharp.BOM.Navigator;
 
 namespace BrowseSharp.BOM.Window
@@ -18,7 +19,7 @@ namespace BrowseSharp.BOM.Window
 int DevicePixelRatio { get; }
 // TODO: nsIArray dialogArguments { get; }
 // TODO: PersonalBar Window.directories { get; }
-        //IHtmlDocument document { get;}
+IHtmlDocument Document { get;}
 // TODO: DOMMatrix DOMMatrix { get; }
 // TODO: DOMMatrixReadOnly DOMMatrixReadOnly { get; }
 // TODO: DOMPoint DOMPoint { get; }
@@ -77,7 +78,7 @@ string Status { get; set; }
 // TODO: ToolBar toolbar { get; }
 Window Top { get; }
 // TODO: VisualViewport visualViewport { get; }
-Window window { get; }
+dynamic window { get; }
 //List<Window> window[0]
  //window[1]
         // TODO: WindowOrWorkerGlobalScope WindowOrWorkerGlobalScop { get; }

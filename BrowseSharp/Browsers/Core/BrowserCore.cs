@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
+using BrowseSharp.BOM;
+using BrowseSharp.BOM.Navigator;
+using BrowseSharp.BOM.Window;
 using BrowseSharp.Common;
 using BrowseSharp.Common.History;
 using BrowseSharp.Common.Javascript;
@@ -21,7 +24,7 @@ namespace BrowseSharp.Browsers.Core
     /// <summary>
     /// Headless browser core containing browser core attributes
     /// </summary>
-    public class BrowserCore : IBrowserCore
+    public class BrowserCore : IBrowserCore, IBrowserObjectModel
     {
         /// <summary>
         /// Default Constructor
@@ -36,6 +39,7 @@ namespace BrowseSharp.Browsers.Core
             _styleScrapingEnabled = true;
             _javascriptScrapingEnabled = true;
             DefaultUriProtocol = "http";
+            InitializeBOMOnLoad = true;
         }
 
         /// <summary>
@@ -62,6 +66,16 @@ namespace BrowseSharp.Browsers.Core
             _styleScrapingEnabled = styleScrapingEnabled;
             _javascriptScrapingEnabled = javascriptScrapingEnabled;
             DefaultUriProtocol = defaultUriProtocol;
+            InitializeBOMOnLoad = true;
+        }
+        public BrowserCore(JavascriptEngine javascriptEngine, StyleEngine styleEngine,
+            RestClient restClient, CookieContainer cookieContainer,
+            HistoryManager historyManager, bool styleScrapingEnabled,
+            bool javascriptScrapingEnabled, string defaultUriProtocol, bool initializeBomOnLoad) : this(javascriptEngine, styleEngine, restClient,
+                cookieContainer, historyManager, styleScrapingEnabled,
+                javascriptScrapingEnabled, defaultUriProtocol)
+        {
+            InitializeBOMOnLoad = initializeBomOnLoad;
         }
 
         /// <summary>
@@ -381,6 +395,11 @@ namespace BrowseSharp.Browsers.Core
                 StyleEngine.Add(document);
             document.RequestUri = requestUri;
             Documents.Add(document);
+            if (InitializeBOMOnLoad)
+            {
+                BOM = new BrowserObjectModel(document);
+                BOM.Window.InitializeEngine();
+            }
             return document;
         }
 
@@ -411,6 +430,12 @@ namespace BrowseSharp.Browsers.Core
                 await styleResult;
             document.RequestUri = requestUri;
             Documents.Add(document);
+            
+            if(InitializeBOMOnLoad)
+            {
+                BOM = new BrowserObjectModel(document);
+                BOM.Window.InitializeEngine();
+            }
             return document;
         }
 
@@ -446,5 +471,11 @@ namespace BrowseSharp.Browsers.Core
             }
         }
 
+        protected BrowserObjectModel BOM { get; set; }
+
+        public IWindow Window => BOM.Window;
+
+        public INavigator Navigator => BOM.Navigator;
+        public bool InitializeBOMOnLoad { get; set; }
     }
 }
