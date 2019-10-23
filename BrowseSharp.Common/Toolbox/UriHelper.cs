@@ -39,12 +39,12 @@ namespace BrowseSharp.Common.Toolbox
             if (scriptSource.StartsWith("http"))
                 scriptUri = new Uri(scriptSource);
             else if (scriptSource.StartsWith("www"))
-                scriptUri = new Uri("http://" + scriptSource);
+                scriptUri = new Uri(string.Format("http://{0}",scriptSource));
             else if (scriptSource.StartsWith("/"))
-                scriptUri = new Uri(ConcatPath(responseUri.Scheme + "://" + responseUri.Host, scriptSource));
+                scriptUri = new Uri(ConcatPath(string.Format("{0}://{1}", responseUri.Scheme, responseUri.Host), scriptSource));
             else
             {
-                string scriptRelativePath = responseUri.Scheme + "://" + responseUri.Host;
+                string scriptRelativePath = string.Format("{0}://{1}", responseUri.Scheme, responseUri.Host);
                 int endSegments = String.IsNullOrWhiteSpace(Path.GetFileName(responseUri.LocalPath)) ? responseUri.Segments.Length : responseUri.Segments.Length - 1;
                 for (int i = 0; i < endSegments; i++)
                 {
@@ -92,7 +92,7 @@ namespace BrowseSharp.Common.Toolbox
             if (uriString.Contains("http"))
                 return new Uri(uriString);
             else
-                return new Uri(defaultUriProtocol + "://" + uriString);
+                return new Uri(string.Format("{0}://{1}", defaultUriProtocol, uriString));
         }
     }
 }
