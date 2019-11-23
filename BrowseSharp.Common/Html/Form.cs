@@ -16,7 +16,7 @@ namespace BrowseSharp.Common.Html
         {
             HtmlForm = formElement;
             _formControls = formElement.Elements;
-            FormValues = GetEmptyForm();
+            FormValues = GetFormFields();
         }
         
         /// <summary>
@@ -61,17 +61,17 @@ namespace BrowseSharp.Common.Html
         }
         
         /// <summary>
-        /// Gets the form key value pairs with empty values
+        /// Gets the form key value pairs with their default values
         /// </summary>
-        /// <returns></returns>
-        public Dictionary<string,string> GetEmptyForm()
+        /// <returns>Form fields with their default values</returns>
+        public Dictionary<string,string> GetFormFields()
         {
             Dictionary<string, string> nameValuePairs = new Dictionary<string, string>();
             foreach(var formControl in FormControls)
             {
                 var attributes = formControl.Attributes;
-                if (attributes["name"] != null && !nameValuePairs.ContainsKey(attributes["name"].Value))
-                    nameValuePairs.Add(attributes["name"].Value, "");
+                if (attributes != null && attributes["name"] != null && !nameValuePairs.ContainsKey(attributes["name"].Value))
+                    nameValuePairs.Add(attributes["name"].Value, attributes["value"]?.Value??"");
             }
             return nameValuePairs;
         }
