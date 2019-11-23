@@ -506,11 +506,11 @@
             Form action
             </summary>
         </member>
-        <member name="M:BrowseSharp.Common.Html.Form.GetEmptyForm">
+        <member name="M:BrowseSharp.Common.Html.Form.GetFormFields">
             <summary>
-            Gets the form key value pairs with empty values
+            Gets the form key value pairs with their default values
             </summary>
-            <returns></returns>
+            <returns>Form fields with their default values</returns>
         </member>
         <member name="M:BrowseSharp.Common.Html.Form.SetValue(System.String,System.String)">
             <summary>

@@ -46,8 +46,8 @@
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="BrowseSharp.Common, Version=0.1.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BrowseSharp.Common.0.1.1-beta\lib\netstandard2.0\BrowseSharp.Common.dll</HintPath>
+    <Reference Include="BrowseSharp.Common, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BrowseSharp.Common.0.1.2-alpha\lib\netstandard2.0\BrowseSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32">
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
