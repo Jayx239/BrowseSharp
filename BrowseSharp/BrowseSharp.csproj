@@ -49,4 +49,7 @@ Note: This package now uses BrowseSharp.Common (See https://www.nuget.org/packag
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrowseSharp.Common\BrowseSharp.Common.csproj" />
+  </ItemGroup>
 </Project>
